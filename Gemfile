@@ -46,3 +46,6 @@ end
 
 # Use devise
 gem 'devise'
+
+# Use Foundation 5
+gem 'foundation-rails'
