@@ -13,7 +13,8 @@
 //= require jquery
 //= require jquery_ujs
 //= require foundation
-//= require turbolinks
-//= require_tree .
+//= require underscore
+//= require backbone
+//= require app/util
 
 $(function(){ $(document).foundation(); });
