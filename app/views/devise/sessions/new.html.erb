@@ -1,9 +1,9 @@
 <!-- This same formatting is used for new registration -->
 <div class="full-width-row shed-bg">
   <div class="row">
-    <div class="large-4 medium-6 small-10 small-centered columns">
+    <div class="large-4 medium-6 small-10 small-centered columns white-overlay">
       <h2>Sign in</h2>
-  sign    <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+      <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
         <div><%= f.label :email %><br />
         <%= f.email_field :email, :autofocus => true %></div>
   
