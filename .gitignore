@@ -17,3 +17,6 @@
 
 # Ignore database.yml file to support mac and linux users
 /config/database.yml
+
+# Ignore images 
+public/uploads 

@@ -63,3 +63,6 @@ group :development do
   # Use Binding_of_caller to support console in browser
   gem 'binding_of_caller'
 end
+
+  # Use Carrier wave to upload jpg files
+  gem 'carrierwave'
