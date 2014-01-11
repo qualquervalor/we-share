@@ -6,6 +6,9 @@ gem 'rails', '4.0.2'
 # Use postgresql as the database for Active Record
 gem 'pg'
 
+# Use 12_factor to support heroku
+gem 'rails_12factor', group: :production
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
 
@@ -48,4 +51,15 @@ end
 gem 'devise'
 
 # Use Foundation 5
-gem 'foundation-rails'
+gem 'foundation-rails', "~5.0.2.0"
+
+group :development do
+  # Use Hirb for database views in console
+  gem 'hirb'
+
+  # Use Better-Errors to better see the errors
+  gem 'better_errors'
+
+  # Use Binding_of_caller to support console in browser
+  gem 'binding_of_caller'
+end
