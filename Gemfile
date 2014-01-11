@@ -66,3 +66,6 @@ end
 
   # Use Carrier wave to upload jpg files
   gem 'carrierwave'
+
+  #Use RMagick to scale images
+  gem 'rmagick'

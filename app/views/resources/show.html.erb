@@ -12,7 +12,7 @@
 
 <p>
   <strong>Picture:</strong>
-  <%= @resource.picture %>
+  <%= image_tag @resource.picture.url(:medium) %>
 </p>
 
 <%= link_to 'Edit', edit_resource_path(@resource) %> |
