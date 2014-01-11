@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title><%= content_for?(:title) ? yield(:title) : "foundation-rails" %></title>
+    <title><%= content_for?(:title) ? yield(:title) : "The Shed" %></title>
 
     <%= stylesheet_link_tag    "application" %>
     <%= javascript_include_tag "vendor/modernizr" %>
@@ -12,9 +12,17 @@
   </head>
 
   <body>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-  
+    <%= render "layouts/header" %>
+    <div class="row">
+      <div class="large-12 columns"> 
+        <p class="notice"><%= notice %></p>
+        <p class="alert"><%= alert %></p>
+      </div>
+    </div>
+    <div id="background">
+      <img class="stretch" src="<%= asset_path('shed_bg.jpg') %>" alt=""/>
+    </div>
+
     <%= yield %>
     <%= javascript_include_tag "application" %>
     <%= yield :javascript %>

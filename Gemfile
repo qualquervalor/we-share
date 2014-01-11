@@ -63,3 +63,12 @@ end
 
   # Use Carrier wave to upload jpg files
   gem 'carrierwave'
+
+  #Use RMagick to scale images
+  gem 'rmagick'
+
+  # Use Figaro to store environment variables
+  gem 'figaro'
+
+  #Use fog for image storage. Needed for AmazonS3
+  gem 'fog'

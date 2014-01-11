@@ -32,7 +32,7 @@
 
 <p>
   <strong>Picture:</strong>
-  <%= image_tag @user.picture %>
+  <%= image_tag @user.picture.url(:thumb)  %>
 </p>
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
