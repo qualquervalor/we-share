@@ -15,10 +15,10 @@
     <%= render "layouts/header" %>
     <div class="row">
       <div class="large-12 columns"> 
-        <p class="notice"><%= notice %></p>
-        <p class="alert"><%= alert %></p>
+        <%= render "shared/error_messages" %>
       </div>
     </div>
+    <!-- This background is temporary and will be removed as the site is built out -->
     <div id="background">
       <img class="stretch" src="<%= asset_path('shed_bg.jpg') %>" alt=""/>
     </div>
