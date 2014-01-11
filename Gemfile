@@ -69,3 +69,9 @@ end
 
   #Use RMagick to scale images
   gem 'rmagick'
+
+  # Use Figaro to store environment variables
+  gem 'figaro'
+
+  #Use fog for image storage. Needed for AmazonS3
+  gem 'fog'
