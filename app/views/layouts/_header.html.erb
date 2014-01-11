@@ -1,0 +1,57 @@
+<nav class="top-bar" data-topbar data-options="is_hover: false">
+  <ul class="title-area">
+    <li class="name">
+      <h1><a href="#">The Shed</a></h1>
+    </li>
+    <li class="toggle-topbar menu-icon"><a href="#">Menu</a></li>
+  </ul>
+
+  <section class="top-bar-section">
+    <!-- Right Nav Section -->
+    <ul class="right">
+      <!-- Search bar -->
+      <li class="has-form">
+        <div class="row collapse">
+          <div class="large-8 small-9 columns">
+            <input type="text" placeholder="Find Stuff">
+          </div>
+          <div class="large-4 small-3 columns">
+            <a href="#" class="alert button expand">Search</a>
+          </div>
+        </div>
+      </li>
+
+      <!-- Divider -->
+      <li class="divider"></li>
+
+      <!-- Sign in and sign out links -->
+      <li class="has-dropdown">
+        <a href="#">Account</a>
+        <ul class="dropdown">
+          <% if user_signed_in? %>
+             <li>
+              <%= link_to 'All Users', users_path %>
+            </li>
+            <li>
+              <%= link_to 'My Account', user_path(current_user.id) %>
+            </li>
+            <li>
+              <%= link_to 'Edit Profile', edit_user_registration_path %>
+            </li>
+            <li>
+              <%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
+            </li>
+          <% else %>
+            <li>
+              <%= link_to "Sign up", new_user_registration_path %>
+            </li>
+            <li>
+              <%= link_to "Sign in", new_user_session_path %>
+            </li>
+          <% end %>
+        </ul>
+      </li>
+    </ul>
+
+  </section>
+</nav>
