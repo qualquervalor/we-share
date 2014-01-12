@@ -16,5 +16,9 @@
 //= require underscore
 //= require backbone
 //= require app/util
+//= require app/models/resource
+//= require app/views/resource-view
+//= require app/views/resource-wall-view
+
 
 $(function(){ $(document).foundation(); });

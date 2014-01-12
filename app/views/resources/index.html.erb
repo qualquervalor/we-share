@@ -29,3 +29,37 @@
 <br>
 
 <%= link_to 'New Resource', new_resource_path %>
+
+<div class="resource-wall"></div>
+
+<div id="templates">
+
+  <script class="resource" type="text/template">
+
+    <div class="resource-div small-2 center">
+      <img src={{picture}} />
+      <br>
+      <h4>{{ name }} </h4>
+ 
+    </div>
+
+  </script>
+
+</div>
+
+<% content_for :javascript do %>
+  <script type="text/javascript">
+
+    var wall = new ResourceWall([], {
+      url: '/resources'
+    });
+    
+    var wallView = new ResourceWallView({
+      collection: wall,
+      el: '.resource-wall'
+    });
+
+    wall.add(<%= raw @resources.to_json %>);
+
+  </script>
+<% end %>

@@ -5,4 +5,13 @@ class Resource < ActiveRecord::Base
 
   mount_uploader :picture, ImageUploader
 
+  def as_json(options={})
+    {
+      id: self.id,
+      name: self.name,
+      description: self.description,
+      picture: self.picture.url
+    }
+  end
+
 end
