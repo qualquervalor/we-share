@@ -1,10 +1,13 @@
 class ResourcesController < ApplicationController
   before_action :set_resource, only: [:show, :edit, :update, :destroy]
 
+
   # GET /resources
   # GET /resources.json
   def index
     @resources = Resource.all
+    @user = current_user
+    
   end
 
   # GET /resources/1
@@ -74,5 +77,10 @@ class ResourcesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def resource_params
       params.require(:resource).permit(:name, :description, :picture)
+    end
+
+    # Attempt to get @user to this page
+    def set_user
+      @user = User.find(params[:id])
     end
 end
