@@ -1,37 +1,47 @@
 <h1>Listing resources</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Description</th>
-      <th>Picture</th>
-<!--       
-      <th></th>
-      <th></th>
-      <th></th> -->
-    </tr>
-  </thead>
+  <div class="row">
+    <div class="large-2 columns">
+      <p><%= image_tag @user.picture.url(:thumb) %></p>
+      <p><%= @user.name %></p>
+      <p><%= link_to "My Stuff", user_path(@user)%></p>
+      <p><%= link_to "Requests Received", user_path(@user)%></p>
+      <p><%= link_to "Borrowed Stuff", user_path(@user)%></p>
+      <p><%= link_to "Requests Made", user_path(@user)%></p>
+      <p><%= link_to "All Users", users_path%></p>
+    </div>
+    <div class="large-10 columns">
 
-  <tbody>
-    <% @resources.each do |resource| %>
-      <tr>
-        <td><%= resource.name %></td>
-        <td><%= resource.description %></td>
-        <td><%= image_tag resource.picture.url(:thumb) %></td>
-<!-- 
-        <td><%#= link_to 'Show', resource %></td>
-        <td><%#= link_to 'Edit', edit_resource_path(resource) %></td>
-        <td><%#= link_to 'Destroy', resource, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-         -->
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Description</th>
+          <th>Picture</th>
+    <!--       
+          <th></th>
+          <th></th>
+          <th></th> -->
+        </tr>
+      </thead>
 
-<br>
+      <tbody>
+        <% @resources.each do |resource| %>
+          <tr>
+            <td><%= resource.name %></td>
+            <td><%= resource.description %></td>
+            <td><%= image_tag resource.picture.url(:thumb) %></td>
+    <!-- 
+            <td><%#= link_to 'Show', resource %></td>
+            <td><%#= link_to 'Edit', edit_resource_path(resource) %></td>
+            <td><%#= link_to 'Destroy', resource, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+             -->
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
 
-<%#= link_to 'New Resource', new_resource_path %>
+    <br>
 
 <div class="resource-wall"></div>
 
@@ -44,7 +54,7 @@
         <img src={{ picture }} />
         <br>
         <b>{{ name }} </b>
-        <b>{{ distance }} </b>
+        <b>{{ distance }} miles </b>
       </div>
     </a>
 

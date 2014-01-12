@@ -7,7 +7,7 @@ class Resource < ActiveRecord::Base
 
   def as_json(options={})
     {
-      distance: options.miles,
+      distance: options[:distance],
       id: self.id,
       name: self.name,
       description: self.description,
@@ -17,7 +17,7 @@ class Resource < ActiveRecord::Base
 
   def get_distance(user1,user2)
   {
-    distance: Haversine.distance(user1.latitude,user1.longitude,user2.latitude,user2.longitude).to_miles
+    distance: sprintf('%.2f',Haversine.distance(user1.latitude,user1.longitude,user2.latitude,user2.longitude).to_miles)
   }
   end
 
