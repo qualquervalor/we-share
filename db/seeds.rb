@@ -15,10 +15,9 @@ require 'open-uri'
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-
 puts "clearing data in users table"
-User.destroy_all
 
+User.destroy_all
 puts "adding dummy data for users table"
 
 # If the seed image is coming from your the internet we can call that and turn it into a filepath.
@@ -33,8 +32,8 @@ ted = File.open("public/assets/Ted-3edcbe7f2115421d0ae6ddffcb4eba92.gif")
 karen = File.open("public/assets/Karen-088cea3a6f6b5e6e02fa181f74c13690.jpeg")
 jason = File.open("public/assets/Jason-b25310ece9ea99494619084bc799ad3e.jpg")
 
-users = [
-        {
+
+user1 = User.create!({
           name: "Suzy Lue",
           email: "sue@gmail.com",
           password: "test1234",
@@ -43,10 +42,13 @@ users = [
           city: "Austin",
           zipcode: "78701",
           state: "TX",
+          latitude: 30.2639532,
+          longitude: -97.74595359999999,
           picture: suzy
-        },
+        })
 
-        {
+
+user2 = User.create!({
           name: "Ted Smith",
           email: "ted@gmail.com",
           password: "test1234",
@@ -55,10 +57,12 @@ users = [
           city: "Austin ",
           zipcode: "78701",
           state: "TX",
+          latitude: 30.2747025,
+          longitude: -97.7403448,
           picture: ted
-        },
+        })
 
-        {
+user3 = User.create!({
           name: "Jason Kool",
           email: "jason@gmail.com",
           password: "test1234",
@@ -67,10 +71,12 @@ users = [
           city: "Austin",
           zipcode: "78701",
           state: "TX",
+          latitude: 30.268785,
+          longitude: -97.7413576,
           picture: jason
-        },
+        })
 
-        {
+user4 = User.create!({        
           name: "Karen Holland",
           email: "karen@gmail.com",
           password: "test1234",
@@ -79,13 +85,12 @@ users = [
           city: "Austin",
           zipcode: "78701",
           state: "TX",
-          picture: karen
-        }
-]
+          latitude: 30.267047,
+          longitude: -97.745435,
+         picture: karen
+        })
 
-users.each do |user|
-  User.create!(name:user[:name], email:user[:email], password:user[:password], phone_num:user[:phone_num], street:user[:street], city:user[:city], zipcode:user[:zipcode], state:user[:state], picture:user[:picture])
-end
+
 
 puts "destroy resource data"
 Resource.destroy_all
@@ -115,50 +120,53 @@ resources = [
           {
             name: "Tile Cutter",
             description: "Old but tough. Can cut any size tiles. New blades",
-            user_id: 2,
+            user_id: user1,
             picture: tilecutter
           },
            {
             name: "Ladder",
             description: "20-foot ladder.  Bit dirty, but it does the job!",
-            user_id: 3,
+            user_id: user1,
             picture: ladder
           },
           {
             name: "Router",
             description: "Milwaukee 3-1/2 Max HP Fixed-Base Production ",
-            user_id: 2,
+            user_id: user2,
             picture: router
           },
           {
             name: "Table Saw",
             description: "DEWALT 10 in. Jobsite Table Saw with Rolling Stand",
-            user_id: 3,
+            user_id: user3,
             picture: tablesaw
           },
           {
             name: "Router Table",
             description: "Kreg Precision Router Table System",
-            user_id: 4,
+            user_id: user4,
             picture: routertable
           },
           {
             name: "Jumper",
             description: "Tasco Pro 2200-Amp Jump Start Power Pack and Air Compressor",
-            user_id: 1,
+            user_id: user1,
             picture: jumper
           },
           {
             name: "Snow Blower",
             description: "Sno-Tek 24 in. Two-Stage Electric Start Gas Snow Blower",
-            user_id: 2,
+            user_id: user2,
             picture: snowblower
           }
         
 ]
 
-
 resources.each do |resource|
-  Resource.create(picture:resource[:picture], name:resource[:name], description:resource[:description], user_id:resource[:user_id])
+  Resource.create(name:resource[:name], description:resource[:description], user:resource[:user_id],picture:resource[:picture])
 end
+
+puts "add reource dummy data"
+
+
 

@@ -45,26 +45,41 @@
 
     <br>
 
-    <%#= link_to 'New Resource', new_resource_path %>
+<div class="resource-wall"></div>
 
-    <div class="resource-wall"></div>
+<div id="templates">
 
-    <div id="templates">
+  <script class="resource" type="text/template">
 
-      <script class="resource" type="text/template">
+    <a href="/resources/{{ id }}">
+      <div class="resource-div">
+        <img src={{ picture }} />
+        <br>
+        <b>{{ name }} </b>
+        <b>{{ distance }} miles </b>
+      </div>
+    </a>
 
-        <a href="/resources/{{ id }}">
-          <div class="resource-div">
-            <img src={{ picture }} />
-            <br>
-            <b>{{ name }} </b>
-          </div>
-        </a>
+  </script>
 
-      </script>
+</div>
 
-    </div>
+<% content_for :javascript do %>
+  <script type="text/javascript">
 
+    var wall = new ResourceWall([], {
+      url: '/resources'
+    });
     
-    </div>
-  </div>
+    var wallView = new ResourceWallView({
+      collection: wall,
+      el: '.resource-wall'
+    });
+
+<% @resources.each do |x| %>
+ 
+  <% miles = x.get_distance(User.find(x.user_id), current_user)[:distance] %>
+    wall.add(<%= raw x.to_json({distance: miles}) %>);
+<% end %>
+  </script>
+<% end %>
