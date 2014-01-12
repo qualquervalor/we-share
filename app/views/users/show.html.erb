@@ -39,7 +39,7 @@
         <% @user.resources.each do |resource| %>
           <p>
             <% resource.borrows.each do |borrow| %>
-              <strong>Borrow ID:</strong><%= borrow.id %>
+              <strong>Request ID:</strong><%= borrow.id %>
               <strong>Resource:</strong><%= borrow.resource.name %>
               <strong>Status:</strong><%= borrow.status %>
             <% end %>
@@ -51,9 +51,10 @@
 
     <div class="profile-section-2">
       <h3>Requests Sent</h3>
+      <!-- link to borrows#show page -->
         <% @user.borrows.each do |borrow| %>
           <p>
-            <strong>Borrow ID:</strong><%= borrow.id %>
+            <strong><%= link_to 'Request ID:', borrow_path(Borrow.find(borrow.id)) %></strong><%= borrow.id %>
             <strong>Resource:</strong><%= borrow.resource.name %>
             <strong>Status:</strong><%= borrow.status %>
           </p>
