@@ -41,6 +41,10 @@
 
     <div class="profile-section-1">
       <h3>Requests Sent</h3>
+        <% @user.borrows.each do |borrow| %>
+          <%= borrow.status %>
+          <hr>
+        <% end %>
     </div>
 
 

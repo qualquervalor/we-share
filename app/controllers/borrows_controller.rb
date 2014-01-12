@@ -29,10 +29,13 @@ class BorrowsController < ApplicationController
   # POST /borrows.json
   def create
     @borrow = Borrow.new(borrow_params)
+    @borrow.user = current_user
+    @borrow.resource = params[:resource_id]
+    @borrow.status = 'pending'
 
     respond_to do |format|
       if @borrow.save
-        format.html { redirect_to @borrow, notice: 'Borrow was successfully created.' }
+        format.html { redirect_to current_user, notice: 'Borrow was successfully created.' }
         format.json { render action: 'show', status: :created, location: @borrow }
       else
         format.html { render action: 'new' }
