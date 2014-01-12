@@ -163,7 +163,7 @@ resources = [
 ]
 
 resources.each do |resource|
-  Resource.create(name:resource[:name], description:resource[:description], user:resource[:user_id])
+  Resource.create(name:resource[:name], description:resource[:description], user:resource[:user_id],picture:resource[:picture])
 end
 
 puts "add reource dummy data"
