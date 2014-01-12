@@ -26,6 +26,7 @@ class ResourcesController < ApplicationController
   # POST /resources.json
   def create
     @resource = Resource.new(resource_params)
+    @resource.user = current_user
 
     respond_to do |format|
       if @resource.save
