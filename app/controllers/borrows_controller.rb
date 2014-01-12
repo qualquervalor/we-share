@@ -30,7 +30,6 @@ class BorrowsController < ApplicationController
   def create
     @borrow = Borrow.new(borrow_params)
     @borrow.user = current_user
-    @borrow.resource = params[:resource_id]
     @borrow.status = 'pending'
 
     respond_to do |format|
@@ -76,6 +75,7 @@ class BorrowsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def borrow_params
-      params.require(:borrow).permit(:status)
+      params.require(:borrow).permit(:status, :resource_id)
     end
+
 end

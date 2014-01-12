@@ -16,7 +16,8 @@
     <%= f.text_field :status %>
   </div>
   
-    <% f.hidden_field :resource_id, :value => params[:id] %>
+    <%= f.hidden_field :resource_id, :value => params[:id] %>
+    <%#= hidden_field_tag (:resource_id, params[:id]) %>
 
   <div class="actions">
     <%= f.submit 'Request' %>
