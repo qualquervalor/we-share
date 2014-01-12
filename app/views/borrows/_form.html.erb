@@ -16,9 +16,10 @@
     <%= f.text_field :status %>
   </div>
   
+    <%= f.hidden_field :status, :value => params[:status] %>
     <%= f.hidden_field :resource_id, :value => params[:id] %>
 
-  <div class="actions">
+  <div class="actions submit button">
     <%= f.submit 'Request' %>
   </div>
 <% end %>

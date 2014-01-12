@@ -50,7 +50,7 @@ class BorrowsController < ApplicationController
   def update
     respond_to do |format|
       if @borrow.update(borrow_params)
-        format.html { redirect_to @borrow, notice: 'Borrow was successfully updated.' }
+        format.html { redirect_to current_user, notice: 'Borrow was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }

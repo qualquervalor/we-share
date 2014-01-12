@@ -37,13 +37,13 @@
     <div class="profile-section-1">
       <h3>Requests Received</h3>
         <% @user.resources.each do |resource| %>
+          <% resource.borrows.each do |borrow| %>
           <p>
-            <% resource.borrows.each do |borrow| %>
-              <strong>Request ID:</strong><%= borrow.id %>
-              <strong>Resource:</strong><%= borrow.resource.name %>
-              <strong>Status:</strong><%= borrow.status %>
-            <% end %>
+            <strong><%= link_to 'Request ID:', edit_borrow_path(Borrow.find(borrow.id)) %></strong><%= borrow.id %>
+            <strong>Resource:</strong><%= borrow.resource.name %>
+            <strong>Status:</strong><%= borrow.status %>
           </p>
+          <% end %>
           <hr>
         <% end %>
     </div>
