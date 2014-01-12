@@ -43,6 +43,8 @@ users = [
           city: "Austin",
           zipcode: "78701",
           state: "TX",
+          latitude: 30.2639532,
+          longitude: -97.74595359999999,
           picture: suzy
         },
 
@@ -55,6 +57,8 @@ users = [
           city: "Austin ",
           zipcode: "78701",
           state: "TX",
+          latitude: 30.2747025,
+          longitude: -97.7403448,
           picture: ted
         },
 
@@ -67,6 +71,8 @@ users = [
           city: "Austin",
           zipcode: "78701",
           state: "TX",
+          latitude: 30.268785,
+          longitude: -97.7413576,
           picture: jason
         },
 
@@ -79,12 +85,14 @@ users = [
           city: "Austin",
           zipcode: "78701",
           state: "TX",
-          picture: karen
+          latitude: 30.267047,
+          longitude: -97.745435,
+         picture: karen
         }
 ]
 
 users.each do |user|
-  User.create!(name:user[:name], email:user[:email], password:user[:password], phone_num:user[:phone_num], street:user[:street], city:user[:city], zipcode:user[:zipcode], state:user[:state], picture:user[:picture])
+  User.create!(name:user[:name], email:user[:email], password:user[:password], phone_num:user[:phone_num], street:user[:street], city:user[:city], zipcode:user[:zipcode], state:user[:state], latitude:user[:latitude], longitude:user[:longitude], picture:user[:picture])
 end
 
 puts "destroy resource data"
