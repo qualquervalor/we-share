@@ -1,39 +1,58 @@
-<p id="notice"><%= notice %></p>
+<div class="row">
+  <div class="large-6 medium-8 small-10 small-centered columns white-overlay">
+    <%= render 'shared/error_messages' %>
+    
+    <div>
+      <%= image_tag @user.picture.url(:medium) , :class => "profile-img" %>
+    </div>
+    
+    <div>
+      <h3><%= @user.name %></h3>
+    </div>
+    
+    <div class="address">
+      <strong>Address:</strong>
+      <div class="address">
+        <%= @user.street %>
+      </div>
+      <div class="address">
+        <%= @user.city %>
+      </div>
+      <div class="address">
+        <%= @user.zipcode %>
+      </div>
+      <div class="address">
+        <%= @user.state %>
+      </div>
+    </div>
+    
+    <strong>Phone:</strong>
+    <div>
+      <%= @user.phone_num %>
+    </div>
+    
+    <%= link_to 'Edit', edit_user_registration_path %> |
+    <%= link_to 'Back', users_path %>
+    
+    <div class="profile-section-1">
+      <h3>Requests Received</h3>
+    </div>
 
-<p>
-  <strong>Name:</strong>
-  <%= @user.name %>
-</p>
 
-<p>
-  <strong>Street:</strong>
-  <%= @user.street %>
-</p>
+    <div class="profile-section-1">
+      <h3>Requests Sent</h3>
+    </div>
 
-<p>
-  <strong>City:</strong>
-  <%= @user.city %>
-</p>
 
-<p>
-  <strong>Zipcode:</strong>
-  <%= @user.zipcode %>
-</p>
+    <div class="profile-section-1">
+      <h3>My Resources</h3>
+      <%= link_to "Add Stuffs", new_resources_path %>
+    </div>
 
-<p>
-  <strong>State:</strong>
-  <%= @user.state %>
-</p>
 
-<p>
-  <strong>Phone num:</strong>
-  <%= @user.phone_num %>
-</p>
+    <div class="profile-section-1">
+      <h3>Borrowed Resources</h3>
+    </div>
 
-<p>
-  <strong>Picture:</strong>
-  <%= image_tag @user.picture.url(:thumb)  %>
-</p>
-
-<%= link_to 'Edit', edit_user_registration_path %> |
-<%= link_to 'Back', users_path %>
+  </div>
+</div>
