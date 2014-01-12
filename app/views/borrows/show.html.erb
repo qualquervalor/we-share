@@ -1,9 +1,27 @@
 <p id="notice"><%= notice %></p>
+<h1>This is borrows#show</h1>
+
+<p>
+  <strong>Resource ID:</strong>
+  <%= @borrow.id %>
+</p>
+
+<p>
+  <strong>Resource:</strong>
+  <%= @borrow.resource.name %>
+</p>
 
 <p>
   <strong>Status:</strong>
   <%= @borrow.status %>
 </p>
 
-<%= link_to 'Edit', edit_borrow_path(@borrow) %> |
-<%= link_to 'Back', borrows_path %>
+<h3>Link to back out of this show.</h3>
+
+<%= link_to 'Back', current_user %>
+
+<% if @user == @borrow.user %>
+  <h4>This is a destroy link. It should only be here if this is your borrow.</h4>
+
+  <%= link_to 'Destroy', @borrow, method: :delete, data: { confirm: 'Are you sure?' } %>
+<% end %>
