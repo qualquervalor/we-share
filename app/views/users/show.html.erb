@@ -46,12 +46,24 @@
 
     <div class="profile-section-1">
       <h3>My Resources</h3>
-      <%= link_to "Add Stuffs", new_resources_path %>
+        <ul>
+          <% @user.resources.each do |resource| %>
+            <li><%= resource.name %></li>
+          <% end %>
+        </ul>
+      <%= link_to "Add Stuffs", new_user_resource_path(current_user) %>
     </div>
 
 
     <div class="profile-section-1">
       <h3>Borrowed Resources</h3>
+        <% if @user.borrowed_resources.length == 0 %>
+          <p>You haven't borrowed anything yet, silly!</p>
+        <% else %>
+          <% @user.borrowed_resources.each do |resource| %>
+            <li><%= resource.name %></li>
+          <% end %>
+        <% end %>
     </div>
 
   </div>
