@@ -10,6 +10,7 @@ class BorrowsController < ApplicationController
   # GET /borrows/1
   # GET /borrows/1.json
   def show
+    @user = current_user
   end
 
   # GET /borrows/new
@@ -62,7 +63,7 @@ class BorrowsController < ApplicationController
   def destroy
     @borrow.destroy
     respond_to do |format|
-      format.html { redirect_to borrows_url }
+      format.html { redirect_to current_user }
       format.json { head :no_content }
     end
   end
