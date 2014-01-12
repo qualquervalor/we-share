@@ -15,6 +15,10 @@ class BorrowsController < ApplicationController
   # GET /borrows/new
   def new
     @borrow = Borrow.new
+    @resource = Resource.find(params[:id])
+    if current_user == @resource.user
+      redirect_to @resources
+    end
   end
 
   # GET /borrows/1/edit

@@ -15,8 +15,10 @@
   <%= image_tag @resource.picture.url(:medium) %>
 </p>
 
-<% if current_user %>
+<% if current_user == @resource.user %>
   <%= link_to 'Edit', edit_user_resource_path(:user_id => current_user.id) %>
+<% else %>
+<%#=  render inspect params %>
+  <div class="success button"><%= link_to 'I can haz?', new_borrow_path(params) %></div>
 <% end %>
 <%= link_to 'Back', resources_path %>
-
