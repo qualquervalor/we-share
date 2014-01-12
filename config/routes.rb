@@ -7,7 +7,7 @@ WeShare::Application.routes.draw do
 
   resources :borrows
 
-  root 'resources#index'
+  root 'static_pages#show'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
