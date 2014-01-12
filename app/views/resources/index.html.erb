@@ -44,6 +44,7 @@
         <img src={{ picture }} />
         <br>
         <b>{{ name }} </b>
+        <b>{{ distance }} </b>
       </div>
     </a>
 
@@ -63,7 +64,10 @@
       el: '.resource-wall'
     });
 
-    wall.add(<%= raw @resources.to_json %>);
-
+<% @resources.each do |x| %>
+ 
+  <% miles = x.get_distance(User.find(x.user_id), current_user)[:distance] %>
+    wall.add(<%= raw x.to_json({distance: miles}) %>);
+<% end %>
   </script>
 <% end %>

@@ -18,8 +18,7 @@ puts "clearing data in users table"
 User.destroy_all
 puts "adding dummy data for users table"
 
-users = [
-        {
+user1 = User.create!({
           name: "Suzy Lue",
           email: "sue@gmail.com",
           password: "test1234",
@@ -28,9 +27,10 @@ users = [
           city: "Austin",
           zipcode: "78701",
           state: "TX"
-        },
+        })
 
-        {
+
+user2 = User.create!({
           name: "Ted Smith",
           email: "ted@gmail.com",
           password: "test1234",
@@ -39,9 +39,9 @@ users = [
           city: "Austin ",
           zipcode: "78701",
           state: "TX"
-        },
+        })
 
-        {
+user3 = User.create!({
           name: "Jason Kool",
           email: "jason@gmail.com",
           password: "test1234",
@@ -50,9 +50,9 @@ users = [
           city: "Austin",
           zipcode: "78701",
           state: "TX"
-        },
+        })
 
-        {
+user4 = User.create!({        
           name: "Karen Holland",
           email: "karen@gmail.com",
           password: "test1234",
@@ -61,12 +61,8 @@ users = [
           city: "Austin",
           zipcode: "78701",
           state: "TX"
-        }
-]
+        })
 
-users.each do |user|
-  User.create!(name:user[:name], email:user[:email], password:user[:password], phone_num:user[:phone_num], street:user[:street], city:user[:city], zipcode:user[:zipcode], state:user[:state])
-end
 
 puts "added dummy data for users"
 puts "destroy user data"
@@ -77,41 +73,40 @@ resources = [
           {
             name: "Tile Cutter",
             description: "Old but tough. Can cut any size tiles. New blades",
-            user_id: 2,
+            user_id: user1
           },
           {
             name: "Router",
             description: "Milwaukee 3-1/2 Max HP Fixed-Base Production ",
-            user_id: 2
+            user_id: user1
           },
           {
             name: "Table Saw",
             description: "DEWALT 10 in. Jobsite Table Saw with Rolling Stand",
-            user_id: 3
+            user_id: user3
           },
           {
             name: "Router Table",
             description: "Kreg Precision Router Table System",
-            user_id: 4
+            user_id: user4
           },
           {
             name: "Jumper",
             description: "Tasco Pro 2200-Amp Jump Start Power Pack and Air Compressor",
-            user_id: 1
+            user_id: user1
           },
           {
             name: "Snow Blower",
             description: "Sno-Tek 24 in. Two-Stage Electric Start Gas Snow Blower",
-            user_id: 2 
+            user_id: user2 
           }
         
 ]
 
 resources.each do |resource|
-  Resource.create(name:resource[:name], description:resource[:description], user_id:resource[:user_id])
+  Resource.create(name:resource[:name], description:resource[:description], user:resource[:user_id])
 end
 
-puts "add reource dummy data"
 
 
 
