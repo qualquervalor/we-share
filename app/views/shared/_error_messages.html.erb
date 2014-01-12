@@ -1,2 +1,11 @@
-<p class="error notice"><%= notice %></p>
-<p class="error alert"><%= alert %></p>
+<% if flash[:error] %>
+  <div data-alert class="alert-box error"><%= flash[:error] %></div>
+<% end %>
+
+<%if flash[:notice] %>
+  <div data-alert class="alert-box notice"><%= flash[:notice] %></div>
+<% end %>
+
+<%if flash[:alert] %>
+  <div data-alert class="alert-box alert"><%= flash[:alert] %></div>
+<% end %>

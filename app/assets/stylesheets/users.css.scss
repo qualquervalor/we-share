@@ -2,7 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-/*Styles specific to shed style*/
+/* Styles specific to shed style */
 .shed-bg {
   width: 100%;
   background: url( asset-path('assets/shed_bg.jpg', image) ) no-repeat;
@@ -14,4 +14,24 @@
 
 .white-overlay {
   background: rgba(255,255,255,.5);
+}
+
+/* Error messages overrides */
+
+#error_explanation {
+  width: 100%;
+  border: 2px solid #c00;
+}
+
+.field_with_errors {
+  background-color: #c00;
+}
+
+/* User Pages */
+.profile-img {
+  /*** double-check these cross-browser styles ****/
+  -moz-border-radius: 100%;
+  -webkit-border-radius: 100%;
+  border-radius: 100%;
+  display: block;
 }
