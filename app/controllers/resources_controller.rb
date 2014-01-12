@@ -10,6 +10,7 @@ class ResourcesController < ApplicationController
   # GET /resources/1
   # GET /resources/1.json
   def show
+    @user = current_user
   end
 
   # GET /resources/new

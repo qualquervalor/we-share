@@ -15,5 +15,8 @@
   <%= image_tag @resource.picture.url(:medium) %>
 </p>
 
-<%#= link_to 'Edit', edit_resource_path(@resource) %> |
-<%#= link_to 'Back', resources_path %>
+<% if current_user %>
+  <%= link_to 'Edit', edit_user_resource_path(:user_id => current_user.id) %>
+<% end %>
+<%= link_to 'Back', resources_path %>
+
