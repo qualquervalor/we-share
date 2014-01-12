@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   has_many :resources
   has_many :borrows
-  has_many :borrowed_resources, class_name: "resource", through: :borrows
+  has_many :borrowed_resources, class_name: "Resource", through: :borrows
 
   mount_uploader :picture, ImageUploader
 
