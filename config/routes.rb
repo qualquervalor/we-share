@@ -1,13 +1,16 @@
 WeShare::Application.routes.draw do
   devise_for :users, :controllers => { registrations: :registrations }
 
-  resources :users
+  get 'resources' => 'resources#index'
+  get 'resources/:id' => 'resources#show', as: :resources_show
 
-  resources :resources
+  resources :users do
+    resources :resources
+  end
 
   resources :borrows
 
-  root 'resources#index'
+  root 'static_pages#show'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

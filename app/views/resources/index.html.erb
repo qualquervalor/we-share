@@ -6,9 +6,10 @@
       <th>Name</th>
       <th>Description</th>
       <th>Picture</th>
+<!--       
       <th></th>
       <th></th>
-      <th></th>
+      <th></th> -->
     </tr>
   </thead>
 
@@ -17,10 +18,12 @@
       <tr>
         <td><%= resource.name %></td>
         <td><%= resource.description %></td>
-        <td><%= resource.picture %></td>
-        <td><%= link_to 'Show', resource %></td>
-        <td><%= link_to 'Edit', edit_resource_path(resource) %></td>
-        <td><%= link_to 'Destroy', resource, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= image_tag resource.picture.url(:thumb) %></td>
+<!-- 
+        <td><%#= link_to 'Show', resource %></td>
+        <td><%#= link_to 'Edit', edit_resource_path(resource) %></td>
+        <td><%#= link_to 'Destroy', resource, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+         -->
       </tr>
     <% end %>
   </tbody>
@@ -28,7 +31,7 @@
 
 <br>
 
-<%= link_to 'New Resource', new_resource_path %>
+<%#= link_to 'New Resource', new_resource_path %>
 
 <div class="resource-wall"></div>
 
@@ -36,10 +39,10 @@
 
   <script class="resource" type="text/template">
 
-    <div class="resource-div small-2 center">
+    <div class="resource-div">
       <img src={{picture}} />
       <br>
-      <h4>{{ name }} </h4>
+      <b>{{ name }} </b>
  
     </div>
 
