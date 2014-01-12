@@ -15,6 +15,7 @@ class ResourcesController < ApplicationController
   # GET /resources/new
   def new
     @resource = Resource.new
+    @user = current_user
   end
 
   # GET /resources/1/edit
@@ -28,7 +29,7 @@ class ResourcesController < ApplicationController
 
     respond_to do |format|
       if @resource.save
-        format.html { redirect_to @resource, notice: 'Resource was successfully created.' }
+        format.html { redirect_to current_user, notice: 'Resource was successfully created.' }
         format.json { render action: 'show', status: :created, location: @resource }
       else
         format.html { render action: 'new' }
