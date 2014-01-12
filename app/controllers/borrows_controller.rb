@@ -1,5 +1,6 @@
 class BorrowsController < ApplicationController
   before_action :set_borrow, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
 
   # GET /borrows
   # GET /borrows.json
