@@ -1,9 +1,12 @@
 WeShare::Application.routes.draw do
   devise_for :users, :controllers => { registrations: :registrations }
 
-  resources :users
-  
-  resources :resources
+  get 'resources' => 'resources#index'
+  get 'resources/:id' => 'resources#show', as: :resources_show
+
+  resources :users do
+    resources :resources
+  end
 
   resources :borrows
 
