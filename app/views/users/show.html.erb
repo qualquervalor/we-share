@@ -35,6 +35,7 @@
     <%= link_to 'Back', users_path %>
     
     <div class="profile-section-1">
+      <a name="requestsrec"> </a>
       <h3>Requests Received</h3>
         <% @user.resources.each do |resource| %>
           <% resource.borrows.each do |borrow| %>
@@ -50,6 +51,7 @@
 
 
     <div class="profile-section-2">
+      <a name="requestsent"> </a>
       <h3>Requests Sent</h3>
       <!-- link to borrows#show page -->
         <% @user.borrows.each do |borrow| %>
@@ -64,6 +66,7 @@
 
 
     <div class="profile-section-3">
+	  <a name="resources"> </a>
       <h3>My Resources</h3>
         <ul>
           <% @user.resources.each do |resource| %>
@@ -75,6 +78,7 @@
 
 
     <div class="profile-section-4">
+      <a name="borrowed"> </a>
       <h3>Borrowed Resources</h3>
       <!-- This might be ugly, but it should work! -->
         <!-- If user has not made a borrow, this message will print -->

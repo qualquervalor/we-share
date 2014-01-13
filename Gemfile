@@ -61,14 +61,20 @@ group :development do
   gem 'binding_of_caller'
 end
 
-  # Use Carrier wave to upload jpg files
-  gem 'carrierwave'
+# Use Carrier wave to upload jpg files
+gem 'carrierwave'
 
-  #Use RMagick to scale images
-  gem 'rmagick'
+# Use RMagick to scale images
+gem 'rmagick'
 
-  # Use Figaro to store environment variables
-  gem 'figaro'
+# Use Figaro to store environment variables
+gem 'figaro'
 
-  #Use fog for image storage. Needed for AmazonS3
-  gem 'fog'
+# Use fog for image storage. Needed for AmazonS3
+gem 'fog'
+
+# Use geocode to convert atreet address in lat long
+gem 'geocoder'
+
+# Use haversine to calculate distance between points
+gem 'haversine'
