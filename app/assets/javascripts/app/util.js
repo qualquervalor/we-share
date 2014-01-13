@@ -8,7 +8,8 @@ _.templateSettings = {
 // Add our own utility functions to underscore
 _.mixin({
   getTemplate: function (name) {
-    return _.template( $('#templates .' + name).html() );
+    var templateHtml = $('#templates .' + name).html();
+    if (templateHtml) return _.template(templateHtml);
   },
   formToJSON: function (formEl) {
     var result = {};
