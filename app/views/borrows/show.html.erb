@@ -1,5 +1,11 @@
 <p id="notice"><%= notice %></p>
-<h1>This is borrows#show</h1>
+<h2>Your request</h2>
+
+<div>
+  <p>
+    You requested <%= @borrow.resource.user.name %>'s <%= @borrow.resource.name %>.
+  </p>
+</div>
 
 <p>
   <strong>Resource ID:</strong>
@@ -16,14 +22,14 @@
   <%= @borrow.status %>
 </p>
 
-<h3>Link to back out of this show.</h3>
-
-<%= link_to 'Back', current_user %>
+<div class="button">
+  <%= link_to 'Back', current_user %>
+</div>
 
 <% if @user == @borrow.user %>
-  <h3>Only press this button ifz your surez you don't want thiz anymore.</h3>
+  <h4>Cancel this request if you don't want this anymore.</h4>
 
   <div class="button alert">
-    <%= link_to 'Destroy', @borrow, method: :delete, data: { confirm: 'Are you sure?' } %>
+    <%= link_to 'Cancel', @borrow, method: :delete, data: { confirm: 'Are you sure?' } %>
   </div>
 <% end %>
