@@ -1,52 +1,20 @@
 <!-- Maybe You Can Haz? page -->
 
-<h2><%= @borrow.resource.user.name %> wantz to haz your <%= @borrow.resource.name %>!</h2>
+<div class="resource-wrapper">
+  <h2><%= @borrow.user.name %> wants your <%= @borrow.resource.name %>!</h2>
 
-<p>
-  <strong>Name:</strong>
-  <%= @borrow.resource.name %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @borrow.resource.description %>
-</p>
-
-<p>
-  <strong>Picture:</strong>
-  <%= image_tag @borrow.resource.picture.url(:medium) %>
-</p>
-
-<h3>What do you think?</h3>
-
-
-<%= render 'form' %>
-<!-- change borrow status to 'approved' when this button is pushed -->
-<% if @borrow.status == 'pending' %>
-
-  <div class="success button">
-    <!-- when i say yes is clicked, borrow status needs to change to 'borrowed' -->
-    <%= link_to 'I say YES', controller: "borrows", action: "update", status: 'borrowed' %>
+  <div class="resource_img">
+    <%= image_tag @borrow.resource.picture.url(:medium) %>
   </div>
 
-  <!-- What's below doesn't work but I think it should -->
-
-  <%#= button_to "I say YES", { controller: "borrows", action: "update", status: 'borrowed' }, method: :put, method: :patch %>
-
-  <div class="alert button">
-    <!-- when i say NO is clicked, borrow status needs to change to 'denied' -->
-    <%= link_to 'I say NO', controller: "borrows", action: "update" %>
+  <h4>Description:</h4>
+  <div>
+    <%= @borrow.resource.description %>
   </div>
 
-  <%#= link_to 'Show', @borrow %> 
-  <div class="button">
-    <%= link_to 'Decide Later', borrows_path %>
-  </div>
-<% elsif @borrow.status == 'borrowed' %>
-  <div class="success button">
-    <%= link_to 'Returned' %>
-    <!-- when returned button is clicked, borrow status needs to change to 'completed' -->
-  </div>
-<% elsif  %>
-  
-<% end %>
+  <br />
+
+  <h3>What do you think?</h3>
+
+  <%= render 'form' %>
+</div>
