@@ -11,15 +11,24 @@
     </div>
   <% end %>
 
-  <div class="field">
+<!--   <div class="field">
     <%= f.label :status %><br>
     <%= f.text_field :status %>
-  </div>
+  </div> -->
   
     <%= f.hidden_field :status, :value => params[:status] %>
     <%= f.hidden_field :resource_id, :value => params[:id] %>
 
-  <div class="actions submit button">
-    <%= f.submit 'Request' %>
-  </div>
+  <!-- <div class="actions submit button"> -->
+    <% if @borrow.status == 'available' %>
+      <%= f.submit 'Request', class: "button success" %>
+    <% elsif @borrow.status == 'pending' %>
+      <%= f.submit 'I say YES', class: "button success", status: "borrowed" %>
+      <%= f.submit 'I say NO', class: "button alert" %>
+    <% else %>  
+      <%= f.submit 'Request', class: "button success" %>
+    <% end %>
+  <!-- </div> -->
+
+
 <% end %>
