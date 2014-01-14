@@ -49,7 +49,7 @@ class BorrowsController < ApplicationController
   # PATCH/PUT /borrows/1
   # PATCH/PUT /borrows/1.json
   def update
-    render params.inspect
+    # render params.inspect
     respond_to do |format|
       if @borrow.update(borrow_params)
         format.html { redirect_to current_user, notice: 'Borrow was successfully updated.' }
