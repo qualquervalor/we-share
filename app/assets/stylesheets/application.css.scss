@@ -8,23 +8,38 @@
  * You're free to add application-wide styles to this file and they'll appear at the top of the
  * compiled file, but it's generally better to create a new file per style scope.
  *
- *= require foundation_and_overrides
  *= require_self
+ *= require foundation_and_overrides
 
  *= require_tree .
  */
  
 #background {
-    height: 100%; 
-    width: 100%;
-    position: fixed; 
-    left: 0px; 
-    top: 0px; 
-    z-index: -1; /* Ensure div tag stays behind content; -999 might work, too. */
-    opacity:0.8;
+  height: 100%; 
+  width: 100%;
+  position: fixed; 
+  left: 0px; 
+  top: 0px; 
+  z-index: -1; /* Ensure div tag stays behind content; -999 might work, too. */
+  opacity:0.8;
 }
 
 .stretch {
-    width:100%;
-    height:100%;
+  width:100%;
+  height:100%;
+}
+
+.resource {
+  background: asset-path('assets/brushed.png', image) repeat; 
+}
+
+.button {
+  a {
+    &:hover {
+      color: gray;
+    };
+    &:visited {
+      color: white;
+    }
+  }
 }
