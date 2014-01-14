@@ -19,3 +19,18 @@
 
   }
 }
+
+.resource_img {
+  border: 3px solid gray;
+  width: 240px;
+  height: 250px;
+  margin: 0px;
+}
+
+.resource-wrapper {
+  background: asset-path('assets/brushed.png', image) repeat; 
+  .button {
+    margin: 1em;
+    color: white;
+  }
+}
