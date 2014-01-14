@@ -80,7 +80,7 @@
     <div class="profile-section-4">
       <a name="borrowed"> </a>
       <h3>Borrowed Resources</h3>
-      <!-- This might be ugly, but it should work! -->
+      <!-- This will be ugly, but it should work! -->
         <!-- If user has not made a borrow, this message will print -->
         <% if @user.borrowed_resources.length == 0 %>
           <p>You haven't borrowed anything yet, silly!</p>
@@ -93,6 +93,7 @@
                   <!-- <p>The borrow for this resource is pending!</p> -->
                   <li>The borrow for <%= resource.name %> is accepted!</li>
                 <% else %>
+                  <!-- This will ultimately be removed, only accepted resources are printed to page. -->
                   <p>The borrow for this resource is not accepted.</p>
                 <% end %>
               </ul>
