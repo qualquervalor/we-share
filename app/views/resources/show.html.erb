@@ -1,24 +1,32 @@
-<p id="notice"><%= notice %></p>
+<div class="row">
+  <div class="large-5 medium-6 small-10 small-centered columns" style="border: 1px solid red;">
+    <div class="resource-wrapper">
+      <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @resource.name %>
-</p>
+      <h2><%= @resource.name %></h2>
 
-<p>
-  <strong>Description:</strong>
-  <%= @resource.description %>
-</p>
+      <div class="resource_img">
+        <%= image_tag @resource.picture.url(:medium) %>
+      </div>
 
-<p>
-  <strong>Picture:</strong>
-  <%= image_tag @resource.picture.url(:medium) %>
-</p>
+        <h4>Description:</h4>
+        <div>
+          <%= @resource.description %>
+        </div>
 
-<% if current_user == @resource.user %>
-  <%= link_to 'Edit', edit_user_resource_path(:user_id => current_user.id) %>
-<% else %>
-<%#=  render inspect params %>
-  <div class="success button"><%= link_to 'I can haz?', new_borrow_path(params) %></div>
-<% end %>
-<%= link_to 'Back', resources_path %>
+      <% if current_user == @resource.user %>
+        <div class="button alert">
+          <%= link_to 'Edit', edit_user_resource_path(:user_id => current_user.id) %>
+        </div>
+      <% else %>
+      <%#=  render inspect params %>
+        <div class="success button">
+          <%= link_to 'Request to borrow!', new_borrow_path(params) %>
+        </div>
+      <% end %>
+        <div class="button">
+          <%= link_to 'Back', resources_path %>
+        </div>
+    </div>
+  </div>
+</div>
