@@ -1,6 +1,7 @@
 class BorrowsController < ApplicationController
   before_action :set_borrow, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
+  layout "small_page"
 
   # GET /borrows
   # GET /borrows.json
@@ -48,6 +49,7 @@ class BorrowsController < ApplicationController
   # PATCH/PUT /borrows/1
   # PATCH/PUT /borrows/1.json
   def update
+    render params.inspect
     respond_to do |format|
       if @borrow.update(borrow_params)
         format.html { redirect_to current_user, notice: 'Borrow was successfully updated.' }
