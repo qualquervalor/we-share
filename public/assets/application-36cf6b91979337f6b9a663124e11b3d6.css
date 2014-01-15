@@ -5344,13 +5344,7 @@ th.hide-for-touch {
 
 .touch th.show-for-touch {
   display: table-cell !important; }
-.resource-div {
-  background-color: teal;
-  margin: 5px;
-  float: left; }
-  .resource-div img {
-    width: 125px;
-    height: 125px; }
+
 body {
   background-color: #fff;
   color: #333;
