@@ -24,7 +24,7 @@
       <%= f.submit 'Request', class: "button success" %>
     <% elsif @borrow.status == 'pending' %>
       <%= f.submit 'I say YES', class: "button success", status: "borrowed" %>
-      <%= f.submit 'I say NO', class: "button alert" %>
+      <%= f.submit 'I say NO', class: "button alert", status: "denied" %>
     <% else %>  
       <%= f.submit 'Request', class: "button success" %>
     <% end %>

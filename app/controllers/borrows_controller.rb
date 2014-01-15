@@ -49,7 +49,18 @@ class BorrowsController < ApplicationController
   # PATCH/PUT /borrows/1
   # PATCH/PUT /borrows/1.json
   def update
-    # render params.inspect
+    
+    if params['commit'] == "I say YES"
+      params['borrow']['status'] = 'checked out'
+      #actionmailer send positive email
+      #we need to update the requester profile appropriately to say that the 
+      #borrow was accepted
+    elsif  params['commit'] == "I say NO"
+      params['borrow']['status'] = 'denied'
+      #action mailer send out negative email
+      #update requester borrow page
+    end  
+    
     respond_to do |format|
       if @borrow.update(borrow_params)
         format.html { redirect_to current_user, notice: 'Borrow was successfully updated.' }
