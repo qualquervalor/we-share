@@ -70,9 +70,6 @@ GEM
       nokogiri (~> 1.5)
       ruby-hmac
     formatador (0.2.4)
-    foundation-rails (5.0.2.0)
-      railties (>= 3.1.0)
-      sass (>= 3.2.0)
     geocoder (1.1.9)
     haversine (0.3.0)
     hike (1.2.3)
@@ -168,7 +165,6 @@ DEPENDENCIES
   devise
   figaro
   fog
-  foundation-rails
   geocoder
   haversine
   hirb
