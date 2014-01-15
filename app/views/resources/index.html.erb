@@ -1,43 +1,53 @@
+
 <div class="row">
-  <h1>Resource Listing</h1>
+  <div class="large-2 columns">
+    <p><%= image_tag @user.picture.url(:thumb) %></p>
+    <p><%= @user.name %></p>
 
-    <div class="row">
-      <div class="large-2 columns">
-        <p><%= image_tag @user.picture.url(:thumb) %></p>
-        <p><%= @user.name %></p>
-
-        <p><%= link_to "My Stuff", user_path(@user, anchor:'resources') %></p>
-        <p><%= link_to "Requests Received", user_path(@user, anchor:'requestrec') %></p>
-        <p><%= link_to "Borrowed Stuff", user_path(@user, anchor:'borrowed') %></p>
-        <p><%= link_to "Requests Made", user_path(@user, anchor:'requestsent') %></p>
-        <p><%= link_to "All Users", users_path%></p>
-        
-      </div>
-      <div class="large-10 columns">
-
-  <div class="resource-wall"></div>
-
-  <div id="templates">
-
-    <script class="resource" type="text/template">
-      <div class="resource-wrapper-index">
-        <a href="/resources/{{ id }}">
-          <div class="resource_img">
-            <img src={{ picture }} />
-          </div>
-          <br>
-          <div class="resource-desc">
-            <div class="name"> {{ name }}</div> <br />
-            <div class="distance-away">
-              <b>{{ distance }} miles away</b>
-            </div>
-          </div>
-        </a>
-      </div> 
-
-    </script>
+    <p><%= link_to "My Stuff", user_path(@user, anchor:'resources') %></p>
+    <p><%= link_to "Requests Received", user_path(@user, anchor:'requestrec') %></p>
+    <p><%= link_to "Borrowed Stuff", user_path(@user, anchor:'borrowed') %></p>
+    <p><%= link_to "Requests Made", user_path(@user, anchor:'requestsent') %></p>
+    <p><%= link_to "All Users", users_path%></p>
+    
   </div>
+
+  <div class="large-10 columns">
+    <section class="main-section">
+      <h1>Resource Listing</h1>
+      <div class="row">
+        
+        <div class="resource-wall"></div>
+
+          <div id="templates">
+
+            <script class="resource" type="text/template">
+              <div class="resource-wrapper-index">
+                <a href="/resources/{{ id }}">
+                  <div class="resource_img">
+                    <img src={{ picture }} />
+                  </div>
+                  <br>
+                  <div class="resource-desc">
+                    <div class="name"> {{ name }}</div> <br />
+                    <div class="distance-away">
+                      <b>{{ distance }} miles away</b>
+                    </div>
+                  </div>
+                </a>
+              </div> 
+
+            </script>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+  </div>
+
 </div>
+
 
 <% content_for :javascript do %>
   <script type="text/javascript">
