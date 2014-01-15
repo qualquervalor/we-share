@@ -47,8 +47,8 @@ end
 # Use devise
 gem 'devise'
 
-# Use Foundation 5
-gem 'foundation-rails'
+# Use Bootstrap 3
+
 
 group :development do
   # Use Hirb for database views in console
