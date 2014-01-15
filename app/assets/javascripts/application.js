@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require underscore
 //= require backbone
+//= require bootstrap
 //= require app/util
 //= require app/models/resource
 //= require app/views/resource-view
