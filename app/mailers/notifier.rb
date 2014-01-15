@@ -6,6 +6,7 @@ class Notifier < ActionMailer::Base
   #
   #   en.notifier.borrowrequest_confirmation.subject
   #
+
   def borrowrequest(user)
     @user = user
 
@@ -27,6 +28,4 @@ class Notifier < ActionMailer::Base
           subject: "Borrow Request has been reviewed - DENIED")
   end
 
-  
-  
 end
