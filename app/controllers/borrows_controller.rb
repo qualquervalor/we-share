@@ -24,6 +24,10 @@ class BorrowsController < ApplicationController
     end
   end
 
+  
+
+
+
   # GET /borrows/1/edit
   def edit
   end
@@ -35,8 +39,14 @@ class BorrowsController < ApplicationController
     @borrow.user = current_user
     @borrow.status = 'pending'
 
+    # @borrowrequest = current_user.borrowrequest.build(:id)
+  
+    
     respond_to do |format|
-      if @borrow.save
+        if @borrow.save    
+        Notifier.borrowrequest(current_user).deliver
+        
+
         format.html { redirect_to current_user, notice: 'Borrow was successfully created.' }
         format.json { render action: 'show', status: :created, location: @borrow }
       else
@@ -49,19 +59,24 @@ class BorrowsController < ApplicationController
   # PATCH/PUT /borrows/1
   # PATCH/PUT /borrows/1.json
   def update
+
+    # @borrowaccept = current_user.borrowaccept.build(:id)
+    # @borrowdenied = current_user.borrowdenied.build(:id)
     
     if params['commit'] == "I say YES"
       params['borrow']['status'] = 'checked out'
+      Notifier.borrowaccept(current_user).deliver
       #actionmailer send positive email
       #we need to update the requester profile appropriately to say that the 
       #borrow was accepted
     elsif  params['commit'] == "I say NO"
       params['borrow']['status'] = 'denied'
+      Notifier.borrowdenied(current_user).deliver
       #action mailer send out negative email
       #update requester borrow page
     end  
     
-    respond_to do |format|
+    respond_to do |format|      
       if @borrow.update(borrow_params)
         format.html { redirect_to current_user, notice: 'Borrow was successfully updated.' }
         format.json { head :no_content }
