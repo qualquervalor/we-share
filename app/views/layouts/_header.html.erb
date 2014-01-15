@@ -1,57 +1,45 @@
-<nav class="top-bar" data-topbar data-options="is_hover: false">
-  <ul class="title-area">
-    <li class="name">
-      <h1><%= link_to "The Shed", resources_path %></h1>
-    </li>
-    <li class="toggle-topbar menu-icon"><a href="#">Menu</a></li>
-  </ul>
+<div id="navbar" class="navbar navbar-inverse navbar-fixed-top">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <%= link_to "The Shed", resources_path, class: "navbar-brand" %>
+  </div>
+  <div class="collapse navbar-collapse">
+    <ul class="nav navbar-nav">
+      <!-- This hidden one just makes scrollspy reset when going above the team section -->
+      <li style="display: none;"><a href="#home"></a></li>
+      <% if user_signed_in? %>
+        <p><%= image_tag @user.picture.url(:thumb) %></p>
+        <p><%= @user.name %></p>
 
-  <section class="top-bar-section">
-    <!-- Right Nav Section -->
-    <ul class="right">
-      <!-- Search bar -->
-      <li class="has-form">
-        <div class="row collapse">
-          <div class="large-8 small-9 columns">
-            <input type="text" placeholder="Find Stuff">
-          </div>
-          <div class="large-4 small-3 columns">
-            <a href="#" class="button expand">Search</a>
-          </div>
-        </div>
-      </li>
+        <li><%= link_to 'All Users', users_path, class: "scroll" %></li>
+        <li><%= link_to 'My Account', user_path(current_user.id), class: "scroll"  %></li>
 
-      <!-- Divider -->
-      <li class="divider"></li>
+        <!-- All On User Show Page -->
+        <li><%= link_to "My Stuff", user_path(@user, anchor:'resources', class: "scroll") %></li>
+        <li><%= link_to "Requests Received", user_path(@user, anchor:'requestrec', class: "scroll") %></li>
+        <li><%= link_to "Borrowed Stuff", user_path(@user, anchor:'borrowed', class: "scroll") %></li>
+        <li><%= link_to "Requests Made", user_path(@user, anchor:'requestsent', class: "scroll") %></li>
 
-      <!-- Sign in and sign out links -->
-      <li class="has-dropdown">
-        <a href="#">Account</a>
-        <ul class="dropdown">
-          <% if user_signed_in? %>
-             <li>
-              <%= link_to 'All Users', users_path %>
-            </li>
-            <li>
-              <%= link_to 'My Account', user_path(current_user.id) %>
-            </li>
-            <li>
-              <%= link_to 'Edit Profile', edit_user_registration_path %>
-            </li>
-            <li>
-              <%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
-            </li>
-          <% else %>
-            <li>
-              <%= link_to "Sign up", new_user_registration_path %>
-            </li>
-            <li>
-              <%= link_to "Sign in", new_user_session_path %>
-            </li>
-          <% end %>
-        </ul>
-      </li>
+        <li><%= link_to 'Edit Profile', edit_user_registration_path, class: "scroll"  %></li>
+        <li><%= link_to 'Sign out', destroy_user_session_path, method: :delete, class: "scroll" %></li>
+
+      <% else %>
+        <li><%= link_to "Sign up", new_user_registration_path, class: "scroll"  %></li>
+        <li><%= link_to "Sign in", new_user_session_path, class: "scroll"  %></li>
+      <% end %>
     </ul>
-
-  </section>
-</nav>
+  </div><!--/.nav-collapse -->
+</div>
+<div class="search">
+  <i class="icon-search"></i>
+  
+  <form id="search" class="form-inline" role="form">
+    <div class="form-group">
+      <input type="text" class="form-control" id="exampleSearch">
+    </div>
+  </form>
+</div>
