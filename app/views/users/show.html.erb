@@ -1,7 +1,9 @@
 <div class="row">
-  <div class="large-6 medium-8 small-10 small-centered columns white-overlay">
+ <!--  <div class="large-6 medium-8 small-10 small-centered columns white-overlay"> -->
     <%= render 'shared/error_messages' %>
-    
+  
+    <div class="large-2 columns">
+ 
     <div>
       <%= image_tag @user.picture.url(:medium) , :class => "profile-img" %>
     </div>
@@ -33,14 +35,22 @@
     
     <%= link_to 'Edit', edit_user_registration_path %> |
     <%= link_to 'Back', users_path %>
-    
+    </div>
+  
+ <div class="large-10 columns">
     <div class="profile-section-1">
       <a name="requestsrec"> </a>
       <h3>Requests Received</h3>
         <% @user.resources.each do |resource| %>
           <% resource.borrows.each do |borrow| %>
           <p>
-            <strong><%= link_to 'Request ID:', edit_borrow_path(Borrow.find(borrow.id)) %></strong><%= borrow.id %>
+          <% if borrow.status != Borrow.returned %>
+            <strong><%= link_to 'Request ID:', edit_borrow_path(Borrow.find(borrow.id)) %></strong>
+            <% else %>
+            <strong>Request ID:</strong>
+            <% end %>
+            <%= borrow.id %>
+            <strong>Who:</strong><%= borrow.user.name %>
             <strong>Resource:</strong><%= borrow.resource.name %>
             <strong>Status:</strong><%= borrow.status %>
           </p>
@@ -55,8 +65,17 @@
       <h3>Requests Sent</h3>
       <!-- link to borrows#show page -->
         <% @user.borrows.each do |borrow| %>
+        <!-- Check status of borrow before allowing them to link to show page.
+             If borrow is pending they can goto show. 
+         -->
           <p>
-            <strong><%= link_to 'Request ID:', borrow_path(Borrow.find(borrow.id)) %></strong><%= borrow.id %>
+            <% if borrow.status == Borrow.pending %>
+              <strong><%= link_to 'Request ID:', borrow_path(Borrow.find(borrow.id)) %></strong>
+            <%else %>
+              <strong>Request ID:</strong>
+            <%end %>
+            <%= borrow.id %>
+            <strong>Owner:</strong><%= borrow.resource.user.name %>
             <strong>Resource:</strong><%= borrow.resource.name %>
             <strong>Status:</strong><%= borrow.status %>
           </p>
@@ -66,15 +85,14 @@
 
 
     <div class="profile-section-3">
-	  <a name="resources"> </a>
+      <a name="resources"> </a>
       <h3>My Resources</h3>
-        <ul>
-          <% @user.resources.each do |resource| %>
-            <li><%= resource.name %></li>
-          <% end %>
-        </ul>
       <%= link_to "Add Stuffs", new_user_resource_path(current_user) %>
+      <div class="resource-wall">
+         
+      </div>
     </div>
+    <br>
 
 
     <div class="profile-section-4">
@@ -85,22 +103,67 @@
         <% if @user.borrowed_resources.length == 0 %>
           <p>You haven't borrowed anything yet, silly!</p>
         <% else %>
-          <% @user.borrowed_resources.each do |resource| %>
-            <!-- if borrow status is pending, print pending to page -->
-            <% resource.borrows.each do |borrow| %>
-              <ul>
-                <% if borrow.status == 'accepted' %>
-                  <!-- <p>The borrow for this resource is pending!</p> -->
-                  <li>The borrow for <%= resource.name %> is accepted!</li>
-                <% else %>
-                  <!-- This will ultimately be removed, only accepted resources are printed to page. -->
-                  <p>The borrow for this resource is not accepted.</p>
-                <% end %>
-              </ul>
-            <% end %>
-          <% end %>
+          <div class="borrowed-wall"></div>
+
         <% end %>
     </div>
+</div>
+  </div>
+</div>
+
+
+ 
+
+  <div id="templates">
+
+    <script class="resource" type="text/template">
+      <div class="resource-wrapper-index">
+        <a href="/resources/{{ id }}">
+        <div class="resource_img">
+          <img src={{ picture }} />
+        </div>
+        <br>
+        <div class="resource-desc">
+          <div class="name"> {{ name }}
+          </div> 
+          <br>
+        </div>
+        </a>
+      </div> 
+    </script>
+
 
   </div>
 </div>
+
+<% content_for :javascript do %>
+  <script type="text/javascript">
+    var wall = new ResourceWall([], { url: '/resources' });
+    var wallView = new ResourceWallView({
+      collection: wall,
+      el: '.resource-wall'
+    });
+
+    <% current_user.resources.each do |x| %>
+        wall.add(<%= raw x.to_json() %>);
+    <% end %>
+
+          
+
+    var bwall = new ResourceWall([], { url: '/resources' });
+    var bwallView = new ResourceWallView({
+      collection: bwall,
+      el: '.borrowed-wall'
+    });
+
+    <% current_user.borrowed_resources.each do |res| %>
+      <% res.borrows.each do |x| %>
+      <% if x.status == Borrow.borrowed %>
+        bwall.add(<%= raw res.to_json() %>);
+        <% end %>
+      <% end %>
+    <% end %>
+
+
+  </script>
+<% end %>

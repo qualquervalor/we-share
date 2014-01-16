@@ -25,10 +25,15 @@
         </div>
       <% else %>
       <%#=  render inspect params %>
-        <div class="success button">
-          <% res_id = @resource.id %>
-          <%= link_to 'Request to borrow!', new_borrow_path(resource_id: res_id) %>
-        </div>
+          <% if @resource.already_associated_with_borrower?( current_user) %>
+            <div class="success button">
+              <%= link_to 'Check Status', edit_borrow_path(resource: @resource.id) %>
+            </div>
+          <% else %>
+            <div class="success button">
+              <%= link_to 'Request to borrow!', new_borrow_path(resource: @resource.id) %>
+            </div>
+          <% end %>
       <% end %>
         <div class="button">
           <%= link_to 'Back', resources_path %>

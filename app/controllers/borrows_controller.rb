@@ -1,8 +1,7 @@
 class BorrowsController < ApplicationController
   before_action :set_borrow, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
-  layout "small_page"
-
+  include BorrowsHelper
   # GET /borrows
   # GET /borrows.json
   def index
@@ -17,33 +16,31 @@ class BorrowsController < ApplicationController
 
   # GET /borrows/new
   def new
-    @borrow = Borrow.new
-    @resource = Resource.find(params[:resource_id])
+    @resource = Resource.find(params[:resource])
+    @borrow = @resource.borrows.build  
     if current_user == @resource.user
       redirect_to @resources
     end
   end
 
-  
-
-
-
   # GET /borrows/1/edit
   def edit
+    @pos = POSITIVE_RESPONSE
+    @neg = NEGATIVE_RESPONSE
+    @ret = BORROW_COMPLETED
   end
 
   # POST /borrows
   # POST /borrows.json
   def create
     @borrow = Borrow.new(borrow_params)
-    @resource = params[:resource_id]
     @borrow.user = current_user
-    @borrow.status = 'pending'
-    msg = params[:msg]
+    @borrow.status = Borrow.pending
+	msg = params[:msg]
     respond_to do |format|
-        if @borrow.save    
+      if @borrow.save 
+   
         #Action Mailer - Request sent to Owner
-
         Notifier.borrowrequest(@borrow.resource.user,msg).deliver
 
         format.html { redirect_to current_user, notice: 'Borrow was successfully created.' }
@@ -58,24 +55,24 @@ class BorrowsController < ApplicationController
   # PATCH/PUT /borrows/1
   # PATCH/PUT /borrows/1.json
   def update
-    @borrow = Borrow.find(params[:id])
-
-    if params['commit'] == "I say YES"
-        params['borrow']['status'] = 'checked out'
-        #Action Mailer - Accepted email
-        Notifier.borrowaccept(@borrow.user).deliver
     
-        #we need to update the requester profile appropriately to say that the 
-        #borrow was accepted
-    elsif  params['commit'] == "I say NO"
-      params['borrow']['status'] = 'denied'
+    if params['commit'] == POSITIVE_RESPONSE
+      params['borrow']['status'] = Borrow.borrowed
+      #Action Mailer - Accepted email
+      Notifier.borrowaccept(@borrow.user).deliver
+
+    elsif  params['commit'] == NEGATIVE_RESPONSE
+      params['borrow']['status'] = Borrow.denied
       #Action Mailer - Denied email
       Notifier.borrowdenied(@borrow.user).deliver
-      
-      #update requester borrow page
+
+    elsif  params['commit'] == BORROW_COMPLETED
+      params['borrow']['status'] = Borrow.returned
+      #action mailer send out negative email
+
     end  
     
-    respond_to do |format|      
+    respond_to do |format|
       if @borrow.update(borrow_params)
         format.html { redirect_to current_user, notice: 'Borrow was successfully updated.' }
         format.json { head :no_content }
@@ -89,6 +86,7 @@ class BorrowsController < ApplicationController
   # DELETE /borrows/1
   # DELETE /borrows/1.json
   def destroy
+#TODO Send Owner Email so they know the borrow has been canceled    
     @borrow.destroy
     respond_to do |format|
       format.html { redirect_to current_user }

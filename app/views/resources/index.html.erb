@@ -1,67 +1,42 @@
-<h1>Listing resources</h1>
+<div class="row">
+  <h1>Resource Listing</h1>
 
-  <div class="row">
-    <div class="large-2 columns">
-      <p><%= image_tag @user.picture.url(:thumb) %></p>
-      <p><%= @user.name %></p>
+    <div class="row">
+      <div class="large-2 columns">
+        <p><%= image_tag @user.picture.url(:thumb) %></p>
+        <p><%= @user.name %></p>
 
-      <p><%= link_to "My Stuff", user_path(@user, anchor:'resources') %></p>
-      <p><%= link_to "Requests Received", user_path(@user, anchor:'requestrec') %></p>
-      <p><%= link_to "Borrowed Stuff", user_path(@user, anchor:'borrowed') %></p>
-      <p><%= link_to "Requests Made", user_path(@user, anchor:'requestsent') %></p>
-      <p><%= link_to "All Users", users_path%></p>
-      
-    </div>
-    <div class="large-10 columns">
-
-    <table>
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Description</th>
-          <th>Picture</th>
-    <!--       
-          <th></th>
-          <th></th>
-          <th></th> -->
-        </tr>
-      </thead>
-
-      <tbody>
-        <% @resources.each do |resource| %>
-          <tr>
-            <td><%= resource.name %></td>
-            <td><%= resource.description %></td>
-            <td><%= image_tag resource.picture.url(:thumb) %></td>
-    <!-- 
-            <td><%#= link_to 'Show', resource %></td>
-            <td><%#= link_to 'Edit', edit_resource_path(resource) %></td>
-            <td><%#= link_to 'Destroy', resource, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-             -->
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
-
-    <br>
-
-<div class="resource-wall"></div>
-
-<div id="templates">
-
-  <script class="resource" type="text/template">
-
-    <a href="/resources/{{ id }}">
-      <div class="resource-div">
-        <img src={{ picture }} />
-        <br>
-        <b>{{ name }} </b>
-        <b>{{ distance }} miles </b>
+        <p><%= link_to "My Stuff", user_path(@user, anchor:'resources') %></p>
+        <p><%= link_to "Requests Received", user_path(@user, anchor:'requestrec') %></p>
+        <p><%= link_to "Borrowed Stuff", user_path(@user, anchor:'borrowed') %></p>
+        <p><%= link_to "Requests Made", user_path(@user, anchor:'requestsent') %></p>
+        <p><%= link_to "All Users", users_path%></p>
+        
       </div>
-    </a>
+      <div class="large-10 columns">
 
-  </script>
+  <div class="resource-wall"></div>
 
+  <div id="templates">
+
+    <script class="resource" type="text/template">
+      <div class="resource-wrapper-index">
+        <a href="/resources/{{ id }}">
+          <div class="resource_img">
+            <img src={{ picture }} />
+          </div>
+          <br>
+          <div class="resource-desc">
+            <div class="name"> {{ name }}</div> <br />
+            <div class="distance-away">
+              <b>{{ distance }} miles away</b>
+            </div>
+          </div>
+        </a>
+      </div> 
+
+    </script>
+  </div>
 </div>
 
 <% content_for :javascript do %>
