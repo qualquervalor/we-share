@@ -9,10 +9,13 @@ html, body {
   background-color: #eee;
 }
 
-html { background-color: #252733; }
+/*html { background-color: #252733; }*/
+
+html { background-color: #655643; }
 
 body {
   color: #3e4258;
+  /*color: #BF4D28;*/
   margin-left: 250px;
 }
 
@@ -203,7 +206,7 @@ span.valign {
 
 
 /* button styles */
-.btn {
+/*.btn {
   position: relative;
   font-size: 14px;
   line-height: 20px;
@@ -251,8 +254,14 @@ span.valign {
     height: 70px;
     line-height: 70px;
     font-size: 20px;
-    box-shadow: 0 4px 0 0 #1d2031;
+    /*box-shadow: 0 4px 0 0 #1d2031;*/
   }
+    .btn.btn-large.btn-success {
+      box-shadow: 0 4px 0 0 #265726;
+    }
+    .btn.btn-large.btn-danger {
+      box-shadow: 0 4px 0 0 #6C2A28;
+    }
     .btn.btn-large i { margin-right: 25px; }
     .btn.btn-large:active { box-shadow: 0 0 0 0 #1d2031; }
 
@@ -260,7 +269,7 @@ span.valign {
 .container {
   max-width: 1050px;
   padding: 30px;
-  margin: 100px 0;
+  margin: 20px 0;
 }
 .row.last {
   margin-bottom: 0;
@@ -1478,4 +1487,5 @@ label {
     #footer.blog p { margin: 0 0 55px 0; }
     #footer.blog .social-media { text-align: left; margin-left: -10px; }
     #footer.blog .row { margin: 0; }
-  
+
+
