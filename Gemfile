@@ -78,3 +78,7 @@ gem 'geocoder'
 
 # Use haversine to calculate distance between points
 gem 'haversine'
+
+# Adding some RSpec
+gem "rspec-rails", :group => [:development, :test]
+gem 'factory_girl_rails', :group => [:development, :test]
