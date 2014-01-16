@@ -17,6 +17,7 @@ class BorrowsController < ApplicationController
 
   # GET /borrows/new
   def new
+    @user = current_user
     @borrow = Borrow.new
     @resource = Resource.find(params[:id])
     if current_user == @resource.user
@@ -26,6 +27,7 @@ class BorrowsController < ApplicationController
 
   # GET /borrows/1/edit
   def edit
+    @user = current_user
   end
 
   # POST /borrows
