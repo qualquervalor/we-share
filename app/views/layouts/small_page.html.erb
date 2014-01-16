@@ -3,25 +3,33 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="">
+    <meta name="author" content="">
 
-    <title><%= content_for?(:title) ? yield(:title) : "The Shed" %></title>
+    <title>The Shed</title>
 
-    <%= stylesheet_link_tag    "application" %>
-    <%= javascript_include_tag "vendor/modernizr" %>
+    <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+
+    <%= stylesheet_link_tag "application" %>
     <%= csrf_meta_tags %>
   </head>
-
+       
   <body>
     <%= render "layouts/header" %>
-    <div class="row">
-      <div class="large-5 medium-6 small-10 small-centered columns" style="border: 1px solid red;">
-        <%= render "shared/error_messages" %>
-        <%= yield %>
-      </div>
+    <%= render "shared/error_messages" %>
+    <%= yield %>
+    
+    
+    
+    <div id="footer" class="section">
+      <p>Made by The Shed</a></p>     
     </div>
 
     <%= javascript_include_tag "application" %>
     <%= yield :javascript %>
+
   </body>
 </html>
+
+
 

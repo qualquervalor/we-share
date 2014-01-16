@@ -5,32 +5,32 @@
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
     </button>
-    <%= link_to "The Shed", resources_path, class: "navbar-brand" %>
+    <%= link_to "THE SHED", resources_path, class: "navbar-brand" %>
   </div>
   <div class="collapse navbar-collapse">
     <ul class="nav navbar-nav">
       <!-- This hidden one just makes scrollspy reset when going above the team section -->
       <li style="display: none;"><a href="#home"></a></li>
       <% if user_signed_in? %>
-        <p><%= image_tag @user.picture.url(:thumb) %></p>
-        <p><%= @user.name %></p>
+        <%#= image_tag @user.picture.url(:thumb) %>
+        <p><%#= @user.name %></p>
 
-        <li><%= link_to 'All Users', users_path, class: "scroll" %></li>
-        <li><%= link_to 'All Resources', resources_path, class: "scroll" %></li>
-        <li><%= link_to 'My Account', user_path(current_user.id), class: "scroll"  %></li>
+        <li><%= fa_link_to 'users', 'ALL USERS', users_path, class: "scroll" %></li>
+        <li><%= fa_link_to 'th', 'ALL RESOURCES', resources_path, class: "scroll" %></li>
+        <%#= link_to 'MY ACCOUNT', user_path(current_user.id), class: "scroll"  %>
 
         <!-- All On User Show Page -->
-        <li><%= link_to "My Stuff", user_path(@user, anchor:'resources', class: "scroll") %></li>
-        <li><%= link_to "Requests Received", user_path(@user, anchor:'requestrec', class: "scroll") %></li>
-        <li><%= link_to "Borrowed Stuff", user_path(@user, anchor:'borrowed', class: "scroll") %></li>
-        <li><%= link_to "Requests Made", user_path(@user, anchor:'requestsent', class: "scroll") %></li>
+        <li><%= fa_link_to 'user', "MY STUFF", user_path(@user, anchor:'resources', class: "btn btn-mini scroll") %></li>
+        <li><%= fa_link_to 'plus-circle', "REQUESTS RECEIVED", user_path(@user, anchor:'requestrec', class: "scroll") %></li>
+        <li><%= fa_link_to 'bars', "BORROWED STUFF", user_path(@user, anchor:'borrowed', class: "scroll") %></li>
+        <li><%= fa_link_to 'envelope', "REQUESTS MADE", user_path(@user, anchor:'requestsent', class: "scroll") %></li>
 
-        <li><%= link_to 'Edit Profile', edit_user_registration_path, class: "scroll"  %></li>
-        <li><%= link_to 'Sign out', destroy_user_session_path, method: :delete, class: "scroll" %></li>
+        <li><%= fa_link_to 'pencil-square-o', 'EDIT PROFILE', edit_user_registration_path, class: "scroll"  %></li>
+        <li><%= fa_link_to 'sign-out', 'SIGN OUT', destroy_user_session_path, method: :delete, class: "scroll" %></li>
 
       <% else %>
-        <li><%= link_to "Sign up", new_user_registration_path, class: "scroll"  %></li>
-        <li><%= link_to "Sign in", new_user_session_path, class: "scroll"  %></li>
+        <li><%= link_to "SIGN UP", new_user_registration_path, class: "scroll"  %></li>
+        <li><%= fa_link_to 'sign-in', "SIGN IN", new_user_session_path, class: "scroll"  %></li>
       <% end %>
     </ul>
   </div><!--/.nav-collapse -->
