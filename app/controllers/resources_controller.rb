@@ -15,6 +15,7 @@ class ResourcesController < ApplicationController
   # GET /resources/1.json
   def show
     @user = current_user
+    @borrow = Borrow.new
   end
 
   # GET /resources/new

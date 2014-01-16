@@ -23,23 +23,31 @@
             </div>
           </div>
 
-        <% if current_user == @resource.user %>
-          <div class="button alert">
-            <%= link_to 'Edit', edit_user_resource_path(:user_id => current_user.id) %>
-          </div>
-        <% else %>
-        <%#=  render inspect params %>
-          <div class="success button">
-            <%= link_to 'Request to borrow!', new_borrow_path(params) %>
-          </div>
-        <% end %>
-          <div class="button">
-            <%= link_to 'Back', resources_path %>
-          </div>
-      </div>
+         <h4>Owner:</h4>
+        <div>
+          <%= @resource.user.name %>
+        </div>
+
+      <% if current_user == @resource.user %>
+        <div class="button alert">
+          <%= link_to 'Edit', edit_user_resource_path(:user_id => current_user.id) %>
+        </div>
+      <% else %>
+      <%#=  render inspect params %>
+          <% if @resource.already_associated_with_borrower?( current_user) %>
+            <div class="success button">
+              <%= link_to 'Check Status', edit_borrow_path(resource: @resource.id) %>
+            </div>
+          <% else %>
+            <div class="success button">
+              <%= link_to 'Request to borrow!', new_borrow_path(resource: @resource.id) %>
+            </div>
+          <% end %>
+      <% end %>
+        <div class="button">
+          <%= link_to 'Back', resources_path %>
+        </div>
     </div>
   </div>
 </div>
-
-
-
+</div>

@@ -18,6 +18,11 @@ body {
   /*color: #BF4D28;*/
   margin-left: 250px;
 }
+body.landing{
+  color: #3e4258;
+  /*color: #BF4D28;*/
+  margin-left: 0px;
+}
 
 .clearfix {
   clear: both;
