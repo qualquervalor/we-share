@@ -1,106 +1,153 @@
-<div class="row">
-  <div class="large-6 medium-8 small-10 small-centered columns white-overlay">
-    <%= render 'shared/error_messages' %>
-    
-    <div>
-      <%= image_tag @user.picture.url(:medium) , :class => "profile-img" %>
-    </div>
-    
-    <div>
-      <h3><%= @user.name %></h3>
-    </div>
-    
-    <div class="address">
-      <strong>Address:</strong>
-      <div class="address">
-        <%= @user.street %>
-      </div>
-      <div class="address">
-        <%= @user.city %>
-      </div>
-      <div class="address">
-        <%= @user.zipcode %>
-      </div>
-      <div class="address">
-        <%= @user.state %>
-      </div>
-    </div>
-    
-    <strong>Phone:</strong>
-    <div>
-      <%= @user.phone_num %>
-    </div>
-    
-    <%= link_to 'Edit', edit_user_registration_path %> |
-    <%= link_to 'Back', users_path %>
-    
-    <div class="profile-section-1">
-      <a name="requestsrec"> </a>
-      <h3>Requests Received</h3>
-        <% @user.resources.each do |resource| %>
-          <% resource.borrows.each do |borrow| %>
-          <p>
-            <strong><%= link_to 'Request ID:', edit_borrow_path(Borrow.find(borrow.id)) %></strong><%= borrow.id %>
-            <strong>Resource:</strong><%= borrow.resource.name %>
-            <strong>Status:</strong><%= borrow.status %>
-          </p>
-          <% end %>
-          <hr>
-        <% end %>
-    </div>
 
+<div id="Profile info" class="section">
+  <div class="container">
 
-    <div class="profile-section-2">
-      <a name="requestsent"> </a>
-      <h3>Requests Sent</h3>
-      <!-- link to borrows#show page -->
-        <% @user.borrows.each do |borrow| %>
-          <p>
-            <strong><%= link_to 'Request ID:', borrow_path(Borrow.find(borrow.id)) %></strong><%= borrow.id %>
-            <strong>Resource:</strong><%= borrow.resource.name %>
-            <strong>Status:</strong><%= borrow.status %>
-          </p>
-          <hr>
-        <% end %>
+    <div class="content">
+      <div class="row">
+          <%= image_tag @user.picture.url(:medium) , :class => "profile-img" %>
+        </div>
+        
+        <div>
+          <h3><%= @user.name %></h3>
+        </div>
+        
+        <div class="address">
+          <strong>Address:</strong>
+          <div class="address">
+            <%= @user.street %>
+          </div>
+          <div class="address">
+            <%= @user.city %>
+          </div>
+          <div class="address">
+            <%= @user.zipcode %>
+          </div>
+          <div class="address">
+            <%= @user.state %>
+          </div>
+        </div>
+        
+        <strong>Phone:</strong>
+        <div>
+          <%= @user.phone_num %>
+        </div>
+        
+        <%= link_to 'Edit', edit_user_registration_path %> |
+        <%= link_to 'Back', users_path %>
+      </div>
     </div>
+    
+  </div>
+</div><!-- /.container -->
 
-
-    <div class="profile-section-3">
-	  <a name="resources"> </a>
-      <h3>My Resources</h3>
-        <ul>
+<!-- Team Section -->
+<div id="team" class="section">
+  <div class="fixed-wrapper">
+    <a name="requestrec"> </a><h1>Requests Received</h1>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="profile-section-1">
+        
           <% @user.resources.each do |resource| %>
-            <li><%= resource.name %></li>
-          <% end %>
-        </ul>
-      <%= link_to "Add Stuffs", new_user_resource_path(current_user) %>
-    </div>
-
-
-    <div class="profile-section-4">
-      <a name="borrowed"> </a>
-      <h3>Borrowed Resources</h3>
-      <!-- This will be ugly, but it should work! -->
-        <!-- If user has not made a borrow, this message will print -->
-        <% if @user.borrowed_resources.length == 0 %>
-          <p>You haven't borrowed anything yet, silly!</p>
-        <% else %>
-          <% @user.borrowed_resources.each do |resource| %>
-            <!-- if borrow status is pending, print pending to page -->
             <% resource.borrows.each do |borrow| %>
-              <ul>
-                <% if borrow.status == 'accepted' %>
-                  <!-- <p>The borrow for this resource is pending!</p> -->
-                  <li>The borrow for <%= resource.name %> is accepted!</li>
-                <% else %>
-                  <!-- This will ultimately be removed, only accepted resources are printed to page. -->
-                  <p>The borrow for this resource is not accepted.</p>
-                <% end %>
-              </ul>
+            <p>
+              <strong><%= link_to 'Request ID:', edit_borrow_path(Borrow.find(borrow.id)) %></strong><%= borrow.id %>
+              <strong>Resource:</strong><%= borrow.resource.name %>
+              <strong>Status:</strong><%= borrow.status %>
+            </p>
+            <% end %>
+            <hr>
+          <% end %>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /.container -->
+
+
+<!-- Services Section -->
+<div id="services" class="section">
+  <div class="fixed-wrapper">
+    <a name="requestsent"></a><h1>Requests Sent</h1>
+  </div>
+  <div class="container">
+    
+    <div class="content">
+      <div class="profile-section-2">
+        
+        <!-- link to borrows#show page -->
+          <% @user.borrows.each do |borrow| %>
+            <p>
+              <strong><%= link_to 'Request ID:', borrow_path(Borrow.find(borrow.id)) %></strong><%= borrow.id %>
+              <strong>Resource:</strong><%= borrow.resource.name %>
+              <strong>Status:</strong><%= borrow.status %>
+            </p>
+            <hr>
+          <% end %>
+      </div>
+      
+    </div><!-- /.content -->
+  </div>
+</div>
+
+
+
+<!-- Services Section -->
+<div id="services" class="section">
+  <div class="fixed-wrapper">
+    <a name="resources"></a><h1>My Resources</h1>
+  </div>
+  <div class="container">
+    
+    <div class="content">
+      <div class="profile-section-3">      
+          <ul>
+            <% @user.resources.each do |resource| %>
+              <li><%= resource.name %></li>
+            <% end %>
+          </ul>
+        <%= link_to "Add Stuffs", new_user_resource_path(current_user) %>
+      </div>
+
+      
+    </div><!-- /.content -->
+  </div>
+</div>
+
+
+<!-- Services Section -->
+<div id="services" class="section">
+  <div class="fixed-wrapper">
+    <h1>Borrowed Resources</h1><a name="borrowed"> </a>
+  </div>
+  <div class="container">
+    
+    <div class="content">
+      <div class="profile-section-4">
+        <!-- This will be ugly, but it should work! -->
+          <!-- If user has not made a borrow, this message will print -->
+          <% if @user.borrowed_resources.length == 0 %>
+            <p>You haven't borrowed anything yet, silly!</p>
+          <% else %>
+            <% @user.borrowed_resources.each do |resource| %>
+              <!-- if borrow status is pending, print pending to page -->
+              <% resource.borrows.each do |borrow| %>
+                <ul>
+                  <% if borrow.status == 'accepted' %>
+                    <!-- <p>The borrow for this resource is pending!</p> -->
+                    <li>The borrow for <%= resource.name %> is accepted!</li>
+                  <% else %>
+                    <!-- This will ultimately be removed, only accepted resources are printed to page. -->
+                    <p>The borrow for this resource is not accepted.</p>
+                  <% end %>
+                </ul>
+              <% end %>
             <% end %>
           <% end %>
-        <% end %>
-    </div>
+      </div>
 
+      
+    </div><!-- /.content -->
   </div>
 </div>
