@@ -7,11 +7,12 @@ class Notifier < ActionMailer::Base
   #   en.notifier.borrowrequest_confirmation.subject
   #
 
-  def borrowrequest(user)
+  def borrowrequest(user,msg)
     @user = user
-
+    @msg = msg
     mail( to: "#{user.name} <#{user.email}>", 
-          subject: "Borrow Request Sent to Owner")
+          subject: "Borrow Request Sent to Owner"
+          )
   end
     
   def borrowaccept(user)

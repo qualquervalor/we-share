@@ -18,7 +18,7 @@ class BorrowsController < ApplicationController
   # GET /borrows/new
   def new
     @borrow = Borrow.new
-    @resource = Resource.find(params[:id])
+    @resource = Resource.find(params[:resource_id])
     if current_user == @resource.user
       redirect_to @resources
     end
@@ -36,13 +36,15 @@ class BorrowsController < ApplicationController
   # POST /borrows.json
   def create
     @borrow = Borrow.new(borrow_params)
+    @resource = params[:resource_id]
     @borrow.user = current_user
     @borrow.status = 'pending'
-    
+    msg = params[:msg]
     respond_to do |format|
         if @borrow.save    
         #Action Mailer - Request sent to Owner
-        Notifier.borrowrequest(current_user).deliver
+
+        Notifier.borrowrequest(@borrow.resource.user,msg).deliver
 
         format.html { redirect_to current_user, notice: 'Borrow was successfully created.' }
         format.json { render action: 'show', status: :created, location: @borrow }
@@ -56,17 +58,19 @@ class BorrowsController < ApplicationController
   # PATCH/PUT /borrows/1
   # PATCH/PUT /borrows/1.json
   def update
-      if params['commit'] == "I say YES"
-      params['borrow']['status'] = 'checked out'
-      #Action Mailer - Accepted email
-      Notifier.borrowaccept(current_user).deliver
+    @borrow = Borrow.find(params[:id])
+
+    if params['commit'] == "I say YES"
+        params['borrow']['status'] = 'checked out'
+        #Action Mailer - Accepted email
+        Notifier.borrowaccept(@borrow.user).deliver
     
-      #we need to update the requester profile appropriately to say that the 
-      #borrow was accepted
+        #we need to update the requester profile appropriately to say that the 
+        #borrow was accepted
     elsif  params['commit'] == "I say NO"
       params['borrow']['status'] = 'denied'
       #Action Mailer - Denied email
-      Notifier.borrowdenied(current_user).deliver
+      Notifier.borrowdenied(@borrow.user).deliver
       
       #update requester borrow page
     end  

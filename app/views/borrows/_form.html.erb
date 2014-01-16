@@ -1,4 +1,5 @@
 <%= form_for(@borrow) do |f| %>
+<!-- Error Handling can/should happen on the controller! -->
   <% if @borrow.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@borrow.errors.count, "error") %> prohibited this borrow from being saved:</h2>
@@ -17,11 +18,23 @@
   </div> -->
   
     <%= f.hidden_field :status, :value => params[:status] %>
-    <%= f.hidden_field :resource_id, :value => params[:id] %>
+    <%= f.hidden_field :resource_id, :value => @resource %>
+
+    <%= f.label "Message: Please provide Owner details of project:" %>
+    <%= text_area_tag :msg %>  
+    <!-- #'msg',nil, :size => "25x8"  -->
+
 
   <!-- <div class="actions submit button"> -->
     <% if @borrow.status == 'available' %>
+
+    <%= f.label "Message: Please provide Owner details of project:" %>
+    <%= text_area_tag :msg %>  
+    <!-- #'msg',nil, :size => "25x8"  -->
+
+
       <%= f.submit 'Request', class: "button success" %>
+
     <% elsif @borrow.status == 'pending' %>
       <%= f.submit 'I say YES', class: "button success", status: "borrowed" %>
       <%= f.submit 'I say NO', class: "button alert", status: "denied" %>

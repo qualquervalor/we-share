@@ -1,4 +1,5 @@
 class Borrow < ActiveRecord::Base
+  validates :resource, :user, :status, presence: true
   belongs_to :user
   belongs_to :resource
 
