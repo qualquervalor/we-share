@@ -1,52 +1,56 @@
 
-<div class="row">
-  <div class="large-2 columns">
-    <p><%= image_tag @user.picture.url(:thumb) %></p>
-    <p><%= @user.name %></p>
-
-    <p><%= link_to "My Stuff", user_path(@user, anchor:'resources') %></p>
-    <p><%= link_to "Requests Received", user_path(@user, anchor:'requestrec') %></p>
-    <p><%= link_to "Borrowed Stuff", user_path(@user, anchor:'borrowed') %></p>
-    <p><%= link_to "Requests Made", user_path(@user, anchor:'requestsent') %></p>
-    <p><%= link_to "All Users", users_path%></p>
+<!-- Resource Index Section -->
+<div id="team" class="section">
+  <div class="fixed-wrapper"><h1>Resource Listing</h1></div>
+  <div class="container">
     
-  </div>
-
-  <div class="large-10 columns">
-    <section class="main-section">
-      <h1>Resource Listing</h1>
+    <div class="content">
       <div class="row">
-        
+
+
+
+
+
         <div class="resource-wall"></div>
 
           <div id="templates">
 
             <script class="resource" type="text/template">
-              <div class="resource-wrapper-index">
-                <a href="/resources/{{ id }}">
-                  <div class="resource_img">
-                    <img src={{ picture }} />
+
+              <div class="col-md-4 col-sm-4 col-xs-12">
+                <div class="team-portrait block">              
+
+                  <div class="portrait">
+                    <a href="/resources/{{ id }}">
+                      <img src={{ picture }} />              
+                      <span class="overlay"><span class="valign"></span><i class="icon-envelope"></i></span>                    
+                    </a>
                   </div>
-                  <br>
-                  <div class="resource-desc">
-                    <div class="name"> {{ name }}</div> <br />
-                    <div class="distance-away">
-                      <b>{{ distance }} miles away</b>
-                    </div>
+                  <div class="title">
+                    <div class="name"> {{ name }}</div>
                   </div>
-                </a>
-              </div> 
+                  <div class="distance-away">
+                    <b>{{ distance }} miles away</b>
+                  </div>
+                  <p class="resc-description">{{ description }}</p>
+                </div>
+              </div>
 
             </script>
           </div>
 
-        </div>
 
-      </div>
-    </section>
+      </div>          
+    </div>
   </div>
+</div><!-- /.container -->
 
-</div>
+
+
+
+
+
+
 
 
 <% content_for :javascript do %>
