@@ -21,7 +21,7 @@
       <% else %>
       <%#=  render inspect params %>
         <div class="success button">
-          <%= link_to 'Request to borrow!', new_borrow_path(params) %>
+          <%= link_to 'Request to borrow!', new_borrow_path(resource: @resource.id) %>
         </div>
       <% end %>
         <div class="button">
