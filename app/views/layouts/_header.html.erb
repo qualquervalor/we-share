@@ -16,6 +16,7 @@
         <p><%= @user.name %></p>
 
         <li><%= link_to 'All Users', users_path, class: "scroll" %></li>
+        <li><%= link_to 'All Resources', resources_path, class: "scroll" %></li>
         <li><%= link_to 'My Account', user_path(current_user.id), class: "scroll"  %></li>
 
         <!-- All On User Show Page -->
