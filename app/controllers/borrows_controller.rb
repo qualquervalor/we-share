@@ -39,12 +39,15 @@ class BorrowsController < ApplicationController
     @borrow = Borrow.new(borrow_params)
     @borrow.user = current_user
     @borrow.status = Borrow.pending
-	msg = params[:msg]
+	   msg = params[:msg]
+     resource = params[:resource]
     respond_to do |format|
       if @borrow.save 
    
+        #Action Mailer - Request sent to User that just requested a Resource.
+        Notifier.borrowrequest(@borrow.user,msg).deliver
         #Action Mailer - Request sent to Owner
-        Notifier.borrowrequest(@borrow.resource.user,msg).deliver
+        Notifier.borrowrequesttoowner(@borrow.resource.user,msg,resource).deliver
 
         format.html { redirect_to current_user, notice: 'Borrow was successfully created.' }
         format.json { render action: 'show', status: :created, location: @borrow }
@@ -58,16 +61,16 @@ class BorrowsController < ApplicationController
   # PATCH/PUT /borrows/1
   # PATCH/PUT /borrows/1.json
   def update
-    
+      msg = params[:msg]
     if params['commit'] == POSITIVE_RESPONSE
       params['borrow']['status'] = Borrow.borrowed
       #Action Mailer - Accepted email
-      Notifier.borrowaccept(@borrow.user).deliver
+      Notifier.borrowaccept(@borrow.user, msg).deliver
 
     elsif  params['commit'] == NEGATIVE_RESPONSE
       params['borrow']['status'] = Borrow.denied
       #Action Mailer - Denied email
-      Notifier.borrowdenied(@borrow.user).deliver
+      Notifier.borrowdenied(@borrow.user, msg).deliver
 
     elsif  params['commit'] == BORROW_COMPLETED
       params['borrow']['status'] = Borrow.returned

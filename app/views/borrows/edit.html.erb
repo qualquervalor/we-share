@@ -53,6 +53,7 @@ Use case for this form :. Borrow Edit
           -Mark status as Returned       
  -->
   <%= f.hidden_field :status%>
+ 
   <% if @borrow.status == Borrow.pending %>
       <%= f.label "Message: Please provide Borrower with a message:" %>
       <%= text_area_tag :msg %> 
