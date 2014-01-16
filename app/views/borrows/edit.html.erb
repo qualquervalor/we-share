@@ -1,7 +1,15 @@
 <!-- Maybe You Can Haz? page -->
 
 <div class="resource-wrapper">
-  <h2><%= @borrow.user.name %> wants your <%= @borrow.resource.name %>!</h2>
+  <h2><%= @borrow.user.name %> 
+  <% if @borrow.status == Borrow.pending %>
+    wants your 
+  <% elsif @borrow.status == Borrow.borrowed %>
+    has your
+  <% else %>
+    is confused by your
+  <% end %>
+  <%= @borrow.resource.name %>!</h2>
 
   <div class="resource_img">
     <%= image_tag @borrow.resource.picture.url(:medium) %>
@@ -14,7 +22,44 @@
 
   <br />
 
-  <h3>What do you think?</h3>
+  <% if @borrow.status == Borrow.pending %>
+   <h3>What do you think?</h3>
+  <% elsif @borrow.status == Borrow.borrowed %>
+   <h3>Have they given it back?</h3>
+  <% end %>
+ 
 
-  <%= render 'form' %>
+
+ <%= form_for(@borrow) do |f| %>
+
+  <% if @borrow.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@borrow.errors.count, "error") %> prohibited this borrow from being saved:</h2>
+
+      <ul>
+      <% @borrow.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+ <!-- 
+Use case for this form :. Borrow Edit
+
+      B. current_user = owner
+        1. Status is pending 
+         -Update status to borrowed/denied, email sent to requester  
+        2. Status is borrowed
+          -Mark status as Returned       
+ -->
+  <%= f.hidden_field :status%>
+  <% if @borrow.status == Borrow.pending %>
+      <%= f.submit BorrowsHelper.POSITIVE_RESPONSE, class: "button success" %>
+      <%= f.submit BorrowsHelper.NEGATIVE_RESPONSE, class: "button alert"%>
+  <% elsif @borrow.status == Borrow.borrowed %>
+      <%= f.submit BorrowsHelper.BORROW_COMPLETED, class: "button success" %>
+  <% else %>
+  <% flash.alert = "I did not expect to get to borrow edit with status #{@borrow.status}"%>
+  <% end %>
+<% end %>
 </div>

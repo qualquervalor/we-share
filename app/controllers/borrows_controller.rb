@@ -1,7 +1,6 @@
 class BorrowsController < ApplicationController
   before_action :set_borrow, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
-  layout "small_page"
 
   # GET /borrows
   # GET /borrows.json
@@ -17,8 +16,8 @@ class BorrowsController < ApplicationController
 
   # GET /borrows/new
   def new
-    @borrow = Borrow.new
-    @resource = Resource.find(params[:id])
+    @resource = Resource.find(params[:resource])
+    @borrow = @resource.borrows.build  
     if current_user == @resource.user
       redirect_to @resources
     end
@@ -33,8 +32,7 @@ class BorrowsController < ApplicationController
   def create
     @borrow = Borrow.new(borrow_params)
     @borrow.user = current_user
-    @borrow.status = 'pending'
-
+    @borrow.status = Borrow.pending
     respond_to do |format|
       if @borrow.save
         format.html { redirect_to current_user, notice: 'Borrow was successfully created.' }
@@ -50,15 +48,18 @@ class BorrowsController < ApplicationController
   # PATCH/PUT /borrows/1.json
   def update
     
-    if params['commit'] == "I say YES"
-      params['borrow']['status'] = 'checked out'
+    if params['commit'] == BorrowsHelper.POSITIVE_RESPONSE
+      params['borrow']['status'] = Borrow.borrowed
       #actionmailer send positive email
-      #we need to update the requester profile appropriately to say that the 
-      #borrow was accepted
-    elsif  params['commit'] == "I say NO"
-      params['borrow']['status'] = 'denied'
+
+    elsif  params['commit'] == BorrowsHelper.NEGATIVE_RESPONSE
+      params['borrow']['status'] = Borrow.denied
       #action mailer send out negative email
-      #update requester borrow page
+
+    elsif  params['commit'] == BorrowsHelper.BORROW_COMPLETED
+      params['borrow']['status'] = Borrow.returned
+      #action mailer send out negative email
+
     end  
     
     respond_to do |format|
@@ -75,6 +76,7 @@ class BorrowsController < ApplicationController
   # DELETE /borrows/1
   # DELETE /borrows/1.json
   def destroy
+#TODO Send Owner Email so they know the borrow has been canceled    
     @borrow.destroy
     respond_to do |format|
       format.html { redirect_to current_user }

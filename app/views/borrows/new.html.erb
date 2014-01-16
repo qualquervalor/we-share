@@ -1,5 +1,20 @@
 <h1>Can I Haz???</h1>
 
-<%= render 'form' %>
+<%= form_for(@borrow) do |f| %>
 
+  <% if @borrow.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@borrow.errors.count, "error") %> prohibited this borrow from being saved:</h2>
+
+      <ul>
+      <% @borrow.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+ <%= f.hidden_field :status%>
+ <%= f.hidden_field :resource_id, :value => @borrow.resource_id %>
+ <%= f.submit 'Request', class: "button success" %>
+<% end %>
 <%= link_to 'Back', resources_path %>
