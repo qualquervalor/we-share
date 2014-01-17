@@ -14,14 +14,7 @@
 //= require jquery_ujs
 //= require underscore
 //= require backbone
-//= require bootstrap
-//= require imagesloaded.pkgd.min.js
-//= require init-portfolio.js
-//= require init.js
-//= require jquery.mixitup.min.js
-//= require masonry-init.js
-//= require masonry.pkgd.min.js
-//= require respond.min.js
+
 //= require app/util
 //= require app/models/resource
 //= require app/views/resource-view
@@ -29,4 +22,12 @@
 //= require app/models/user
 //= require app/views/user-view
 //= require app/views/user-wall-view
-//*= require_tree .
+
+//= require masonry/jquery.masonry
+//= require masonry/jquery.imagesloaded.min
+
+//= require respond
+//= require bootstrap
+//= require init
+
+

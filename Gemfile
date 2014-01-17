@@ -81,3 +81,6 @@ gem 'geocoder'
 
 # Use haversine to calculate distance between points
 gem 'haversine'
+
+gem 'masonry-rails'
+gem "respond-rails", "~> 1.0"
