@@ -1382,6 +1382,16 @@ label {
   #team .title {
     padding: 20px 0;
     font-size: 1.5em;
+    text-align: center;
+  }
+
+  .title .name {
+    text-align: center;
+  }
+
+  .team-portrait .title {
+    padding: 20px 0;
+    font-size: 1.5em;
   }
 
   .distance-away {
