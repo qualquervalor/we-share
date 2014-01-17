@@ -1,11 +1,10 @@
 
 <div id="Profile info" class="section">
+  <div class="fixed-wrapper"><h1><%= @user.name %></h1></div>
   <div class="container">
 
     <div class="content">
       <div class="row">
-
-
 
         <div class="col-sm-6 col-md-4">
           <%= image_tag @user.picture.url(:medium) , :class => "profile-img img-rounded img-responsive" %>
@@ -200,14 +199,15 @@
     
     <div class="content">
       <div class="profile-section-3">      
-      <%= link_to "Add Stuffs", new_user_resource_path(current_user) %>
-      <div class="resource-wall">
-         
-      </div>
+      <%= link_to "Add New Items", new_user_resource_path(current_user), class:"btn btn-large btn-success" %>
+        <div class="row">
+          <div class="resource-wall">
+          </div>
+        </div>
       </div>
 
       
-    </div><!-- /.content -->
+    </div><!-- /.container -->
   </div>
 </div>
 
@@ -224,9 +224,11 @@
               <!-- This will be ugly, but it should work! -->
         <!-- If user has not made a borrow, this message will print -->
         <% if @user.borrowed_resources.length == 0 %>
-          <p>You haven't borrowed anything yet, silly!</p>
+          <p>You haven't borrowed anything!</p>
         <% else %>
-          <div class="borrowed-wall"></div>
+          <div class="row">
+            <div class="borrowed-wall"></div>
+          </div>
 
         <% end %>
 
@@ -239,22 +241,24 @@
 
   <div id="templates">
 
-    <script class="resource" type="text/template">
-      <div class="resource-wrapper-index">
-        <a href="/resources/{{ id }}">
-        <div class="resource_img">
-          <img src={{ picture }} />
-        </div>
-        <br>
-        <div class="resource-desc">
-          <div class="name"> {{ name }}
-          </div> 
-          <br>
-        </div>
-        </a>
-      </div> 
-    </script>
+   <script class="resource" type="text/template">
 
+     <div class="col-md-4 col-sm-4 col-xs-12">
+       <div class="team-portrait block">              
+
+         <div class="portrait">
+           <a href="/resources/{{ id }}">
+             <img class="resource-pic" src={{ picture }} />              
+             <span class="overlay"><span class="valign"></span><i class="icon-search"></i></span>                    
+           </a>
+         </div>
+         <div class="title">
+           <div class="name"> {{ name }}</div>
+         </div>
+       </div>
+     </div>
+
+   </script>
 
   </div>
 </div>

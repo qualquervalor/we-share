@@ -3,6 +3,7 @@
 <div id="team" class="section">
   <div class="fixed-wrapper"><h1>Resource Listing</h1></div>
   <div class="container">
+    <%= render "shared/error_messages" %>
     
     <div class="content">
       <div class="row">
@@ -15,6 +16,7 @@
 </div><!-- /.container -->
 
 
+
  <div id="templates">
 
     <script class="resource" type="text/template">
@@ -24,8 +26,8 @@
 
           <div class="portrait">
             <a href="/resources/{{ id }}">
-              <img src={{ picture }} />              
-              <span class="overlay"><span class="valign"></span><i class="icon-envelope"></i></span>                    
+              <img class="resource-pic" src={{ picture }} />              
+              <span class="overlay"><span class="valign"></span><i class="icon-search"></i></span>                    
             </a>
           </div>
           <div class="title">
