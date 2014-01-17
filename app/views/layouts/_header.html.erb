@@ -15,23 +15,23 @@
         <%#= image_tag @user.picture.url(:thumb) %>
         <p><%#= @user.name %></p>
 
-        <li><%= fa_link_to 'th', 'ALL RESOURCES', resources_path, class: "scroll" %></li>
+        <li><%= fa_link_to 'th', 'ALL RESOURCES', resources_path %></li>
         <%#= link_to 'MY ACCOUNT', user_path(current_user.id), class: "scroll"  %>
 
         <!-- All On User Show Page -->
-        <li><%= fa_link_to 'user', "MY STUFF", user_path(@user, anchor:'resources', class: "btn btn-mini scroll") %></li>
-        <li><%= fa_link_to 'plus-circle', "REQUESTS RECEIVED", user_path(@user, anchor:'requestrec', class: "scroll") %></li>
-        <li><%= fa_link_to 'bars', "BORROWED STUFF", user_path(@user, anchor:'borrowed', class: "scroll") %></li>
-        <li><%= fa_link_to 'envelope', "REQUESTS MADE", user_path(@user, anchor:'requestsent', class: "scroll") %></li>
+        <li><%= fa_link_to 'user', "MY PROFILE", user_path(@user, anchor:'profile') %></li>
+        <li><%= fa_link_to 'plus-circle', "REQUESTS RECEIVED", user_path(@user, anchor:'requestrec') %></li>
+        <li><%= fa_link_to 'bars', "BORROWED STUFF", user_path(@user, anchor:'borrowed') %></li>
+        <li><%= fa_link_to 'envelope', "REQUESTS MADE", user_path(@user, anchor:'requestsent') %></li>
 
-        <li><%= fa_link_to 'pencil-square-o', 'EDIT PROFILE', edit_user_registration_path, class: "scroll"  %></li>
-        <li><%= fa_link_to 'users', 'YOUR NEIGHBORS', users_path, class: "scroll" %></li>
+        <li><%= fa_link_to 'pencil-square-o', 'EDIT PROFILE', edit_user_registration_path %></li>
+        <li><%= fa_link_to 'users', 'YOUR NEIGHBORS', users_path %></li>
         
-        <li><%= fa_link_to 'sign-out', 'SIGN OUT', destroy_user_session_path, method: :delete, class: "scroll" %></li>
+        <li><%= fa_link_to 'sign-out', 'SIGN OUT', destroy_user_session_path, method: :delete %></li>
 
       <% else %>
-        <li><%= link_to "SIGN UP", new_user_registration_path, class: "scroll"  %></li>
-        <li><%= fa_link_to 'sign-in', "SIGN IN", new_user_session_path, class: "scroll"  %></li>
+        <li><%= link_to "SIGN UP", new_user_registration_path %></li>
+        <li><%= fa_link_to 'sign-in', "SIGN IN", new_user_session_path %></li>
       <% end %>
     </ul>
   </div><!--/.nav-collapse -->
