@@ -10,6 +10,26 @@ class User < ActiveRecord::Base
 
   mount_uploader :picture, ImageUploader
 
+  def as_json(options={})
+    {                 
+      id: self.id,
+      name: self.name,
+      street: self.street,
+      city: self.city,
+      zipcode: self.zipcode,
+      state: self.state,
+      phone_num: self.phone_num,     
+      picture: self.picture.url,
+      email: self.email,
+      distance: options[:distance]
+    }
+  end
+
+  def get_distance(user2)
+  {
+    distance: sprintf('%.2f',Haversine.distance(self.latitude,self.longitude,user2.latitude,user2.longitude).to_miles)
+  }
+  end
 
   #use geocoder to record lat and long
   def request_location()

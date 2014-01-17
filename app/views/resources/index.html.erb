@@ -7,34 +7,7 @@
     <div class="content">
       <div class="row">
 
-
         <div class="resource-wall"></div>
-
-          <div id="templates">
-
-            <script class="resource" type="text/template">
-
-              <div class="col-md-4 col-sm-4 col-xs-12">
-                <div class="team-portrait block">              
-
-                  <div class="portrait">
-                    <a href="/resources/{{ id }}">
-                      <img src={{ picture }} />              
-                      <span class="overlay"><span class="valign"></span><i class="icon-envelope"></i></span>                    
-                    </a>
-                  </div>
-                  <div class="title">
-                    <div class="name"> {{ name }}</div>
-                  </div>
-                  <div class="distance-away">
-                    <b>{{ distance }} miles away</b>
-                  </div>
-                  <p class="resc-description">{{ description }}</p>
-                </div>
-              </div>
-
-            </script>
-          </div>
 
       </div>          
     </div>
@@ -42,6 +15,30 @@
 </div><!-- /.container -->
 
 
+ <div id="templates">
+
+    <script class="resource" type="text/template">
+
+      <div class="col-md-4 col-sm-4 col-xs-12">
+        <div class="team-portrait block">              
+
+          <div class="portrait">
+            <a href="/resources/{{ id }}">
+              <img src={{ picture }} />              
+              <span class="overlay"><span class="valign"></span><i class="icon-envelope"></i></span>                    
+            </a>
+          </div>
+          <div class="title">
+            <div class="name"> {{ name }}</div>
+          </div>
+          <div class="distance-away">
+            <b>{{ distance }} miles away</b>
+          </div>
+        </div>
+      </div>
+
+    </script>
+  </div>
 
 <% content_for :javascript do %>
   <script type="text/javascript">
