@@ -14,9 +14,20 @@
 //= require jquery_ujs
 //= require underscore
 //= require backbone
-//= require bootstrap
+
 //= require app/util
 //= require app/models/resource
 //= require app/views/resource-view
 //= require app/views/resource-wall-view
+//= require app/models/user
+//= require app/views/user-view
+//= require app/views/user-wall-view
+
+//= require masonry/jquery.masonry
+//= require masonry/jquery.imagesloaded.min
+
+//= require respond
+//= require bootstrap
+
+
 

@@ -1,39 +1,66 @@
-<h1>Listing users</h1>
+<h1>The Neighborhood</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Street</th>
-      <th>City</th>
-      <th>Zipcode</th>
-      <th>State</th>
-      <th>Phone num</th>
-      <th>Picture</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
 
-  <tbody>
-    <% @users.each do |user| %>
-      <tr>
-        <td><%= user.name %></td>
-        <td><%= user.street %></td>
-        <td><%= user.city %></td>
-        <td><%= user.zipcode %></td>
-        <td><%= user.state %></td>
-        <td><%= user.phone_num %></td>
-        <td><%= image_tag user.picture.url(:thumb) %></td>
-        <td><%= link_to 'Show', user %></td>
-        <td><%= link_to 'Edit', edit_user_path(user) %></td>
-        <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+<!-- User Index Section -->
+<div id="team" class="section">
+
+<!--   
+  <div class="fixed-wrapper">
+    <h1>User Listing</h1>
+  </div>
+ -->
+  <div class="container">   
+    <div class="content">
+      <div class="row">
+
+        <div class="user-wall">         
+        </div>
+
+      </div>          
+    </div>
+  </div><!-- /.container -->
+</div>
+
+<div id="templates">
+  <script class="user" type="text/template">
+
+    <div class="col-md-4 col-sm-4 col-xs-12">
+      <div class="team-portrait block">   
+        <div class="title">
+          <div class="name"> 
+            <h2>{{ name }}</h2>
+          </div>
+        </div>           
+        <div class="portrait">
+          <a href="/users/{{ id }}">
+            <img src={{ picture }} />                                 
+          </a>
+        </div>
+
+        <div class="distance-away">
+          <b>{{ distance }} miles away</b>
+        </div>
+
+      </div>
+    </div>
+
+  </script>
+</div>
+
+<% content_for :javascript do %>
+  <script type="text/javascript">
+
+    var wall = new UserWall([], { url: '/users' });   
+    var wallView = new UserWallView({
+      collection: wall,
+      el: '.user-wall'
+    });
+
+    <% @users.each do |x| %> 
+      <% if x != current_user %>
+        <% miles = x.get_distance(current_user)[:distance] %>    
+        wall.add(<%= raw x.to_json({distance: miles}) %>);
+      <% end %>
     <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New User', new_user_path %>
+  </script>
+<% end %>

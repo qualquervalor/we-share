@@ -11,6 +11,13 @@
  *= require_self
  *= require bootstrap
  *= require font-awesome/font-awesome
+ *= require 'masonry/basic'
+ *= require 'masonry/centered'
+ *= require 'masonry/fluid'
+ *= require 'masonry/gutters'
+ *= require 'masonry/infinitescroll'
+ *= require 'masonry/right-to-left'
+ *= require 'masonry/transitions'
  *= require_tree .
  */
  
