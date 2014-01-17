@@ -18,7 +18,7 @@ class BorrowsController < ApplicationController
   # GET /borrows/new
   def new
     @user = current_user
-	@resource = Resource.find(params[:resource])
+	  @resource = Resource.find(params[:resource])
     @borrow = @resource.borrows.build  
     if current_user == @resource.user
       redirect_to @resources
@@ -27,8 +27,8 @@ class BorrowsController < ApplicationController
 
   # GET /borrows/1/edit
   def edit
-	@user = current_user    
-	@pos = POSITIVE_RESPONSE
+  	@user = current_user    
+  	@pos = POSITIVE_RESPONSE
     @neg = NEGATIVE_RESPONSE
     @ret = BORROW_COMPLETED
   end

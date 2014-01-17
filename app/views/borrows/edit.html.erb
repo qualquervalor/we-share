@@ -57,10 +57,16 @@ Use case for this form :. Borrow Edit
   <% if @borrow.status == Borrow.pending %>
       <%= f.label "Message: Please provide Borrower with a message:" %>
       <%= text_area_tag :msg %> 
-      <%= f.submit @pos, class: "button success" %>
-      <%= f.submit @neg, class: "button alert"%>
+      <%= button_tag(type: 'submit', class: "btn btn-large btn-success", status: "borrowed") do %>
+        <i class="fa fa-thumbs-o-up"></i><%= "#{@pos}" %>
+        <% end %>      
+      <%= button_tag(type: 'submit', class: "btn btn-large btn-danger", status: "denied") do %>
+        <i class="fa fa-times"></i><%= "#{@neg}" %>
+        <% end %>
   <% elsif @borrow.status == Borrow.borrowed %>
-      <%= f.submit @ret, class: "button success" %>
+      <%= button_tag(type: 'submit', class: "btn btn-large btn-success", status: "borrowed") do %>
+        <i class="fa fa-thumbs-o-up"></i><%= "#{@ret}" %>
+        <% end %>      
   <% else %>
   <% flash.alert = "I did not expect to get to borrow edit with status #{@borrow.status}"%>
   <% end %>
