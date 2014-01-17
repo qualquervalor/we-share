@@ -268,9 +268,11 @@ span.valign {
   }
     .btn.btn-large.btn-success {
       box-shadow: 0 4px 0 0 #265726;
+      color: #fff;
     }
     .btn.btn-large.btn-danger {
       box-shadow: 0 4px 0 0 #6C2A28;
+      color: #fff;
     }
     .btn.btn-large.btn-warning {
       box-shadow: 0 4px 0 0 #a87936;
