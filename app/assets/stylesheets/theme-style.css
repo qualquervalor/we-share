@@ -281,6 +281,14 @@ span.valign {
     .btn.btn-large i { margin-right: 25px; }
     .btn.btn-large:active { box-shadow: 0 0 0 0 #1d2031; }
 
+    .cancel-acct {
+      text-align: right;
+    }
+
+    a.cancel-acct  {
+      color: gray;
+    }
+
 /* Container */ 
 .container {
   max-width: 1050px;
@@ -401,6 +409,24 @@ form .btn {
   width: 100%;
   margin: 0 0 20px 0;
 }  
+
+.form-group.skinny {
+  width: 500px;
+}
+
+.form-group.skinny label {
+  width: 100px;
+  text-align: right;
+  margin-right: 10px;
+}
+
+.form-group.skinny input,
+.form-group.skinny textarea {
+  float: right;
+  width: 75%;
+  margin-right: 3%;
+}
+
   .form-group label { 
     float: right; 
     width: 10%;
@@ -445,6 +471,7 @@ textarea.form-control:focus {
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   border-radius: 4px;
+  margin-bottom: 10px;
 }
 textarea.form-control,
 textarea.form-control:focus {
@@ -676,13 +703,13 @@ label {
       letter-spacing: .5px;
       line-height: 60px;
       padding: 0;
-      color: #999;
+      color: #e8d2b1;
     
       -webkit-transition: .3s;
       transition: .3s; 
     }
       .navbar .navbar-nav li a:hover {
-        color: #eee;
+        color: #d0bd9f;
         background-color: rgba(0,0,0,.2);
       }
       .navbar .navbar-nav li a.active,
@@ -835,7 +862,7 @@ label {
   }    
   
   .section:last-child {
-    background-color: #fff;
+    /*background-color: #fff;*/
   }
     .section .content.affix {
       width: 90%;
