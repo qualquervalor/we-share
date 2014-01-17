@@ -17,24 +17,21 @@
   <div class="container">
     
     <div class="content">
-      <div class="">
-        <div class="container block">
-          <div class="row">
-            <div class="col-4-md">
-              <div class="expanded">
-                <%= image_tag @borrow.resource.picture.url(:medium), class:"expanded pull left" %>
+      <div class="container block">
+        <div class="row">
+          <div class="col-4-md">
+            <div class="expanded">
+              <%= image_tag @borrow.resource.picture.url(:medium), class:"expanded pull left" %>
+            </div>
+          </div>
+          <div class="col-6-md">
+            <div class="resc-exp-desc">
+              <h4>Description:</h4>
+              <div>
+                <%= @borrow.resource.description %>
               </div>
             </div>
-            <div class="col-6-md">
-              <div class="resc-exp-desc">
-                <h4>Description:</h4>
-                <div>
-                  <%= @borrow.resource.description %>
-                </div>
-              </div>
-            </div>
-          
-        </div>
+          </div>
         </div>
       </div>
 
