@@ -15,13 +15,6 @@
 //= require underscore
 //= require backbone
 //= require bootstrap
-//= require imagesloaded.pkgd.min.js
-//= require init-portfolio.js
-//= require init.js
-//= require jquery.mixitup.min.js
-//= require masonry-init.js
-//= require masonry.pkgd.min.js
-//= require respond.min.js
 //= require app/util
 //= require app/models/resource
 //= require app/views/resource-view
