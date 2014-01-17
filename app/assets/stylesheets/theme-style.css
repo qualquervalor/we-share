@@ -11,12 +11,13 @@ html, body {
 
 /*html { background-color: #252733; }*/
 
-html { background-color: #655643; }
+html { background-color: #eb8735;}    /* tan wood color #655643;greyish}*/
 
 body {
-  color: #3e4258;
+  color: #d36b44;   /*redish wood color    purpleish #3e4258*/
   /*color: #BF4D28;*/
   margin-left: 250px;
+  background: url('../assets/retina_wood.png') repeat;
 }
 body.landing{
   color: #3e4258;
@@ -571,10 +572,10 @@ label {
     
     -webkit-transition: .3s;
     transition: .3s;
-    background-color: #393e5a;
+    background-color: #d36b44; /*reddish wood #393e5a; */
   }
     .navbar a.navbar-brand:hover {
-      background-color: #30344d;
+      background-color: 66362f;   /*dark red#30344d; */
     }
     
     .navbar a.navbar-brand i { 
@@ -656,6 +657,7 @@ label {
     height: 60px;
     width: 100%;
     clear: both;
+    background-color: #66362f;
   }
     
     .navbar .navbar-nav li a {
@@ -1288,7 +1290,7 @@ label {
       margin-right: 10px;
     }
     
-  .table {
+/*  .table {
     margin-bottom: 0;
   }
     .table .btn {
@@ -1310,8 +1312,21 @@ label {
     .pricing .table td {
       border: 0;
       padding: 15px 0;
-      text-align: center;
-    }
+      text-align: center;L
+    }*/
+
+  .resource.table-striped > tbody > tr > td{
+    font-size: 20px;
+  }
+   .resource.table-striped > thead > tr> th{
+    font-size: 20px;
+  }
+
+  .resource.table-striped > tbody > tr:nth-child(odd) > td, 
+  .resource.table-striped > tbody > tr:nth-child(odd) > th {
+    background-color: rgba(255, 255, 255, .5); 
+   
+  }
     
 @media (max-width: 768px) {
   .pricing .wrapper:hover {

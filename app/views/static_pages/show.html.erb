@@ -1,5 +1,4 @@
-<!-- <div class="container">
-  <div class="row"> -->
+
     <div class= "col-md-4"></div>
     <div class= "col-md-4">
       <h1>Welcome to The Shed!</h1>
@@ -12,12 +11,22 @@
           <p>And then you'll feel good inside. And people payin' big money these dayz just to feel good inside.</p>
           <p>Join <em>The Shed</em> before all your stuffz getz old and no-worky and even you don't want your stuffz. Because then it will be too late to share, and howz you gonna feel all good inside, hmm?</p>
         </div>
-      
-        <div class="btn-large"><%= link_to "Sign Up", new_user_registration_path %></div>
-      
-        <div class="btn-large"><%= link_to "Sign In", new_user_session_path %></div>
+
+        <div class = "container">
+          <div class="row">
+            <div class= "col-md-1"></div>
+            <div class= "col-md-3">
+              <%= link_to "Sign Up", new_user_registration_path, class: "btn btn-large btn-success"%>
+            </div>
+            <div class= "col-md-2"></div>
+            <div class= "col-md-3">
+              <%= link_to "Sign In", new_user_session_path, class: "btn btn-large btn-success" %>
+            </div>
+            <div class= "col-md-3"></div>
+          </div>
+        </div>
+
      </div>
     </div>
     <div class= "col-md-4"></div>
-    <!-- </div> -->
- <!--  </div> -->
+
