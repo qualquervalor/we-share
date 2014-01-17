@@ -260,7 +260,7 @@ span.valign {
     height: 70px;
     line-height: 70px;
     font-size: 20px;
-    margin: 10px 0 20px 0;
+    margin: 10px 20px 20px 0;
     /*box-shadow: 0 4px 0 0 #1d2031;*/
     -webkit-transition: .3s;
     transition: .3s;
@@ -1378,6 +1378,30 @@ label {
     -webkit-transition: border-color .5s;
     transition: border-color .5s; 
   }
+  .expanded {
+    width: 200px;
+    height: auto;
+    float:left;
+  }
+
+  .resc-exp-desc {
+    float:left;
+    clear: none;
+  }
+
+  .resc-exp-desc div {
+    font-size: 1.3em;
+  }
+
+  .resc-exp-desc div .h4 {
+    font-size: 1.5em;
+  }
+
+  .portrait .expanded {
+    /*height: 150px;*/
+  }
+
+
     .team .row [class*="col-"]:hover .portrait { border-color: #fff; }
     .portrait img {
       width: 100%;
