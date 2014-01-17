@@ -10,20 +10,21 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
+  
+  <div class="form-group skinny">
+    <%= f.text_field :name, class:"form-control" %>
     <%= f.label :name %><br>
-    <%= f.text_field :name %>
   </div>
-  <div class="field">
+  <div class="form-group skinny">
+    <%= f.text_area :description, class:"form-control" %>
     <%= f.label :description %><br>
-    <%= f.text_area :description %>
   </div>
-  <div class="field">
-    <%= f.label :picture %><br>
+  <div class="form-group skinny">
     <%= f.file_field :picture %>
+    <%= f.label :picture %><br>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Update", class:"btn btn-large btn-success" %>
+    <%= link_to 'Back', resources_path, class:"btn btn-large btn-warning"%>
   </div>
 <% end %>
