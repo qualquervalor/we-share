@@ -1,157 +1,98 @@
 
-<div id="Profile info" class="section">
+<div id="profileinfo" class="section">
   <div class="fixed-wrapper"><h1><%= @user.name %></h1></div>
   <div class="container">
 
     <div class="content">
       <div class="row">
-
-        <div class="col-sm-6 col-md-4">
-          <%= image_tag @user.picture.url(:medium) , :class => "profile-img img-rounded img-responsive" %>
-        </div>
-        <div class="col-sm-6 col-md-8">
-            <h4><%= @user.name %></h4>
-            <small><cite title="San Francisco, USA">San Francisco, USA <i class="glyphicon glyphicon-map-marker">
-            </i></cite></small>
-            <p>
-                <i class="glyphicon glyphicon-envelope"></i>email@example.com
-                <br />
-                <i class="glyphicon glyphicon-globe"></i><a href="http://www.jquery2dotnet.com">www.jquery2dotnet.com</a>
-                <br />
-                <i class="glyphicon glyphicon-gift"></i>June 02, 1988</p>
-            <!-- Split button -->
-            <div class="btn-group">
-                <button type="button" class="btn btn-primary">
-                    Social</button>
-                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-                    <span class="caret"></span><span class="sr-only">Social</span>
-                </button>
-                <ul class="dropdown-menu" role="menu">
-                    <li><a href="#">Twitter</a></li>
-                    <li><a href="https://plus.google.com/+Jquery2dotnet/posts">Google +</a></li>
-                    <li><a href="https://www.facebook.com/jquery2dotnet">Facebook</a></li>
-                    <li class="divider"></li>
-                    <li><a href="#">Github</a></li>
-                </ul>
-            </div>
+        <div class="profile-section-2">
+          
+          <div class = "col-lg-3">
+            <%= image_tag @user.picture.url(:medium) , :class => "profile-img" %>
           </div>
-
-
-
-
-
-          <%= image_tag @user.picture.url(:medium) , :class => "profile-img" %>
-        </div>
-        
-        <div>
-          <h3><%= @user.name %></h3>
-        </div>
-        
-        <div class="address">
-          <strong>Address:</strong>
-          <div class="address">
-            <%= @user.street %>
+          
+          <div class = "col-lg-9">
+            <h1><strong><%= @user.name %></strong></h1>
           </div>
-          <div class="address">
-            <%= @user.city %>
-          </div>
-          <div class="address">
-            <%= @user.zipcode %>
-          </div>
-          <div class="address">
-            <%= @user.state %>
-          </div>
-        </div>
-        
-        <strong>Phone:</strong>
-        <div>
-          <%= @user.phone_num %>
-        </div>
-        
-        <%= link_to 'Edit', edit_user_registration_path %> |
-        <%= link_to 'Back', users_path %>
-
-
-        <div class="container">
-            <div class="row">
-                <div class="col-xs-12 col-sm-6 col-md-6">
-                    <div class="well well-sm">
-                        <div class="row">
-                            <div class="col-sm-6 col-md-4">
-                              <%= image_tag @user.picture.url(:medium) , :class => "profile-img img-rounded img-responsive" %>
-                            </div>
-                            <div class="col-sm-6 col-md-8">
-                                <h4><%= @user.name %></h4>
-                                <small><cite title="San Francisco, USA">San Francisco, USA <i class="glyphicon glyphicon-map-marker">
-                                </i></cite></small>
-                                <p>
-                                    <i class="glyphicon glyphicon-envelope"></i>email@example.com
-                                    <br />
-                                    <i class="glyphicon glyphicon-globe"></i><a href="http://www.jquery2dotnet.com">www.jquery2dotnet.com</a>
-                                    <br />
-                                    <i class="glyphicon glyphicon-gift"></i>June 02, 1988</p>
-                                <!-- Split button -->
-                                <div class="btn-group">
-                                    <button type="button" class="btn btn-primary">
-                                        Social</button>
-                                    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-                                        <span class="caret"></span><span class="sr-only">Social</span>
-                                    </button>
-                                    <ul class="dropdown-menu" role="menu">
-                                        <li><a href="#">Twitter</a></li>
-                                        <li><a href="https://plus.google.com/+Jquery2dotnet/posts">Google +</a></li>
-                                        <li><a href="https://www.facebook.com/jquery2dotnet">Facebook</a></li>
-                                        <li class="divider"></li>
-                                        <li><a href="#">Github</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+            
+            <div class = "container">
+              <div class = "row">
+                <div class = "col-lg-3"></div>
+                <div class = "col-lg-9">
+                  <div class="address">
+                    <strong>Address:</strong>
+                    <%= @user.street %></h3>
+                  </div>
+                
+                  <div class="address">
+                    <%= @user.city %>, &nbsp <%= @user.state %> &nbsp <%= @user.zipcode %>
+                  </div>
+                  <br>
+                  <div class="address">
+                    <strong>Phone:</strong>
+                    <%= @user.phone_num %>
+                  </div>
+                  <br>
+                  <%= link_to 'Edit', edit_user_registration_path %> |
+                  <%= link_to 'Back', users_path %>
                 </div>
+              </div>
             </div>
+          </div>
         </div>
-
-
-
+       </div>
       </div>
     </div>
-    
   </div>
 </div><!-- /.container -->
 
 
-<!-- Team Section -->
-<div id="team" class="section">
+<!-- ========================= -->
+
+<div id="services" class="section">
   <div class="fixed-wrapper">
     <a name="requestrec"> </a><h1>Requests Received</h1>
   </div>
+
   <div class="container">
     <div class="row">
       <div class="profile-section-1">
-        
-        <% @user.resources.each do |resource| %>
-          <% resource.borrows.each do |borrow| %>
-          <p>
-          <% if borrow.status != Borrow.returned %>
-            <strong><%= link_to 'Request ID:', edit_borrow_path(Borrow.find(borrow.id)) %></strong>
-            <% else %>
-            <strong>Request ID:</strong>
-            <% end %>
-            <%= borrow.id %>
-            <strong>Who:</strong><%= borrow.user.name %>
-            <strong>Resource:</strong><%= borrow.resource.name %>
-            <strong>Status:</strong><%= borrow.status %>
-          </p>
-          <% end %>
-          <hr>
-        <% end %>
+        <div class = "col-lg-10">
+          <table class="table table-striped table-condensed resource">
+           
+            <!-- link to borrows#show page -->
+            <thead>
+              <th><strong>Resource</strong></th>
+              <th></th>
+              <th><strong>Person Requesting</strong></th>
+              <th><strong>Status</strong></th>
+            </thead>
+            <tbody>
+              <% @user.resources.each do |resource| %>
+                <% resource.borrows.each do |borrow| %>
+       
+                <% if borrow.status != Borrow.returned %>
+                  <tr>
+                    <td><%= image_tag borrow.resource.picture.url(:thumb) %>  </td>
+                    <td><strong><%= link_to borrow.resource.name, edit_borrow_path(Borrow.find(borrow.id)) %></strong></td>
+                    <td><strong><%=borrow.user.name%></strong></td>
+                    <td><span class="label label-warning"> <%= borrow.status %></span></td>
+                  </tr>
+                <% end %>
+                <% end %>
+              <% end %>     
+            </tbody>
+          </table>
+              
+        </div>
 
-      </div>
-    </div>
+      </div> 
+    </div><!-- /.content -->
   </div>
+</div>
 
-</div><!-- /.container -->
+<!-- ================ -->
+<!-- ************************************************************* -->
 
 
 <!-- Services Section -->
@@ -159,34 +100,47 @@
   <div class="fixed-wrapper">
     <a name="requestsent"></a><h1>Requests Sent</h1>
   </div>
+
   <div class="container">
-    
-    <div class="content">
+    <div class="row">
       <div class="profile-section-2">
-        
-      <!-- link to borrows#show page -->
-        <% @user.borrows.each do |borrow| %>
-        <!-- Check status of borrow before allowing them to link to show page.
-             If borrow is pending they can goto show. 
-         -->
-          <p>
-            <% if borrow.status == Borrow.pending %>
-              <strong><%= link_to 'Request ID:', borrow_path(Borrow.find(borrow.id)) %></strong>
-            <%else %>
-              <strong>Request ID:</strong>
-            <%end %>
-            <%= borrow.id %>
-            <strong>Owner:</strong><%= borrow.resource.user.name %>
-            <strong>Resource:</strong><%= borrow.resource.name %>
-            <strong>Status:</strong><%= borrow.status %>
-          </p>
-          <% end %>
-          <hr>
-      </div>
-      
+        <div class = "col-lg-10">
+          <table class="table table-striped table-condensed resource">
+           
+            <!-- link to borrows#show page -->
+            <thead>
+              <th><strong>Requests Sent</strong></th>
+              <th></th>
+              <th><strong>Owner</strong></th>
+              <th><strong>Status</strong></th>
+            </thead>
+            <tbody>
+            
+            <% @user.borrows.each do |borrow| %>
+            <!-- Check status of borrow before allowing them to link to show page.
+                 If borrow is pending they can goto show. -->
+              <% if borrow.status == Borrow.pending %>
+              
+                <tr>
+                  <td><%= image_tag borrow.resource.picture.url(:thumb) %>  </td>
+                  <td><strong><%= link_to borrow.resource.name, borrow_path(Borrow.find(borrow.id)) %></strong></td>
+                  <td><%= borrow.resource.user.name %></td>
+                  <td><span class="label label-warning"> <%= borrow.status %></span></td>
+                </tr>
+              <% end %>
+            <% end %>     
+            </tbody>
+          </table>
+              
+        </div>
+
+      </div> 
     </div><!-- /.content -->
   </div>
 </div>
+
+
+
 
 
 

@@ -1332,7 +1332,7 @@ label {
       margin-right: 10px;
     }
     
-  .table {
+/*  .table {
     margin-bottom: 0;
   }
     .table .btn {
@@ -1354,8 +1354,21 @@ label {
     .pricing .table td {
       border: 0;
       padding: 15px 0;
-      text-align: center;
-    }
+      text-align: center;L
+    }*/
+
+  .resource.table-striped > tbody > tr > td{
+    font-size: 20px;
+  }
+   .resource.table-striped > thead > tr> th{
+    font-size: 20px;
+  }
+
+  .resource.table-striped > tbody > tr:nth-child(odd) > td, 
+  .resource.table-striped > tbody > tr:nth-child(odd) > th {
+    background-color: rgba(255, 255, 255, .5); 
+   
+  }
     
 @media (max-width: 768px) {
   .pricing .wrapper:hover {
