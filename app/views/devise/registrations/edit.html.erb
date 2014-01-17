@@ -9,51 +9,82 @@
         <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
           <%= devise_error_messages! %>
         
-          <div><%= f.label :name %><br />
-          <%= f.text_field :name, :autofocus => true %></div>
+          <div class="form-group skinny">
+            <%= f.text_field :name, :autofocus => true, class:"form-control" %>
+            <%= f.label :name %><br />
+          </div>
         
-          <div><%= f.label :email %><br />
-          <%= f.email_field :email %></div>
+          <div class="form-group skinny">
+            <%= f.email_field :email, class:"form-control" %>
+            <%= f.label :email %><br />
+          </div>
         
-          <div><%= f.label :street %><br>
-          <%= f.text_field :street %></div>
+          <div class="form-group skinny">
+            <%= f.text_field :street, class:"form-control" %>
+            <%= f.label :street %><br>
+          </div>
+          <div class="clearfix"></div>
           
-          <div><%= f.label :city %><br>
-          <%= f.text_field :city %></div>
+          <div class="form-group skinny">
+            <%= f.text_field :city, class:"form-control" %>
+            <%= f.label :city %><br>
+          </div>
+          <div class="clearfix"></div>
         
-          <div><%= f.label :zipcode %><br>
-          <%= f.text_field :zipcode %></div>
+          <div class="form-group skinny">
+            <%= f.text_field :zipcode, class:"form-control" %>
+            <%= f.label :zipcode %><br>
+          </div>
+          <div class="clearfix"></div>
         
-          <div><%= f.label :state %><br>
-          <%= f.text_field :state %></div>
+          <div class="form-group skinny">
+            <%= f.text_field :state, class:"form-control" %>
+            <%= f.label :state %><br>
+          </div>
         
-          <div><%= f.label :phone_num %><br>
-          <%= f.text_field :phone_num %></div>
+          <div class="form-group skinny">
+            <%= f.text_field :phone_num, class:"form-control" %>
+            <%= f.label :phone_num, "Phone Number" %><br>
+          </div>
+          <div class="clearfix"></div>
         
-          <div><%= f.label :picture %><br />
-          <%= f.file_field :picture %></div>
+          <div class="form-group skinny">
+            <%= f.file_field :picture %>
+            <%= f.label :picture %><br />
+          </div>
         
           <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
             <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
           <% end %>
         
-          <div><%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-          <%= f.password_field :password, :autocomplete => "off" %></div>
+          <div class="form-group skinny">
+          <div>
+            <%= f.password_field :password, :autocomplete => "off", class:"form-control", placeholder:"leave blank if you don't want to change" %>
+            <%= f.label :password %>
+          </div>
         
-          <div><%= f.label :password_confirmation %><br />
-          <%= f.password_field :password_confirmation %></div>
+          <div class="form-group skinny">
+            <%= f.password_field :password_confirmation, class:"form-control" %>
+            <%= f.label :password_confirmation %><br />
+          </div>
         
-          <div><%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-          <%= f.password_field :current_password %></div>
+          <div class="form-group skinny">
+            <%= f.password_field :current_password, class:"form-control", placeholder:"required to confirm changes" %>
+            <%= f.label :current_password %><br />
+          </div>
         
-          <div><%= f.submit "Update" %></div>
-        <% end %>
-        
-        <h3>Cancel my account</h3>
-        
-        <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), :class=> "btn btn-large", :data => { :confirm => "Are you sure?" }, :method => :delete %></p>
-        
-        <%= link_to "Back", :back %>
+          <div class="row">
+            <div class="col-sm-4"></div>
+            <div class="col-sm-4">
+              <%= f.submit "Update", class:"btn btn-large btn-success" %>
+          <% end %>
+            </div>
+            <div class="col-sm-4">
+              <%= link_to "Back", :back, class:"btn btn-large btn-warning" %>
+            </div>
+          </div>
+
+            <%= link_to "Cancel my account", registration_path(resource_name), class:"cancel-acct", :data => { :confirm => "Are you sure?" }, :method => :delete %>
 
         </div>
       </div>
