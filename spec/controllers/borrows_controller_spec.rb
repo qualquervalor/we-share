@@ -2,17 +2,17 @@ require 'spec_helper'
 
 describe BorrowsController do
   
-  login_user
+  # login_user
 
-  it "should have a current_user" do
-    # note the fact that I removed the "validate_session" parameter if this was a scaffold-generated controller
-    subject.current_user.should_not be_nil
-  end
+  # it "should have a current_user" do
+  #   # note the fact that I removed the "validate_session" parameter if this was a scaffold-generated controller
+  #   subject.current_user.should_not be_nil
+  # end
 
-  it "should get index" do
-    get 'index'
-    response.should be_success
-  end
+  # it "should get index" do
+  #   get 'index'
+  #   response.should be_success
+  # end
 
   # describe "GET show" do
   #   it "assigns the current_user as @user" do

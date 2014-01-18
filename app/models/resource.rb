@@ -15,10 +15,5 @@ class Resource < ActiveRecord::Base
     }
   end
 
-  def get_distance(user1,user2)
-  {
-    distance: sprintf('%.2f',Haversine.distance(user1.latitude,user1.longitude,user2.latitude,user2.longitude).to_miles)
-  }
-  end
 
 end

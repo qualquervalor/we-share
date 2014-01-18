@@ -51,10 +51,8 @@
       el: '.resource-wall'
     });
 
-<% @resources.each do |x| %>
- 
-  <% miles = x.get_distance(User.find(x.user_id), current_user)[:distance] %>
-    wall.add(<%= raw x.to_json({distance: miles}) %>);
-<% end %>
+  <% @resources.each do |x| %>
+    wall.add(<%= raw x.to_json({distance: @distances[x.user.id]}) %>);
+  <% end %>
   </script>
 <% end %>

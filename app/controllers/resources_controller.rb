@@ -8,7 +8,7 @@ class ResourcesController < ApplicationController
   def index
     @resources = Resource.all
     @user = current_user
-    
+    @distances = current_user.distances()
   end
 
   # GET /resources/1

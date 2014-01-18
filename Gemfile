@@ -32,14 +32,6 @@ group :doc do
   gem 'sdoc', require: false
 end
 
-# Use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.1.2'
-
-# Use unicorn as the app server
-# gem 'unicorn'
-
-# Use Capistrano for deployment
-# gem 'capistrano', group: :development
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
@@ -49,17 +41,6 @@ gem 'devise'
 
 # Use Foundation 5
 gem 'foundation-rails'
-
-group :development do
-  # Use Hirb for database views in console
-  gem 'hirb'
-
-  # Use Better-Errors to better see the errors
-  gem 'better_errors'
-
-  # Use Binding_of_caller to support console in browser
-  gem 'binding_of_caller'
-end
 
 # Use Carrier wave to upload jpg files
 gem 'carrierwave'
@@ -79,6 +60,26 @@ gem 'geocoder'
 # Use haversine to calculate distance between points
 gem 'haversine'
 
-# Adding some RSpec
-gem "rspec-rails", :group => [:development, :test]
-gem 'factory_girl_rails', :group => [:development, :test]
+
+group :development do
+  # Use Hirb for database views in console
+  gem 'hirb'
+
+  # Use Better-Errors to better see the errors
+  gem 'better_errors'
+
+  # Use Binding_of_caller to support console in browser
+  gem 'binding_of_caller'
+end
+
+group :development, :test do
+  gem 'pry-plus'
+  gem 'pry-rails'
+end
+
+group :test do
+  gem "rspec-rails"
+  #gem 'vcr'
+  #gem 'factory_girl'
+  #gem 'database_cleaner'
+end
