@@ -6,13 +6,17 @@ class BorrowsController < ApplicationController
 
   # GET /borrows
   # GET /borrows.json
-  def index
-    @borrows = Borrow.all
-  end
+  # only an admin type view none of our current users need to see this view
+  # def index
+  #   @borrows = Borrow.all
+  # end
 
   # GET /borrows/1
   # GET /borrows/1.json
   def show
+    if (@borrow.user != current_user)
+      redirect_to root_path
+    end    
     @user = current_user
   end
 
@@ -29,6 +33,14 @@ class BorrowsController < ApplicationController
 
   # GET /borrows/1/edit
   def edit
+    #check to see if resource is nil, happens if db is dirty
+    if (@borrow.resource.nil?)
+      redirect_to root_path
+    elsif
+    #add check to make sure only owner can edit borrow
+    (@borrow.resource.user != current_user)
+      redirect_to @borrow
+    end
   	@user = current_user    
   	@pos = POSITIVE_RESPONSE
     @neg = NEGATIVE_RESPONSE

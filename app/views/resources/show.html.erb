@@ -31,7 +31,7 @@
     <% else %>
       <% borrow_id = @resource.already_associated_with_borrower?( current_user) %>
       <% if borrow_id %>
-          <%= link_to 'Check Status', "/borrows/"+borrow_id.to_s+"/edit?resource="+ @resource.id.to_s, class:"btn btn-large btn-warning" %>
+          <%= link_to 'Check Status', "/borrows/"+borrow_id.to_s, class:"btn btn-large btn-warning" %>
       <% else %>
           <%= link_to 'Request to borrow!', new_borrow_path(resource: @resource.id), class:"btn btn-large btn-success" %>
       <% end %>
