@@ -5,6 +5,7 @@ DatabaseCleaner.strategy = :truncation
 
 describe User do
 
+  DatabaseCleaner.clean
   describe 'on save' do
     context 'when given a full address' do
       let(:user) do 
@@ -82,7 +83,7 @@ describe User do
   DatabaseCleaner.clean
   describe 'on distance calculation' do
     context 'when given the same valid address' do
-      let(:user1) do 
+      let!(:user1) do 
         User.create(email: 'testing4@example.com',
           password: 'testing1234',
           street: '100 Colorado St', 
@@ -90,7 +91,7 @@ describe User do
           state: 'Tx', 
           zipcode: '78701')
       end     
-      let(:user2) do 
+      let!(:user2) do 
         User.create(email: 'testing5@example.com',
           password: 'testing1234',
           street: '100 Colorado St', 
@@ -98,7 +99,7 @@ describe User do
           state: 'Tx', 
           zipcode: '78701')
       end
-      let(:user3) do 
+      let!(:user3) do 
         User.create(email: 'testing6@example.com',
           password: 'testing1234',
           street: '100 Colorado St', 
@@ -107,17 +108,14 @@ describe User do
           zipcode: '78701')
       end
       it 'returns 0.00 miles' do
-        user1.save
-        user2.save
-        user3.save
         miles = user1.distances()
         expect(miles[user2.id]).to include("0.00")
       end  
     end  
 
     DatabaseCleaner.clean
-    context 'when given two address' do
-      let(:user1) do 
+    context 'when given two address 0.61 miles apart' do
+      let!(:user1) do 
         User.create(email: 'testing4@example.com',
           password: 'testing1234',
           street: '1000 Congress Ave', 
@@ -125,7 +123,7 @@ describe User do
           state: 'Tx', 
           zipcode: '78701')
       end     
-      let(:user2) do 
+      let!(:user2) do 
         User.create(email: 'testing5@example.com',
           password: 'testing1234',
           street: '100 Congress Ave', 
@@ -134,15 +132,71 @@ describe User do
           zipcode: '78701')
       end
       it 'returns 0.61 miles' do
-        user1.save
-        user2.save
         miles = user1.distances()
-        puts miles
+        #puts miles
         expect(miles[user2.id]).to include("0.61")
       end  
     end  
+  end
 
+  DatabaseCleaner.clean
+  describe 'on pending request' do
+    context 'when one pending request' do
+      let!(:user1) do 
+        User.create(email: 'testing1@example.com',
+          password: 'testing1234')
+      end
+      let!(:user2) do 
+        User.create(email: 'testing2@example.com',
+          password: 'testing1234')
+      end     
+      let!(:resource2) do 
+        Resource.create(name: 'ladder',user: user2)
+      end     
+      let!(:borrow1) do 
+        Borrow.create(user: user1, resource: resource2, status: Borrow.pending)
+      end
+      let!(:borrow2) do 
+        Borrow.create(user: user1, resource: resource2, status: Borrow.returned)
+      end
+
+      it 'should have one pending request' do
+        expect(user1.my_pending_requests.length).to eq 1
+      end
+    end
+  end
+
+  DatabaseCleaner.clean
+  describe 'on received request' do
+    context 'when two oustanding request' do
+      let!(:user1) do 
+        User.create(email: 'testing1@example.com',
+          password: 'testing1234')
+      end
+      let!(:user2) do 
+        User.create(email: 'testing2@example.com',
+          password: 'testing1234')
+      end     
+      let!(:user3) do 
+        User.create(email: 'testing3@example.com',
+          password: 'testing1234')
+      end 
+      let!(:resource2) do 
+        Resource.create(name: 'ladder',user: user2)
+      end     
+      let!(:borrow1) do 
+        Borrow.create(user: user1, resource: resource2, status: Borrow.borrowed)
+      end
+      let!(:borrow2) do 
+        Borrow.create(user: user1, resource: resource2, status: Borrow.returned)
+      end
+      let!(:borrow3) do 
+        Borrow.create(user: user3, resource: resource2, status: Borrow.pending)
+      end
+      it 'should have two outstanding request' do
+        expect(user2.their_requests.length).to eq 2
+      end
+    end
   end
 
 end
-
