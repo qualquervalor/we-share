@@ -2,11 +2,10 @@
   <% if @resource.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@resource.errors.count, "error") %> prohibited this resource from being saved:</h2>
-
       <ul>
-      <% @resource.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
+        <% @resource.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
       </ul>
     </div>
   <% end %>
@@ -15,16 +14,20 @@
     <%= f.text_field :name, class:"form-control" %>
     <%= f.label :name %><br>
   </div>
+
   <div class="form-group skinny">
     <%= f.text_area :description, class:"form-control" %>
     <%= f.label :description %><br>
   </div>
+
   <div class="form-group skinny">
     <%= f.file_field :picture %>
     <%= f.label :picture %><br>
   </div>
+
   <div class="actions">
     <%= f.submit "Update", class:"btn btn-large btn-success" %>
     <%= link_to 'Back', resources_path, class:"btn btn-large btn-warning"%>
   </div>
+  
 <% end %>

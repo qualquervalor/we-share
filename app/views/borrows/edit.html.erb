@@ -1,5 +1,3 @@
-<!-- Maybe You Can Haz? page -->
-
 <div id="contact" class="section">
   <div class="fixed-wrapper">
     <h1>
@@ -14,8 +12,8 @@
       <%= @borrow.resource.name %>!
     </h1>
   </div>
+
   <div class="container">
-    
     <div class="content">
       <div class="container block">
         <div class="row">
@@ -35,65 +33,56 @@
         </div>
       </div>
 
-      <br />
+      <br>
 
       <% if @borrow.status == Borrow.pending %>
-       <h3>What do you think?</h3>
+        <h3>What do you think?</h3>
       <% elsif @borrow.status == Borrow.borrowed %>
-       <h3>Have they given it back?</h3>
+        <h3>Have they given it back?</h3>
       <% end %>
 
       <%= form_for(@borrow) do |f| %>
-
-      <% if @borrow.errors.any? %>
-        <div id="error_explanation">
-          <h2><%= pluralize(@borrow.errors.count, "error") %> prohibited this borrow from being saved:</h2>
-
-          <ul>
-          <% @borrow.errors.full_messages.each do |msg| %>
-            <li><%= msg %></li>
-          <% end %>
-          </ul>
-        </div>
-      <% end %>
-
-       <!-- 
-      Use case for this form :. Borrow Edit
-
-            B. current_user = owner
-              1. Status is pending 
-               -Update status to borrowed/denied, email sent to requester  
-              2. Status is borrowed
-                -Mark status as Returned       
-       -->
+        <% if @borrow.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(@borrow.errors.count, "error") %> prohibited this borrow from being saved:</h2>
+            <ul>
+              <% @borrow.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
 
         <%= f.hidden_field :status %>
 
         <% if @borrow.status == Borrow.pending %>
-            <div class="form-group text-area">
-              <%= text_area_tag :msg, nil, class:"form-control", placeholder:"Please provide Borrower with a message..." %> 
-              <%= f.label "Message" do %>
-                <i class="icon-pencil"></i>
-              <% end %>
-            </div>
-            <div class="clearfix"></div>
-            <%= button_tag(type: 'submit', class: "btn btn-large btn-success", status: "borrowed") do %>
-              <i class="fa fa-thumbs-o-up"></i><%= "#{@pos}" %>
-              <% end %>      
-            <%= button_tag(type: 'submit', class: "btn btn-large btn-danger", status: "denied") do %>
-              <i class="fa fa-times"></i><%= "#{@neg}" %>
-              <% end %>
+          <div class="form-group text-area">
+            <%= text_area_tag :msg, nil, class:"form-control", placeholder:"Please provide Borrower with a message..." %> 
+            <%= f.label "Message" do %>
+              <i class="icon-pencil"></i>
+            <% end %>
+          </div>
+
+          <div class="clearfix">             
+          </div>
+
+          <%= button_tag(type: 'submit', class: "btn btn-large btn-success", status: "borrowed") do %>
+            <i class="fa fa-thumbs-o-up"></i><%= "#{@pos}" %>
+          <% end %>      
+          <%= button_tag(type: 'submit', class: "btn btn-large btn-danger", status: "denied") do %>
+            <i class="fa fa-times"></i><%= "#{@neg}" %>
+          <% end %>
         <% elsif @borrow.status == Borrow.borrowed %>
-            <%= button_tag(type: 'submit', class: "btn btn-large btn-success", status: "borrowed") do %>
-              <i class="fa fa-thumbs-o-up"></i><%= "#{@ret}" %>
-              <% end %>      
+          <%= button_tag(type: 'submit', class: "btn btn-large btn-success", status: "borrowed") do %>
+            <i class="fa fa-thumbs-o-up"></i><%= "#{@ret}" %>
+          <% end %>      
         <% else %>
-        <% flash.alert = "I did not expect to get to borrow edit with status #{@borrow.status}"%>
+          <% flash.alert = "I did not expect to get to borrow edit with status #{@borrow.status}"%>
         <% end %>
-      <% end %>
-      
+      <% end %>  
     </div>
-    <br />
-    
+
+    <br>
+  
   </div><!-- /.container --> 
 </div> 

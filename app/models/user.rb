@@ -52,8 +52,6 @@ class User < ActiveRecord::Base
     end
     user_distances
   end
-end
-
 
 #    <%= raw @lat_lngs.to_json %>
 
@@ -61,3 +59,27 @@ end
 #     @destinations = @user.destinations
 #     @lat_lngs = @destinations.map {|d| d.lat_lng}
 #   end
+
+ def their_requests
+  requests = []
+  self.resources.each do |resource| 
+    resource.borrows.each do |borrow|
+      if borrow.status != Borrow.returned
+        requests << borrow
+      end
+    end
+  end
+  requests
+ end 
+
+ def my_pending_requests
+  requests = []
+  self.borrows.each do |borrow| 
+    if borrow.status == Borrow.pending 
+      requests << borrow
+    end
+  end
+  requests
+ end
+
+end
