@@ -1,31 +1,12 @@
 require 'spec_helper'
+require 'database_cleaner'
+
+DatabaseCleaner.strategy = :truncation
 
 describe User do
-    # t.string   "name"
-    # t.string   "street"
-    # t.string   "city"
-    # t.string   "zipcode"
-    # t.string   "state"
-    # t.string   "phone_num"
-    # t.text     "picture"
-    # t.datetime "created_at"
-    # t.datetime "updated_at"
-    # t.integer  "resource_id"
-    # t.integer  "borrow_id"
-    # t.string   "email",                  default: "", null: false
-    # t.string   "encrypted_password",     default: "", null: false
-    # t.string   "reset_password_token"
-    # t.datetime "reset_password_sent_at"
-    # t.datetime "remember_created_at"
-    # t.integer  "sign_in_count",          default: 0,  null: false
-    # t.datetime "current_sign_in_at"
-    # t.datetime "last_sign_in_at"
-    # t.string   "current_sign_in_ip"
-    # t.string   "last_sign_in_ip"
-    # t.float    "latitude"
-    # t.float    "longitude"
+
   describe 'on save' do
-    context 'when given an address' do
+    context 'when given a full address' do
       let(:user) do 
         User.create(email: 'testing@example.com',
           password: 'testing1234',
@@ -35,22 +16,133 @@ describe User do
           zipcode: '78701')
       end
       
-      it 'should have latitude and longitude' do
+      it 'should have valid latitude and longitude' do
         expect(user.latitude).to eq 30.2639532
         expect(user.longitude).to eq -97.74595359999999
       end
     end
+
+    context 'when given a partial address' do
+      let(:user) do 
+        User.create(email: 'testing2@example.com',
+          password: 'testing1234',
+          street: '808 Congress',
+          city: '', 
+          state: '', 
+          zipcode: '')
+      end
+      
+      it 'should have valid latitude and longitude' do
+        expect(user.latitude).to eq 31.3657208
+        expect(user.longitude).to eq -81.423445
+      end
+    end
+
+    context 'when given am empty address' do
+      let(:user) do 
+        User.create(email: 'testing3@example.com',
+          password: 'testing1234',
+          street: '',
+          city: '', 
+          state: '', 
+          zipcode: '')
+      end
+      
+      it 'should have invalid latitude and longitude' do
+        expect(user.latitude).to be_nil
+        expect(user.longitude).to be_nil
+      end
+    end
+
+    context 'when given identical addresses' do
+      let(:user1) do 
+        User.create(email: 'testing4@example.com',
+          password: 'testing1234',
+          street: '100 Colorado St', 
+          city: 'Austin', 
+          state: 'Tx', 
+          zipcode: '78701')
+      end
+      let(:user2) do 
+        User.create(email: 'testing5@example.com',
+          password: 'testing1234',
+          street: '100 Colorado St', 
+          city: 'Austin', 
+          state: 'Tx', 
+          zipcode: '78701')
+      end
+
+      it 'should have identical latitude and longitude' do
+        expect(user1.latitude).to eq user2.latitude
+        expect(user1.longitude).to eq user2.longitude
+      end  
+    end
   end
-      # allow(movie).to receive(:description).and_return("This sentence is exactly 51 characters long, I know")
-      # expect(movie.snippet).to eq(
+
+  DatabaseCleaner.clean
+  describe 'on distance calculation' do
+    context 'when given the same valid address' do
+      let(:user1) do 
+        User.create(email: 'testing4@example.com',
+          password: 'testing1234',
+          street: '100 Colorado St', 
+          city: 'Austin', 
+          state: 'Tx', 
+          zipcode: '78701')
+      end     
+      let(:user2) do 
+        User.create(email: 'testing5@example.com',
+          password: 'testing1234',
+          street: '100 Colorado St', 
+          city: 'Austin', 
+          state: 'Tx', 
+          zipcode: '78701')
+      end
+      let(:user3) do 
+        User.create(email: 'testing6@example.com',
+          password: 'testing1234',
+          street: '100 Colorado St', 
+          city: 'Austin', 
+          state: 'Tx', 
+          zipcode: '78701')
+      end
+      it 'returns 0.00 miles' do
+        user1.save
+        user2.save
+        user3.save
+        miles = user1.distances()
+        expect(miles[user2.id]).to include("0.00")
+      end  
+    end  
+
+    DatabaseCleaner.clean
+    context 'when given two address' do
+      let(:user1) do 
+        User.create(email: 'testing4@example.com',
+          password: 'testing1234',
+          street: '1000 Congress Ave', 
+          city: 'Austin', 
+          state: 'Tx', 
+          zipcode: '78701')
+      end     
+      let(:user2) do 
+        User.create(email: 'testing5@example.com',
+          password: 'testing1234',
+          street: '100 Congress Ave', 
+          city: 'Austin', 
+          state: 'Tx', 
+          zipcode: '78701')
+      end
+      it 'returns 0.61 miles' do
+        user1.save
+        user2.save
+        miles = user1.distances()
+        puts miles
+        expect(miles[user2.id]).to include("0.61")
+      end  
+    end  
+
+  end
+
 end
 
-  # def request_location()
-  #   attrs = ["street", "city", "state", "zipcode"]
-  #   if (self.changed & attrs).any?
-  #     address = self.street+","+self.city+","+self.state+" "+self.zipcode
-  #     obj = Geocoder.search(address)
-  #     self.latitude = obj[0].latitude
-  #     self.longitude = obj[0].longitude
-  #   end
-  # end

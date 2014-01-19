@@ -16,8 +16,10 @@ class User < ActiveRecord::Base
     if (self.changed & attrs).any?
       address = self.street+","+self.city+","+self.state+" "+self.zipcode
       obj = Geocoder.search(address)
-      self.latitude = obj[0].latitude
-      self.longitude = obj[0].longitude
+      if obj.length > 0
+        self.latitude = obj[0].latitude
+        self.longitude = obj[0].longitude
+      end
     end
   end
 
@@ -34,10 +36,6 @@ class User < ActiveRecord::Base
       user_distances[user.id] = miles
     end
     user_distances
-    # end
-    # { 
-    #   distance: sprintf('%.2f',Haversine.distance(user1.latitude,user1.longitude,user2.latitude,user2.longitude).to_miles) 
-    # }
   end
 end
 
