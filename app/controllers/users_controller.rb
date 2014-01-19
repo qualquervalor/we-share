@@ -13,9 +13,10 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
-    @resources = Resource.all
+    @user_resources = @user.resources
     @their_requests = @user.their_requests
     @my_requests = @user.my_pending_requests
+    @my_borrows = @user.my_borrows
   end
 
   # GET /users/new
