@@ -12,7 +12,8 @@ class Resource < ActiveRecord::Base
       id: self.id,
       name: self.name,
       description: self.description,
-      picture: self.picture.url
+      picture: self.picture.url,
+      owner: options[:owner]
     }
   end
 

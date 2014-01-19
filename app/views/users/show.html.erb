@@ -193,7 +193,7 @@
         </div>
 
         <div class="title">
-          <div class="name"> {{ name }}</div>
+          <div class="name"> {{owner}} {{ name }}</div>         
         </div>
       </div>
     </div>
@@ -220,7 +220,7 @@
     });
 
     <% @my_borrows.each do |res| %>
-      bwall.add(<%= raw res.to_json() %>);
+      bwall.add(<%= raw res.to_json({owner: res.user.name+"'s"}) %>);
     <% end %>
 
   </script>
