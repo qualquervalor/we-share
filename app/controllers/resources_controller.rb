@@ -7,7 +7,10 @@ class ResourcesController < ApplicationController
   # GET /resources.json
   def index
     @resources = Resource.all
-    @user = current_user
+    if params[:search].present?
+       @resources = Resource.search(params[:search])
+    end
+    @user = current_user 
   end
 
   # GET /resources/1

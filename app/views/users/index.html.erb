@@ -16,8 +16,16 @@
             <div class="content">
               <div class="row">
 
-                <div class="user-wall">         
-                </div>
+                <%= form_tag users_path, :method => 'get' do %>
+                  <%= text_field_tag :search, params[:search] %>
+                  <%= submit_tag "Search Users  ", :name => nil %>
+                    <% if params[:search].present? %>
+                      <% @users %>
+                      <%= link_to "Clear Results", users_path %>
+                    <% end %>
+                <% end %>
+
+                <div class="user-wall"></div>
 
               </div>          
             </div>

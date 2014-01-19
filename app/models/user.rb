@@ -10,6 +10,15 @@ class User < ActiveRecord::Base
 
   mount_uploader :picture, ImageUploader
 
+
+  def self.search(search)
+    if search
+      find(:all, :conditions => ['name LIKE ?', "%#{search}%"])
+    else
+      find(:all)
+    end
+  end
+
   def as_json(options={})
     {                 
       id: self.id,
