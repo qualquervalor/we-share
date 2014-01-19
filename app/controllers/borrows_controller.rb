@@ -64,19 +64,19 @@ class BorrowsController < ApplicationController
   # PATCH/PUT /borrows/1.json
   def update
     msg = params[:msg]
-    if params['commit'] == POSITIVE_RESPONSE
+    if params['status'] == POSITIVE_RESPONSE
       params['borrow']['status'] = Borrow.borrowed
 
       #Action Mailer - Accepted email
       Notifier.borrowaccept(@borrow.user, msg).deliver
 
-    elsif  params['commit'] == NEGATIVE_RESPONSE
+    elsif  params['status'] == NEGATIVE_RESPONSE
       params['borrow']['status'] = Borrow.denied
 
       #Action Mailer - Denied email
       Notifier.borrowdenied(@borrow.user, msg).deliver
 
-    elsif  params['commit'] == BORROW_COMPLETED
+    elsif  params['status'] == BORROW_COMPLETED
       params['borrow']['status'] = Borrow.returned
     end  
     

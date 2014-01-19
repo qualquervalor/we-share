@@ -211,7 +211,7 @@
       el: '.borrowed-wall'
     });
 
-    <% @my_borrows.each do |x| %>
+    <% @my_borrows.each do |res| %>
       bwall.add(<%= raw res.to_json() %>);
     <% end %>
 

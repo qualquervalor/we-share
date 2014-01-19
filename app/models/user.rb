@@ -85,9 +85,9 @@ class User < ActiveRecord::Base
  def my_borrows
   requests = []
   self.borrowed_resources.each do |res| 
-    res.borrows.each do |x| 
-      if x.status == Borrow.borrowed 
-        requests << borrow
+    res.borrows.each do |borrow| 
+      if borrow.status == Borrow.borrowed 
+        requests << res
       end
     end
   end

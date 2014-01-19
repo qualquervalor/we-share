@@ -66,14 +66,14 @@
           <div class="clearfix">             
           </div>
 
-          <%= button_tag(type: 'submit', class: "btn btn-large btn-success", status: "borrowed") do %>
+          <%= button_tag(type: 'submit', name: 'status',value:  "#{@pos}" , class: "btn btn-large btn-success") do %>
             <i class="fa fa-thumbs-o-up"></i><%= "#{@pos}" %>
           <% end %>      
-          <%= button_tag(type: 'submit', class: "btn btn-large btn-danger", status: "denied") do %>
+          <%= button_tag(type: 'submit', name: 'status',value: "#{@neg}" , class: "btn btn-large btn-danger") do %>
             <i class="fa fa-times"></i><%= "#{@neg}" %>
           <% end %>
         <% elsif @borrow.status == Borrow.borrowed %>
-          <%= button_tag(type: 'submit', class: "btn btn-large btn-success", status: "borrowed") do %>
+          <%= button_tag(type: 'submit', name: 'status',value: "#{@ret}" ,class: "btn btn-large btn-success") do %>
             <i class="fa fa-thumbs-o-up"></i><%= "#{@ret}" %>
           <% end %>      
         <% else %>
