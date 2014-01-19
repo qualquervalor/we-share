@@ -167,8 +167,8 @@
       <div class="content">
         <div class="profile-section-4">
           <!-- If user has not made a borrow, this message will print -->
-          <% if @user.borrowed_resources.length == 0 %>
-            <p>You haven't borrowed anything!</p>
+          <% if @user.my_borrows.length == 0 %>
+            <h3>You do not currently have anything borrowed.</h3>
           <% else %>
             <div class="row">
               <div class="borrowed-wall"></div>
