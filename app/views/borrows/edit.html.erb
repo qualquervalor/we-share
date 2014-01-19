@@ -1,65 +1,99 @@
 <!-- Maybe You Can Haz? page -->
 
-<div class="resource-wrapper">
-  <h2><%= @borrow.user.name %> 
-  <% if @borrow.status == Borrow.pending %>
-    wants your 
-  <% elsif @borrow.status == Borrow.borrowed %>
-    has your
-  <% else %>
-    is confused by your
-  <% end %>
-  <%= @borrow.resource.name %>!</h2>
-
-  <div class="resource_img">
-    <%= image_tag @borrow.resource.picture.url(:medium) %>
-  </div>
-
-  <h4>Description:</h4>
-  <div>
-    <%= @borrow.resource.description %>
-  </div>
-
-  <br />
-
-  <% if @borrow.status == Borrow.pending %>
-   <h3>What do you think?</h3>
-  <% elsif @borrow.status == Borrow.borrowed %>
-   <h3>Have they given it back?</h3>
-  <% end %>
- 
-
-
- <%= form_for(@borrow) do |f| %>
-
-  <% if @borrow.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@borrow.errors.count, "error") %> prohibited this borrow from being saved:</h2>
-
-      <ul>
-      <% @borrow.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
+<div id="contact" class="section">
+  <div class="fixed-wrapper">
+    <h1>
+      <%= @borrow.user.name %> 
+      <% if @borrow.status == Borrow.pending %>
+        wants your 
+      <% elsif @borrow.status == Borrow.borrowed %>
+        has your
+      <% else %>
+        is confused by your
       <% end %>
-      </ul>
-    </div>
-  <% end %>
- <!-- 
-Use case for this form :. Borrow Edit
+      <%= @borrow.resource.name %>!
+    </h1>
+  </div>
+  <div class="container">
+    
+    <div class="content">
+      <div class="container block">
+        <div class="row">
+          <div class="col-4-md">
+            <div class="expanded">
+              <%= image_tag @borrow.resource.picture.url(:medium), class:"expanded pull left" %>
+            </div>
+          </div>
+          <div class="col-6-md">
+            <div class="resc-exp-desc">
+              <h4>Description:</h4>
+              <div>
+                <%= @borrow.resource.description %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
-      B. current_user = owner
-        1. Status is pending 
-         -Update status to borrowed/denied, email sent to requester  
-        2. Status is borrowed
-          -Mark status as Returned       
- -->
-  <%= f.hidden_field :status%>
-  <% if @borrow.status == Borrow.pending %>
-      <%= f.submit BorrowsHelper.POSITIVE_RESPONSE, class: "button success" %>
-      <%= f.submit BorrowsHelper.NEGATIVE_RESPONSE, class: "button alert"%>
-  <% elsif @borrow.status == Borrow.borrowed %>
-      <%= f.submit BorrowsHelper.BORROW_COMPLETED, class: "button success" %>
-  <% else %>
-  <% flash.alert = "I did not expect to get to borrow edit with status #{@borrow.status}"%>
-  <% end %>
-<% end %>
-</div>
+      <br />
+
+      <% if @borrow.status == Borrow.pending %>
+       <h3>What do you think?</h3>
+      <% elsif @borrow.status == Borrow.borrowed %>
+       <h3>Have they given it back?</h3>
+      <% end %>
+
+      <%= form_for(@borrow) do |f| %>
+
+      <% if @borrow.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@borrow.errors.count, "error") %> prohibited this borrow from being saved:</h2>
+
+          <ul>
+          <% @borrow.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+       <!-- 
+      Use case for this form :. Borrow Edit
+
+            B. current_user = owner
+              1. Status is pending 
+               -Update status to borrowed/denied, email sent to requester  
+              2. Status is borrowed
+                -Mark status as Returned       
+       -->
+
+        <%= f.hidden_field :status %>
+
+        <% if @borrow.status == Borrow.pending %>
+            <div class="form-group text-area">
+              <%= text_area_tag :msg, nil, class:"form-control", placeholder:"Please provide Borrower with a message..." %> 
+              <%= f.label "Message" do %>
+                <i class="icon-pencil"></i>
+              <% end %>
+            </div>
+            <div class="clearfix"></div>
+            <%= button_tag(type: 'submit', class: "btn btn-large btn-success", status: "borrowed") do %>
+              <i class="fa fa-thumbs-o-up"></i><%= "#{@pos}" %>
+              <% end %>      
+            <%= button_tag(type: 'submit', class: "btn btn-large btn-danger", status: "denied") do %>
+              <i class="fa fa-times"></i><%= "#{@neg}" %>
+              <% end %>
+        <% elsif @borrow.status == Borrow.borrowed %>
+            <%= button_tag(type: 'submit', class: "btn btn-large btn-success", status: "borrowed") do %>
+              <i class="fa fa-thumbs-o-up"></i><%= "#{@ret}" %>
+              <% end %>      
+        <% else %>
+        <% flash.alert = "I did not expect to get to borrow edit with status #{@borrow.status}"%>
+        <% end %>
+      <% end %>
+      
+    </div>
+    <br />
+    
+  </div><!-- /.container --> 
+</div> 

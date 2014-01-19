@@ -1,20 +1,41 @@
-<h1>Can I Haz???</h1>
+<!-- Format should be same at show.html.erb and edit.hmtl.erb -->
 
-<%= form_for(@borrow) do |f| %>
+<div id="contact" class="section">
+  <div class="fixed-wrapper"><h1>Request to Borrow</h1></div>
+  <div class="container">
+    
+    <div class="content">
 
-  <% if @borrow.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@borrow.errors.count, "error") %> prohibited this borrow from being saved:</h2>
+      <%= form_for(@borrow) do |f| %>
 
-      <ul>
-      <% @borrow.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
+      <% if @borrow.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@borrow.errors.count, "error") %> prohibited this borrow from being saved:</h2>
+
+          <ul>
+          <% @borrow.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+          </ul>
+        </div>
       <% end %>
-      </ul>
+      <%= f.hidden_field :status %>
+      <%= f.hidden_field :resource_id, :value => @borrow.resource_id %>
+      <div class="form-group text-area">
+        <%= text_area_tag :msg, nil, class:"form-control", placeholder:"Please provide Owner details of project..." %>  
+        <%= f.label "Message:" do %>
+          <i class="icon-pencil"></i>
+        <% end %>
+      </div>
+      <div class="clearfix"></div>
+      <%= f.submit 'Request', class: "btn btn-large btn-success" %>
+      <% end %>
+
+      <%= link_to 'Back', resources_path, class: "btn btn-large btn-warning" %>
+      
     </div>
-  <% end %>
- <%= f.hidden_field :status%>
- <%= f.hidden_field :resource_id, :value => @borrow.resource_id %>
- <%= f.submit 'Request', class: "button success" %>
-<% end %>
-<%= link_to 'Back', resources_path %>
+    <br />
+    
+  </div><!-- /.container --> 
+</div>  
+

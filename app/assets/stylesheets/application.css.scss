@@ -9,8 +9,15 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
- *= require foundation_and_overrides
-
+ *= require bootstrap
+ *= require font-awesome/font-awesome
+ *= require 'masonry/basic'
+ *= require 'masonry/centered'
+ *= require 'masonry/fluid'
+ *= require 'masonry/gutters'
+ *= require 'masonry/infinitescroll'
+ *= require 'masonry/right-to-left'
+ *= require 'masonry/transitions'
  *= require_tree .
  */
  
@@ -42,4 +49,9 @@
       color: white;
     }
   }
+}
+
+
+.nav .navbar-nav  li {
+  text-transform: uppercase;
 }

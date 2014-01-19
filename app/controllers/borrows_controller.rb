@@ -1,7 +1,8 @@
 class BorrowsController < ApplicationController
   before_action :set_borrow, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
-
+  layout "small_page"
+  include BorrowsHelper
   # GET /borrows
   # GET /borrows.json
   def index
@@ -16,7 +17,8 @@ class BorrowsController < ApplicationController
 
   # GET /borrows/new
   def new
-    @resource = Resource.find(params[:resource])
+    @user = current_user
+	  @resource = Resource.find(params[:resource])
     @borrow = @resource.borrows.build  
     if current_user == @resource.user
       redirect_to @resources
@@ -25,6 +27,10 @@ class BorrowsController < ApplicationController
 
   # GET /borrows/1/edit
   def edit
+  	@user = current_user    
+  	@pos = POSITIVE_RESPONSE
+    @neg = NEGATIVE_RESPONSE
+    @ret = BORROW_COMPLETED
   end
 
   # POST /borrows
@@ -33,8 +39,16 @@ class BorrowsController < ApplicationController
     @borrow = Borrow.new(borrow_params)
     @borrow.user = current_user
     @borrow.status = Borrow.pending
+	   msg = params[:msg]
+     resource = params[:resource]
     respond_to do |format|
-      if @borrow.save
+      if @borrow.save 
+   
+        #Action Mailer - Request sent to User that just requested a Resource.
+        Notifier.borrowrequest(@borrow.user,msg).deliver
+        #Action Mailer - Request sent to Owner
+        Notifier.borrowrequesttoowner(@borrow.resource.user,msg,resource).deliver
+
         format.html { redirect_to current_user, notice: 'Borrow was successfully created.' }
         format.json { render action: 'show', status: :created, location: @borrow }
       else
@@ -47,16 +61,18 @@ class BorrowsController < ApplicationController
   # PATCH/PUT /borrows/1
   # PATCH/PUT /borrows/1.json
   def update
-    
-    if params['commit'] == BorrowsHelper.POSITIVE_RESPONSE
+      msg = params[:msg]
+    if params['commit'] == POSITIVE_RESPONSE
       params['borrow']['status'] = Borrow.borrowed
-      #actionmailer send positive email
+      #Action Mailer - Accepted email
+      Notifier.borrowaccept(@borrow.user, msg).deliver
 
-    elsif  params['commit'] == BorrowsHelper.NEGATIVE_RESPONSE
+    elsif  params['commit'] == NEGATIVE_RESPONSE
       params['borrow']['status'] = Borrow.denied
-      #action mailer send out negative email
+      #Action Mailer - Denied email
+      Notifier.borrowdenied(@borrow.user, msg).deliver
 
-    elsif  params['commit'] == BorrowsHelper.BORROW_COMPLETED
+    elsif  params['commit'] == BORROW_COMPLETED
       params['borrow']['status'] = Borrow.returned
       #action mailer send out negative email
 

@@ -10,6 +10,21 @@ class User < ActiveRecord::Base
 
   mount_uploader :picture, ImageUploader
 
+  def as_json(options={})
+    {                 
+      id: self.id,
+      name: self.name,
+      street: self.street,
+      city: self.city,
+      zipcode: self.zipcode,
+      state: self.state,
+      phone_num: self.phone_num,     
+      picture: self.picture.url,
+      email: self.email,
+      distance: options[:distance]
+    }
+  end
+
   #use geocoder to record lat and long
   def request_location
     attrs = ["street", "city", "state", "zipcode"]

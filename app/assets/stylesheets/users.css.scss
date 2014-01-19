@@ -12,8 +12,10 @@
 
 }
 
+
 .white-overlay {
-  background: rgba(255,255,255,.5);
+  background: rgba(255,255,255,.7);
+  padding-bottom: 20px;
 }
 
 /* Error messages overrides */
@@ -41,7 +43,13 @@
   float: left;
 }
 
-.profile-section-4
-{
-clear:both;
+#profileinfo {
+  font-size: 20px;
+  
+
 }
+
+#profileinfo h1 {
+      font-size: 60px;
+    }
+
