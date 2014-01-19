@@ -11,6 +11,7 @@ class ResourcesController < ApplicationController
        @resources = Resource.search(params[:search])
     end
     @user = current_user 
+	@distances = current_user.distances()
   end
 
   # GET /resources/1

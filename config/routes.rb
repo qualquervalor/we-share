@@ -8,7 +8,7 @@ WeShare::Application.routes.draw do
     resources :resources
   end
 
-  resources :borrows
+  resources :borrows, :only => [:show, :new, :edit, :create, :destroy, :update]
 
   root 'static_pages#show'
   # The priority is based upon order of creation: first created -> highest priority.

@@ -1,8 +1,10 @@
 
 <div id="profileinfo" class="section">
-  <div class="fixed-wrapper"><h1><%= @user.name %></h1></div>
-  <div class="container">
+  <div class="fixed-wrapper">
+    <h1><%= @user.name %></h1>
+  </div>
 
+  <div class="container">
     <div class="content">
       <div class="row">
         <div class="profile-section-2">
@@ -15,207 +17,189 @@
             <h1><strong><%= @user.name %></strong></h1>
           </div>
             
-            <div class = "container">
-              <div class = "row">
-                <div class = "col-lg-3"></div>
-                <div class = "col-lg-9">
-                  <div class="address">
-                    <strong>Address:</strong>
-                    <%= @user.street %></h3>
-                  </div>
-                
-                  <div class="address">
-                    <%= @user.city %>, &nbsp <%= @user.state %> &nbsp <%= @user.zipcode %>
-                  </div>
-                  <br>
-                  <div class="address">
-                    <strong>Phone:</strong>
-                    <%= @user.phone_num %>
-                  </div>
-                  <br>
-                  <%= link_to 'Edit', edit_user_registration_path %> |
-                  <%= link_to 'Back', users_path %>
-                </div>
+          <div class = "container">
+            <div class = "row">
+              <div class = "col-lg-3">                
               </div>
-            </div>
-          </div>
-        </div>
-       </div>
-      </div>
-    </div>
-  </div>
-</div><!-- /.container -->
 
+              <div class = "col-lg-9">
+                <div class="address">
+                  <strong>Address:</strong>
+                  <%= @user.street %></h3>
+                </div>
+            
+                <div class="address">
+                  <%= @user.city %>, &nbsp <%= @user.state %> &nbsp <%= @user.zipcode %>
+                </div>
+                <br>
+                <div class="address">
+                  <strong>Phone:</strong>
+                  <%= @user.phone_num %>
+                </div>
+                <br>
+                <%= link_to 'Edit', edit_user_registration_path %> |
+                <%= link_to 'Back', users_path %>
+              </div><!-- /.col-lg-9 -->
+            </div><!-- /.row -->
+          </div><!-- /.container -->
+
+        </div><!-- /.profile-section-2 -->  
+      </div><!-- /.row -->      
+    </div>
+  </div><!-- /.container -->
+</div><!-- /#profileinfo -->
 
 <!-- ========================= -->
+<% if current_user == @user %>
+  <div id="services" class="section">
+    <div class="fixed-wrapper">
+      <a name="requestrec"> </a><h1>Tool Requests Received</h1>
+    </div>
 
-<div id="services" class="section">
-  <div class="fixed-wrapper">
-    <a name="requestrec"> </a><h1>Requests Received</h1>
+    <div class="container">
+      <div class="row">
+        <div class="profile-section-1">
+          <div class = "col-lg-10">
+            <% if @their_requests.length == 0 %>
+              <h3>No one has made any requests to you.</h3>
+            <% else %>
+              <table class="table table-striped table-condensed resource">        
+                <thead>
+                  <th><strong>Tool</strong></th>
+                  <th></th>
+                  <th><strong>Person Requesting</strong></th>
+                  <th><strong>Status</strong></th>
+                </thead>
+                <tbody>          
+                  <% @their_requests.each do |borrow| %>
+                    <tr onclick="location.href='<%= edit_borrow_path(Borrow.find(borrow.id)) %>'"> 
+                      <td><strong><%= borrow.resource.name %></strong></td>
+                      <td><%= image_tag borrow.resource.picture.url(:thumb) %>  </td>
+                      <td><strong><%=borrow.user.name%></strong></td>
+                      <td><span class="label label-warning"> <%= borrow.status %></span></td>
+                    </tr>
+                  <% end %>   
+                </tbody>
+              </table>
+            <% end %>              
+          </div>
+        </div><!-- /.profile-section-1 --> 
+      </div>
+    </div><!-- /.container --> 
   </div>
 
-  <div class="container">
-    <div class="row">
-      <div class="profile-section-1">
-        <div class = "col-lg-10">
-          <table class="table table-striped table-condensed resource">
-           
-            <!-- link to borrows#show page -->
-            <thead>
-              <th><strong>Resource</strong></th>
-              <th></th>
-              <th><strong>Person Requesting</strong></th>
-              <th><strong>Status</strong></th>
-            </thead>
-            <tbody>
-              <% @user.resources.each do |resource| %>
-                <% resource.borrows.each do |borrow| %>
-       
-                <% if borrow.status != Borrow.returned %>
-                  <tr>
-                    <td><%= image_tag borrow.resource.picture.url(:thumb) %>  </td>
-                    <td><strong><%= link_to borrow.resource.name, edit_borrow_path(Borrow.find(borrow.id)) %></strong></td>
-                    <td><strong><%=borrow.user.name%></strong></td>
-                    <td><span class="label label-warning"> <%= borrow.status %></span></td>
-                  </tr>
-                <% end %>
-                <% end %>
-              <% end %>     
-            </tbody>
-          </table>
-              
-        </div>
+  <!-- ================ -->
+  <!-- ************************************************************* -->
 
-      </div> 
-    </div><!-- /.content -->
+  <!-- Services Section -->
+  <div id="services" class="section">
+    <div class="fixed-wrapper">
+      <a name="requestsent"></a><h1>Tool Requests Sent</h1>
+    </div>
+
+    <div class="container">
+      <div class="row">
+        <div class="profile-section-2">
+          <div class = "col-lg-10">
+            <% if @my_requests.length == 0 %>
+              <h3>You have not made any requests.</h3>
+            <% else %>
+              <table class="table table-striped table-condensed resource">
+                <thead>
+                  <th><strong>Tool</strong></th>
+                  <th></th>
+                  <th><strong>Owner</strong></th>
+                  <th><strong>Status</strong></th>
+                </thead>
+                <tbody>
+                  <% @my_requests.each do |borrow| %>               
+                    <tr onclick="location.href='<%= borrow_path(Borrow.find(borrow.id)) %>'"> 
+                      <td><strong><%= borrow.resource.name %></strong></td>
+                      <td><%= image_tag borrow.resource.picture.url(:thumb) %>  </td>
+                      <td><%= borrow.resource.user.name %></td>
+                      <td><span class="label label-warning"> <%= borrow.status %></span></td>
+                    </tr>
+                  <% end %>     
+                </tbody>
+              </table>
+            <% end %>
+          </div>
+        </div> 
+      </div>
+    </div><!-- /.container -->
   </div>
-</div>
-
-<!-- ================ -->
-<!-- ************************************************************* -->
-
+<% end %>
 
 <!-- Services Section -->
 <div id="services" class="section">
   <div class="fixed-wrapper">
-    <a name="requestsent"></a><h1>Requests Sent</h1>
-  </div>
-
-  <div class="container">
-    <div class="row">
-      <div class="profile-section-2">
-        <div class = "col-lg-10">
-          <table class="table table-striped table-condensed resource">
-           
-            <!-- link to borrows#show page -->
-            <thead>
-              <th><strong>Requests Sent</strong></th>
-              <th></th>
-              <th><strong>Owner</strong></th>
-              <th><strong>Status</strong></th>
-            </thead>
-            <tbody>
-            
-            <% @user.borrows.each do |borrow| %>
-            <!-- Check status of borrow before allowing them to link to show page.
-                 If borrow is pending they can goto show. -->
-              <% if borrow.status == Borrow.pending %>
-              
-                <tr>
-                  <td><%= image_tag borrow.resource.picture.url(:thumb) %>  </td>
-                  <td><strong><%= link_to borrow.resource.name, borrow_path(Borrow.find(borrow.id)) %></strong></td>
-                  <td><%= borrow.resource.user.name %></td>
-                  <td><span class="label label-warning"> <%= borrow.status %></span></td>
-                </tr>
-              <% end %>
-            <% end %>     
-            </tbody>
-          </table>
-              
-        </div>
-
-      </div> 
-    </div><!-- /.content -->
-  </div>
-</div>
-
-
-
-
-
-
-<!-- Services Section -->
-<div id="services" class="section">
-  <div class="fixed-wrapper">
-    <a name="resources"></a><h1>My Resources</h1>
+    <% if current_user == @user %>
+      <a name="resources"></a><h1>My Tools</h1>
+    <% else %>
+      <a name="resources"></a><h1><%= @user.name %>'s Tools</h1>
+    <% end %>
   </div>
   <div class="container">
-    
     <div class="content">
       <div class="profile-section-3">      
-      <%= link_to "Add New Items", new_user_resource_path(current_user), class:"btn btn-large btn-success" %>
+        <% if current_user == @user %>
+          <%= link_to "Add New Items", new_user_resource_path(current_user), class:"btn btn-large btn-success" %>
+        <% end %>
         <div class="row">
+          <% if @user_resources.length == 0%>
+            <h3><%= @user%> does not have anything available to borrow.</h3>
+          <% end %>
           <div class="resource-wall">
           </div>
         </div>
+      </div>  
+    </div>
+  </div><!-- /.container -->
+</div>
+
+<% if current_user == @user %>
+  <!-- Services Section -->
+  <div id="services" class="section">
+    <div class="fixed-wrapper">
+      <h1>Borrowed Tools</h1><a name="borrowed"> </a>
+    </div>
+    <div class="container">   
+      <div class="content">
+        <div class="profile-section-4">
+          <!-- If user has not made a borrow, this message will print -->
+          <% if @user.my_borrows.length == 0 %>
+            <h3>You do not currently have anything borrowed.</h3>
+          <% else %>
+            <div class="row">
+              <div class="borrowed-wall"></div>
+            </div>
+          <% end %>
+        </div>
+      </div><!-- /.content -->
+    </div>
+  </div>
+<% end %>
+
+<div id="templates">
+
+  <script class="resource" type="text/template">
+    <div class="col-md-4 col-sm-4 col-xs-12">
+      <div class="team-portrait block">              
+        <div class="portrait">
+          <a href="/resources/{{ id }}">
+            <img class="resource-pic" src={{ picture }} />              
+            <span class="overlay"><span class="valign"></span><i class="icon-search"></i></span>                    
+          </a>
+        </div>
+
+        <div class="title">
+          <div class="name"> {{owner}} {{ name }}</div>         
+        </div>
       </div>
+    </div>
+  </script>
 
-      
-    </div><!-- /.container -->
-  </div>
-</div>
-
-
-<!-- Services Section -->
-<div id="services" class="section">
-  <div class="fixed-wrapper">
-    <h1>Borrowed Resources</h1><a name="borrowed"> </a>
-  </div>
-  <div class="container">
-    
-    <div class="content">
-      <div class="profile-section-4">
-              <!-- This will be ugly, but it should work! -->
-        <!-- If user has not made a borrow, this message will print -->
-        <% if @user.borrowed_resources.length == 0 %>
-          <p>You haven't borrowed anything!</p>
-        <% else %>
-          <div class="row">
-            <div class="borrowed-wall"></div>
-          </div>
-
-        <% end %>
-
-      </div>
-
-      
-    </div><!-- /.content -->
-  </div>
-</div>
-
-  <div id="templates">
-
-   <script class="resource" type="text/template">
-
-     <div class="col-md-4 col-sm-4 col-xs-12">
-       <div class="team-portrait block">              
-
-         <div class="portrait">
-           <a href="/resources/{{ id }}">
-             <img class="resource-pic" src={{ picture }} />              
-             <span class="overlay"><span class="valign"></span><i class="icon-search"></i></span>                    
-           </a>
-         </div>
-         <div class="title">
-           <div class="name"> {{ name }}</div>
-         </div>
-       </div>
-     </div>
-
-   </script>
-
-  </div>
-</div>
+</div><!-- /#templates -->
 
 <% content_for :javascript do %>
   <script type="text/javascript">
@@ -225,11 +209,9 @@
       el: '.resource-wall'
     });
 
-    <% current_user.resources.each do |x| %>
+    <% @user_resources.each do |x| %>
         wall.add(<%= raw x.to_json() %>);
     <% end %>
-
-          
 
     var bwall = new ResourceWall([], { url: '/resources' });
     var bwallView = new ResourceWallView({
@@ -237,14 +219,9 @@
       el: '.borrowed-wall'
     });
 
-    <% current_user.borrowed_resources.each do |res| %>
-      <% res.borrows.each do |x| %>
-      <% if x.status == Borrow.borrowed %>
-        bwall.add(<%= raw res.to_json() %>);
-        <% end %>
-      <% end %>
+    <% @my_borrows.each do |res| %>
+      bwall.add(<%= raw res.to_json({owner: res.user.name+"'s"}) %>);
     <% end %>
-
 
   </script>
 <% end %>

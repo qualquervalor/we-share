@@ -1,4 +1,5 @@
 class Resource < ActiveRecord::Base
+  validates :name, :user, presence: true
   belongs_to :user
   has_many :borrows
   has_many :borrowers, source: :user, through: :borrow
@@ -21,27 +22,23 @@ class Resource < ActiveRecord::Base
       id: self.id,
       name: self.name,
       description: self.description,
-      picture: self.picture.url
+      picture: self.picture.url,
+      owner: options[:owner]
     }
   end
 
-  def get_distance(user1,user2)
-  {
-    distance: sprintf('%.2f',Haversine.distance(user1.latitude,user1.longitude,user2.latitude,user2.longitude).to_miles)
-  }
-  end
 
   def already_associated_with_borrower?( user)
-   # check if there is a borrow between resource and norrower that is not completed
-    flag = false
+   # check if there is a borrow between resource and borrower that is not completed
+    id = false
     user.borrows.each do |borrow|
       if borrow.resource == self
          if borrow.status == Borrow.pending || borrow.status == Borrow.borrowed 
-            flag = true
+            id = borrow.id
           end
       end
     end
-    flag
+    id
   end
 
 end

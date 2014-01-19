@@ -7,28 +7,23 @@
     </button>
     <%= link_to image_tag('the-shed-logo.png'), resources_path, class: "navbar-brand" %>
   </div>
+
   <div class="collapse navbar-collapse">
     <ul class="nav navbar-nav">
       <!-- This hidden one just makes scrollspy reset when going above the team section -->
       <li style="display: none;"><a href="#home"></a></li>
       <% if user_signed_in? %>
-        <%#= image_tag @user.picture.url(:thumb) %>
-        <p><%#= @user.name %></p>
-
         <li><%= fa_link_to 'th', 'ALL RESOURCES', resources_path %></li>
-        <%#= link_to 'MY ACCOUNT', user_path(current_user.id), class: "scroll"  %>
-
         <!-- All On User Show Page -->
-        <li><%= fa_link_to 'user', "MY PROFILE", user_path(@user, anchor:'profile') %></li>
-        <li><%= fa_link_to 'plus-circle', "REQUESTS RECEIVED", user_path(@user, anchor:'requestrec') %></li>
-        <li><%= fa_link_to 'bars', "BORROWED STUFF", user_path(@user, anchor:'borrowed') %></li>
-        <li><%= fa_link_to 'envelope', "REQUESTS MADE", user_path(@user, anchor:'requestsent') %></li>
+        <li><%= fa_link_to 'user', "MY PROFILE", user_path(current_user, anchor:'profile') %></li>
+        <li><%= fa_link_to 'plus-circle', "REQUESTS RECEIVED", user_path(current_user, anchor:'requestrec') %></li>
+        <li><%= fa_link_to 'envelope', "REQUESTS MADE", user_path(current_user, anchor:'requestsent') %></li>
+        <li><%= fa_link_to 'bars', "BORROWED STUFF", user_path(current_user, anchor:'borrowed') %></li>
 
         <li><%= fa_link_to 'pencil-square-o', 'EDIT PROFILE', edit_user_registration_path %></li>
         <li><%= fa_link_to 'users', 'YOUR NEIGHBORS', users_path %></li>
         
         <li><%= fa_link_to 'sign-out', 'SIGN OUT', destroy_user_session_path, method: :delete %></li>
-
       <% else %>
         <li><%= link_to "SIGN UP", new_user_registration_path %></li>
         <li><%= fa_link_to 'sign-in', "SIGN IN", new_user_session_path %></li>
@@ -36,9 +31,9 @@
     </ul>
   </div><!--/.nav-collapse -->
 </div>
+
 <div class="search">
   <i class="icon-search"></i>
-  
   <form id="search" class="form-inline" role="form">
     <div class="form-group">
       <input type="text" class="form-control" id="exampleSearch">

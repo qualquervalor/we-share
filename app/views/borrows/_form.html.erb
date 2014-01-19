@@ -1,54 +1,52 @@
 <%= form_for(@borrow) do |f| %>
-
   <% if @borrow.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@borrow.errors.count, "error") %> prohibited this borrow from being saved:</h2>
-
       <ul>
-      <% @borrow.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
+        <% @borrow.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
       </ul>
     </div>
   <% end %>
 
-<!-- Where do we expect this incoming param[:status] to come from? Should we remove it?-->
+  <!-- Where do we expect this incoming param[:status] to come from? Should we remove it?-->
   <%= f.hidden_field :status, :value => params[:status] %>
-<!-- This resource id needs to be set in the Borrow controller new and should not be needed here-->
+
+  <!-- This resource id needs to be set in the Borrow controller new and should not be needed here-->
   <%= f.hidden_field :resource_id, :value => @borrow.resource_id %>
 
-<!-- This whole class could seriously use some test.
-Use case for this form 1. Borrow New 2. Borrow Edit
-Case 1: New. Only asseccisble to non-owner, 
-        new borrow passed in @borrow = resource.borrow.build
-        resource assesible on the borrow
-Case 2: Edit
-      A. current_user = borrower, status is pending
-        -Can Delete the request, email sent to owner
-        -See Status is still pending
-        *-Send additional email to owner?
-        -Go Back
-      B. current_user = owner
-        1. Status is pending 
-         -Update status to borrowed/denied, email sent to requester  
-        2. Status is borrowed
-          -Mark status as Returned       
- -->
+  <!-- This whole class could seriously use some test.
+  Use case for this form 1. Borrow New 2. Borrow Edit
+  Case 1: New. Only asseccisble to non-owner, 
+          new borrow passed in @borrow = resource.borrow.build
+          resource assesible on the borrow
+  Case 2: Edit
+        A. current_user = borrower, status is pending
+          -Can Delete the request, email sent to owner
+          -See Status is still pending
+          *-Send additional email to owner?
+          -Go Back
+        B. current_user = owner
+          1. Status is pending 
+           -Update status to borrowed/denied, email sent to requester  
+          2. Status is borrowed
+            -Mark status as Returned       
+   -->
   <% if @borrow.status == 'available' %>
-      <%= f.submit 'Request', class: "btn btn-large success" %>
+    <%= f.submit 'Request', class: "btn btn-large success" %>
   <% elsif @borrow.status == Borrow.pending %>
-      <%= button_tag(type: 'submit', class: "btn btn-large btn-success", status: "borrowed") do %>
-        <i class="fa fa-thumbs-o-up"></i>I Say YES
-        <% end %>
-      <%= button_tag(type: 'submit', class: "btn btn-large btn-danger", status: "denied") do %>
-        <i class="fa fa-times"></i>I say NO
-        <% end %>
-    <% else %>  
-      <%= button_tag(type: 'submit', class: "btn btn-large") do %>
-        <i class="fa fa-camera-retro"></i>Request
-      <% end %>
+    <%= button_tag(type: 'submit', class: "btn btn-large btn-success", status: "borrowed") do %>
+      <i class="fa fa-thumbs-o-up"></i>I Say YES
     <% end %>
-
+    <%= button_tag(type: 'submit', class: "btn btn-large btn-danger", status: "denied") do %>
+      <i class="fa fa-times"></i>I say NO
+    <% end %>
+  <% else %>  
+    <%= button_tag(type: 'submit', class: "btn btn-large") do %>
+      <i class="fa fa-camera-retro"></i>Request
+    <% end %>
+  <% end %>
 
 <!--   <form role="form">
     <div class="form-group">
@@ -70,5 +68,4 @@ Case 2: Edit
     <button type="submit" class="btn btn-large">Send Message</button>
   </form> -->
   
- 
 <% end %>

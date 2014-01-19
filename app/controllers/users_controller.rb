@@ -10,13 +10,17 @@ class UsersController < ApplicationController
       @users = User.search(params[:search])
     end
     @user = current_user
+    @distances = current_user.distances()
   end
 
 
   # GET /users/1
   # GET /users/1.json
   def show
-    @resources = Resource.all
+    @user_resources = @user.resources
+    @their_requests = @user.their_requests
+    @my_requests = @user.my_pending_requests
+    @my_borrows = @user.my_borrows
   end
 
   # GET /users/new

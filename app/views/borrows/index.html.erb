@@ -13,6 +13,8 @@
   <tbody>
     <% @borrows.each do |borrow| %>
       <tr>
+        <td><%= borrow.user_id %></td>
+        <td><%= borrow.resource_id %></td>
         <td><%= borrow.status %></td>
         <td><%= link_to 'Show', borrow %></td>
         <td><%= link_to 'Edit', edit_borrow_path(borrow) %></td>

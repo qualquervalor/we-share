@@ -34,20 +34,73 @@ class User < ActiveRecord::Base
     }
   end
 
-  def get_distance(user2)
-  {
-    distance: sprintf('%.2f',Haversine.distance(self.latitude,self.longitude,user2.latitude,user2.longitude).to_miles)
-  }
-  end
-
   #use geocoder to record lat and long
-  def request_location()
+  def request_location
     attrs = ["street", "city", "state", "zipcode"]
     if (self.changed & attrs).any?
       address = self.street+","+self.city+","+self.state+" "+self.zipcode
       obj = Geocoder.search(address)
-      self.latitude = obj[0].latitude
-      self.longitude = obj[0].longitude
+      if obj.length > 0
+        self.latitude = obj[0].latitude
+        self.longitude = obj[0].longitude
+      end
     end
   end
+
+  def distances()
+    user_distances = {}
+    lat1 = self.latitude
+    long1 = self.longitude
+    users = User.all
+    users.each do |user| 
+      lat2 = user.latitude
+      long2 = user.longitude
+      value = Haversine.distance(lat1,long1,lat2,long2).to_miles
+      miles = sprintf('%.2f', value)
+      user_distances[user.id] = miles
+    end
+    user_distances
+  end
+
+#    <%= raw @lat_lngs.to_json %>
+
+#   def show
+#     @destinations = @user.destinations
+#     @lat_lngs = @destinations.map {|d| d.lat_lng}
+#   end
+
+ def their_requests
+  requests = []
+  self.resources.each do |resource| 
+    resource.borrows.each do |borrow|
+      if borrow.status != Borrow.returned
+        requests << borrow
+      end
+    end
+  end
+  requests
+ end 
+
+ def my_pending_requests
+  requests = []
+  self.borrows.each do |borrow| 
+    if borrow.status == Borrow.pending 
+      requests << borrow
+    end
+  end
+  requests
+ end
+
+ def my_borrows
+  requests = []
+  self.borrowed_resources.each do |res| 
+    res.borrows.each do |borrow| 
+      if borrow.status == Borrow.borrowed 
+        requests << res
+      end
+    end
+  end
+  requests
+ end
+
 end

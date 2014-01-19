@@ -53,17 +53,6 @@ gem 'devise'
 # Use Bootstrap 3
 
 
-group :development do
-  # Use Hirb for database views in console
-  gem 'hirb'
-
-  # Use Better-Errors to better see the errors
-  gem 'better_errors'
-
-  # Use Binding_of_caller to support console in browser
-  gem 'binding_of_caller'
-end
-
 # Use Carrier wave to upload jpg files
 gem 'carrierwave'
 
@@ -84,3 +73,26 @@ gem 'haversine'
 
 gem 'masonry-rails'
 gem "respond-rails", "~> 1.0"
+
+group :development do
+  # Use Hirb for database views in console
+  gem 'hirb'
+
+  # Use Better-Errors to better see the errors
+  gem 'better_errors'
+
+  # Use Binding_of_caller to support console in browser
+  gem 'binding_of_caller'
+end
+
+group :development, :test do
+  gem 'pry-plus'
+  gem 'pry-rails'
+end
+
+group :test do
+  gem "rspec-rails"
+  #gem 'vcr'
+  #gem 'factory_girl'
+  gem 'database_cleaner'
+end

@@ -1,7 +1,9 @@
-
 <!-- Resource Index Section -->
 <div id="team" class="section">
-  <div class="fixed-wrapper"><h1>Resource Listing</h1></div>
+  <div class="fixed-wrapper">
+    <h1>Resource Listing</h1>
+  </div>
+
   <div class="container">
     <%= render "shared/error_messages" %>
     <div class="content">
@@ -9,43 +11,45 @@
         <%= form_tag resources_path, :method => 'get' do %>
           <%= text_field_tag :search, params[:search] %>
           <%= submit_tag "Search Resources  ", :name => nil %>
-            <% if params[:search].present? %>
-              <% @resources %>
-                <%= link_to "Clear Results", resources_path %>
-            <% end %>
+          <% if params[:search].present? %>
+          	<% @resources %>
+            <%= link_to "Clear Results", resources_path %>
+          <% end %>
         <% end %>
 
-        <div class="resource-wall"></div>
+        <div class="resource-wall">
+		</div>
 
       </div>          
     </div>
   </div>
 </div><!-- /.container -->
 
- <div id="templates">
+<div id="templates">
 
-    <script class="resource" type="text/template">
+  <script class="resource" type="text/template">
+    <div class="col-md-4 col-sm-4 col-xs-12">
+      <div class="team-portrait block">              
+        <div class="portrait">
+          <a href="/resources/{{ id }}">
+            <img class="resource-pic" src={{ picture }} />              
+            <span class="overlay"><span class="valign"></span><i class="icon-search"></i></span>                    
+          </a>
+        </div>
 
-      <div class="col-md-4 col-sm-4 col-xs-12">
-        <div class="team-portrait block">              
-
-          <div class="portrait">
-            <a href="/resources/{{ id }}">
-              <img class="resource-pic" src={{ picture }} />              
-              <span class="overlay"><span class="valign"></span><i class="icon-search"></i></span>                    
-            </a>
-          </div>
-          <div class="title">
-            <div class="name"> {{ name }}</div>
-          </div>
-          <div class="distance-away">
-            <b>{{ distance }} miles away</b>
+        <div class="title">
+          <div class="name"> 
+            {{ name }}
           </div>
         </div>
+        <div class="distance-away">
+          <b>{{ distance }} miles away</b>
+        </div>
       </div>
-
-    </script>
-  </div>
+    </div>
+  </script>
+  
+</div>
 
 <% content_for :javascript do %>
   <script type="text/javascript">
@@ -59,10 +63,8 @@
       el: '.resource-wall'
     });
 
-<% @resources.each do |x| %>
- 
-  <% miles = x.get_distance(User.find(x.user_id), current_user)[:distance] %>
-    wall.add(<%= raw x.to_json({distance: miles}) %>);
-<% end %>
+    <% @resources.each do |x| %>
+      wall.add(<%= raw x.to_json({distance: @distances[x.user.id]}) %>);
+    <% end %>
   </script>
 <% end %>
