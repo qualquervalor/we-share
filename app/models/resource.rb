@@ -20,15 +20,15 @@ class Resource < ActiveRecord::Base
 
   def already_associated_with_borrower?( user)
    # check if there is a borrow between resource and borrower that is not completed
-    flag = false
+    id = false
     user.borrows.each do |borrow|
       if borrow.resource == self
          if borrow.status == Borrow.pending || borrow.status == Borrow.borrowed 
-            flag = true
+            id = borrow.id
           end
       end
     end
-    flag
+    id
   end
 
 end

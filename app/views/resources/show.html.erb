@@ -29,8 +29,9 @@
     <% if current_user == @resource.user %>
         <%= link_to 'Edit', edit_user_resource_path(:user_id => current_user.id), class:"btn btn-large btn-danger" %>
     <% else %>
-      <% if @resource.already_associated_with_borrower?( current_user) %>
-          <%= link_to 'Check Status', edit_borrow_path(resource: @resource.id), class:"btn btn-large btn-warning" %>
+      <% borrow_id = @resource.already_associated_with_borrower?( current_user) %>
+      <% if borrow_id %>
+          <%= link_to 'Check Status', "/borrows/"+borrow_id.to_s+"/edit?resource="+ @resource.id.to_s, class:"btn btn-large btn-warning" %>
       <% else %>
           <%= link_to 'Request to borrow!', new_borrow_path(resource: @resource.id), class:"btn btn-large btn-success" %>
       <% end %>
