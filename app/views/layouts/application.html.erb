@@ -8,25 +8,23 @@
 
     <title>THE SHED</title>
 
-
     <%= stylesheet_link_tag "application" %>
     <%= respond_include_tags %>
 
     <%= csrf_meta_tags %>
+
   </head>
        
   <body>
     <%= render "layouts/header" %>
     <%= yield %>
     
-    
-    
     <div id="footer" class="section">
       <p>Made by The Shed</p>     
     </div>
 
     <%= javascript_include_tag "application" %>
-    <%= yield :javascript %>
+    <%= yield :javascript %>    
 
   </body>
 </html>
