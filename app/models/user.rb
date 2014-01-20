@@ -29,8 +29,7 @@ class User < ActiveRecord::Base
       state: self.state,
       phone_num: self.phone_num,     
       picture: self.picture.url,
-      email: self.email,
-      distance: options[:distance]
+      email: self.email  
     }
   end
 

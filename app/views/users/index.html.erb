@@ -28,7 +28,7 @@
                 <% end %>
 
                 <div class="user-wall">
-				</div>
+				        </div>
 
               </div>          
             </div>
@@ -66,15 +66,15 @@
 
 <% content_for :javascript do %>
   <script type="text/javascript">
+    var userDistances = <%= raw @jason %>;
     var wall = new UserWall([], { url: '/users' });   
     var wallView = new UserWallView({
       collection: wall,
       el: '.user-wall'
     });
-    <% @users.each do |x| %> 
-      <% if x[0] != current_user %> 
-        wall.add(<%= raw x[0].to_json({distance: x[1]}) %>);
-      <% end %>
-    <% end %>
+
+     for (var i=0; i < userDistances.length; i++) {
+       wall.add( userDistances[i]);
+     }
   </script>
 <% end %>

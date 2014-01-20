@@ -14,6 +14,14 @@ class ResourcesController < ApplicationController
 
     pair = current_user.sort_resources_and_distance(@resources)
     @resources = pair[0]
+
+    resource_array =[]
+    @resources.each do |resource_distance_pair|
+      if resource_distance_pair[0].user != current_user 
+        resource_array <<  resource_distance_pair[0].as_json.merge({distance: resource_distance_pair[1]}) 
+      end 
+    end 
+   @jason = resource_array.to_json
   end
 
   # GET /resources/1

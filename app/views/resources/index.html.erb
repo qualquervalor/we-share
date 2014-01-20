@@ -63,10 +63,11 @@
       el: '.resource-wall'
     });
 
-    <% @resources.each do |x| %>
-      <% if current_user != x[0].user %>
-        wall.add(<%= raw x[0].to_json({distance: x[1]}) %>);
-      <% end %>
-    <% end %>
+    var resourceDistances = <%= raw @jason %>;
+
+     for (var i=0; i < resourceDistances.length; i++) {
+       wall.add( resourceDistances[i]);
+     }
+
   </script>
 <% end %>

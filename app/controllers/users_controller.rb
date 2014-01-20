@@ -12,6 +12,15 @@ class UsersController < ApplicationController
     @user = current_user
     pair = current_user.sort_users_and_distance(@users)
     @users = pair[0]
+    
+    user_array =[]
+    @users.each do |user_distance_pair|
+      if user_distance_pair[0] != current_user 
+        user_array <<  user_distance_pair[0].as_json.merge({distance: user_distance_pair[1]}) 
+      end 
+    end 
+   @jason = user_array.to_json
+
   end
 
 
