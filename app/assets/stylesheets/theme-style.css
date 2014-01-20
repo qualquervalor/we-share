@@ -306,6 +306,8 @@ span.valign {
   -moz-border-radius: 4px;
   border-radius: 4px; 
   box-shadow: 0 2px 2px 0  rgba(0,0,0,.07);
+  /* put in to keep resources show from getting wonky, should be reviewed */
+  min-width: 344px;
 }
 
 /* Colors */
@@ -1460,13 +1462,11 @@ label {
   }
 
   .expanded {
-    width: 200px;
     height: auto;
     float:left;
   }
 
   .resc-exp-desc {
-    float:left;
     clear: none;
   }
 
