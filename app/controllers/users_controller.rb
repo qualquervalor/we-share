@@ -11,6 +11,7 @@ class UsersController < ApplicationController
     end
     @user = current_user
     @distances = current_user.distances()
+    @users = User.page(params[:page]).per_page(3)
   end
 
 

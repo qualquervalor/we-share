@@ -17,15 +17,21 @@
           <div class="container">   
             <div class="content">
               <div class="row">
-
-                <%= form_tag users_path, :method => 'get' do %>
-                  <%= text_field_tag :search, params[:search] %>
-                  <%= submit_tag "Search Users  ", :name => nil %>
-                  <% if params[:search].present? %>
-                    <% @users %>
-                    <%= link_to "Clear Results", users_path %>
+                <div class = "col-lg-7 col-md-2 col-sm-2 col-xs-6">
+                  <%= form_tag users_path, :method => 'get' do %>
+                    <%= text_field_tag :search, params[:search] %>
+                    <%= submit_tag "Search Users  ", :name => nil %>
+                    <% if params[:search].present? %>
+                      <% @users %>
+                      <%= link_to "Clear Results", users_path %>
+                    <% end %>
                   <% end %>
-                <% end %>
+                </div>
+                <div class = "col-lg-3 col-md-2 col-sm-2 col-xs-6">
+                  <div class = "pagination">
+                    <%= will_paginate @users, previous_label: h("<"), next_label: h(">")%>
+                  </div>
+                </div>
 
                 <div class="user-wall">
 				</div>

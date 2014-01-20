@@ -96,3 +96,5 @@ group :test do
   #gem 'factory_girl'
   gem 'database_cleaner'
 end
+
+gem 'will_paginate', '> 3.0'

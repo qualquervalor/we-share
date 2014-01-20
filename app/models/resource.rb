@@ -6,6 +6,7 @@ class Resource < ActiveRecord::Base
 
   mount_uploader :picture, ImageUploader
 
+  self.per_page = 6
 
   def self.search(search)
     if search

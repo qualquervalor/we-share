@@ -55,3 +55,47 @@
 .nav .navbar-nav  li {
   text-transform: uppercase;
 }
+
+.pagination {
+  cursor: default;
+  height: 30px;
+  a, span, em {
+    padding: 0.2em 0.5em;
+    display: block;
+    float: left;
+    margin-right: 1px;
+  }
+  .disabled {
+    color: #999999;
+    border: 1px solid #dddddd;
+  }
+  .current {
+    font-style: normal;
+    font-weight: bold;
+    background: #d36b44;
+    color: white;
+    border: 1px solid #d36b44;
+  }
+  a {
+    text-decoration: none;
+    color: #105cb6;
+    border: 1px solid #d36b44;
+    &:hover, &:focus {
+      color: #000033;
+      border-color: #000033;
+    }
+  }
+  .page_info {
+    background: #d36b44;
+    color: white;
+    padding: 0.4em 0.6em;
+    width: 22em;
+    margin-bottom: 0.3em;
+    text-align: center;
+    b {
+      color: #000033;
+      background: #d36b44 + 60;
+      padding: 0.1em 0.25em;
+    }
+  }
+}

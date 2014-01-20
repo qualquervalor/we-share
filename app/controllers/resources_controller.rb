@@ -11,7 +11,8 @@ class ResourcesController < ApplicationController
        @resources = Resource.search(params[:search])
     end
     @user = current_user 
-	@distances = current_user.distances()
+	  @distances = current_user.distances()
+    @resources = Resource.paginate(:page => params[:page], :per_page => 6)
   end
 
   # GET /resources/1
