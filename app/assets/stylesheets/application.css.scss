@@ -18,7 +18,11 @@
  *= require 'masonry/infinitescroll'
  *= require 'masonry/right-to-left'
  *= require 'masonry/transitions'
- *= require_tree .
+ *= require borrows
+ *= require resources
+ *= require scaffolds
+ *= require theme-style
+ *= require users
  */
  
 #background {
