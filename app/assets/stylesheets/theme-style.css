@@ -291,7 +291,7 @@ span.valign {
 
 /* Container */ 
 .container {
-  max-width: 1050px;
+  /*max-width: 1050px;*/
   padding: 30px;
   margin: 20px 0;
 }
