@@ -97,65 +97,56 @@ Resource.destroy_all
 
 puts "added dummy data for resource"
 
-tilecutter = File.open("public/assets/tilecutter-0c61b39b213945eba1d1a41145004c69.jpg")
-ladder = File.open("public/assets/ladder-710be23aa20198e47f4f9788f5176d33.jpg")
-router = File.open("public/assets/router-ff5a8b1206d32dc7abfd24f0eb557930.jpg")
-tablesaw = File.open("public/assets/tablesaw-37192e882d5449ec6da6468a61eac5b6.jpg")
-routertable = File.open("public/assets/router2-0a295afbc21223617ad777f750162555.jpg")
-jumper = File.open("public/assets/jumper-81ea66dd8fb51c55e49b20a628f5c7f7.jpg")
-snowblower = File.open("public/assets/snowblower-97fb553dc1d771e8a261b483791af089.jpg")
-
-
-
-
-
-
-
-
-
+tilecutter = File.open("public/assets/Tile-cutter2.jpg")
+ladder = File.open("public/assets/sixfootstepladder.jpg")
+router = File.open("public/assets/Router1.jpg")
+tablesaw = File.open("public/assets/tablesaw.jpg")
+routertable = File.open("public/assets/Router2.jpg")
+jumper = File.open("public/assets/jumper.jpg")
+snowblower = File.open("public/assets/snowblower.jpg")
 
 
 resources = [
        
           {
             name: "Tile Cutter",
-            description: "Old but tough. Can cut any size tiles. New blades",
+            description: "Can cut any size tiles. New blades",
             user_id: user1,
             picture: tilecutter
           },
            {
             name: "Ladder",
-            description: "20-foot ladder.  Bit dirty, but it does the job!",
+            description: "13-foot ladder.  Bit dirty, but it does the job!",
             user_id: user1,
             picture: ladder
           },
           {
-            name: "Router",
-            description: "Milwaukee 3-1/2 Max HP Fixed-Base Production ",
+            name: "Older Black & Decker & Router",
+            description: "Production ",
             user_id: user2,
             picture: router
           },
           {
             name: "Table Saw",
-            description: "DEWALT 10 in. Jobsite Table Saw with Rolling Stand",
+            description: "Craftsman Table Saw with Rolling Stand",
             user_id: user3,
             picture: tablesaw
           },
           {
-            name: "Router Table",
-            description: "Kreg Precision Router Table System",
+            name: "Router",
+            description: "My grandfathes router. Works everytime!",
             user_id: user4,
             picture: routertable
           },
           {
             name: "Jumper",
-            description: "Tasco Pro 2200-Amp Jump Start Power Pack and Air Compressor",
+            description: "EverStart 300-Amp Jumper for Car",
             user_id: user1,
             picture: jumper
           },
           {
             name: "Snow Blower",
-            description: "Sno-Tek 24 in. Two-Stage Electric Start Gas Snow Blower",
+            description: "Craftsman 24 in. Two-Stage Electric Start Gas Snow Blower",
             user_id: user2,
             picture: snowblower
           }

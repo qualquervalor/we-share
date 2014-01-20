@@ -4,6 +4,14 @@
  *
  */
  
+.thumbnail {
+  position: static;
+  background-color: transparent;
+  padding: 5px;
+  border: 0px;
+  
+}
+
 html, body {
   font-family: 'Montserrat', Arial, Helvetica, sans-serif;
   background-color: #eee;
@@ -14,7 +22,7 @@ html { background-color: #66362f;} /*brown  tan wood color=eb8735 ;greyish #6556
 body {
   color: #d36b44;   /*redish wood color    orginal purpleish #3e4258*/
   margin-left: 250px;
-  background: url('../assets/retina_wood.png') repeat;
+  background: url('../assets/purty_wood.png') repeat;
 }
 body.landing{
   color: #3e4258;

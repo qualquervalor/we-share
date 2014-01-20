@@ -30,7 +30,7 @@ class UsersController < ApplicationController
     @user_resources = @user.resources
     @their_requests = @user.their_requests
     @my_requests = @user.my_pending_requests
-    @my_borrows = @user.my_borrows
+    @my_borrows = @user.my_borrows              
   end
 
   # GET /users/new
@@ -40,6 +40,7 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
+
   end
 
   # POST /users
@@ -90,6 +91,6 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:name, :street, :city, :zipcode, :state, :phone_num, :picture)
+      params.require(:user).permit(:name, :street, :city, :zipcode, :state, :phone_num, :picture, :picture_cache)
     end
 end

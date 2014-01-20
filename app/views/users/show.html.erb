@@ -10,7 +10,12 @@
         <div class="profile-section-2">
           
           <div class = "col-lg-3">
-            <%= image_tag @user.picture.url(:medium) , :class => "profile-img" %>
+            <a name="profile"> 
+              <% if @user.picture? %>
+                <%= image_tag @user.picture.url(:medium) , :class => "profile-img" %></a>
+              <% else %>
+                <%= image_tag "genericmed.jpg", :class => "profile-img"%>
+              <% end %>
           </div>
           
           <div class = "col-lg-9">
@@ -147,7 +152,7 @@
         <% end %>
         <div class="row">
           <% if @user_resources.length == 0%>
-            <h3><%= @user%> does not have anything available to borrow.</h3>
+            <h3><%= @user.name %> does not have anything available to borrow.</h3>
           <% end %>
           <div class="resource-wall">
           </div>
