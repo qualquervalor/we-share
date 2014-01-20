@@ -1,5 +1,11 @@
 <!-- Maybe You Can Haz? page -->
 
+<style>
+  * {
+    border: 1px solid red;
+  }
+</style>
+
 <div id="contact" class="section">
   <div class="fixed-wrapper">
     <h1>
@@ -21,7 +27,9 @@
         <div class="row">
           <div class="col-4-md">
             <div class="expanded">
-              <%= image_tag @borrow.resource.picture.url(:medium), class:"expanded pull left" %>
+              <div class="imgLiquid imgLiquidFill" style="width:300px; height: 300px;">
+                <%= image_tag @borrow.resource.picture.url(:medium), class:"expanded pull left" %>
+              </div>
             </div>
           </div>
           <div class="col-6-md">
@@ -97,3 +105,15 @@
     
   </div><!-- /.container --> 
 </div> 
+
+
+<% content_for :javascript do %>
+
+  <script>
+    $(document).ready(function() {
+        $(".imgLiquidFill").imgLiquid({fill:true});
+    });
+
+  </script>
+
+<% end %>
