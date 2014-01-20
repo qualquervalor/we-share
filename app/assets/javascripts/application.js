@@ -14,6 +14,9 @@
 //= require jquery_ujs
 //= require underscore
 //= require backbone
+//= require respond
+//= require bootstrap
+//= require imgLiquid
 
 //= require app/util
 //= require app/models/resource
@@ -26,8 +29,6 @@
 //= require masonry/jquery.masonry
 //= require masonry/jquery.imagesloaded.min
 
-//= require respond
-//= require bootstrap
 
 
 
