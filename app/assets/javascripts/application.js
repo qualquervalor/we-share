@@ -28,6 +28,7 @@
 
 //= require respond
 //= require bootstrap
+//= require init
 
 
 
