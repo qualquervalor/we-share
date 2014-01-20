@@ -1,41 +1,31 @@
 
 <!-- Resource Index Section -->
-<div id="team" class="section">
+<div class="section">
   <div class="fixed-wrapper"><h1>Resource Listing</h1></div>
   <div class="container">
     <%= render "shared/error_messages" %>
     
-    <div class="content">
-      <div class="row">
+    <div id="masonry-container" class="resource-wall transitions-enabled infinite-scroll clearfix">
 
-        <div class="resource-wall"></div>
-
-      </div>          
     </div>
-  </div>
-</div><!-- /.container -->
 
+  </div>
+</div><!-- /.section -->
 
 
  <div id="templates">
 
     <script class="resource" type="text/template">
 
-      <div class="col-md-4 col-sm-4 col-xs-12">
-        <div class="team-portrait block">              
-
-          <div class="portrait">
-            <a href="/resources/{{ id }}">
-              <img class="resource-pic" src={{ picture }} />              
-              <span class="overlay"><span class="valign"></span><i class="icon-search"></i></span>                    
-            </a>
-          </div>
-          <div class="title">
-            <div class="name"> {{ name }}</div>
-          </div>
-          <div class="distance-away">
-            <b>{{ distance }} miles away</b>
-          </div>
+      <div class="polaroid resource-box">
+        <div class="imgContainer imgLiquidFill imgLiquid" style="width:300px; height:300px;">
+          <a href="/resources/{{ id }}" >
+            <img src={{ picture }} />
+          </a>
+        </div>
+        <div class="info">
+          <p class="name"> {{ name }} </p>
+          <p class="distance-away"> {{ distance }} miles away</p>
         </div>
       </div>
 
@@ -54,10 +44,18 @@
       el: '.resource-wall'
     });
 
-<% @resources.each do |x| %>
- 
-  <% miles = x.get_distance(User.find(x.user_id), current_user)[:distance] %>
-    wall.add(<%= raw x.to_json({distance: miles}) %>);
-<% end %>
+    <% @resources.each do |x| %>
+     
+      <% miles = x.get_distance(User.find(x.user_id), current_user)[:distance] %>
+        wall.add(<%= raw x.to_json({distance: miles}) %>);
+    <% end %>
+  </script>
+
+  <script>
+
+    $(document).ready(function() {
+        $(".imgLiquidFill").imgLiquid({fill:true});
+    });
+
   </script>
 <% end %>
