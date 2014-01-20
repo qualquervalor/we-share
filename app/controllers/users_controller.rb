@@ -10,7 +10,8 @@ class UsersController < ApplicationController
       @users = User.search(params[:search])
     end
     @user = current_user
-    @distances = current_user.distances()
+    pair = current_user.sort_users_and_distance(@users)
+    @users = pair[0]
   end
 
 

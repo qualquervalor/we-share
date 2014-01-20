@@ -47,19 +47,48 @@ class User < ActiveRecord::Base
     end
   end
 
-  def distances()
+  def distances(users)
     user_distances = {}
     lat1 = self.latitude
     long1 = self.longitude
-    users = User.all
     users.each do |user| 
       lat2 = user.latitude
       long2 = user.longitude
       value = Haversine.distance(lat1,long1,lat2,long2).to_miles
       miles = sprintf('%.2f', value)
-      user_distances[user.id] = miles
+      user_distances[user] = miles
     end
     user_distances
+  end
+
+  def sort_users_and_distance(users)
+    user_distances = distances(users)
+    pair = []
+    sorted =user_distances.sort_by { |user, miles| miles }
+    pair << sorted
+    pair << user_distances
+  end
+
+  def distances_by_resources(resources)
+    resource_distances = {}
+    lat1 = self.latitude
+    long1 = self.longitude
+    resources.each do |res| 
+      lat2 = res.user.latitude
+      long2 = res.user.longitude
+      value = Haversine.distance(lat1,long1,lat2,long2).to_miles
+      miles = sprintf('%.2f', value)
+      resource_distances[res] = miles
+    end
+    resource_distances
+  end
+
+  def sort_resources_and_distance(resources)
+    resources_distances = distances_by_resources(resources)
+    pair = []
+    sorted =resources_distances.sort_by { |resource, miles| miles }
+    pair << sorted
+    pair << resources_distances
   end
 
 #    <%= raw @lat_lngs.to_json %>
