@@ -21,8 +21,11 @@
   </div>
 
   <div class="form-group skinny">
-    <%= f.file_field :picture %>
+    <%= f.file_field :picture, class:"file" %>
     <%= f.label :picture %><br>
+      <div class="upload-preview">
+          <%= image_tag @resource.picture.url(:medium) %>
+      </div>
   </div>
 
   <div class="actions">

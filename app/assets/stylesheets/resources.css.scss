@@ -76,3 +76,49 @@
     color: white;
   }
 }
+
+#masonry-container {
+  padding: 5px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  clear: both;
+  -webkit-border-radius: 5px;
+     -moz-border-radius: 5px;
+          border-radius: 5px;
+}
+
+.clearfix:before, .clearfix:after { content: ""; display: table; }
+.clearfix:after { clear: both; }
+.clearfix { zoom: 1; }
+
+.polaroid .info {
+  position: absolute;
+  text-align: center;
+  width: 100%;
+  /*bottom: 0px;*/
+  font: 400 18px/1;
+  color: #888;
+  margin-top: 15px;
+}
+
+.polaroid .info .name {
+  font-size: 1.5em;
+}
+
+.polaroid .info .distance-away {
+  font-size: 1.8em;
+}
+
+.resource-box {
+  margin-bottom: 15px;
+  margin-top: 15px;
+  float: left;
+  margin-right:15px;
+  border: 10px solid #fff;
+  border-bottom: 85px solid #fff;
+  -webkit-box-shadow: 3px 3px 3px #777;
+     -moz-box-shadow: 3px 3px 3px #777;
+          box-shadow: 3px 3px 3px #777;
+  max-width: 320px;
+  position: relative;
+}

@@ -1,3 +1,5 @@
+<!-- Maybe You Can Haz? page -->
+
 <div id="contact" class="section">
   <div class="fixed-wrapper">
     <h1>
@@ -14,12 +16,15 @@
   </div>
 
   <div class="container">
+    
     <div class="content">
       <div class="container block">
         <div class="row">
           <div class="col-4-md">
             <div class="expanded">
-              <%= image_tag @borrow.resource.picture.url(:medium), class:"expanded pull left" %>
+              <div class="imgLiquid imgLiquidFill" style="width:300px; height: 300px;">
+                <%= image_tag @borrow.resource.picture.url(:medium), class:"expanded pull left" %>
+              </div>
             </div>
           </div>
           <div class="col-6-md">
@@ -33,12 +38,12 @@
         </div>
       </div>
 
-      <br>
+      <br />
 
       <% if @borrow.status == Borrow.pending %>
-        <h3>What do you think?</h3>
+       <h3>What do you think?</h3>
       <% elsif @borrow.status == Borrow.borrowed %>
-        <h3>Have they given it back?</h3>
+       <h3>Have they given it back?</h3>
       <% end %>
 
       <%= form_for(@borrow) do |f| %>
@@ -66,7 +71,10 @@
           <div class="clearfix">             
           </div>
 
-          <%= button_tag(type: 'submit', name: 'status',value:  "#{@pos}" , class: "btn btn-large btn-success") do %>
+
+        <%= f.hidden_field :status %>
+
+<%= button_tag(type: 'submit', name: 'status',value:  "#{@pos}" , class: "btn btn-large btn-success") do %>
             <i class="fa fa-thumbs-o-up"></i><%= "#{@pos}" %>
           <% end %>      
           <%= button_tag(type: 'submit', name: 'status',value: "#{@neg}" , class: "btn btn-large btn-danger") do %>
@@ -80,9 +88,21 @@
           <% flash.alert = "I did not expect to get to borrow edit with status #{@borrow.status}"%>
         <% end %>
       <% end %>  
+      
     </div>
-
-    <br>
-  
+    <br />
+    
   </div><!-- /.container --> 
 </div> 
+
+
+<% content_for :javascript do %>
+
+  <script>
+    $(document).ready(function() {
+        $(".imgLiquidFill").imgLiquid({fill:true});
+    });
+
+  </script>
+
+<% end %>
