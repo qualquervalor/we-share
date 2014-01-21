@@ -10,6 +10,8 @@ class User < ActiveRecord::Base
 
   mount_uploader :picture, ImageUploader
 
+  paginates_per 4
+
 
   def self.search(search)
     if search
@@ -108,7 +110,7 @@ class User < ActiveRecord::Base
   end
   requests
  end 
-
+ 
  def my_pending_requests
   requests = []
   self.borrows.each do |borrow| 

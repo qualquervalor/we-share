@@ -30,8 +30,12 @@ class UsersController < ApplicationController
     @user_resources = @user.resources
     @their_requests = @user.their_requests
     @my_requests = @user.my_pending_requests
-    @my_borrows = @user.my_borrows              
+    @my_borrows = @user.my_borrows  
+
+    @their_requests = Kaminari.paginate_array(@their_requests).page(params[:page]).per(4)
+    @my_requests = Kaminari.paginate_array(@my_requests).page(params[:page]).per(4)
   end
+    
 
   # GET /users/new
   def new
