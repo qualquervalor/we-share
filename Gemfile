@@ -74,6 +74,8 @@ gem 'haversine'
 gem 'masonry-rails'
 gem "respond-rails", "~> 1.0"
 
+gem 'kaminari'
+
 group :development do
   # Use Hirb for database views in console
   gem 'hirb'
