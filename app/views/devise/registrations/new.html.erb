@@ -61,11 +61,12 @@
   </div>
 </div>
 
-<script src="/assets/jquery.js?body=1"></script>
-<script>
-  $(document).ready(function(){
-    console.log('ready');
-    $('#navbar').hide();
-    $('body').css("margin-left", "0");
-  });
+<% content_for :javascript do %>
+  <script type="text/javascript">
+    $(document).ready(function(){
+      console.log('ready');
+      $('#navbar').hide();
+      $('body').css("margin-left", "0");
+    });
 </script>
+<% end %>
