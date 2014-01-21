@@ -1,7 +1,7 @@
 
 <div id="profileinfo" class="section">
-  <div class="fixed-wrapper">
-    <h1><%= @user.name %></h1>
+  <div class="fixed-wrapper"><h1>
+   </h1>
   </div>
 
   <div class="container">
@@ -10,9 +10,8 @@
         <div class="profile-section-2">
           
           <div class = "col-lg-3">
-            <a name="profile"> 
               <% if @user.picture? %>
-                <%= image_tag @user.picture.url(:medium) , :class => "profile-img" %></a>
+                <%= image_tag @user.picture.url(:medium) , :class => "profile-img" %>
               <% else %>
                 <%= image_tag "genericmed.jpg", :class => "profile-img"%>
               <% end %>
@@ -75,7 +74,8 @@
                   <th><strong>Person Requesting</strong></th>
                   <th><strong>Status</strong></th>
                 </thead>
-                <tbody>          
+                <tbody> 
+                  <%= paginate @their_requests ,:window => 1 %>
                   <% @their_requests.each do |borrow| %>
                     <tr onclick="location.href='<%= edit_borrow_path(Borrow.find(borrow.id)) %>'"> 
                       <td><strong><%= borrow.resource.name %></strong></td>
@@ -117,6 +117,7 @@
                   <th><strong>Status</strong></th>
                 </thead>
                 <tbody>
+                  <%= paginate @my_requests, :window => 1 %>
                   <% @my_requests.each do |borrow| %>               
                     <tr onclick="location.href='<%= borrow_path(Borrow.find(borrow.id)) %>'"> 
                       <td><strong><%= borrow.resource.name %></strong></td>

@@ -2,19 +2,28 @@
 <!-- Resource Index Section -->
 <div class="section">
   <div class="fixed-wrapper">
-	<h1>Resource Listing</h1>
+  <h1>Resource Listing</h1>
+    <div class="col-md-9 col-sm-4 col-xs-12">
+      <div class = "simplesearch">
+        <%= form_tag users_path, :method => 'get' do %>
+            
+          <%= text_field_tag :search, params[:search] %>
+          <%= submit_tag "Search Users  ", :name => nil %>
+            
+          <% if params[:search].present? %>
+            <% @users %>
+            <%= link_to "Clear Results", users_path %>
+          <% end %>
+        <% end %>
+      </div>
+    <div class="col-md-2 col-sm-4 col-xs-12">
+    </div>
   </div>
+</div>
+ 
   <div class="container">
     <%= render "shared/error_messages" %>
-    
-    <%= form_tag resources_path, :method => 'get' do %>
-      <%= text_field_tag :search, params[:search] %>
-      <%= submit_tag "Search Resources  ", :name => nil %>
-      <% if params[:search].present? %>
-      	<% @resources %>
-        <%= link_to "Clear Results", resources_path %>
-      <% end %>
-    <% end %>
+
 
     <div id="masonry-container" class="resource-wall transitions-enabled infinite-scroll clearfix">
 

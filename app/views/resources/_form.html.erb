@@ -19,14 +19,18 @@
     <%= f.text_area :description, class:"form-control" %>
     <%= f.label :description %><br>
   </div>
+  <br>
 
   <div class="form-group skinny">
     <%= f.file_field :picture, class:"file" %>
     <%= f.label :picture %><br>
       <div class="upload-preview">
+        <% if @resource.picture? %>
           <%= image_tag @resource.picture.url(:medium) %>
+        <%end%>
       </div>
   </div>
+
 
   <div class="actions">
     <%= f.submit "Update", class:"btn btn-large btn-success" %>
