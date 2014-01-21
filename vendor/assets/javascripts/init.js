@@ -13,12 +13,12 @@
         interval: 10000
     });
     
-    // Search affix
-    $(".search").affix({
-      offset: {
-        top: $(".section h1").first().offset().top
-      }
-    })
+    // Search affix // Disable this function for now, could be put as page-specific js if wanted, top reference not defined
+    // $(".search").affix({
+    //   offset: {
+    //     top: $(".section h1").first().offset().top
+    //   }
+    // })
 	  
 	  // Blog Masonry
     var $container = $('.masonry-grid');
