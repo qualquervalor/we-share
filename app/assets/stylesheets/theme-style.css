@@ -12,17 +12,22 @@
   
 }
 
+.simplesearch {
+  float: right;
+
+}
+
 html, body {
   font-family: 'Montserrat', Arial, Helvetica, sans-serif;
   background-color: #eee;
 }
 
-html { background-color: #66362f;} /*brown  tan wood color=eb8735 ;greyish #655643 original #252733;*/
+html { background-color: #688B3D;} /* OliveGreen  ,brown = #66362f  tan wood color=eb8735 ;greyish #655643 original #252733;*/
 
 body {
-  color: #d36b44;   /*redish wood color    orginal purpleish #3e4258*/
+  color: #BA522C;   /* #d36b44 redish wood color    orginal purpleish #3e4258*/
   margin-left: 250px;
-  background: url('../assets/purty_wood.png') repeat;
+  background: url('../assets/purty_wood.png');
 }
 body.landing{
   color: #3e4258;
@@ -46,6 +51,7 @@ body.landing{
 }
 .affix-top {
   margin-top: 1px;
+  background: url('../assets/purty_wood.png');
 }
 .affix-bottom {
   position: absolute;
@@ -95,7 +101,7 @@ a:hover, a:focus {
   color: #1d2031;
   text-decoration: none;
 }
-p { color: #9295a7; }
+p { color: #7C7F8E; } /* #9295a7 = grey light text,  #66362f */
 .italic { font-style: italic; }
 
 img.vertical {
@@ -207,7 +213,7 @@ span.valign {
       border-top: 0;
       background-color: #eee;
       padding: 20px;
-      color: #9295a7;
+      color: #7C7F8E;  /* light grey color = #9295a7 */
       line-height: 26px;
     }
   @media (max-width: 992px) {
@@ -593,7 +599,7 @@ label {
         border: 0;
         padding: 0;
         margin: 0;
-        background-color: #444;
+        background-color: #3B5A14;
       }
       .navbar .navbar-header a.active i { color: #f4d432; }
     .navbar .navbar-header span.glyphicon {
@@ -620,10 +626,10 @@ label {
     
     -webkit-transition: .3s;
     transition: .3s;
-    background-color: #d36b44; /*reddish wood #393e5a; */
+    background-color: #3B5A14; /* , d36b44 reddish wood,  #393e5a; */
   }
     .navbar a.navbar-brand:hover {
-      background-color: #66362f;   /*dark red#30344d; */
+      background-color: #3B5A14;   /* Dark Green,  #66362f = old color, dark red#30344d; */
     }
     
     .navbar a.navbar-brand i { 
@@ -678,7 +684,7 @@ label {
     .navbar .navbar-toggle:hover { background-color: transparent; }
     
     .navbar .navbar-toggle span.icon-bar {
-      background-color: #f0f0f0;
+      background-color: #f0f0f0; 
       height: 3px;
       margin: 4px 0;
     }
@@ -698,7 +704,7 @@ label {
 .navbar .navbar-nav { 
   margin: 0;
   width: 100%;
-  background-color: #66362f;
+  background-color: #688B3D;  /* Olive Green,  #66362f */
 }
 
   .navbar .navbar-nav li {
@@ -713,19 +719,19 @@ label {
       letter-spacing: .5px;
       line-height: 60px;
       padding: 0;
-      color: #e8d2b1;
+      color: #fff;  /*#e8d2b1 = creme, Letters */
     
       -webkit-transition: .3s;
       transition: .3s; 
     }
       .navbar .navbar-nav li a:hover {
-        color: #d0bd9f;
+        color: #fff;   /*#d0bd9f = hover letters*/
         background-color: rgba(0,0,0,.2);
       }
       .navbar .navbar-nav li a.active,
       .navbar .navbar-nav li.active a {
         color: #fff;
-        background-color: #191b24;
+        background-color: #AAC588;  /* #191b24 */
       }
 
       .navbar .navbar-nav li a span.arrow-left {
@@ -789,7 +795,7 @@ label {
 
     }
       #navbar .navbar-header {
-        background-color: #d36b44;
+        background-color: #3B5A14; /*Dark Green, older = #d36b44*/
         height: 50px;
       }
       #navbar .navbar-toggle { margin: 12px 30px 0 0; }
@@ -868,14 +874,17 @@ label {
       font-size: 40px;
       padding: 0 30px;
       line-height: 99px;
-      background-color: #fff;
+      background-image: url('../assets/purty_wood.png') ;
+  
       margin: 0;
       box-shadow: 0 -1px 0 0 #fff,/* Bootstrap affix bugfix */
       0 1px 2px 0 rgba(0,0,0,.1); 
     }
     .section .fixed-wrapper h1.affix-top {
       margin-top: 1px;
+      
     }
+
   .section h1, .section h2, .section h3, .section h4, .section h5, .section h6,
   .section .h1, .section .h2, .section .h3, .section .h4, .section .h5, .section .h6 {
     color: #3e4258;
@@ -1435,7 +1444,7 @@ label {
       line-height: 36px;
     }
     #team .title h3 { 
-      color: #9295a7;
+      color: #7C7F8E; /* light grey = #9295a7*/
       margin: 0;
       padding: 0 10px;
       font-size: 14px;

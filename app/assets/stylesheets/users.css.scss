@@ -5,7 +5,7 @@
 /* Styles specific to shed style */
 .shed-bg {
   width: 100%;
-  background: url( asset-path('assets/shed_bg.jpg', image) ) no-repeat;
+  background: url(asset-path('assets/tools2.jpg', image) ) no-repeat;
   min-height: 880px; // to make it full-screen top to bottom on most screens
   background-size: cover; //this resizes the background for any screen size
   padding: 6em 0em; //gives it some breathing room from the top
