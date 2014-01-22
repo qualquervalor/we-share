@@ -50,14 +50,20 @@ class User < ActiveRecord::Base
 
   def distances(users)
     user_distances = {}
-    lat1 = self.latitude
-    long1 = self.longitude
-    users.each do |user| 
-      lat2 = user.latitude
-      long2 = user.longitude
-      value = Haversine.distance(lat1,long1,lat2,long2).to_miles
-      miles = sprintf('%.2f', value)
-      user_distances[user] = miles
+    if (self.latitude && self.longitude) 
+      lat1 = self.latitude
+      long1 = self.longitude
+      users.each do |user| 
+        if (user) 
+          if (user.latitude && user.longitude) 
+            lat2 = user.latitude
+            long2 = user.longitude
+            value = Haversine.distance(lat1,long1,lat2,long2).to_miles
+            miles = sprintf('%.2f', value)
+            user_distances[user] = miles
+          end
+        end
+      end
     end
     user_distances
   end
@@ -72,14 +78,20 @@ class User < ActiveRecord::Base
 
   def distances_by_resources(resources)
     resource_distances = {}
-    lat1 = self.latitude
-    long1 = self.longitude
-    resources.each do |res| 
-      lat2 = res.user.latitude
-      long2 = res.user.longitude
-      value = Haversine.distance(lat1,long1,lat2,long2).to_miles
-      miles = sprintf('%.2f', value)
-      resource_distances[res] = miles
+    if (self.latitude && self.longitude) 
+      lat1 = self.latitude
+      long1 = self.longitude
+      resources.each do |res| 
+        if (res.user)
+          if (res.user.latitude && res.user.longitude) 
+            lat2 = res.user.latitude
+            long2 = res.user.longitude
+            value = Haversine.distance(lat1,long1,lat2,long2).to_miles
+            miles = sprintf('%.2f', value)
+            resource_distances[res] = miles
+          end
+        end
+      end
     end
     resource_distances
   end
