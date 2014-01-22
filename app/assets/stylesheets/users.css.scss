@@ -62,14 +62,21 @@
       font-size: 60px;
     }
 
-
 .sign_in {
   margin-top: -50px;
   padding-top: 50px;
+  padding-bottom: 100px;
 }
 
 .sign-in-button {
   margin: 0 auto;
   width: 9em;
 }
+
+@media all and (max-width: 768px) {
+  .logo-icon img {
+    width:100px;
+  }
+}
+
 

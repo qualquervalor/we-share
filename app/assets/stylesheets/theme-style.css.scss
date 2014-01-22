@@ -3,6 +3,9 @@
  * http://webdesigncrowd.com
  *
  */
+
+ @import url(http://fonts.googleapis.com/css?family=Passion+One);
+ @import url(http://fonts.googleapis.com/css?family=Tauri);
  
 .thumbnail {
   position: static;
@@ -15,6 +18,17 @@
 .simplesearch {
   float: right;
 
+}
+
+.home_title {
+  font-size: 5em;
+  font-family: 'Passion One', cursive;
+  color: #D98719;
+}
+
+.subheader {
+  font-family: 'Tauri', Arial, sans-serif;
+  color: #362819;
 }
 
 html, body {
@@ -82,7 +96,7 @@ ul { margin: 0; padding: 0; }
 ul li { list-style: none; }
 
 h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
-  font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+  font-family: 'Tauri', Arial, Helvetica, sans-serif;
 }
 h1 {
   display: inline-block;
@@ -146,7 +160,7 @@ span.valign {
 .alert {
   position: relative;
   height: 60px;
-  padding: 0;
+  padding: 0 10px;
   background-color: #ddd;
   border: 0;
   
@@ -177,7 +191,7 @@ span.valign {
   .alert.alert-warning { background-color: #ffb236; }
   .alert.alert-error { background-color: #f64646; }
   .alert.alert-info { background-color: #43a7ea; }
-  .alert.alert-success { background-color: #97d040; }
+  .alert.alert-success { background-color: #688b3d; }
   
 /* Collapsible */
 .panel-group {
@@ -625,8 +639,10 @@ label {
   .navbar a.navbar-brand {
     text-align: center;
     color: #fff;
+    font-family: 'Passion One', cursive;
     font-weight: bold;
-    font-size: 30px;
+    font-size: 3.5em;
+    font-stretch: expanded;
     width: 250px;
     height: 100px;
     line-height: 100px;
@@ -887,7 +903,7 @@ label {
   
       margin: 0;
       box-shadow: 0 -1px 0 0 #fff,/* Bootstrap affix bugfix */
-      0 1px 2px 0 rgba(0,0,0,.1); 
+      0 1px 2px 0 rgba(0,0,0,.4); 
     }
     .section .fixed-wrapper h1.affix-top {
       margin-top: 1px;
