@@ -16,12 +16,29 @@ class ResourcesController < ApplicationController
     @resources = pair[0]
 
     resource_array =[]
+    resource_array2 =[]
+
     @resources.each do |resource_distance_pair|
       if resource_distance_pair[0].user != current_user 
-        resource_array <<  resource_distance_pair[0].as_json.merge({distance: resource_distance_pair[1]}) 
+        resource_array <<  resource_distance_pair[0].as_json.merge({distance: resource_distance_pair[1]})
+        resource_array2 << resource_distance_pair[0] 
       end 
     end 
    @jason = resource_array.to_json
+
+   @hash = Gmaps4rails.build_markers(resource_array2) do |resource, marker|
+     marker.lat resource.user.latitude
+     marker.lng resource.user.longitude
+     marker.json({title: render_to_string(:partial => "map_label", :locals => {:mapped_resource => resource})})
+     marker.infowindow render_to_string(:partial => "map_infobox", :locals => {:mapped_resource => resource})
+     # marker.picture({
+     #   "url" => "https://addons.cdn.mozilla.net/img/uploads/addon_icons/13/13028-64.png",
+     #   "width" => 100,
+     #   "height" => 100})
+     # marker.title "popresource.name"
+
+   end
+
   end
 
   # GET /resources/1
@@ -29,7 +46,16 @@ class ResourcesController < ApplicationController
   def show
     @user = current_user
     @borrow = Borrow.new
+
+    @hash = Gmaps4rails.build_markers([@resource.user]) do |user, marker|
+      marker.lat user.latitude
+      marker.lng user.longitude
+      marker.json({title: render_to_string(:partial => "map_label", :locals => {:mapped_resource => @resource})})
+      marker.infowindow render_to_string(:partial => "map_infobox", :locals => {:mapped_resource => @resource})
+    end
   end
+
+
 
   # GET /resources/new
   def new

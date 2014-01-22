@@ -3,16 +3,19 @@
 <div class="section">
   <div class="fixed-wrapper">
   <h1>Resource Listing</h1>
-    <div class="col-md-9 col-sm-4 col-xs-12">
+    <div class="col-md-3 col-sm-2 col-xs-12">
+      <a href="#" onclick="toggle_visibility('map');">Toggle Map</a>
+    </div>
+      <div class="col-md-7 col-sm-4 col-xs-12">
       <div class = "simplesearch">
-        <%= form_tag users_path, :method => 'get' do %>
+        <%= form_tag resources_path, :method => 'get' do %>
             
           <%= text_field_tag :search, params[:search] %>
-          <%= submit_tag "Search Users  ", :name => nil %>
+          <%= submit_tag "Search Tools  ", :name => nil %>
             
           <% if params[:search].present? %>
-            <% @users %>
-            <%= link_to "Clear Results", users_path %>
+            <% @resources %>
+            <%= link_to "Clear Results", resources_path %>
           <% end %>
         <% end %>
       </div>
@@ -21,6 +24,11 @@
   </div>
 </div>
  
+
+  <div id="map" style='margin-left: 20px;width: 95%; height: 400px;'>
+  </div>"
+
+
   <div class="container">
 
     <div id="masonry-container" class="resource-wall transitions-enabled infinite-scroll clearfix">

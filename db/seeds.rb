@@ -106,6 +106,8 @@ jumper = File.open("public/assets/jumper.jpg")
 snowblower = File.open("public/assets/snowblower.jpg")
 
 
+
+
 resources = [
        
           {

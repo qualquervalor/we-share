@@ -36,15 +36,16 @@ html, body {
   background-color: #eee;
 }
 
-html { background-color: #688B3D;} /* OliveGreen  ,brown = #66362f  tan wood color=eb8735 ;greyish #655643 original #252733;*/
+html { background-color: #688B3D;} /* OliveGreen #3B5A14 ,brown = #66362f  tan wood color=eb8735 ;greyish #655643 original #252733;*/
 
 body {
-  color: #BA522C;   /* #d36b44 redish wood color    orginal purpleish #3e4258*/
+
+  color: #3B5A14;   /* #d36b44 redish wood color #BA522C orginal purpleish #3e4258*/
   margin-left: 250px;
   background: asset-data-url("purty_wood.png") repeat;
 }
 body.landing{
-  color: #3e4258;
+  color: #362819;
   margin-left: 0px;
 }
 
@@ -95,6 +96,8 @@ body.landing{
 ul { margin: 0; padding: 0; }
 ul li { list-style: none; }
 
+
+
 h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
   font-family: 'Tauri', Arial, Helvetica, sans-serif;
 }
@@ -116,7 +119,7 @@ hr {
 }
 
 a {
-  color: #3e4258;
+  color: #362819;
   -webkit-transition: color .3s;
   transition: color .3s;
 }
@@ -124,8 +127,12 @@ a:hover, a:focus {
   color: #1d2031;
   text-decoration: none;
 }
-p { color: #7C7F8E; } /* #9295a7 = grey light text,  #66362f */
+p { color: #3B5A14; } /* #7C7F8E  #9295a7 = grey light text,  #66362f */
 .italic { font-style: italic; }
+
+.address p {
+  padding-top: 2px;
+}
 
 img.vertical {
   width: 100%;
@@ -622,9 +629,9 @@ label {
         border: 0;
         padding: 0;
         margin: 0;
-        background-color: #3B5A14;
+        background-color: #3B5A14; /*#688B3D  #3B5A14 #3B5A14 OOOOOOOO*/
       }
-      .navbar .navbar-header a.active i { color: #f4d432; }
+      .navbar .navbar-header a.active i { color: #3B5A14 ; }  /*#f4d432*/
     .navbar .navbar-header span.glyphicon {
       font-size: 40px;
     }
@@ -651,7 +658,7 @@ label {
     
     -webkit-transition: .3s;
     transition: .3s;
-    background-color: #3B5A14; /* , d36b44 reddish wood,  #393e5a; */
+    background-color: #688B3D; /* , d36b44 reddish wood,  #393e5a; 00000000*/
   }
     .navbar a.navbar-brand:hover {
       background-color: #3B5A14;   /* Dark Green,  #66362f = old color, dark red#30344d; */
@@ -820,7 +827,7 @@ label {
 
     }
       #navbar .navbar-header {
-        background-color: #3B5A14; /*Dark Green, older = #d36b44*/
+        background-color: #688B3D; /*Dark Green, older = #d36b44 #3B5A14*/ 
         height: 50px;
       }
       #navbar .navbar-toggle { margin: 12px 30px 0 0; }
@@ -912,7 +919,7 @@ label {
 
   .section h1, .section h2, .section h3, .section h4, .section h5, .section h6,
   .section .h1, .section .h2, .section .h3, .section .h4, .section .h5, .section .h6 {
-    color: #3e4258;
+    color: #362819; /*#3e4258*/
   }    
   
   .section:last-child {
@@ -1056,7 +1063,7 @@ label {
       background-color: #fff;
       box-shadow: 0 1px 2px 0 rgba(0,0,0,.3);
     }
-    .service:hover .icon-wrapper i { color: #3e4258; }
+    .service:hover .icon-wrapper i { color: #362819; } /*3e4258*/
     .service h3 {
       padding: 25px 30px; 
       margin: 0;
@@ -1356,13 +1363,13 @@ label {
   .pricing h3 {
     padding: 30px 10px;
     margin: 0;
-    color: #3e4258;
+    color: #362819; /*3e4258*/
     font-size: 23px;
   }
   .pricing .wrapper th { padding: 0; }
   .pricing span.price {
     display: block;
-    color: #3e4258;
+    color: #362819;
     width: 100%;
     height: 100px;
     line-height: 100px;
@@ -1519,6 +1526,7 @@ label {
 
   .resc-exp-desc div {
     font-size: 1.3em;
+    margin-left: 10px;
   }
 
   .resc-exp-desc div .h4 {
