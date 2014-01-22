@@ -34,18 +34,18 @@
       $(".item").css("opacity", "1");
       
       //H1 Affixes to top
-      $(".section").each(function () {
-	      var header = $(this).children(".fixed-wrapper").first().children("h1").first();
-        var offset = $(this).offset().top;
-        var next = $(this).next();
-        var offsetNext = $(document).height() - next.offset().top;
-        header.affix({
-          offset: {
-            top: offset,
-            bottom: offsetNext
-          }
-        });
-	    });
+     //  $(".section").each(function () {
+	    //   var header = $(this).children(".fixed-wrapper").first().children("h1").first();
+     //    var offset = $(this).offset().top;
+     //    var next = $(this).next();
+     //    var offsetNext = $(document).height() - next.offset().top;
+     //    header.affix({
+     //      offset: {
+     //        top: offset,
+     //        bottom: offsetNext
+     //      }
+     //    });
+	    // });
 	    
 	    $('body').scrollspy({ target: '#navbar' });
 	    
