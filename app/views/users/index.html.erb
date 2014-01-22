@@ -20,56 +20,29 @@
   </div>
           
   <div class="container" style="margin-top: 0">
-    <div class="content">
-      <div class="row">
 
-        <!-- User Index Section -->
-        <div id="team" class="section">
-  
-        <!--   
-          <div class="fixed-wrapper">
-            <h1>User Listing</h1>
-          </div>
-          -->
+    <div id="masonry-container" class="user-wall transitions-enabled infinite-scroll clearfix">
 
-
-           <div class="container">   
-            <div class="content">
-              <div class="row">
-
-                <div class="user-wall">
-				        </div>
-
-              </div>          
-            </div>
-          </div><!-- /.container -->
-        </div>
-      </div>
     </div>
-  </div>
+
 </div>
 
 <div id="templates">
 
   <script class="user" type="text/template">
-    <div class="col-md-4 col-sm-4 col-xs-12">
-      <div class="team-portrait block">   
-        <div class="title">
-          <div class="name"> 
-            <h2>{{ name }}</h2>
-          </div>
-        </div>           
-        <div class="portrait">
-          <a href="/users/{{ id }}">
-            <img class="resource-pic" src={{ picture }} />                                 
-          </a>
-        </div>
 
-        <div class="distance-away">
-          <b>{{ distance }} miles away</b>
-        </div>
+    <div class="polaroid resource-box">
+      <div class="imgContainer imgLiquidFill imgLiquid" style="width:200px; height:200px;">
+        <a href="/users/{{ id }}" >
+          <img src={{ picture }} />
+        </a>
+      </div>
+      <div class="info">
+        <p class="name"> {{ name }} </p>
+        <p class="distance-away"> {{ distance }} miles away</p>
       </div>
     </div>
+
   </script>
 
 </div>
@@ -86,5 +59,9 @@
      for (var i=0; i < userDistances.length; i++) {
        wall.add( userDistances[i]);
      }
+
+     $(document).ready(function() {
+         $(".imgLiquidFill").imgLiquid({fill:true});
+     });
   </script>
 <% end %>
