@@ -1,38 +1,40 @@
-<div class= "col-md-4">
-</div>
-
-<div class= "col-md-4">
-  <h1>Welcome to The Shed!</h1>
-  <div>
-    <h2 class="subheader header">Share your stuffz</h2>
-    <div>
-      <p>Because there's people out there who don't have your stuffz and they want your stuffz. And they'll treat it real nice like. And then they'll give it back.</p>
-      <p>And then you'll feel good inside. And people payin' big money these dayz just to feel good inside.</p>
-      <p>Join <em>The Shed</em> before all your stuffz getz old and no-worky and even you don't want your stuffz. Because then it will be too late to share, and howz you gonna feel all good inside, hmm?</p>
+<style>
+  * {
+    border: 1px solid red;
+  }
+</style>
+<div class="row">
+  <div class= "col-lg-6 col-md-6 col-sm-8 col-xs-10 main col-centered">
+    <div style="width:100%;">
+      <img src="../assets/saw.png">
+      <img src="../assets/tools.png">
+      <img src="../assets/ladder.png">
     </div>
+    <h1 class="centered">THE SHED</h1>
+    <div>
+      <h2 class="subheader header centered">Neighbors helping neighbors<br/>in the 21st century.</h2>
 
-    <div class = "container">
-      <div class="row">
-        <div class= "col-md-1">
+      <div class = "container">
+        <div class="row">
+          <div class= "col-md-2 col-sm-1 col-xs-0">
+          </div>
+
+          <div class= "col-md-3 col-sm-4 col-xs-12">
+            <%= link_to "Sign Up", new_user_registration_path, class: "btn btn-large btn-success"%>
+          </div>
+
+          <div class= "col-md-2 col-sm-2 col-xs-0">           
+          </div>
+
+          <div class= "col-md-3 col-sm-4 col-xs-12">
+            <%= link_to "Sign In", new_user_session_path, class: "btn btn-large btn-success" %>
+          </div>
+
+          <div class= "col-md-2 col-sm-1">
+          </div>     
         </div>
-
-        <div class= "col-md-3">
-          <%= link_to "Sign Up", new_user_registration_path, class: "btn btn-large btn-success"%>
-        </div>
-
-        <div class= "col-md-2">           
-        </div>
-
-        <div class= "col-md-3">
-          <%= link_to "Sign In", new_user_session_path, class: "btn btn-large btn-success" %>
-        </div>
-
-        <div class= "col-md-3">
-        </div>     
       </div>
+
     </div>
   </div>
-</div>
-
-<div class= "col-md-4">
 </div>

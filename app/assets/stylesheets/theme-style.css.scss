@@ -38,6 +38,15 @@ body.landing{
   clear: both;
 }
 
+.col-centered {
+  float:none;
+  margin: 0 auto;
+}
+
+.centered {
+  text-align: center;
+}
+
 /* affix fixed header */
 .affix {
   position: static;
