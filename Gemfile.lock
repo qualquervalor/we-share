@@ -82,6 +82,7 @@ GEM
       ruby-hmac
     formatador (0.2.4)
     geocoder (1.1.9)
+    gmaps4rails (2.1.1)
     haversine (0.3.0)
     hike (1.2.3)
     hirb (0.7.1)
@@ -244,6 +245,7 @@ DEPENDENCIES
   figaro
   fog
   geocoder
+  gmaps4rails
   haversine
   hirb
   jbuilder (~> 1.2)

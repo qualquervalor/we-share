@@ -76,6 +76,8 @@ gem "respond-rails", "~> 1.0"
 
 gem 'kaminari'
 
+gem 'gmaps4rails'
+
 group :development do
   # Use Hirb for database views in console
   gem 'hirb'

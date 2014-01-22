@@ -29,7 +29,20 @@ class ResourcesController < ApplicationController
   def show
     @user = current_user
     @borrow = Borrow.new
+
+    @hash = Gmaps4rails.build_markers([@resource.user]) do |user, marker|
+      marker.lat user.latitude
+      marker.lng user.longitude
+      marker.infowindow "<div style='background: blue'>#{@resource.name}</div>"
+      marker.picture({
+        # "url": "https://addons.cdn.mozilla.net/img/uploads/addon_icons/13/13028-64.png",
+        "url" => @resource.picture.url(:thumb),
+        "width" => 100,
+        "height" => 100})
+    end
   end
+
+
 
   # GET /resources/new
   def new

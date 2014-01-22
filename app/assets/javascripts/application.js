@@ -31,5 +31,7 @@
 
 //= require init
 
+//= require gmaps/google
+
 
 

@@ -23,22 +23,19 @@
             
           <div class = "container">
             <div class = "row">
-              <div class = "col-lg-3">                
+              <div class = "col-lg-5">                
               </div>
 
-              <div class = "col-lg-9">
+              <div class = "col-lg-7">
                 <div class="address">
                   <strong>Address:</strong>
-                  <%= @user.street %></h3>
+                  <p><%= @user.street %> &nbsp 
+                  <%= @user.city %>, <%= @user.state %>  <%= @user.zipcode %></p>
                 </div>
-            
-                <div class="address">
-                  <%= @user.city %>, &nbsp <%= @user.state %> &nbsp <%= @user.zipcode %>
-                </div>
-                <br>
+
                 <div class="address">
                   <strong>Phone:</strong>
-                  <%= @user.phone_num %>
+                  <p><%= @user.phone_num %></p>
                 </div>
                 <br>
                 <%= link_to 'Edit', edit_user_registration_path %> |
