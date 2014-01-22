@@ -3,6 +3,7 @@
   <div class="row">
     <div class="col-lg-3 col-sm-1"></div>
     <div class="col-lg-6 col-sm-10">
+      <h2 class="home_title">the SHED</h2>
       <h2>Sign up</h2>
 
       <%= render "shared/error_messages" %>
@@ -60,13 +61,3 @@
     <div class="col-lg-3 col-sm-1"></div>
   </div>
 </div>
-
-<% content_for :javascript do %>
-  <script type="text/javascript">
-    $(document).ready(function(){
-      console.log('ready');
-      $('#navbar').hide();
-      $('body').css("margin-left", "0");
-    });
-</script>
-<% end %>
