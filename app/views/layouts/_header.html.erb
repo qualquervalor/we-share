@@ -16,7 +16,7 @@
         <li><%= fa_link_to 'th', "ALL #{RESOURCE_NAME_PLURAL.upcase}", resources_path %></li>
         <!-- All On User Show Page -->
         <li><%= fa_link_to 'user', "MY PROFILE", user_path(current_user, anchor:'profile') %></li>
-        <li><%= fa_link_to 'plus-circle', "REQUESTS RECEIVED", user_path(current_user, anchor:'requestrec') %></li>
+        <li><%= fa_link_to 'plus-circle', "REQUESTS RCVD", user_path(current_user, anchor:'requestrec') %></li>
         <li><%= fa_link_to 'envelope', "REQUESTS MADE", user_path(current_user, anchor:'requestsent') %></li>
         <li><%= fa_link_to 'bars', "BORROWED #{RESOURCE_NAME_PLURAL.upcase}", user_path(current_user, anchor:'borrowed') %></li>
 
