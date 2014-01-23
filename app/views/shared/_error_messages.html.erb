@@ -1,17 +1,17 @@
 <% if flash[:error] %>
   <div data-alert class="alert alert-color alert-error">
-    <p><%= flash[:error] %></p>
+    <p><%= flash.now[:error] %></p>
   </div>
 <% end %>
 
 <%if flash[:notice] %>
   <div data-alert class="alert alert-color alert-success">
-    <p><%= flash[:notice] %></p>
+    <p><%= flash.now[:notice] %></p>
   </div>
 <% end %>
 
 <%if flash[:alert] %>
   <div data-alert class="alert alert-color alert-error">
-    <p><%= flash[:alert] %></p>
+    <p><%= flash.now[:alert] %></p>
   </div>
 <% end %>

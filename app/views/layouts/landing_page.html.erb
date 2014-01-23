@@ -12,6 +12,10 @@
 
     <%= yield %>
 
+    <div id="footer" class="section">
+      <p>Made by <%= APP_NAME %></p>     
+    </div>
+
     <%= javascript_include_tag "application" %>
     <%= yield :javascript %>
   </body>

@@ -3,8 +3,8 @@ class RegistrationsController < Devise::RegistrationsController
   def new
       
       build_resource({})
-      render layout: "landing_page"
-      # respond_with self.resource
+      #render layout: "landing_page" 
+       respond_with self.resource
 
   end
 
