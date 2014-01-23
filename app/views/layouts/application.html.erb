@@ -14,7 +14,10 @@
   </head>
        
   <body>
+  
+  <% if current_user %>
     <%= render "layouts/header" %>
+  <% end %>
 
     <%= yield %>
     
