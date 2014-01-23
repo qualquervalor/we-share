@@ -2,10 +2,6 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.resource-nav {
-  
-}
-
 * {
   /*border: 1px solid red;*/
   -webkit-box-sizing: border-box;
@@ -106,7 +102,15 @@
 }
 
 .polaroid .info .distance-away {
+  font-weight: bold;
+  font-style: italic;
+  padding-bottom: 30px;
   font-size: 1.8em;
+  color: #D98719;
+}
+
+.polaroid .info .distance-away.user{
+  font-size: 1.5em;
 }
 
 .resource-box {
