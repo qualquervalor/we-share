@@ -17,6 +17,7 @@
 //= require respond
 //= require bootstrap
 //= require imgLiquid
+//= require owl.carousel
 
 //= require app/util
 //= require app/models/resource
