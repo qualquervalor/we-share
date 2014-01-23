@@ -1,8 +1,8 @@
 Hello <%= @user.name %>,
 
-Someone has requested to borrow one of your resources in The Shed.
+Someone has requested to borrow one of your <%= RESOURCE_NAME_PLURAL.downcase %> in <%= APP_NAME %>.
 Please review the pending request and reply.
 
 Msg: <%= @msg %>
 
-Thank you for using The Shed!
+Thank you for using <%= APP_NAME %>!

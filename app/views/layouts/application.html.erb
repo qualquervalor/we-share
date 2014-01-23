@@ -7,7 +7,7 @@
     <meta name="author" content="">
     
 
-    <title>THE SHED</title>
+    <title><%= APP_NAME %></title>
     <%= stylesheet_link_tag "application" %>
     <%#= respond_include_tags %>
     <%= csrf_meta_tags %>
@@ -19,7 +19,7 @@
     <%= yield %>
     
     <div id="footer" class="section">
-      <p>Made by The Shed</p>     
+      <p>Made by <%= APP_NAME %></p>     
     </div>
 
     <%= javascript_include_tag "application" %>

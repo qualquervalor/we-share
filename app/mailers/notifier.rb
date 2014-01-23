@@ -1,5 +1,5 @@
 class Notifier < ActionMailer::Base
-  default from: "imalooney@gmail.com"
+  default from: "#{APP_ADMIN_EMAIL}"
 
   # Subject can be set in your I18n file at config/locales/en.yml
   # with the following lookup:
@@ -12,7 +12,7 @@ class Notifier < ActionMailer::Base
     @user = user
     @msg = msg
     mail( to: "#{user.name} <#{user.email}>", 
-          subject: "Borrow Request has been sent to the to Owner"
+          subject: "Borrow Request has been sent to the Owner"
           )
   end
 

@@ -38,8 +38,9 @@
                   <p><%= @user.phone_num %></p>
                 </div>
                 <br>
-                <%= link_to 'Edit', edit_user_registration_path %> |
-                <%= link_to 'Back', users_path %>
+                <% if current_user == @user %>
+                  <%= link_to 'Edit', edit_user_registration_path %> 
+                <% end %>
               </div><!-- /.col-lg-9 -->
             </div><!-- /.row -->
           </div><!-- /.container -->
@@ -54,7 +55,7 @@
 <% if current_user == @user %>
   <div id="services" class="section">
     <div class="fixed-wrapper">
-      <a name="requestrec"> </a><h1>Tool Requests Received</h1>
+      <a name="requestrec"> </a><h1><%= RESOURCE_NAME_SINGULAR %> Requests Received</h1>
     </div>
 
     <div class="container">
@@ -66,7 +67,7 @@
             <% else %>
               <table class="table table-striped table-condensed resource">        
                 <thead>
-                  <th><strong>Tool</strong></th>
+                  <th><strong><%= RESOURCE_NAME_SINGULAR %></strong></th>
                   <th></th>
                   <th><strong>Person Requesting</strong></th>
                   <th><strong>Status</strong></th>
@@ -96,7 +97,7 @@
   <!-- Services Section -->
   <div id="services" class="section">
     <div class="fixed-wrapper">
-      <a name="requestsent"></a><h1>Tool Requests Sent</h1>
+      <a name="requestsent"></a><h1><%= RESOURCE_NAME_SINGULAR %> Requests Sent</h1>
     </div>
 
     <div class="container">
@@ -108,7 +109,7 @@
             <% else %>
               <table class="table table-striped table-condensed resource">
                 <thead>
-                  <th><strong>Tool</strong></th>
+                  <th><strong><%= RESOURCE_NAME_SINGULAR %></strong></th>
                   <th></th>
                   <th><strong>Owner</strong></th>
                   <th><strong>Status</strong></th>
@@ -137,20 +138,24 @@
 <div id="services" class="section">
   <div class="fixed-wrapper">
     <% if current_user == @user %>
-      <a name="resources"></a><h1>My Tools</h1>
+      <a name="resources"></a><h1>My <%= RESOURCE_NAME_PLURAL %></h1>
     <% else %>
-      <a name="resources"></a><h1><%= @user.name %>'s Tools</h1>
+      <a name="resources"></a><h1><%= @user.name %>'s <%= RESOURCE_NAME_PLURAL %></h1>
     <% end %>
   </div>
   <div class="container">
     <div class="content">
       <div class="profile-section-3">      
         <% if current_user == @user %>
-          <%= link_to "Add New Items", new_user_resource_path(current_user), class:"btn btn-large btn-success" %>
+          <%= link_to "Add New #{RESOURCE_NAME_PLURAL}", new_user_resource_path(current_user), class:"btn btn-large btn-success" %>
         <% end %>
         <div class="row">
           <% if @user_resources.length == 0%>
-            <h3><%= @user.name %> does not have anything available to borrow.</h3>
+            <% if current_user == @user %>
+              <h3>You have not listed any <%= RESOURCE_NAME_PLURAL %> to share.</h3>
+            <% else %>
+              <h3><%= @user.name %> does not have any <%= RESOURCE_NAME_PLURAL %> available to borrow.</h3>            
+            <% end %>
           <% end %>
           <div class="resource-wall">
           </div>
@@ -164,14 +169,14 @@
   <!-- Services Section -->
   <div id="services" class="section">
     <div class="fixed-wrapper">
-      <h1>Borrowed Tools</h1><a name="borrowed"> </a>
+      <h1>Borrowed <%= RESOURCE_NAME_PLURAL %></h1><a name="borrowed"> </a>
     </div>
     <div class="container">   
       <div class="content">
         <div class="profile-section-4">
           <!-- If user has not made a borrow, this message will print -->
           <% if @user.my_borrows.length == 0 %>
-            <h3>You do not currently have anything borrowed.</h3>
+            <h3>You do not currently have any <%= RESOURCE_NAME_PLURAL.downcase %> borrowed.</h3>
           <% else %>
             <div class="row">
               <div class="borrowed-wall"></div>
