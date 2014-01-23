@@ -1,32 +1,32 @@
+<head>
+  <div class="search affix" style="opacity: 1;">
+    <i class="fa fa-search icon"></i>
+      <%= form_tag users_path, class: "form-inline", :method => 'get' do %> 
+        <div class="form-group">
+          <%= text_field_tag :search, params[:search], class: "form-control" %>
+        </div>         
+      <% end %>
+  </div>
+</head>
+
 <div class="section">
   <div class="fixed-wrapper">
     <h1>The Neighborhood</h1>
   </div>
+          
+  <div class="container index" style="margin-top: 0">
 
-  <div class="col-md-10 col-sm-4 col-xs-12">
-    <div class = "simplesearch">
-      <%= form_tag users_path, :method => 'get' do %>
-        
-        <%= text_field_tag :search, params[:search] %>
-        <%= submit_tag "Search Users  ", :name => nil %>
-        
-        <% if params[:search].present? %>
-          <% @users %>
-          <%= link_to "Clear Results", users_path %>
-        <% end %>
-      <% end %>
+    <% if params[:search].present? %>
+      <% @users %>
+    <div class="search-clear">
+      <%= link_to "Clear Results", users_path %>
+    </div>
+    <% end %>
+
+    <div id="masonry-container" class="user-wall transitions-enabled infinite-scroll clearfix">
+
     </div>
   </div>
-  <div class="col-md-2 col-sm-4 col-xs-12">
-  </div>
-</div>
-          
-<div class="container" style="margin-top: 0">
-
-  <div id="masonry-container" class="user-wall transitions-enabled infinite-scroll clearfix">
-
-  </div>
-
 </div>
 
 <div id="templates">
