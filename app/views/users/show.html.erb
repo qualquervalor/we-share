@@ -52,7 +52,7 @@
 
 <!-- ========================= -->
 <% if current_user == @user %>
-  <div id="services" class="section">
+  <div id="requests" class="section">
     <div class="fixed-wrapper">
       <a name="requestrec"> </a><h1><%= RESOURCE_NAME_SINGULAR %> Requests Received</h1>
     </div>
@@ -94,7 +94,7 @@
   <!-- ************************************************************* -->
 
   <!-- Services Section -->
-  <div id="services" class="section">
+  <div id="requests-made" class="section">
     <div class="fixed-wrapper">
       <a name="requestsent"></a><h1><%= RESOURCE_NAME_SINGULAR %> Requests Sent</h1>
     </div>
@@ -134,7 +134,7 @@
 <% end %>
 
 <!-- Services Section -->
-<div id="services" class="section">
+<div id="resources" class="section">
   <div class="fixed-wrapper">
     <% if current_user == @user %>
       <a name="resources"></a><h1>My <%= RESOURCE_NAME_PLURAL %></h1>
@@ -166,9 +166,9 @@
 
 <% if current_user == @user %>
   <!-- Services Section -->
-  <div id="services" class="section">
+  <div id="borrowed-resources" class="section">
     <div class="fixed-wrapper">
-      <h1>Borrowed <%= RESOURCE_NAME_PLURAL %></h1><a name="borrowed"> </a>
+      <a name="borrowed"> </a><h1>Borrowed <%= RESOURCE_NAME_PLURAL %></h1>
     </div>
     <div class="container">   
       <div class="content">
@@ -185,8 +185,9 @@
         </div>
       </div><!-- /.content -->
     </div>
+  <% end %>
   </div>
-<% end %>
+
 
 <div id="templates">
 
