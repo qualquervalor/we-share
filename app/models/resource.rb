@@ -21,7 +21,7 @@ class Resource < ActiveRecord::Base
   def as_json(options={})
     {
       id: self.id,
-      name: self.name,
+      name: self.name.truncate(40),
       description: self.description,
       picture: self.picture.url,
       owner: options[:owner]
