@@ -36,7 +36,9 @@ html, body {
   background-color: #eee;
 }
 
-html { background-color: #688B3D;
+html { 
+background-color: #688B3D;
+background: asset-data-url("purty_wood.png") repeat;
 } 
 /* OliveGreen #3B5A14 ,
 brown = #66362f  
@@ -48,12 +50,9 @@ body {
 
   color: #3B5A14;   /* #d36b44 redish wood color #BA522C orginal purpleish #3e4258*/
   margin-left: 250px;
-  background: asset-data-url("purty_wood.png") repeat;
+  background: asset-data-url("purty_wood.png") repeat; 
 }
-body.landing{
-  color: #362819;
-  margin-left: 0px;
-}
+
 
 .clearfix {
   clear: both;

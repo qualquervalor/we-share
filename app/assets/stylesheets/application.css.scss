@@ -38,6 +38,18 @@
   opacity:0.8;
 }
 
+
+.landing {
+  margin-left: 0px;
+  background: asset-data-url("purty_wood.png") repeat; 
+
+  .main {
+  h1 {
+    width:100%;
+    }
+  }
+}
+
 .stretch {
   width:100%;
   height:100%;
