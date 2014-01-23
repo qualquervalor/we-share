@@ -342,6 +342,11 @@ span.valign {
   padding: 30px;
   margin: 20px 0;
 }
+
+.container.index {
+  padding: 0 10px;  
+}
+
 .row.last {
   margin-bottom: 0;
 }
@@ -451,6 +456,10 @@ form {
 
     .search-clear {
       padding: 20px;
+    }
+
+    .hide-map {
+      padding-left: 20px;
     }
     
   
@@ -904,6 +913,7 @@ label {
 
 .section {
   position: relative;
+  min-height: 300px;
   z-index: 1;
 /*  padding-top: 100px;
 */}
