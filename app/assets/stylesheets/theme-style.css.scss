@@ -136,7 +136,14 @@ a:hover, a:focus {
 p { color: #3B5A14; } /* #7C7F8E  #9295a7 = grey light text,  #66362f */
 .italic { font-style: italic; }
 
-.address p {
+.address-phone {
+  /*padding-left: 15px;*/
+  /*float: left;*/
+  clear: none;
+  margin-bottom: 40px;
+}
+
+.address-phone p {
   padding-top: 2px;
 }
 
@@ -521,10 +528,15 @@ form .btn {
     margin-top: 20px;
     text-align: right;
   }
-  input {
+  input, textarea {
     float: left;
     width: 75%;
   }
+}
+
+.upload-preview {
+  float: left;
+  margin-left: 15%;
 }
 
 input,
@@ -933,9 +945,9 @@ label {
     .section .fixed-wrapper h1 {
       display: block;
       padding: 0 30px;
-      line-height: 99px;
+      line-height: 2em;
+      min-height: 99px;
       background-image: url('../assets/purty_wood.png') ;
-  
       margin: 0;
       box-shadow: 0 -1px 0 0 #fff,/* Bootstrap affix bugfix */
       0 1px 2px 0 rgba(0,0,0,.4); 
@@ -984,7 +996,7 @@ label {
 }
 @media (max-width: 767px) {
   .section .content {
-    text-align: center;
+    /*text-align: center;*/
   }
   img.background {
     background-attachment: scroll;
@@ -1542,7 +1554,9 @@ label {
   }
 
   .resc-exp-desc {
-    clear: none;
+    float: left;
+    padding-left: 15px;
+    padding-top: 30px;
   }
 
   .resc-exp-desc div {
