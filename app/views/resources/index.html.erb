@@ -24,7 +24,8 @@
   <div class="container index">
     <% if params[:search].present? %>
       <% @resources %>
-    <div class="search-clear">
+    <div class="search-clear" style="display:inline-block; float:right;">
+      <span>Showing search results for "<%= params[:search] %>." &nbsp &nbsp</span>
       <%= link_to "Clear Results", resources_path %>
     </div>
     <% end %>
