@@ -11,19 +11,21 @@
   <% end %>
   
   <div class="form-group skinny">
-    <%= f.text_field :name, class:"form-control" %>
     <%= f.label :name %><br>
+    <%= f.text_field :name, class:"form-control" %>
   </div>
 
   <div class="form-group skinny">
-    <%= f.text_area :description, class:"form-control" %>
     <%= f.label :description %><br>
+    <%= f.text_area :description, class:"form-control" %>
   </div>
   <br>
 
+  <div class="clearfix"></div>
+
   <div class="form-group skinny">
-    <%= f.file_field :picture, class:"file" %>
     <%= f.label :picture %><br>
+    <%= f.file_field :picture, class:"file" %>
       <div class="upload-preview">
         <% if @resource.picture? %>
           <%= image_tag @resource.picture.url(:medium) %>
@@ -31,6 +33,7 @@
       </div>
   </div>
 
+  <div class="clearfix"></div>
 
   <div class="actions">
     <%= f.submit "Update", class:"btn btn-large btn-success" %>
