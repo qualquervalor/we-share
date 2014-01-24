@@ -74,6 +74,11 @@ class ResourcesController < ApplicationController
     @resource = Resource.new(resource_params)
     @resource.user = current_user
 
+
+    if !resource_params['picture']
+      @resource.picture = File.open("public/assets/tool-shed.png")
+    end
+
     respond_to do |format|
       if @resource.save
         format.html { redirect_to current_user, notice: 'Resource was successfully created.' }

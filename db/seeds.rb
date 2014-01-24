@@ -53,10 +53,6 @@ chris = File.open("public/assets/chris.jpg")
 
 
 
-
-
-
-
 user1 = User.create!({
           name: "Suzy Lue",
           email: "sue@gmail.com",
@@ -373,15 +369,12 @@ wheelbarrow2 = File.open("public/assets/wheelbarrow2.jpg")
 woodchipper = File.open("public/assets/wood-chipper.jpg")
 
 
-
-
-
 resources = [
        
           {
             name: "Tile Cutter",
             description: "Can cut any size tiles. New blades",
-            user_id: user1,
+            user_id: user6,
             picture: tilecutter
           },
            {
@@ -393,7 +386,7 @@ resources = [
           {
             name: "Older Black & Decker & Router",
             description: "Production ",
-            user_id: user2,
+            user_id: user6,
             picture: router
           },
           {
@@ -405,13 +398,13 @@ resources = [
           {
             name: "Router",
             description: "My grandfathes router. Works everytime!",
-            user_id: user4,
+            user_id: user14,
             picture: routertable
           },
           {
             name: "Jumper",
             description: "EverStart 300-Amp Jumper for Car",
-            user_id: user15,
+            user_id: user6,
             picture: jumper
           },
           {
@@ -447,7 +440,7 @@ resources = [
           {
             name: "Circular saw",
             description: "DeWalt. Works great. Brand new",
-            user_id: user9,
+            user_id: user6,
             picture: circularsaw
           },
           {
@@ -477,7 +470,7 @@ resources = [
           {
             name: "Leaf Blower",
             description: "Thar she blows! Very easy to start, no instructions needed.",
-            user_id: user2,
+            user_id: user6,
             picture: leafblower
           },
           {
@@ -567,7 +560,7 @@ resources = [
           {
             name: "Tall Ladder",
             description: "Werner 32 foot extension ladder. Great for reaching the roof",
-            user_id: user8,
+            user_id: user6,
             picture: ladder32
           },
           {
@@ -595,7 +588,30 @@ resources.each do |resource|
   Resource.create(name:resource[:name], description:resource[:description], user:resource[:user_id],picture:resource[:picture])
 end
 
-puts "add reource dummy data"
+puts "destroy borrows data"
+Borrow.destroy_all
+
+puts "added dummy data for borrow"
+
+Borrow.create(user_id: 14, resource_id: 20 , status: "Pending")
+Borrow.create(user_id: 14, resource_id: 8 , status: "Pending")
+Borrow.create(user_id: 14, resource_id: 14 , status: "Pending")
+Borrow.create(user_id: 14, resource_id: 6 , status: "Borrowed")
+Borrow.create(user_id: 14, resource_id: 7 , status: "Borrowed")
+Borrow.create(user_id: 14, resource_id: 11 , status: "Borrowed")
+Borrow.create(user_id: 14, resource_id: 9 , status: "Borrowed")
+Borrow.create(user_id: 14, resource_id: 16 , status: "Denied")
+Borrow.create(user_id: 14, resource_id: 5 , status: "Denied")
+Borrow.create(user_id: 14, resource_id: 3 , status: "Pending")
+
+
+
+
+
+
+
+
+
 
 
 
