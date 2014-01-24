@@ -1,10 +1,4 @@
-<style>
-  * {
-    border: 1px solid red;
-  }
-</style>
 <div id="profileinfo" class="section">
-
   <div class="container">
     <div class="content">
       <div class="row">
@@ -181,6 +175,7 @@
               <h3><%= @user.name %> does not have any <%= RESOURCE_NAME_PLURAL %> available to borrow.</h3>            
             <% end %>
           <% end %>
+          <div class="clearfix"></div>
           <div id="user-resources" class="resource-wall owl-carousel">
           </div>
         </div>
@@ -204,6 +199,7 @@
             <h3>You do not currently have any <%= RESOURCE_NAME_PLURAL.downcase %> borrowed.</h3>
           <% else %>
             <div class="row">
+              <div class="clearfix"></div> 
               <div id="user-borrowed-resources" class="borrowed-wall owl-carousel"></div>
             </div>
           <% end %>
