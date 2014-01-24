@@ -20,14 +20,14 @@
         <%= f.hidden_field :status %>
         <%= f.hidden_field :resource_id, :value => @borrow.resource_id %>
         <div class="form-group text-area">
-          <%= text_area_tag :msg, nil, class:"form-control", placeholder:"Please provide Owner details of project..." %>  
-          <%= f.label "Message:" do %>
-            <i class="icon-pencil"></i>
-          <% end %>
+          <%= text_area_tag :msg, nil, class:"form-control", placeholder:"Write a note to the Owner explaining why you want to borrow this tool..." %>  
+      <!--     <%= f.label "Message:" do %>
+            <i class="fa fa-pencil"></i>
+          <% end %> -->
         </div>
         <div class="clearfix">        
         </div>
-        <%= f.submit 'Request', class: "btn btn-large btn-success" %>
+        <%= f.submit 'Send Request', class: "btn btn-large btn-success" %>
       <% end %>
       <%= link_to 'Back', resources_path, class: "btn btn-large btn-warning" %>
     </div>

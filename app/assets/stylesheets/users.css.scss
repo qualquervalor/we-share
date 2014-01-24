@@ -61,10 +61,18 @@
   width: 9em;
 }
 
-@media all and (max-width: 768px) {
+@media all and (max-width: 1000px) {
   img.disappear {
   display: none;
   }
 }
 
+.home-container {
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.center-home {
+  margin: 0 auto;
+}
 

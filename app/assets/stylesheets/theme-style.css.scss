@@ -308,9 +308,9 @@ span.valign {
   
   /* button sizes */
   .btn.btn-large {
-    padding: 0 25px;
-    height: 70px;
-    line-height: 70px;
+    padding: 10px 25px;
+    height: 50px;
+    /*line-height: 70px;*/
     font-size: 20px;
     margin: 10px 20px 20px 0;
     /*box-shadow: 0 4px 0 0 #1d2031;*/
@@ -318,20 +318,36 @@ span.valign {
     transition: .3s;
     float:left;
   }
+
     .btn.btn-large.btn-success {
-      box-shadow: 0 4px 0 0 #265726;
+      background-color: #688b3d;
+      border-color: #688b3d;
+      box-shadow:  2px 4px 0 #265726;
       color: #fff;
+      &:hover {
+        background-color: #3b5a14;
+        border-color: #3b5a14;
+      }
     }
+
     .btn.btn-large.btn-danger {
       box-shadow: 0 4px 0 0 #6C2A28;
       color: #fff;
     }
     .btn.btn-large.btn-warning {
-      box-shadow: 0 4px 0 0 #a87936;
+      background-color: #D98719;
+      border-color: #D98719;
+      box-shadow: 2px 4px 0 0 #9C661F;
       color: #fff;
+      &:hover {
+        background-color: #AA6600;
+        border-color: #AA6600;
+      }
     }
     .btn.btn-large i { margin-right: 25px; }
     .btn.btn-large:active { box-shadow: 0 0 0 0 #1d2031; }
+
+
 
     .cancel-acct {
       text-align: right;
@@ -552,7 +568,7 @@ textarea.form-control:focus {
   -webkit-box-shadow: 0 2px 1px 0 rgba(0,0,0,.05);
   box-shadow: 0 2px 1px 0 rgba(0,0,0,.05);
   border: 0;
-  padding: 0 0 0 15px;
+  padding: 0 15px 0 15px;
   
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
