@@ -1,5 +1,5 @@
 WeShare::Application.routes.draw do
-  devise_for :users, :controllers => { registrations: :registrations, sessions: :sessions }
+  devise_for :users, :controllers => { registrations: :registrations, sessions: :sessions , passwords: :passwords}
 
   get 'resources' => 'resources#index'
   get 'resources/:id' => 'resources#show', as: :resources_show
