@@ -1,7 +1,7 @@
 class Resource < ActiveRecord::Base
   validates :name, :user, presence: true
   belongs_to :user
-  has_many :borrows
+  has_many :borrows, :dependent => :destroy
   has_many :borrowers, source: :user, through: :borrow
 
   mount_uploader :picture, ImageUploader
@@ -21,7 +21,7 @@ class Resource < ActiveRecord::Base
   def as_json(options={})
     {
       id: self.id,
-      name: self.name.truncate(40),
+      name: self.name.truncate(15),
       description: self.description,
       picture: self.picture.url,
       owner: options[:owner]

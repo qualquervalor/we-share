@@ -30,8 +30,9 @@
     </div>
 
     <% if current_user == @resource.user %>
-        <%= link_to 'Edit', edit_user_resource_path(:user_id => current_user.id), class:"btn btn-large btn-danger" %>
-    <% else %>
+        <%= link_to 'Edit', edit_user_resource_path(:user_id => current_user.id), class:"btn btn-large btn-success" %>  
+       <%= link_to 'Delete', "/users/#{@resource.user.id}/resources/#{@resource.id}", class:"btn btn-large btn-danger", method: :delete %>
+     <% else %>
       <% borrow_id = @resource.already_associated_with_borrower?( current_user) %>
       <% if borrow_id %>
           <%= link_to 'Check Status', "/borrows/"+borrow_id.to_s, class:"btn btn-large btn-warning" %>

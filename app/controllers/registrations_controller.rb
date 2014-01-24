@@ -1,10 +1,10 @@
 class RegistrationsController < Devise::RegistrationsController
-
+ layout "landing_page"
+ 
   def new
       
-      build_resource({})
-      #render layout: "landing_page" 
-       respond_with self.resource
+      build_resource({})   
+      respond_with self.resource
 
   end
 
