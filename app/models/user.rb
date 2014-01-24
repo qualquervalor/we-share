@@ -4,8 +4,8 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-  has_many :resources
-  has_many :borrows
+  has_many :resources, :dependent => :destroy
+  has_many :borrows, :dependent => :destroy
   has_many :borrowed_resources, source: :resource, through: :borrows
 
   mount_uploader :picture, ImageUploader

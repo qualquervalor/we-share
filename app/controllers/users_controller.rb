@@ -80,6 +80,22 @@ class UsersController < ApplicationController
   # DELETE /users/1
   # DELETE /users/1.json
   def destroy
+     # @actor = Actor.find(params[:id])
+     #  if @actor.users.size <= 1 
+     #    @actor.destroy
+     #  else
+     #    @actor.users.delete(current_user)
+     #  end
+     #loop over and destroy the links for things this user has borrowed
+     @user.borrows each do |borrow|
+        borrow.destroy
+     end
+     @user.resources each do |resource|
+        resource.destroy
+     end
+     #loop over and destroy the links for things other have borrowed from this user
+     
+     #loop over and destroy the resources this user owns
     @user.destroy
     respond_to do |format|
       format.html { redirect_to users_url }
