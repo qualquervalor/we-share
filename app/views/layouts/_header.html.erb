@@ -18,6 +18,7 @@
         <li><%= fa_link_to 'user', "MY PROFILE", user_path(current_user, anchor:'profile') %></li>
         <li><%= fa_link_to 'plus-circle', "REQUESTS RCVD", user_path(current_user, anchor:'requestrec') %></li>
         <li><%= fa_link_to 'envelope', "REQUESTS MADE", user_path(current_user, anchor:'requestsent') %></li>
+        <li><%= fa_link_to 'exchange', "MY #{RESOURCE_NAME_PLURAL.upcase}", user_path(current_user, anchor:'resources') %></li>
         <li><%= fa_link_to 'bars', "BORROWED #{RESOURCE_NAME_PLURAL.upcase}", user_path(current_user, anchor:'borrowed') %></li>
 
         <li><%= fa_link_to 'pencil-square-o', 'EDIT PROFILE', edit_user_registration_path %></li>
