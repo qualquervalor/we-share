@@ -62,8 +62,8 @@
 }
 
 @media all and (max-width: 768px) {
-  .logo-icon img {
-    width:100px;
+  img.disappear {
+  display: none;
   }
 }
 
