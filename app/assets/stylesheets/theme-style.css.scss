@@ -28,7 +28,7 @@
 
 .home_title {
   font-size: 5em;
-  font-family: 'Passion One', cursive;
+  font-family: 'Passion One', Arial, sans-serif;
   color: #D98719;
 }
 
@@ -587,6 +587,17 @@ textarea.form-control:focus {
   padding-top: 18px;
 }
 
+input[type="file"] { 
+  box-shadow: none;
+  margin-left: 15%;
+}
+
+.form-group {
+  .upload-preview {
+    margin-top: 10px;
+    margin-left: 10px;
+  }
+}
   
 label {
   font-weight: normal;
@@ -1653,9 +1664,10 @@ label {
     #contact form .form-group label { width: 15%; }
     #contact form .form-group input,
     #contact form .form-group textarea { width: 82%; margin-right: 3%; }
+    #contact form .form-group .file { margin-left: 0%; width: 100%; }
     
     #contact form .btn { 
-      width: 82%; 
+      /*width: 82%; */
       margin-left: 15%;
     }
   }
@@ -1727,3 +1739,21 @@ label {
   .btn-div {
     height: 90px;
   }
+
+  .sign-in-button {
+  margin: 0 auto;
+  width: 9em;
+}
+
+.button-row {
+  margin-left: 15%;
+  @media (max-width: 768px) {
+    margin-left: 0;
+  }
+  .sign-in-button {
+    @media (max-width: 600px) {
+      margin: 0;
+    }
+  }
+}
+
