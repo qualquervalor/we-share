@@ -45,7 +45,8 @@ class ResourcesController < ApplicationController
   # GET /resources/1.json
   def show
     @user = current_user
-    @borrow = Borrow.new
+    @borrow = @resource.borrows.build
+
     @distance = @user.resource_distance(@resource)
     @hash = Gmaps4rails.build_markers([@resource.user]) do |user, marker|
       marker.lat user.latitude
