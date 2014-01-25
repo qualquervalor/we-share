@@ -8,8 +8,23 @@
     
         <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
           <%= devise_error_messages! %>
-        
+  
+<!--             <div class="polaroid user-profile-img">
+              <div class="imgLiquid imgLiquidFill" style="width:200px; height:200px;">
+                <%= image_tag @user.picture.url %>
+             </div>
+            </div>
+ -->
+            <div>
+            <%= image_tag @user.picture.url(:medium) %>
+            </div>
+
           <div class="form-group skinny">
+            <%= f.label :picture %>
+            <%= f.file_field :picture %>          
+          </div>
+    
+          <div class="form-group skinny">         
             <%= f.label :name %><br />
             <%= f.text_field :name, :autofocus => true, class:"form-control" %>
           </div>
@@ -32,15 +47,17 @@
           <div class="clearfix"></div>
         
           <div class="form-group skinny">
+            <%= f.label :state %><br>
+            <%= f.text_field :state, class:"form-control" %>
+          </div>
+
+ 		  <div class="form-group skinny">
             <%= f.label :zipcode %><br>
             <%= f.text_field :zipcode, class:"form-control" %>
           </div>
           <div class="clearfix"></div>
         
-          <div class="form-group skinny">
-            <%= f.label :state %><br>
-            <%= f.text_field :state, class:"form-control" %>
-          </div>
+        
         
           <div class="form-group skinny">
             <%= f.label :phone_num, "Phone Number" %><br>
@@ -48,22 +65,6 @@
           </div>
           <div class="clearfix"></div>
         
-          <div class="form-group skinny">
-
-            <div class = "thumbnail">
-              <% if @user.picture? %>
-                <%= image_tag @user.picture_url(:thumb)%>
-              <% else %>
-                <%= image_tag "generic.jpg"%>
-                <% end %>
-            </div>
-          
-            
-            <br>
-            <%= f.label :picture %>
-            <%= f.file_field :picture %>
-            
-          </div>
         
           <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
             <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
@@ -109,3 +110,14 @@
     </div>
   </div>
 </div>
+
+<% content_for :javascript do %>
+  <script type="text/javascript">
+
+
+    $(document).ready(function() {
+        $(".imgLiquidFill").imgLiquid({fill:true});
+    });
+
+  </script>
+<% end %>

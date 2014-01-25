@@ -34,6 +34,7 @@ class UsersController < ApplicationController
 
     @their_requests = Kaminari.paginate_array(@their_requests).page(params[:page]).per(4)
     @my_requests = Kaminari.paginate_array(@my_requests).page(params[:page]).per(4)
+
   end
     
 
@@ -50,7 +51,6 @@ class UsersController < ApplicationController
   # POST /users
   # POST /users.json
   def create
-    @user = User.new(user_params)
 
     respond_to do |format|
       if @user.save
