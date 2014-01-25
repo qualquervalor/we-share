@@ -1,17 +1,20 @@
-<% if flash[:error] %>
-  <div data-alert class="alert alert-color alert-error">
-    <p><%= flash.now[:error] %></p>
-  </div>
-<% end %>
+<div id="flashes">
+  <% if flash[:error] || flash[:errors] %>
+    <div id="flash_errors" data-alert class="alert alert-color alert-error">
+      <p><%= flash[:error] || flash[:errors] %></p>
+    </div>
+  <% end %>
 
-<%if flash[:notice] %>
-  <div data-alert class="alert alert-color alert-success">
-    <p><%= flash.now[:notice] %></p>
-  </div>
-<% end %>
+  <%if flash[:notice] && flash[:notice].length>0 %>
+    <div id="flash_notice" data-alert class="alert alert-color alert-success">
+      <p><%= flash.now[:notice] %></p>
+    </div>
+  <% end %>
 
-<%if flash[:alert] %>
-  <div data-alert class="alert alert-color alert-error">
-    <p><%= flash.now[:alert] %></p>
-  </div>
-<% end %>
+  <%if flash[:alert] %>
+    <div id="flash_alert" data-alert class="alert alert-color alert-error">
+      <p><%= flash.now[:alert] %></p>
+    </div>
+  <% end %>
+
+</div>

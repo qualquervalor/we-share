@@ -20,6 +20,7 @@
     <h1><%= RESOURCE_NAME_SINGULAR %> Listing</h1>
   </div>
 
+  <%= render "shared/error_messages" %>
 
 <!-- Resource Index Map View -->
 
@@ -36,11 +37,11 @@
       <%= link_to "Clear Results", resources_path %>
     </div>
     <% end %>
-<!--     <div class="hide-map">
+    <div class="hide-map">
       <a href="#" onclick="toggle_visibility('map');">
         <h4 id="map_button" >Hide Map</h4>
       </a>
-    </div> -->
+    </div>
     <div style='margin-left: 20px;width: 95%; height: 400px;'>
     </div>
   </div>

@@ -60,6 +60,7 @@ class ResourcesController < ApplicationController
   # GET /resources/new
   def new
     @resource = Resource.new
+    @resource.picture = File.open("public/assets/tool-shed.png")
     @user = current_user
   end
 
@@ -73,6 +74,11 @@ class ResourcesController < ApplicationController
   def create
     @resource = Resource.new(resource_params)
     @resource.user = current_user
+
+
+    if !resource_params['picture']
+      @resource.picture = File.open("public/assets/tool-shed.png")
+    end
 
     respond_to do |format|
       if @resource.save

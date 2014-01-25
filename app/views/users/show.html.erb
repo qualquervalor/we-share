@@ -6,6 +6,7 @@
 
 <div id="profileinfo" class="section">
   <div class="container">
+  <%= render "shared/error_messages" %>
     <div class="content">
       <div class="row">
         <div class="profile-section-2">
@@ -13,12 +14,8 @@
           <div class="col-lg-3">
             <div class="polaroid user-profile-img">
               <div class="imgLiquid imgLiquidFill" style="width:200px; height: 200px;">
-                  <% if @user.picture? %>
-                    <%= image_tag @user.picture.url(:medium) , :class => "polariod" %>
-                  <% else %>
-                    <%= image_tag "genericmed.jpg", :class => "polariod"%>
-                  <% end %>
-              </div>
+                <%= image_tag @user.picture.url(:medium) , :class => "polaroid" %>
+             </div>
             </div>
           </div>
 

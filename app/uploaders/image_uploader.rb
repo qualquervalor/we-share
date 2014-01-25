@@ -16,9 +16,9 @@ class ImageUploader < CarrierWave::Uploader::Base
     "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
   end
 
-   def default_url
-    ActionController::Base.helpers.asset_path("fallback/" + [version_name, "generic.png"].compact.join('_'))
-  end
+  #  def default_url
+  #   ActionController::Base.helpers.asset_path("images/" + [version_name, "shed_shot.png"].compact.join('_'))
+  # end
 
 
 
