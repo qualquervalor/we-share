@@ -1667,7 +1667,7 @@ label {
     #contact form .form-group .file { margin-left: 0%; width: 100%; }
     
     #contact form .btn { 
-      width: 82%; 
+      /*width: 82%; */
       margin-left: 15%;
     }
   }
@@ -1739,3 +1739,21 @@ label {
   .btn-div {
     height: 90px;
   }
+
+  .sign-in-button {
+  margin: 0 auto;
+  width: 9em;
+}
+
+.button-row {
+  margin-left: 15%;
+  @media (max-width: 768px) {
+    margin-left: 0;
+  }
+  .sign-in-button {
+    @media (max-width: 600px) {
+      margin: 0;
+    }
+  }
+}
+
