@@ -24,10 +24,19 @@ class BorrowsController < ApplicationController
   def new
     @user = current_user
 	  @resource = Resource.find(params[:resource])
-    @borrow = @resource.borrows.build  
-
     if current_user == @resource.user
       redirect_to @resources
+    end
+      
+    borrow_attrs  = { status: "Pending", 
+                  user_id: current_user.id, 
+                  resource_id: @resource.id}
+    result = Borrow.where(borrow_attrs)
+    if(result)
+      @borrow = result[0]
+      redirect_to @borrow 
+    else  
+      @borrow = @resource.borrows.build
     end
   end
 
@@ -50,9 +59,10 @@ class BorrowsController < ApplicationController
   # POST /borrows
   # POST /borrows.json
   def create
-    @borrow = Borrow.new(borrow_params)
-    @borrow.user = current_user
-    @borrow.status = Borrow.pending
+    borrow_attrs  = { status: "Pending", 
+                      user_id: current_user.id, 
+                      resource_id: borrow_params['resource_id']}
+    @borrow = Borrow.where(borrow_attrs).first_or_create
     msg = params[:msg]
     resource = params[:resource]
     respond_to do |format|
