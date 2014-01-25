@@ -60,7 +60,7 @@ class ResourcesController < ApplicationController
   # GET /resources/new
   def new
     @resource = Resource.new
-    @resource.picture = File.open("public/assets/tool-shed.png")
+    @resource.picture = File.open("public/assets/tool-default.png")
     @user = current_user
   end
 
@@ -77,7 +77,7 @@ class ResourcesController < ApplicationController
 
 
     if !resource_params['picture']
-      @resource.picture = File.open("public/assets/tool-shed.png")
+      @resource.picture = File.open("public/assets/tool-default.png")
     end
 
     respond_to do |format|
