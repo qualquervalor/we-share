@@ -6,7 +6,7 @@
   <div class="container">
     <!-- <div class="content"> -->
       <div class="row">
-        <div class="edit-profile col-lg-6 with-labels">
+        <div class="edit-profile col-lg-8 with-labels">
 
           <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
             <%= devise_error_messages! %>
@@ -98,16 +98,18 @@
 
             <div class="clearfix"></div>
           
-            <div class="row">
+            <div class="row button-row">
+
               <div class="col-sm-4">
+                <div class="sign-in-button">
+                  <%= f.submit "Update", class:"btn btn-large btn-success" %>          
+                </div>
               </div>
 
               <div class="col-sm-4">
-                <%= f.submit "Update", class:"btn btn-large btn-success" %>          
-              </div>
-
-              <div class="col-sm-4">
-                <%= link_to "Back", :back, class:"btn btn-large btn-warning" %>
+                <div class="sign-in-button">
+                  <%= link_to "Back", :back, class:"btn btn-large btn-warning" %>
+                </div>
               </div>         
             </div>
           
