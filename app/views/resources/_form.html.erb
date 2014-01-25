@@ -9,13 +9,25 @@
       </ul>
     </div>
   <% end %>
+
+  <div class="form-group">
+    <%= f.label :picture %><br>
+    <div class="upload-preview polaroid user-profile-img">
+      <div class = "imgLiquid imgLiquidFill" style="width:220px; height:220px;">
+        <%= image_tag @resource.picture_url(:medium)%>
+      </div>
+    </div>
+    <%= f.file_field :picture, class:"file"%>
+  </div>
+
+  <div class="clearfix"></div>
   
-  <div class="form-group skinny">
+  <div class="form-group">
     <%= f.label :name %><br>
     <%= f.text_field :name, class:"form-control" %>
   </div>
 
-  <div class="form-group skinny">
+  <div class="form-group">
     <%= f.label :description %><br>
     <%= f.text_area :description, class:"form-control" %>
   </div>
@@ -23,23 +35,23 @@
 
   <div class="clearfix"></div>
 
-    <div class="form-group skinny">
-      <%= f.file_field :picture, class:"file"%>
-      <%= f.label :picture %><br>
-        <div class="upload-preview">
-          <div class = "tools_thumbnail">
-            <div class = "clearfix">           
-              <%= image_tag @resource.picture_url(:medium)%>
-            </div>
-          </div>
-        </div>
+  <!-- <div class="actions"> -->
+
+  <div class="row button-row">
+
+    <div class="col-sm-4">
+      <div class="sign-in-button">
+        <%= f.submit "Add", class:"btn btn-large btn-success" %>         
+      </div>
     </div>
 
-  <div class="clearfix"></div>
-
-  <div class="actions">
-    <%= f.submit "Add", class:"btn btn-large btn-success" %>
-    <%= link_to 'Back', resources_path, class:"btn btn-large btn-warning"%>
+    <div class="col-sm-4">
+      <div class="sign-in-button">
+        <%= link_to 'Back', resources_path, class:"btn btn-large btn-warning"%>
+      </div>
+    </div>         
   </div>
+
+  <!-- </div> -->
   
 <% end %>
