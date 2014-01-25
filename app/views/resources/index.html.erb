@@ -29,6 +29,7 @@
       <%= link_to "Clear Results", resources_path %>
     </div>
     <% end %>
+    <%= render "shared/error_messages" %>
     <div class="hide-map">
       <a href="#" onclick="toggle_visibility('map');">
         <h4 id="map_button" >Hide Map</h4>
