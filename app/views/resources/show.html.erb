@@ -21,6 +21,10 @@
             <div>
               <%= @resource.description %>
             </div>
+            <h4>Location:</h4>
+            <div>
+              <p class="distance-away"> <%= @distance %> miles away</p>         
+            </div>
             <h4>Owner:</h4>
             <div>
               <%= link_to @resource.user.name, user_path(@resource.user) %>

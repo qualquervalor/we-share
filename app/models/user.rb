@@ -48,6 +48,21 @@ class User < ActiveRecord::Base
     end
   end
 
+  def user_distance(user)
+    if (self.latitude && self.longitude) 
+      lat1 = self.latitude
+      long1 = self.longitude
+      if (user) 
+        if (user.latitude && user.longitude) 
+          lat2 = user.latitude
+          long2 = user.longitude
+          value = Haversine.distance(lat1,long1,lat2,long2).to_miles
+          miles = sprintf('%.2f', value)
+        end
+      end
+    end
+  end
+
   def distances(users)
     user_distances = {}
     if (self.latitude && self.longitude) 
@@ -56,11 +71,7 @@ class User < ActiveRecord::Base
       users.each do |user| 
         if (user) 
           if (user.latitude && user.longitude) 
-            lat2 = user.latitude
-            long2 = user.longitude
-            value = Haversine.distance(lat1,long1,lat2,long2).to_miles
-            miles = sprintf('%.2f', value)
-            user_distances[user] = miles
+            user_distances[user] = user_distance(user)
           end
         end
       end
@@ -76,6 +87,21 @@ class User < ActiveRecord::Base
     pair << user_distances
   end
 
+  def resource_distance(res)
+    if (self.latitude && self.longitude) 
+      lat1 = self.latitude
+      long1 = self.longitude
+      if (res.user)
+        if (res.user.latitude && res.user.longitude) 
+          lat2 = res.user.latitude
+          long2 = res.user.longitude
+          value = Haversine.distance(lat1,long1,lat2,long2).to_miles
+          miles = sprintf('%.2f', value)
+        end
+      end
+    end  
+  end
+
   def distances_by_resources(resources)
     resource_distances = {}
     if (self.latitude && self.longitude) 
@@ -84,11 +110,7 @@ class User < ActiveRecord::Base
       resources.each do |res| 
         if (res.user)
           if (res.user.latitude && res.user.longitude) 
-            lat2 = res.user.latitude
-            long2 = res.user.longitude
-            value = Haversine.distance(lat1,long1,lat2,long2).to_miles
-            miles = sprintf('%.2f', value)
-            resource_distances[res] = miles
+            resource_distances[res] = resource_distance(res)
           end
         end
       end
