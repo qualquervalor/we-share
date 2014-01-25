@@ -1,6 +1,6 @@
 <div id="contact" class="section">
   <div class="fixed-wrapper">
-    <h1>Your request</h1>
+    <h1>Your Request</h1>
   </div>
 
   <div class="container">
@@ -27,13 +27,17 @@
       </div>
       <div>
         <h4>
+        <% if @borrow.status == Borrow.pending %>
           You requested <%= @borrow.resource.user.name %>'s <%= @borrow.resource.name %><span> <%= time_ago_in_words(@borrow.created_at) %> ago.</span>
+        <% elsif @borrow.status == Borrow.borrowed %>
+          You currently have <%= @borrow.resource.user.name %>'s <%= @borrow.resource.name %><span> borrowed.</span>
+        <% end %>
         </h4>
       </div>
 
 <!-- Consider adding option for the borrower to email the owner to request feedback -->
 
-      <% if @user == @borrow.user %>
+      <% if @user == @borrow.user && @borrow.status == Borrow.pending %>
         <p>Cancel this request if you don't want this anymore.</p>
         <div>
           <%= link_to 'Cancel', @borrow, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-large btn-danger" %>

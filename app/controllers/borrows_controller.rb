@@ -32,8 +32,12 @@ class BorrowsController < ApplicationController
                   user_id: current_user.id, 
                   resource_id: @resource.id}
     result = Borrow.where(borrow_attrs)
-    if(result)
-      @borrow = result[0]
+    borrow_attrs2  = { status: "Borrowed", 
+                  user_id: current_user.id, 
+                  resource_id: @resource.id}
+    result2 = Borrow.where(borrow_attrs2)
+    if(result.length>0 || result2.length>0)
+      @borrow = result.length>0 ? result[0] : result2[0]
       redirect_to @borrow 
     else  
       @borrow = @resource.borrows.build
