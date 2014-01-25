@@ -15,13 +15,20 @@
   </div>
 </head>
 
-<!-- Resource Index Section -->
-<div class="section">
+<div class="section" id="image-list">
   <div class="fixed-wrapper">
     <h1><%= RESOURCE_NAME_SINGULAR %> Listing</h1>
   </div>
 
-  <div class="container index">
+
+<!-- Resource Index Map View -->
+
+  <div class="container index" id="map" style="display:none;">
+    <div class="hide-map">
+      <a href="#" onclick="toggle_visibility('image-list');">
+        <h4 id="map_button" >Show Images View</h4>
+      </a>
+    </div>
     <% if params[:search].present? %>
       <% @resources %>
     <div class="search-clear" style="display:inline-block; float:right;">
@@ -29,16 +36,43 @@
       <%= link_to "Clear Results", resources_path %>
     </div>
     <% end %>
-    <div class="hide-map">
+<!--     <div class="hide-map">
       <a href="#" onclick="toggle_visibility('map');">
         <h4 id="map_button" >Hide Map</h4>
       </a>
+    </div> -->
+    <div style='margin-left: 20px;width: 95%; height: 400px;'>
     </div>
-    <div id="map" style='margin-left: 20px;width: 95%; height: 400px;'>
+  </div>
+
+
+<!-- Resource Index By Image -->
+  <div class="container index" id="image-list">
+    <div class="hide-map">
+      <a href="#" onclick="toggle_visibility('map');">
+        <h4 id="map_button" >Show Map View</h4>
+      </a>
     </div>
+
+    <% if params[:search].present? %>
+      <% @resources %>
+    <div class="search-clear" style="display:inline-block; float:right;">
+      <span>Showing search results for "<%= params[:search] %>." &nbsp &nbsp</span>
+      <%= link_to "Clear Results", resources_path %>
+    </div>
+    <% end %>
+<!--     <div class="hide-map">
+      <a href="#" onclick="toggle_visibility('map');">
+        <h4 id="map_button" >Map View</h4>
+      </a>
+    </div>
+    <div style="margin-left: 20px;width: 95%; height: 400px;">
+    </div> -->
     <div id="masonry-container" class="resource-wall transitions-enabled infinite-scroll clearfix">
     </div>
   </div>
+
+
 </div><!-- /.section -->
 
 
@@ -102,14 +136,14 @@
 
     function toggle_visibility(id) {
        var e = document.getElementById(id);
-       if(e.style.display == 'block' || e.style.display ==''){
-          e.style.display = 'none';
+       if(e.style.display == 'none' || e.style.display ==''){
+          e.style.display = 'block';
        
-        $('#map_button').text("Show Map");
+        $('#map_button').text("Show other view");
       }
        else {
-          e.style.display = 'block'; 
-          $('#map_button').text("Hide Map");      
+          e.style.display = 'none'; 
+          $('#map_button').text("Show other view");      
        }
     };
 
