@@ -6,15 +6,15 @@
     <%= render "shared/error_messages" %>
     <div class="container block">
       <div class="row">
-        <div class="col-4-md col-6-sm">
+        <div class="col-lg-5 col-md-6 col-sm-6">
           <div class="expanded">
             <div class="imgLiquid imgLiquidFill" style="width:300px; height: 300px;">
               <%= image_tag @resource.picture.url, class:"expanded" %>
             </div>
           </div>
         </div>
-        <div class="col-1-md col-1-sm"> &nbsp&nbsp </div>
-        <div class="col-4-md col-6-sm">
+        <!-- <div class="col-1-md col-1-sm"> &nbsp&nbsp </div> -->
+        <div class="col-md-4 col-sm-5" style="float:left;">
           <div class="resc-exp-desc">
             <h3><%= @resource.name %></h3>
             <h4>Description:</h4>
@@ -53,14 +53,14 @@
     </div>
   </div>
 
-  <div id="rqst" class="borrow" style="display: none;" >
-    <a name="requestborrow"> </a>
-    <div class="fixed-wrapper">
-      <h1>Request to Borrow</h1>
-    </div>
+  <div id="rqst" class="borrow section" style="display: none;" >
+    <a name="requestborrow"></a>
+ <!--    <div class="fixed-wrapper">
+      <h2>Request to Borrow</h2>
+    </div> -->
     
     <br>
-    <div class="content">
+    <div class="content" style="margin-top: 100px;">
       <%= form_for(@borrow) do |f| %>
         <% if @borrow.errors.any? %>
           <div id="error_explanation">
@@ -86,8 +86,14 @@
     </div>
   </div>  
 
-  <div id="map" style='margin-left: 20px;width: 95%; height: 400px;'>
-   
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 col-sm-6 col-xs-12 col-centered">
+        <div id="map">
+     
+        </div>
+      </div>
+    </div>
   </div>
 
 </div>
@@ -122,6 +128,7 @@
     $('.borrowz').on('click', function(e){
       $('.borrow').css("display", "block");
     });
+
   </script>
 
 <% end %>
