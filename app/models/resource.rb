@@ -42,4 +42,9 @@ class Resource < ActiveRecord::Base
     id
   end
 
+  def currently_checked_out
+    params = {:status => Borrow.borrowed, :resource_id => self.id}
+    Borrow.find(:first, :conditions => ["status LIKE :status AND resource_id = :resource_id", params])
+  end
+
 end
