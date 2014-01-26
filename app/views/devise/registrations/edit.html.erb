@@ -69,8 +69,6 @@
               <%= f.text_field :phone_num, class:"form-control" %>
             </div>
 
-            <div class="clearfix"></div>
-        
             <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
               <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
             <% end %>
