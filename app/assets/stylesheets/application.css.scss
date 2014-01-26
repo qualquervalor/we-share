@@ -81,3 +81,15 @@
   text-transform: uppercase;
 }
 
+@media screen {
+  
+#error_explanation {
+  border: none;
+  color: #c00;
+  h2 {
+    color: #c00;
+    font-size: 1.5em;
+  }
+}
+}
+
