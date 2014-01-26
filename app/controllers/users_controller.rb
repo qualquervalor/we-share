@@ -40,12 +40,12 @@ class UsersController < ApplicationController
 
   # GET /users/new
   def new
-    @user = User.new
+    redirect_to new_user_registration_path
   end
 
   # GET /users/1/edit
   def edit
-
+    redirect_to edit_user_registration_path @user
   end
 
   # POST /users
