@@ -24,24 +24,26 @@ class BorrowsController < ApplicationController
   def new
     @user = current_user
 	  @resource = Resource.find(params[:resource])
-    if current_user == @resource.user
-      redirect_to @resources
-    end
+    redirect_to  resources_show_path(id: @resource.id)
+
+    # if current_user == @resource.user
+    #   redirect_to @resources
+    # end
       
-    borrow_attrs  = { status: "Pending", 
-                  user_id: current_user.id, 
-                  resource_id: @resource.id}
-    result = Borrow.where(borrow_attrs)
-    borrow_attrs2  = { status: "Borrowed", 
-                  user_id: current_user.id, 
-                  resource_id: @resource.id}
-    result2 = Borrow.where(borrow_attrs2)
-    if(result.length>0 || result2.length>0)
-      @borrow = result.length>0 ? result[0] : result2[0]
-      redirect_to @borrow 
-    else  
-      @borrow = @resource.borrows.build
-    end
+    # borrow_attrs  = { status: "Pending", 
+    #               user_id: current_user.id, 
+    #               resource_id: @resource.id}
+    # result = Borrow.where(borrow_attrs)
+    # borrow_attrs2  = { status: "Borrowed", 
+    #               user_id: current_user.id, 
+    #               resource_id: @resource.id}
+    # result2 = Borrow.where(borrow_attrs2)
+    # if(result.length>0 || result2.length>0)
+    #   @borrow = result.length>0 ? result[0] : result2[0]
+    #   redirect_to user_resource_path(id: @resource.id) 
+    # else  
+    #   @borrow = @resource.borrows.build
+    # end
   end
 
   # GET /borrows/1/edit
@@ -63,12 +65,14 @@ class BorrowsController < ApplicationController
   # POST /borrows
   # POST /borrows.json
   def create
+
     borrow_attrs  = { status: "Pending", 
                       user_id: current_user.id, 
                       resource_id: borrow_params['resource_id']}
     @borrow = Borrow.where(borrow_attrs).first_or_create
     msg = params[:msg]
     resource = params[:resource]
+
     respond_to do |format|
       if @borrow.save 
         #Action Mailer - Request sent to User that just requested a Resource.
@@ -80,7 +84,7 @@ class BorrowsController < ApplicationController
         format.html { redirect_to current_user, notice: 'Borrow was successfully created.' }
         format.json { render action: 'show', status: :created, location: @borrow }
       else
-        format.html { render action: 'new' }
+        format.html { resources_show_path(id: @borrow.resource.id)  } 
         format.json { render json: @borrow.errors, status: :unprocessable_entity }
       end
     end
