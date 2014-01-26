@@ -4,9 +4,9 @@
  *
  */
 
- @import url(//fonts.googleapis.com/css?family=Passion+One);
- @import url(//fonts.googleapis.com/css?family=Tauri);
- @import url(//fonts.googleapis.com/css?family=Montserrat);
+ @import url("//fonts.googleapis.com/css?family=Passion+One");
+ @import url("//fonts.googleapis.com/css?family=Tauri");
+ @import url("//fonts.googleapis.com/css?family=Montserrat");
  
 .thumbnail {
   position: static;
@@ -55,7 +55,7 @@ body {
 
   color: #3B5A14;   /* #d36b44 redish wood color #BA522C orginal purpleish #3e4258*/
   margin-left: 250px;
-  background: asset-data-url("purty_wood.png") repeat; 
+  background: url("purty_wood.png") repeat; 
 }
 
 
@@ -85,7 +85,7 @@ body {
 }
 .affix-top {
   margin-top: 1px;
-  background: asset-data-url("purty_wood.png") repeat;
+  background: url("purty_wood.png") repeat;
 }
 .affix-bottom {
   position: absolute;
@@ -866,7 +866,7 @@ label {
   @media (max-width: 992px) {
     .search {
       width: 100%;
-      background: asset-data-url("purty_wood.png") repeat;
+      background: url("purty_wood.png") repeat;
       padding: 0 30px;
       box-shadow: 0 2px 2px 0  rgba(0,0,0,.07);
     }
@@ -983,7 +983,7 @@ label {
       padding: 0 30px;
       line-height: 2em;
       min-height: 99px;
-      background-image: asset-data-url("purty_wood.png") repeat;
+      background: url("purty_wood.png") repeat;
       margin: 0;
       box-shadow: 0 -1px 0 0 #fff,/* Bootstrap affix bugfix */
       0 1px 2px 0 rgba(0,0,0,.4); 
