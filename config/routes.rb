@@ -65,4 +65,6 @@ WeShare::Application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
+  get '*a', :to => 'errors#routing'
+
 end

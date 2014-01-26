@@ -22,10 +22,13 @@ class BorrowsController < ApplicationController
 
   # GET /borrows/new
   def new
-    @user = current_user
-	  @resource = Resource.find(params[:resource])
-    redirect_to  resources_show_path(id: @resource.id)
-
+    if !params[:resource]
+      redirect_to resources_path
+    else    
+      @user = current_user
+  	  @resource = Resource.find(params[:resource])
+      redirect_to  resources_show_path(id: @resource.id)
+    end
     # if current_user == @resource.user
     #   redirect_to @resources
     # end

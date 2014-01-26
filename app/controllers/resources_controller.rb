@@ -68,6 +68,9 @@ class ResourcesController < ApplicationController
   # GET /resources/1/edit
   def edit
     @user = current_user
+    if (@user != @resource.user)
+      redirect_to user_resource_path 
+    end
   end
 
   # POST /resources
