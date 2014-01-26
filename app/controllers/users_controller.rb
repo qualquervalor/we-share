@@ -30,10 +30,17 @@ class UsersController < ApplicationController
     @user_resources = @user.resources
     @their_requests = @user.their_requests
     @my_requests = @user.my_pending_requests
-    @my_borrows = @user.my_borrows  
 
     @their_requests = Kaminari.paginate_array(@their_requests).page(params[:page]).per(4)
     @my_requests = Kaminari.paginate_array(@my_requests).page(params[:page]).per(4)
+
+
+    borrowed_array =[]
+    @user.my_borrows.each do |res|
+      time = time_ago_in_words(res.currently_checked_out.updated_at)
+       borrowed_array <<  res.as_json.merge({time: time}) 
+    end 
+    @jason =borrowed_array.to_json
 
   end
     

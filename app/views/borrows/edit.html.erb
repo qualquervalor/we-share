@@ -21,7 +21,11 @@
             <div class="resc-exp-desc">
               <div>
                 <%= @borrow.user.name %> 
+                <% if @borrow.status == Borrow.pending %>
                   wants your 
+                  <%elsif @borrow.status == Borrow.borrowed  %>
+                  has your
+                  <%end %>
                 <%= @borrow.resource.name %>!
               </div>
               <h4>Description:</h4>

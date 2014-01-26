@@ -249,6 +249,20 @@
 
     </script>
 
+   <script class="resource2" type="text/template">
+
+      <div class="polaroid resource-box2">
+        <div class="imgContainer imgLiquidFill imgLiquid" style="width:220px; height:220px;">
+          <a href="/resources/{{ id }}" >
+            <img src={{ picture }} />
+          </a>
+        </div>
+        <div class="info">
+          <p class="name"> {{owner}}'s {{ name }} for {{time}} </p>
+        </div>
+      </div>
+
+    </script>
 </div><!-- /#templates -->
 
 <% content_for :javascript do %>
@@ -263,15 +277,18 @@
         wall.add(<%= raw x.to_json() %>);
     <% end %>
 
-    var bwall = new ResourceWall([], { url: '/resources' });
-    var bwallView = new ResourceWallView({
+    var bwall = new BorrowWall([], { url: '/resources2' });
+    var bwallView = new BorrowWallView({
       collection: bwall,
       el: '.borrowed-wall'
     });
 
-    <% @my_borrows.each do |res| %>
-      bwall.add(<%= raw res.to_json({owner: res.user.name+"'s"}) %>);
-    <% end %>
+    var borrowTimes = <%= raw @jason %>;
+
+    for (var i=0; i < borrowTimes.length; i++) {
+       bwall.add( borrowTimes[i]);
+     }
+
 
 
   </script>

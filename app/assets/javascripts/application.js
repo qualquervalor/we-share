@@ -23,6 +23,8 @@
 //= require app/models/resource
 //= require app/views/resource-view
 //= require app/views/resource-wall-view
+//= require app/views/borrow-view
+//= require app/views/borrow-wall-view
 //= require app/models/user
 //= require app/views/user-view
 //= require app/views/user-wall-view

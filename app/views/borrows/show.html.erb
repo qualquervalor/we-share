@@ -30,7 +30,7 @@
         <% if @borrow.status == Borrow.pending %>
           You requested <%= @borrow.resource.user.name %>'s <%= @borrow.resource.name %><span> <%= time_ago_in_words(@borrow.created_at) %> ago.</span>
         <% elsif @borrow.status == Borrow.borrowed %>
-          You currently have <%= @borrow.resource.user.name %>'s <%= @borrow.resource.name %><span> borrowed.</span>
+          You've had <%= @borrow.resource.user.name %>'s <%= @borrow.resource.name %> for <span> <%= time_ago_in_words(@borrow.updated_at) %>.</span>
         <% end %>
         </h4>
       </div>

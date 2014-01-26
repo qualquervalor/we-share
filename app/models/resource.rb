@@ -24,7 +24,7 @@ class Resource < ActiveRecord::Base
       name: self.name.truncate(15),
       description: self.description,
       picture: self.picture.url,
-      owner: options[:owner]
+      owner: self.user.name
     }
   end
 
