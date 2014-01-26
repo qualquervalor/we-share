@@ -258,7 +258,7 @@ span.valign {
         .panel .panel-heading .panel-title a:hover { color: #3e4258; }
     .panel-group .panel-heading + .panel-collapse .panel-body {
       border-top: 0;
-      background-color: #eee;
+      /*background-color: #eee;*/
       padding: 20px;
       color: #7C7F8E;  /* light grey color = #9295a7 */
       line-height: 26px;
@@ -481,6 +481,8 @@ form {
 
     .search-clear {
       padding: 20px;
+      display:inline-block; 
+      float:right;
     }
 
     .hide-map {
