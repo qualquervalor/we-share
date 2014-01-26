@@ -4,6 +4,8 @@
   }*/
 </style>
 
+<!-- Profile Section -->
+
 <div id="profileinfo" class="section">
   <div class="container">
   <%= render "shared/error_messages" %>
@@ -40,7 +42,8 @@
   </div><!-- /.container -->
 </div><!-- /#profileinfo -->
 
-<!-- ========================= -->
+<!-- Requests Received Section -->
+
 <% if current_user == @user %>
   <div id="requests" class="section">
     <div class="fixed-wrapper">
@@ -93,9 +96,9 @@
                   <%= paginate @their_requests ,:window => 1 %>
                   <% @their_requests.each do |borrow| %>
                     <tr onclick="location.href='<%= edit_borrow_path(Borrow.find(borrow.id)) %>'"> 
-                      <td><strong><%= borrow.resource.name %></strong></td>
+                      <td><%= borrow.resource.name %></td>
                       <td><%= image_tag borrow.resource.picture.url(:thumb) %>  </td>
-                      <td><strong><%=borrow.user.name%></strong></td>
+                      <td><%=borrow.user.name%></td>
                       <td><span class="label label-warning"> <%= borrow.status %></span></td>
                     </tr>
                   <% end %>   
@@ -108,10 +111,8 @@
     </div><!-- /.container --> 
   </div>
 
-  <!-- ================ -->
-  <!-- ************************************************************* -->
 
-  <!-- Services Section -->
+  <!-- Requests Sent Section -->
   <div id="requests-made" class="section">
     <div class="fixed-wrapper">
       <a name="requestsent"></a><h1><%= RESOURCE_NAME_SINGULAR %> Requests Sent</h1>
@@ -151,7 +152,7 @@
                   <%= paginate @my_requests, :window => 1 %>
                   <% @my_requests.each do |borrow| %>               
                     <tr onclick="location.href='<%= borrow_path(Borrow.find(borrow.id)) %>'"> 
-                      <td><strong><%= borrow.resource.name %></strong></td>
+                      <td><%= borrow.resource.name %></td>
                       <td><%= image_tag borrow.resource.picture.url(:thumb) %>  </td>
                       <td><%= borrow.resource.user.name %></td>
                       <td><span class="label label-warning"> <%= borrow.status %></span></td>
@@ -167,7 +168,33 @@
   </div>
 <% end %>
 
-<!-- Services Section -->
+<% if current_user == @user %>
+  <!-- Borrowed Resources Section -->
+  <div id="borrowed-resources" class="section">
+    <div class="fixed-wrapper">
+      <a name="borrowed"> </a><h1>Borrowed <%= RESOURCE_NAME_PLURAL %></h1>
+    </div>
+    <div class="container">   
+      <div class="content">
+        <div class="profile-section-4">
+
+          <!-- If user has not made a borrow, this message will print -->
+          <% if @user.my_borrows.length == 0 %>
+            <h3>You do not currently have any <%= RESOURCE_NAME_PLURAL.downcase %> borrowed.</h3>
+          <% else %>
+            <div class="row">
+              <div class="clearfix"></div> 
+              <div id="user-borrowed-resources" class="borrowed-wall owl-carousel"></div>
+            </div>
+          <% end %>
+        </div>
+      </div><!-- /.content -->
+    </div>
+  <% end %>
+  </div>
+
+
+<!-- User Resources Section -->
 <div id="resources" class="section">
   <div class="fixed-wrapper">
     <% if current_user == @user %>
@@ -199,30 +226,6 @@
   </div><!-- /.container -->
 </div>
 
-<% if current_user == @user %>
-  <!-- Services Section -->
-  <div id="borrowed-resources" class="section">
-    <div class="fixed-wrapper">
-      <a name="borrowed"> </a><h1>Borrowed <%= RESOURCE_NAME_PLURAL %></h1>
-    </div>
-    <div class="container">   
-      <div class="content">
-        <div class="profile-section-4">
-
-          <!-- If user has not made a borrow, this message will print -->
-          <% if @user.my_borrows.length == 0 %>
-            <h3>You do not currently have any <%= RESOURCE_NAME_PLURAL.downcase %> borrowed.</h3>
-          <% else %>
-            <div class="row">
-              <div class="clearfix"></div> 
-              <div id="user-borrowed-resources" class="borrowed-wall owl-carousel"></div>
-            </div>
-          <% end %>
-        </div>
-      </div><!-- /.content -->
-    </div>
-  <% end %>
-  </div>
 
 
 <div id="templates">
