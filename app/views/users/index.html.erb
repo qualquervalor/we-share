@@ -19,6 +19,7 @@
     <% if params[:search].present? %>
       <% @users %>
     <div class="search-clear">
+      <span>Showing search results for "<%= params[:search] %>." &nbsp &nbsp</span>
       <%= link_to "Clear Results", users_path %>
     </div>
     <% end %>
