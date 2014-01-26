@@ -1,17 +1,7 @@
-<!-- Maybe You Can Haz? page -->
-
 <div id="contact" class="section">
   <div class="fixed-wrapper">
-    <h1>
-      <%= @borrow.user.name %> 
-      <% if @borrow.status == Borrow.pending %>
-        wants your 
-      <% elsif @borrow.status == Borrow.borrowed %>
-        has your
-      <% else %>
-        is confused by your
-      <% end %>
-      <%= @borrow.resource.name %>!
+    <h1>Borrow Request
+
     </h1>
   </div>
 
@@ -20,15 +10,20 @@
     <div class="content">
       <div class="container block">
         <div class="row">
-          <div class="col-4-md">
+          <div class="col-md-6 col-sm-8">
             <div class="expanded">
               <div class="imgLiquid imgLiquidFill" style="width:300px; height: 300px;">
                 <%= image_tag @borrow.resource.picture.url, class:"expanded pull left" %>
               </div>
             </div>
           </div>
-          <div class="col-6-md">
+          <div class="col-md-6 col-sm-8">
             <div class="resc-exp-desc">
+              <div>
+                <%= @borrow.user.name %> 
+                  wants your 
+                <%= @borrow.resource.name %>!
+              </div>
               <h4>Description:</h4>
               <div>
                 <%= @borrow.resource.description %>
@@ -74,7 +69,7 @@
 
         <%= f.hidden_field :status %>
 
-<%= button_tag(type: 'submit', name: 'status',value:  "#{@pos}" , class: "btn btn-large btn-success") do %>
+        <%= button_tag(type: 'submit', name: 'status',value:  "#{@pos}" , class: "btn btn-large btn-success") do %>
             <i class="fa fa-thumbs-o-up"></i><%= "#{@pos}" %>
           <% end %>      
           <%= button_tag(type: 'submit', name: 'status',value: "#{@neg}" , class: "btn btn-large btn-danger") do %>
