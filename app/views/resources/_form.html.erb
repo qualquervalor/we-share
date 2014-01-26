@@ -41,7 +41,14 @@
 
     <div class="col-sm-4">
       <div class="sign-in-button">
-        <%= f.submit "Add", class:"btn btn-large btn-success" %>         
+        <% if params[:id].present? %>
+          <%= f.submit "Update", class:"btn btn-large btn-success" %> 
+        <% else %>
+          <%= f.submit "Add", class:"btn btn-large btn-success" %> 
+        <% end %>
+
+
+
       </div>
     </div>
 
