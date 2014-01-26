@@ -72,9 +72,13 @@
           </div>
 
           <%= f.hidden_field :status %>
-          <%=" Already Borrowed? #{@borrow.resource.currently_checked_out.status}" %>
-          <%= button_tag(type: 'submit', name: 'status',value:  "#{@pos}" , class: "btn btn-large btn-success") do %>
-            <i class="fa fa-thumbs-o-up"></i><%= "#{@pos}" %>
+          
+          <% if @borrowed %> 
+          <h5>'<%= @borrowed.user.name %>' currently is borrowing this from you.  You can not approve another borrower until, you mark that '<%= @borrowed.user.name %>' has returned the item.</h5>
+          <% else %>
+            <%= button_tag(type: 'submit', name: 'status',value:  "#{@pos}" , class: "btn btn-large btn-success") do %>
+              <i class="fa fa-thumbs-o-up"></i><%= "#{@pos}" %>
+            <% end %>          
           <% end %>
 
           <%= button_tag(type: 'submit', name: 'status',value: "#{@neg}" , class: "btn btn-large btn-danger") do %>

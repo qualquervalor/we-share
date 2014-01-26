@@ -92,7 +92,11 @@
                 <tbody> 
                   <%= paginate @their_requests ,:window => 1 %>
                   <% @their_requests.each do |borrow| %>
-                    <tr onclick="location.href='<%= edit_borrow_path(Borrow.find(borrow.id)) %>'"> 
+                    <% if borrow.status != Borrow.returned %>
+                    <tr onclick="location.href='<%= edit_borrow_path(Borrow.find(borrow.id)) %>'">
+                    <% else %>
+                    <tr>
+                    <% end %> 
                       <td><strong><%= borrow.resource.name %></strong></td>
                       <td><%= image_tag borrow.resource.picture.url(:thumb) %>  </td>
                       <td><strong><%=borrow.user.name%></strong></td>
