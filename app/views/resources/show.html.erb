@@ -88,7 +88,7 @@
 
   <div class="container">
     <div class="row">
-      <div class="col-md-8 col-sm-6 col-xs-12 col-centered">
+      <div class="col-md-12 col-sm-8 col-xs-12 col-centered">
         <div id="map">
      
         </div>
@@ -115,13 +115,13 @@
   <script type="text/javascript">
     buildmap(<%= raw @hash.to_json %>);
 
-    //   handler = Gmaps.build('Google');
-    //   handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
-    //     markers = handler.addMarkers(<%= raw @hash.to_json %>);
-    //   handler.bounds.extendWith(markers);
-    //   handler.fitMapToBounds();
-    //   handler.getMap().setZoom(17);
-    //   });
+      handler = Gmaps.build('Google');
+      handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
+        markers = handler.addMarkers(<%= raw @hash.to_json %>);
+      handler.bounds.extendWith(markers);
+      handler.fitMapToBounds();
+      handler.getMap().setZoom(16);
+      });
   </script>
 
   <script type="text/javascript">
