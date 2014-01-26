@@ -71,21 +71,26 @@
           <div class="clearfix">             
           </div>
 
-
-        <%= f.hidden_field :status %>
-
-<%= button_tag(type: 'submit', name: 'status',value:  "#{@pos}" , class: "btn btn-large btn-success") do %>
+          <%= f.hidden_field :status %>
+          <%=" Already Borrowed? #{@borrow.resource.currently_checked_out.status}" %>
+          <%= button_tag(type: 'submit', name: 'status',value:  "#{@pos}" , class: "btn btn-large btn-success") do %>
             <i class="fa fa-thumbs-o-up"></i><%= "#{@pos}" %>
-          <% end %>      
+          <% end %>
+
           <%= button_tag(type: 'submit', name: 'status',value: "#{@neg}" , class: "btn btn-large btn-danger") do %>
             <i class="fa fa-times"></i><%= "#{@neg}" %>
           <% end %>
+
         <% elsif @borrow.status == Borrow.borrowed %>
+
           <%= button_tag(type: 'submit', name: 'status',value: "#{@ret}" ,class: "btn btn-large btn-success") do %>
             <i class="fa fa-thumbs-o-up"></i><%= "#{@ret}" %>
-          <% end %>      
+          <% end %>  
+
         <% else %>
+
           <% flash.alert = "I did not expect to get to borrow edit with status #{@borrow.status}"%>
+
         <% end %>
       <% end %>  
       

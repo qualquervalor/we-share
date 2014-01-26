@@ -42,4 +42,10 @@ class Resource < ActiveRecord::Base
     id
   end
 
+  def currently_checked_out
+    # params = {:search => "%#{search}%", :active => 1}
+    # Borrow.find(:all, :conditions => ["name LIKE :search AND active = :active", params])
+    Borrow.find_by resource_id: self.id #, status: Borrow.borrowed)
+  end
+
 end

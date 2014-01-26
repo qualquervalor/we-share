@@ -63,6 +63,8 @@ class BorrowsController < ApplicationController
   	@pos = POSITIVE_RESPONSE
     @neg = NEGATIVE_RESPONSE
     @ret = BORROW_COMPLETED
+
+    @other_borrow = @borrow.resource
   end
 
   # POST /borrows
