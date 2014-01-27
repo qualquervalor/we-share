@@ -1763,3 +1763,17 @@ label {
   }
 }
 
+.home-img-row {
+  margin:0 auto;
+  width:550px;
+  @media (max-width:992px) {
+    width:180px;
+  } 
+}
+
+.home-image {
+  width:180px;
+  height:180px;
+  float:left;
+}
+
