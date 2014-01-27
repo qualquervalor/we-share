@@ -88,4 +88,5 @@ WeShare::Application.configure do
   :password             => ENV["EMAIL_PASSWORD"],
   :authentication       => "plain",
   :enable_starttls_auto => true
+}
 end
