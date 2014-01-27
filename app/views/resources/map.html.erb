@@ -11,7 +11,7 @@
 <body>
   <div class="section">
     <div class="fixed-wrapper">
-      <h1>Map</h1>
+      <h1><%= RESOURCE_NAME_SINGULAR %> Listing</h1>
     </div>
 
     <%= render "shared/error_messages" %>
@@ -28,7 +28,7 @@
     <div class="container">
       <div class="row">
         <div class="btn btn-danger map-view">
-          <%= link_to "Images", resources_path %>
+          <%= link_to "Image View", resources_path %>
         </div>
         <div class="col-md-12 col-sm-6 col-xs-12 col-centered">
           <div id="map">
