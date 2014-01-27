@@ -1,22 +1,18 @@
-<style>
-/*  * {
-    border: 1px solid red;
-  }*/
-</style>
 <!-- This is not working correctly, needs to center on resize -->
 <div class="container home-container">
   <div class="row">
-    <div class="col-md-3 col-xs-2 col-sm-3"></div>
-    <div class="col-md-2">
-      <img class="hidden-xs hidden-sm" src="../assets/saw.png">
+    <div class="home-img-row">
+      
+      <div class="home-image hidden-sm hidden-xs">
+        <%= image_tag("saw.png") %>
+      </div>
+      <div class="home-image">
+        <%= image_tag("tools.png") %>
+      </div>
+      <div class="home-image hidden-sm hidden-xs">
+        <%= image_tag("ladder.png") %>
+      </div>
     </div>
-    <div class="col-md-2 col-xs-8 col-sm-6">
-      <img src="../assets/tools.png" class="center-home">
-    </div>
-    <div class="col-md-2">
-      <img class="hidden-xs hidden-sm" src="../assets/ladder.png">
-    </div>
-    <div class="col-md-3 col-xs-2 col-sm-3"></div>
   </div>
 </div>
 
@@ -26,7 +22,7 @@
 
     <h1 class="centered home_title"><%= APP_NAME %></h1>
     <div>
-      <h2 class="subheader header centered">Neighbors sharing with neighbors<br/>in the 21st century.</h2>
+      <h2 class="subheader header centered">Building better communities<br>through sharing.</h2>
 
       <div class = "container">
         <div class="row">
