@@ -1,6 +1,7 @@
 WeShare::Application.routes.draw do
   devise_for :users, :controllers => { registrations: :registrations, sessions: :sessions , passwords: :passwords}
 
+ get 'resources/map' => 'resources#map', as: :resources_map
   get 'resources' => 'resources#index'
   get 'resources/:id' => 'resources#show', as: :resources_show
 
@@ -8,9 +9,12 @@ WeShare::Application.routes.draw do
     resources :resources
   end
 
+
   resources :borrows, :only => [:show, :new, :edit, :create, :destroy, :update]
 
   root 'static_pages#show'
+
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -21,68 +21,23 @@
   </div>
 
   <%= render "shared/error_messages" %>
-
-<!-- Resource Index Map View -->
-
-  <div class="container index" id="map-view" style="display:none;">
-    <div class="btn btn-danger image-view">
-      Image View
-    </div>
-<!--     <div class="hide-map">
-      <a href="#" onclick="toggle_visibility('image-list');">
-        <h4 id="map_button" >Show Images View</h4>
-      </a>
-    </div> -->
+   
+  <div class="container index" style="margin-top: 0">
     <% if params[:search].present? %>
       <% @resources %>
-    <div class="search-clear" style="display:inline-block; float:right;">
-      <span>Showing search results for "<%= params[:search] %>." &nbsp &nbsp</span>
-      <%= link_to "Clear Results", resources_path %>
-    </div>
+      <div class="search-clear" style="display:inline-block; float:right;">
+        <span>Showing search results for "<%= params[:search] %>." &nbsp &nbsp</span>
+        <%= link_to "Clear Results", resources_path %>
     <% end %>
-<!--     <div class="hide-map">
-      <a href="#" onclick="toggle_visibility('map');">
-        <h4 id="map_button" >Hide Map</h4>
-      </a>
-    </div> -->
-    <div class="row">
-      <div class="col-sm-12 col-xs-12">
-        <div id="map">
-        </div>
-      </div>
     </div>
-  </div>
 
-
-<!-- Resource Index By Image -->
-  <div class="container index" id="image-view" style="display:block;">
     <div class="btn btn-danger map-view">
-      Map View
+      <%= link_to "Map", resources_map_path %>
     </div>
-<!--     <div class="hide-map">
-      <a href="#" onclick="toggle_visibility('map');">
-        <h4 id="map_button" >Show Map View</h4>
-      </a>
-    </div> -->
 
-    <% if params[:search].present? %>
-      <% @resources %>
-    <div class="search-clear" style="display:inline-block; float:right;">
-      <span>Showing search results for "<%= params[:search] %>." &nbsp &nbsp</span>
-      <%= link_to "Clear Results", resources_path %>
-    </div>
-    <% end %>
-<!--     <div class="hide-map">
-      <a href="#" onclick="toggle_visibility('map');">
-        <h4 id="map_button" >Map View</h4>
-      </a>
-    </div>
-    <div style="margin-left: 20px;width: 95%; height: 400px;">
-    </div> -->
     <div id="masonry-container" class="resource-wall transitions-enabled infinite-scroll clearfix">
     </div>
   </div>
-
 </div><!-- /.section -->
 
 
@@ -124,68 +79,5 @@
 
     });
   </script>
-
-  <script src="//maps.google.com/maps/api/js?v=3.13&amp;sensor=false&amp;libraries=geometry" type="text/javascript"></script>
-  <script src='//google-maps-utility-library-v3.googlecode.com/svn/tags/markerclustererplus/2.0.14/src/markerclusterer_packed.js' type='text/javascript'></script>
-  <script src='//google-maps-utility-library-v3.googlecode.com/svn/trunk/richmarker/src/richmarker-compiled.js' type='text/javascript'></script>
-  <script src='//google-maps-utility-library-v3.googlecode.com/svn/tags/infobox/1.1.9/src/infobox_packed.js' type='text/javascript'></script>
-
-  <script type="text/javascript">
-    buildmap(<%= raw @hash.to_json %>);
-
-    // handler = Gmaps.build('Google');
-    // handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
-    //   markers = handler.addMarkers(<%= raw @hash.to_json %>);
-    // handler.bounds.extendWith(markers);
-    // handler.fitMapToBounds();
-    // handler.getMap().setZoom(17);
-    // });
-  </script>
-
-  <script type="text/javascript">
-
-    // function toggle_visibility(id) {
-    //    var e = document.getElementById(id);
-    //    if(e.style.display == 'none' || e.style.display ==''){
-    //       e.style.display = 'block';
-       
-    //     $('#map_button').text("Show other view");
-    //   }
-    //    else {
-    //       e.style.display = 'none'; 
-    //       $('#map_button').text("Show other view");      
-    //    }
-    // };
-    $('.image-view').on('click', function(e){
-        e.preventDefault();
-        console.log("you clicked the image-view button");
-        $(this).addClass('map-view').removeClass('image-view');
-        // $(this).text("Show map view");
-        $('#map-view').hide();
-        $('#image-view').show();
-    });
-
-    $('.map-view').on('click', function(e){
-        e.preventDefault();
-        console.log("you clicked the map-view button");
-        $(this).addClass('image-view').removeClass('map-view');
-        // $(this).text("Show image view");
-        $('#image-view').hide();
-        $('#map-view').show();
-    });
-
-
-    // $('.change-view').on('click', function(e){
-    //   e.preventDefault();
-    //   $('#image-view').toggle();
-    //   $('#map-view').toggle().removeClass('hide');
-    //   if ($('#image-view').is(':visible')) {
-    //     $('.change-view').text("Map View");
-    //   } else {
-    //     $('.change-view').text("Image View"); 
-    //   }
-    // });
-
-  </script>
-
 <% end %>
+  
