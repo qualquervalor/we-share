@@ -597,11 +597,11 @@ Borrow.create(user_id: 14, resource_id: 20 , status: "Pending")
 Borrow.create(user_id: 14, resource_id: 8 , status: "Pending")
 Borrow.create(user_id: 14, resource_id: 14 , status: "Pending")
 Borrow.create(user_id: 14, resource_id: 6 , status: "Borrowed")
-Borrow.create(user_id: 14, resource_id: 7 , status: "Borrowed")
+Borrow.create(user_id: 14, resource_id: 29 , status: "Borrowed")
 Borrow.create(user_id: 14, resource_id: 11 , status: "Borrowed")
 Borrow.create(user_id: 14, resource_id: 9 , status: "Borrowed")
 Borrow.create(user_id: 14, resource_id: 16 , status: "Denied")
-Borrow.create(user_id: 14, resource_id: 5 , status: "Denied")
+Borrow.create(user_id: 14, resource_id: 17 , status: "Denied")
 Borrow.create(user_id: 14, resource_id: 3 , status: "Pending")
 
 
