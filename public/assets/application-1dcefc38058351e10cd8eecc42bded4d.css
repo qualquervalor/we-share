@@ -8839,9 +8839,8 @@ body {
   width: 100%;
   height: 400px;
   margin-top: 20px; }
-@import url("//fonts.googleapis.com/css?family=Passion+One");
-@import url("//fonts.googleapis.com/css?family=Tauri");
-@import url("//fonts.googleapis.com/css?family=Montserrat");
+@import url('//fonts.googleapis.com/css?family=Passion+One');
+@import url('//fonts.googleapis.com/css?family=Montserrat');
 /*
  * Made by WebDesignCrowd
  * http://webdesigncrowd.com
