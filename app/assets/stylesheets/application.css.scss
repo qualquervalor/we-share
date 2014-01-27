@@ -62,7 +62,7 @@ body, .section .fixed-wrapper h1 {
 
 .search {
   @media (max-width: 992px) {
-    background: asset-data-url("purty_wood.png") repeat;
+    background: asset-data-url("purty_wood.png") repeat !important;
     }
   }
 
