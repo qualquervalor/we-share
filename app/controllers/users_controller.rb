@@ -36,7 +36,8 @@ class UsersController < ApplicationController
 
 
     borrowed_array =[]
-    @user.my_borrows.each do |res|
+    borrs = @user.my_borrows
+    borrs.each do |res|
       time = time_ago_in_words(res.currently_checked_out.updated_at)
        borrowed_array <<  res.as_json.merge({time: time}) 
     end 
