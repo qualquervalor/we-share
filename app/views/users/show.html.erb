@@ -258,7 +258,8 @@
           </a>
         </div>
         <div class="info">
-          <p class="name"> {{owner}}'s <%= RESOURCE_NAME_SINGULAR.downcase %> <br> for {{time}} </p>
+          <p class="name">{{owner}}'s <%= RESOURCE_NAME_SINGULAR.downcase %></p>
+          <p class="nameborrow">for {{time}} </p>
         </div>
       </div>
 
@@ -314,6 +315,7 @@
         [480, 2],
         [700, 3],
         [940, 4],
+        []
         ],
         itemsDesktop : [1199,3],
         itemsDesktopSmall : [980,2],
@@ -339,12 +341,12 @@
         [480, 2],
         [700, 3],
         [940, 4],
-        ],
-        itemsDesktop : [1199,3],
-        itemsDesktopSmall : [980,2],
-        itemsTablet: [768,2],
-        itemsTabletSmall: false,
-        itemsMobile : [479,1],
+        1160, 5],
+        // itemsDesktop : [1199,3],
+        // itemsDesktopSmall : [980,2],
+        // itemsTablet: [768,2],
+        // itemsTabletSmall: false,
+        // itemsMobile : [479,1],
         singleItem : false,
         itemsScaleUp : false,
         // lazyFollow : true
