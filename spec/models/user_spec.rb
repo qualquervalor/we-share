@@ -27,26 +27,22 @@ describe User do
       let(:user) do 
         User.create(email: 'testing2@example.com',
           password: 'testing1234',
-          street: '808 Congress',
-          city: '', 
+          street: '',
+          city: 'Austin', 
           state: '', 
           zipcode: '')
       end
       
       it 'should have valid latitude and longitude' do
-        expect(user.latitude).to eq 31.3657208
-        expect(user.longitude).to eq -81.423445
+        expect(user.latitude).to eq 30.267153
+        expect(user.longitude).to eq -97.7430608
       end
     end
 
     context 'when given am empty address' do
       let(:user) do 
         User.create(email: 'testing3@example.com',
-          password: 'testing1234',
-          street: '',
-          city: '', 
-          state: '', 
-          zipcode: '')
+          password: 'testing1234')
       end
       
       it 'should have invalid latitude and longitude' do
@@ -78,7 +74,7 @@ describe User do
         expect(user1.longitude).to eq user2.longitude
       end  
     end
-  end
+   end
 
   DatabaseCleaner.clean
   describe 'on distance calculation' do
@@ -108,8 +104,8 @@ describe User do
           zipcode: '78701')
       end
       it 'returns 0.00 miles' do
-        miles = user1.distances()
-        expect(miles[user2.id]).to include("0.00")
+        miles = user1.distances(User.all)
+        expect(miles[user2]).to include("0.00")
       end  
     end  
 
@@ -132,9 +128,9 @@ describe User do
           zipcode: '78701')
       end
       it 'returns 0.61 miles' do
-        miles = user1.distances()
+        miles = user1.distances(User.all)
         #puts miles
-        expect(miles[user2.id]).to include("0.61")
+        expect(miles[user2]).to include("0.61")
       end  
     end  
   end
@@ -144,11 +140,19 @@ describe User do
     context 'when one pending request' do
       let!(:user1) do 
         User.create(email: 'testing1@example.com',
-          password: 'testing1234')
+          password: 'testing1234',
+          street: '',
+          city: 'Austin', 
+          state: '', 
+          zipcode: '')
       end
       let!(:user2) do 
         User.create(email: 'testing2@example.com',
-          password: 'testing1234')
+          password: 'testing1234',
+          street: '',
+          city: 'Austin', 
+          state: '', 
+          zipcode: '')
       end     
       let!(:resource2) do 
         Resource.create(name: 'ladder',user: user2)
@@ -171,15 +175,27 @@ describe User do
     context 'when two oustanding request' do
       let!(:user1) do 
         User.create(email: 'testing1@example.com',
-          password: 'testing1234')
+          password: 'testing1234',
+          street: '',
+          city: 'Austin', 
+          state: '', 
+          zipcode: '')
       end
       let!(:user2) do 
         User.create(email: 'testing2@example.com',
-          password: 'testing1234')
+          password: 'testing1234',
+          street: '',
+          city: 'Austin', 
+          state: '', 
+          zipcode: '')
       end     
       let!(:user3) do 
         User.create(email: 'testing3@example.com',
-          password: 'testing1234')
+          password: 'testing1234',
+          street: '',
+          city: 'Austin', 
+          state: '', 
+          zipcode: '')
       end 
       let!(:resource2) do 
         Resource.create(name: 'ladder',user: user2)
@@ -197,6 +213,6 @@ describe User do
         expect(user2.their_requests.length).to eq 2
       end
     end
-  end
+   end
 
 end
