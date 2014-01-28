@@ -26,7 +26,6 @@
     <div class="container">
       <div class="row">
         <% if params[:search].present? %>
-          <% @resources %>
           <div class="search-clear" style="display:inline-block; float:right;">
             <span>Showing search results for "<%= params[:search] %>." &nbsp &nbsp</span>
             <%= link_to "Clear Results", resources_path %>
@@ -34,7 +33,7 @@
         </div>
 
         <div class="btn btn-danger map-view">
-          <%= link_to "Map View", resources_map_path %>
+          <%= link_to "Map View", resources_map_path(:search => params[:search]) %>
         </div>
 
         <div id="masonry-container" class="resource-wall transitions-enabled infinite-scroll clearfix">
