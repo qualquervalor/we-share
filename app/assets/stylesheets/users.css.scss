@@ -73,3 +73,14 @@
 #location_details{
   margin-left: 8px;
 }
+
+.profile-name {
+  margin-top:60px;
+  @media (max-width: 980px) {
+    margin-top: 30px;
+  }
+}
+
+.address-phone {
+  font-size: 0.8em;
+}

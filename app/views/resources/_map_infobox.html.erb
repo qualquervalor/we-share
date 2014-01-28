@@ -1,17 +1,18 @@
-<div class="container" style="margin-top: 0">
-  <div class="content">
+<div class="container map-info-container">
     <div class="row">
-      <div class="col-4-md col-6-sm">
-        <h3><%= mapped_resource.name %></h3>
-        <div class = "gmimage"><%= image_tag mapped_resource.picture.url(:thumb), class:"expanded" %>
+      <div class="col-centered col-xs-12 col-md-12 col-lg-12">
+        <div class="map-img">
+          <div class = "gmimage">
+            <%= image_tag mapped_resource.picture.url(:thumb), class:"expanded" %>
+          </div>
         </div>
-      </div>
-      <div class="col-4-md col-6-sm">
-        <div class = "gmdes">
-          <h4>Description:</h4>     
-          <p><%= mapped_resource.description %></p>    
+        <div class="map-deets">
+          <div class = "gmdes">
+            <h3><%= link_to mapped_resource.name, resources_show_path(mapped_resource) %></h3>
+            <h5>Description:</h5>
+            <p><%= mapped_resource.description %></p>    
+          </div>
         </div>
       </div>
     </div>
-  </div>
 </div>
