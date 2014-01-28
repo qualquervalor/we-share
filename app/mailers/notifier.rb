@@ -1,7 +1,6 @@
 class Notifier < ActionMailer::Base
-  # default from: "#{EMAIL_ACCOUNT}"
+  default from: ENV["EMAIL_ACCOUNT"]
   
-   default from: "#{APP_ADMIN_EMAIL}"
 
   # Subject can be set in your I18n file at config/locales/en.yml
   # with the following lookup:

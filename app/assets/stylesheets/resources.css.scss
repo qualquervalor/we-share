@@ -89,6 +89,10 @@
   .name {
     font-size: 1.5em;
   }
+  .nameborrow {
+    font-size: 1.0em;
+    color: #9c9c9c;
+  }
   .distance-away {
     color: red;
     font-style: italic;
@@ -136,6 +140,10 @@
 .polaroid .info .name {
   font-size: 1.5em;
 }
+.polaroid .info .nameborrow {
+  font-size: 1.0em;
+  color: #888;
+}
 
 .polaroid .info .distance-away {
   font-weight: bold;
@@ -176,7 +184,7 @@
   float: left;
   margin-right:15px;
   border: 10px solid #fff;
-  border-bottom: 105px solid #fff;
+  border-bottom: 100px solid #fff;
   -webkit-box-shadow: 3px 3px 3px #777;
      -moz-box-shadow: 3px 3px 3px #777;
           box-shadow: 3px 3px 3px #777;

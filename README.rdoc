@@ -1,28 +1,82 @@
-== README
+== The Shed
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+The Shed is a Ruby on Rails App to support a community tool sharing program.  This project was motivated by us not wanting to buy expensive tools for one off projects.  We thought it would be better if you could just borrow a tool from somebody who lives close to you.  We reduce overall consumption, save money, and build a stronger community.
 
-Things you may want to cover:
+Users can create accounts and browse the tools their neighbors have listed for sharing.  A user can then send a request to borrow a tool from a neighbor.  If the neighbor approves their request, they can meet off line to hand off the desired tool.  
 
-* Ruby version
+In the spirit of sharing, we encourage people to take our project and create their own shainrg communities.  
 
-* System dependencies
+Inside the Shed we use the following technologies:
 
-* Configuration
+* Rails 4.02
 
-* Database creation
+* Backbone.js MVC for displaying tools/users
 
-* Database initialization
+* Underscore.js for templating
 
-* How to run the test suite
+* PostgreSQL Database 
 
-* Services (job queues, cache servers, search engines, etc.)
+* Google Maps API through the gem 'gmaps4rails'
 
-* Deployment instructions
+* Amazon S3 for remote image storage
 
-* ...
+* ActionMailer for email communication
+
+* Devise for user authentication
+
+* JavaScript Libraries
+
+  * JQuery - DOM traversal
+  * Masonry - Cascading grid layout library
+  * OWL Carousel - Responsive carousel slider
+  * imgLiquid - Resizes images to fit in a container
+
+=Database
+For your set up use the provided sample_database_pg.yml as a template for setting up your database
+settings.  Rename the file to database.yml
+
+=Testing
+Execute the following to run the ruby test suite
+bundle exec rake db:migrate RAILS_ENV=test
+bundle exec rspec
+
+=Application 
+In order to set the Shed up for your own purposes you will need create the file application.yml under the config folder.  You will need to create an amazon S3 account to take advantage of remote image storage.  You will also need to create/re-use an email account for the shed to send email with.  In it you will need to provide the following values:
+  AmazonS3 Secure Data
+  * AS3_ACCESS_KEY: ".............."
+  * AS3_SECRET_ACCESS_KEY: "...................."
+  * AS3_BUCKET_NAME: "................."
+
+  * EMAIL_ACCOUNT: your_address@your_provider.com
+  * EMAIL_PASSWORD: ..........
+
+=Environments
+You may want to customize ActionMailer under config/development.rb and config/production.rb.  It is currently set up to use smtp.gmail.com
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+  :address              => "smtp.gmail.com",
+  :port                 => 587,
+  :user_name            => ENV["EMAIL_ACCOUNT"],
+  :password             => ENV["EMAIL_PASSWORD"],
+  :authentication       => "plain",
+  :enable_starttls_auto => true }
 
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+=Template Customization
+We have set up variables throughout the application for you to easily customize the app for your own purposes.  Under config/initializers modify the file we-share_constants.rb.  It currently has the following variables:
+  * APP_NAME = "the SHED"
+  * RESOURCE_NAME_SINGULAR = "Tool"
+  * RESOURCE_NAME_PLURAL = "Tools"
+
+To further customize your own version, you will want to change the color scheme located in app/assets/stylesheets/theme-style.css.scss. 
+The main color you will want to alter are:
+  html { 
+    background-color: #688B3D;
+    } 
+    body {
+      color: #3B5A14;   
+    } 
+The background image is located in a few locations in app/assets/stylesheets/application.css.scss
+  body, .section .fixed-wrapper h1 {
+    background: asset-data-url("purty_wood.png") repeat;
+  }
