@@ -47,7 +47,7 @@ chris = File.open("public/assets/chris.jpg")
 
 
 user1 = User.create!({        
-          name: "Shannon Bryne",
+          name: "Shannon Byrne",
           email: "shannontest1234567890@gmail.com",
           password: "test1234",
           phone_num: "1234567890",
@@ -179,7 +179,7 @@ user11 = User.create!({
         })
 
 user12 = User.create!({        
-          name: "Alex Lavine",
+          name: "Alex Levine",
           email: "alextest1234567890@gmail.com",
           password: "test1234",
           phone_num: "1234567890",
