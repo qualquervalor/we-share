@@ -5,22 +5,24 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
+    @user = current_user
     @users = User.all
+
     if params[:search].present?
       @users = User.search(params[:search])
     end
-    @user = current_user
-    pair = current_user.sort_users_and_distance(@users)
-    @users = pair[0]
+
+    sorted_user_distance_pair_array = current_user.sort_users_and_distance(@users)
     
-    user_array =[]
-    @users.each do |user_distance_pair|
-      if user_distance_pair[0] != current_user 
-        user_array <<  user_distance_pair[0].as_json.merge({distance: user_distance_pair[1]}) 
+    sorted_users =[]
+    sorted_user_distance_pair_array.each do |user_distance_pair|
+      user = user_distance_pair[0]
+      distance = user_distance_pair[1]
+      if user != current_user 
+        sorted_users <<  user.as_json.merge({distance: distance}) 
       end 
     end 
-   @jason = user_array.to_json
-
+    @jason = sorted_users.to_json
   end
 
 

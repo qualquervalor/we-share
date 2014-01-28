@@ -81,10 +81,8 @@ class User < ActiveRecord::Base
 
   def sort_users_and_distance(users)
     user_distances = distances(users)
-    pair = []
     sorted =user_distances.sort_by { |user, miles| miles }
-    pair << sorted
-    pair << user_distances
+    sorted
   end
 
   def resource_distance(res)
@@ -120,10 +118,8 @@ class User < ActiveRecord::Base
 
   def sort_resources_and_distance(resources)
     resources_distances = distances_by_resources(resources)# {brick: 4, ball: 2}
-    pair = []
     sorted =resources_distances.sort_by { |resource, miles| miles }# [ [ball,2], [brick, 4]]
-    pair << sorted
-    pair << resources_distances
+    sorted
   end
 
   def their_requests

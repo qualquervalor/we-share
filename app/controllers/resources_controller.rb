@@ -4,29 +4,26 @@ class ResourcesController < ApplicationController
 
 
   def map
+    @user = current_user 
     @resources = Resource.all
+
     if params[:search].present?
      @resources = Resource.search(params[:search])
     end
     
-    @user = current_user 
-    pair = current_user.sort_resources_and_distance(@resources)
+    sorted_resource_distance_pair_array = current_user.sort_resources_and_distance(@resources)
     
-    @resources = pair[0] # sorted array of resource-distance pairs [[resource1, distance1],[resource1,distance2]]
-
-    resource_array =[]
-    resource_array2 =[]
-
-     @resources.each do |resource_distance_pair|
-      if resource_distance_pair[0].user != current_user 
-        resource_array <<  resource_distance_pair[0].as_json.merge({distance: resource_distance_pair[1]})
-        resource_array2 << resource_distance_pair[0] 
+    sorted_resources =[]
+    sorted_resource_distance_pair_array.each do |resource_distance_pair|
+      resource = resource_distance_pair[0]
+      distance = resource_distance_pair[1]
+      if resource.user != current_user 
+        sorted_resources <<  resource.as_json.merge({distance: distance})
       end 
     end 
+    @jason = sorted_resources.to_json
 
-    @jason = resource_array.to_json
-
-    @hash = Gmaps4rails.build_markers(resource_array2) do |resource, marker|
+    @hash = Gmaps4rails.build_markers(@resources) do |resource, marker|
       marker.lat resource.user.latitude
       marker.lng resource.user.longitude
       marker.json({title: render_to_string(:partial => "map_label", :locals => {:mapped_resource => resource})})
@@ -55,8 +52,8 @@ class ResourcesController < ApplicationController
     end
     @user = current_user 
 
-    pair = current_user.sort_resources_and_distance(@resources)
-    @resources = pair[0]
+    @resources = current_user.sort_resources_and_distance(@resources)
+    
 
     resource_array =[]
     resource_array2 =[]
