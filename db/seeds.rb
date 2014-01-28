@@ -26,12 +26,6 @@ puts "adding dummy data for users table"
 
 #for our seed data we will stor the images locally and then upload them to Amazon
  
-
-suzy = File.open("public/assets/sue.jpb-0eeebdbe47f4aa1afbeb5ae238d2bd33.jpg") 
-ted = File.open("public/assets/Ted-3edcbe7f2115421d0ae6ddffcb4eba92.gif")
-karen = File.open("public/assets/Karen-088cea3a6f6b5e6e02fa181f74c13690.jpeg")
-jason = File.open("public/assets/Jason-b25310ece9ea99494619084bc799ad3e.jpg")
-
 shannon = File.open("public/assets/shannon.jpg")
 harsh = File.open("public/assets/harsh.jpg")
 shaan = File.open("public/assets/shaan.jpg")
@@ -52,63 +46,7 @@ casey = File.open("public/assets/casey.jpg")
 chris = File.open("public/assets/chris.jpg")
 
 
-
-user1 = User.create!({
-          name: "Suzy Lue",
-          email: "sue@gmail.com",
-          password: "test1234",
-          phone_num: "1234567890",
-          street: "100 Colorado St",
-          city: "Austin",
-          zipcode: "78701",
-          state: "TX",
-          latitude: 30.2639532,
-          longitude: -97.74595359999999,
-          picture: suzy
-        })
-
-
-user2 = User.create!({
-          name: "Ted Smith",
-          email: "ted@gmail.com",
-          password: "test1234",
-          phone_num: "1234567890",
-          street: "1100 Congress Ave",
-          city: "Austin ",
-          zipcode: "78701",
-          state: "TX",
-          latitude: 30.2747025,
-          longitude: -97.7403448,
-          picture: ted
-        })
-
-user3 = User.create!({
-          name: "Jason Kool",
-          email: "jason@gmail.com",
-          password: "test1234",
-          phone_num: "1234567890",
-          street: "120 E 7th St",
-          city: "Austin",
-          zipcode: "78701",
-          state: "TX",
-          latitude: 30.268785,
-          longitude: -97.7413576,
-          picture: jason
-        })
-
-user4 = User.create!({        
-          name: "Karen Holland",
-          email: "karen@gmail.com",
-          password: "test1234",
-          phone_num: "1234567890",
-          street: "214 W 4th St",
-          city: "Austin",
-          zipcode: "78701",
-          state: "TX",
-          picture: karen
-        })
-
-user5 = User.create!({        
+user1 = User.create!({        
           name: "Shannon Bryne",
           email: "shannontest1234567890@gmail.com",
           password: "test1234",
@@ -120,7 +58,7 @@ user5 = User.create!({
           picture: shannon
         })
 
-user6 = User.create!({        
+user2 = User.create!({        
           name: "Harsh Patel",
           email: "harshtest1234567890@gmail.com",
           password: "test1234",
@@ -132,7 +70,7 @@ user6 = User.create!({
           picture: harsh
         })
 
-user7 = User.create!({        
+user3 = User.create!({        
           name: "Shaan Shah",
           email: "shaantest1234567890@gmail.com",
           password: "test1234",
@@ -144,7 +82,7 @@ user7 = User.create!({
           picture: shaan
         })
 
-user8 = User.create!({        
+user4 = User.create!({        
           name: "Mike Ornellas",
           email: "miketest1234567890@gmail.com",
           password: "test1234",
@@ -156,7 +94,7 @@ user8 = User.create!({
           picture: mike
         })
 
-user9 = User.create!({        
+user5 = User.create!({        
           name: "Gilbert .JS",
           email: "gilberttest1234567890@gmail.com",
           password: "test1234",
@@ -168,7 +106,7 @@ user9 = User.create!({
           picture: gilbert
         })
 
-user10 = User.create!({        
+user16 = User.create!({        
           name: "Shehzan Devani",
           email: "shehzantest1234567890@gmail.com",
           password: "test1234",
@@ -180,7 +118,7 @@ user10 = User.create!({
           picture: shehzan
         })
 
-user11 = User.create!({        
+user7 = User.create!({        
           name: "Ravi Parikh",
           email: "ravitest1234567890@gmail.com",
           password: "test1234",
@@ -192,7 +130,7 @@ user11 = User.create!({
           picture: ravi
         })
 
-user12 = User.create!({        
+user8 = User.create!({        
           name: "Amanda Contreras ",
           email: "amandatest1234567890@gmail.com",
           password: "test1234",
@@ -204,7 +142,7 @@ user12 = User.create!({
           picture: amanda
         })
 
-user13 = User.create!({        
+user9 = User.create!({        
           name: "Osei Bonsu",
           email: "oseitest1234567890@gmail.com",
           password: "test1234",
@@ -216,19 +154,19 @@ user13 = User.create!({
           picture: osei 
         })
 
-user14 = User.create!({        
+user10 = User.create!({        
           name: "Gamble McAdam",
           email: "gambletest1234567890@gmail.com",
           password: "test1234",
           phone_num: "1234567890",
-          street: "601 W 18th St",
+          street: "400 W 12 St",
           city: "Austin",
           zipcode: "78701",
           state: "TX",
           picture: gamble
         })
 
-user15 = User.create!({        
+user11 = User.create!({        
           name: "Clay Stewart",
           email: "claytest1234567890@gmail.com",
           password: "test1234",
@@ -240,7 +178,7 @@ user15 = User.create!({
           picture: clay
         })
 
-user16 = User.create!({        
+user12 = User.create!({        
           name: "Alex Lavine",
           email: "alextest1234567890@gmail.com",
           password: "test1234",
@@ -252,55 +190,55 @@ user16 = User.create!({
           picture: alex
         })
 
-user17 = User.create!({        
+user13 = User.create!({        
           name: "Elaine Looney",
           email: "elainetest1234567890@gmail.com",
           password: "test1234",
           phone_num: "1234567890",
-          street: "806 W 11th St",
+          street: "805 W 10th St",
           city: "Austin",
           zipcode: "78701",
           state: "TX",
           picture: elaine
         })
 
-user18 = User.create!({        
+user14 = User.create!({        
           name: "Jessica Ashley",
           email: "jessicatest1234567890@gmail.com",
-          password: "test1234",
-          phone_num: "1234567890",
-          street: "1203 Bouldin Ave",
-          city: "Austin",
-          zipcode: "78704",
-          state: "TX",
-          picture: jessica
-        })
-
-user19 = User.create!({        
-          name: "Jennifer Scales",
-          email: "jennifertest1234567890@gmail.com",
           password: "test1234",
           phone_num: "1234567890",
           street: "701 Baylor St",
           city: "Austin",
           zipcode: "78703",
           state: "TX",
+          picture: jessica
+        })
+
+user15 = User.create!({        
+          name: "Jennifer Scales",
+          email: "jennifertest1234567890@gmail.com",
+          password: "test1234",
+          phone_num: "1234567890",
+          street: "208 W 8th St",
+          city: "Austin",
+          zipcode: "78701",
+          state: "TX",
           picture: jennifer
         })
 
-user20 = User.create!({        
+user16 = User.create!({        
           name: "Taylor Smith",
           email: "taylortest1234567890@gmail.com",
           password: "test1234",
           phone_num: "1234567890",
-          street: "4009 Banister Ln",
+          street: "601 W 18th",
           city: "Austin",
-          zipcode: "78704",
+          zipcode: "78703",
           state: "TX",
           picture: taylor
         })
 
-user21 = User.create!({        
+user17 = User.create!({        
           name: "Casey Lang",
           email: "caseytest1234567890@gmail.com",
           password: "test1234",
@@ -312,14 +250,14 @@ user21 = User.create!({
           picture: casey
         })
 
-user22 = User.create!({        
+user18 = User.create!({        
           name: "Chris Henney",
           email: "christest1234567890@gmail.com",
           password: "test1234",
           phone_num: "1234567890",
-          street: "809 Gibson St W",
+          street: "600 W 13th St",
           city: "Austin",
-          zipcode: "78704",
+          zipcode: "78701",
           state: "TX",
           picture: chris
         })
@@ -374,43 +312,43 @@ resources = [
           {
             name: "Tile Cutter",
             description: "Can cut any size tiles. New blades",
-            user_id: user6,
+            user_id: user2,
             picture: tilecutter
           },
            {
             name: "Ladder",
             description: "13-foot ladder.  Bit dirty, but it does the job!",
-            user_id: user1,
+            user_id: user13,
             picture: ladder
           },
           {
             name: "Older Black & Decker & Router",
             description: "Production ",
-            user_id: user6,
+            user_id: user2,
             picture: router
           },
           {
             name: "Table Saw",
             description: "Craftsman Table Saw with Rolling Stand",
-            user_id: user3,
+            user_id: user2,
             picture: tablesaw
           },
           {
             name: "Router",
             description: "My grandfathes router. Works everytime!",
-            user_id: user14,
+            user_id: user10,
             picture: routertable
           },
           {
             name: "Jumper",
             description: "EverStart 300-Amp Jumper for Car",
-            user_id: user6,
+            user_id: user18,
             picture: jumper
           },
           {
             name: "Snow Blower",
             description: "Craftsman 24 in. Two-Stage Electric Start Gas Snow Blower",
-            user_id: user14,
+            user_id: user10,
             picture: snowblower
           },
           {
@@ -440,7 +378,7 @@ resources = [
           {
             name: "Circular saw",
             description: "DeWalt. Works great. Brand new",
-            user_id: user6,
+            user_id: user2,
             picture: circularsaw
           },
           {
@@ -452,49 +390,49 @@ resources = [
           {
             name: "Steam Cleaner",
             description: "Karcher Steam Cleaner for just about any dirty tile job!",
-            user_id: user7,
+            user_id: user15,
             picture: steamcleaner 
           },
           {
             name: "Ladder Level",
             description: "If you need to paint your stairwell, this step works great.",
-            user_id: user6,
+            user_id: user2,
             picture: ladderlevel
           },
           {
             name: "Paint Sprayer",
             description: "I use this for big paint jobs. Great for outdoor jobs",
             user_id: user5,
-            picture: paintsprayer
+            picture: paintsprayer2
           },
           {
             name: "Leaf Blower",
             description: "Thar she blows! Very easy to start, no instructions needed.",
-            user_id: user6,
+            user_id: user2,
             picture: leafblower
           },
           {
             name: "Power Saw",
             description: "Small but pretty cool Makita saw for wood projects",
-            user_id: user22,
+            user_id: user18,
             picture: powersaw
           },
           {
             name: "Saw",
             description: "Metabo circular saw. Eyewear needed.",
-            user_id: user21,
+            user_id: user2,
             picture: saw
           },
           {
             name: "Funky Foot Ladder",
             description: "Can use in ackward places that other ladders don't fit into.",
-            user_id: user20,
+            user_id: user15,
             picture: footladder
           },
           {
             name: "Nail Gun",
             description: "A bit old, but still does a good job. Please buy your own nails.",
-            user_id: user19,
+            user_id: user2,
             picture: nailgun2
           },
           {
@@ -506,7 +444,7 @@ resources = [
           {
             name: "Paint Sprayer",
             description: "Wagner paint sprayer.  Latex paints only!",
-            user_id: user17,
+            user_id: user13,
             picture: paintsprayer
           },
           {
@@ -524,7 +462,7 @@ resources = [
           {
             name: "Pressure Washer",
             description: "Not for paint clean up as it can chip it off.  Use for pool patio and driveway power washing.",
-            user_id: user14,
+            user_id: user10,
             picture: pressurewasher
           },
           {
@@ -560,7 +498,7 @@ resources = [
           {
             name: "Tall Ladder",
             description: "Werner 32 foot extension ladder. Great for reaching the roof",
-            user_id: user6,
+            user_id: user18,
             picture: ladder32
           },
           {
@@ -572,13 +510,13 @@ resources = [
           {
             name: "Dirty Wheelbarrow",
             description: "Nothing special. Just a plain simple wheelbarrow.",
-            user_id: user6,
+            user_id: user2,
             picture: wheelbarrow
           },
           {
             name: "Wood Chipper",
             description: "Craftsman wood chipper. Use it for landscaping jobs and never fails.",
-            user_id: user5,
+            user_id: user10,
             picture: woodchipper
           }
         
@@ -593,16 +531,18 @@ Borrow.destroy_all
 
 puts "added dummy data for borrow"
 
-Borrow.create(user_id: 14, resource_id: 20 , status: "Pending")
-Borrow.create(user_id: 14, resource_id: 8 , status: "Pending")
-Borrow.create(user_id: 14, resource_id: 14 , status: "Pending")
-Borrow.create(user_id: 14, resource_id: 6 , status: "Borrowed")
-Borrow.create(user_id: 14, resource_id: 29 , status: "Borrowed")
-Borrow.create(user_id: 14, resource_id: 11 , status: "Borrowed")
-Borrow.create(user_id: 14, resource_id: 9 , status: "Borrowed")
-Borrow.create(user_id: 14, resource_id: 16 , status: "Denied")
-Borrow.create(user_id: 14, resource_id: 17 , status: "Denied")
-Borrow.create(user_id: 14, resource_id: 3 , status: "Pending")
+
+Borrow.create(user_id: 10, resource_id: 8 , status: "Borrowed")
+Borrow.create(user_id: 10, resource_id: 14 , status: "Borrowed")
+Borrow.create(user_id: 10, resource_id: 6 , status: "Borrowed")
+Borrow.create(user_id: 10, resource_id: 29 , status: "Borrowed")
+Borrow.create(user_id: 10, resource_id: 12 , status: "Borrowed")
+Borrow.create(user_id: 10, resource_id: 9 , status: "Borrowed")
+Borrow.create(user_id: 10, resource_id: 16, status: "Denied")
+Borrow.create(user_id: 10, resource_id: 17, status: "Denied")
+
+Borrow.create(user_id: 1, resource_id: 11, status: "Pending")
+Borrow.create(user_id: 2, resource_id: 5, status: "Pending")
 
 
 
