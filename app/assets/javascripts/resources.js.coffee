@@ -16,14 +16,12 @@ class RichMarkerBuilder extends Gmaps.Google.Builders.Marker #inherit from built
     # _.extend(@marker_options(), { content: boxText})
 
 
-  
-
-@buildmap = (markers)->
+@buildmap = (markers,zoomy)->
   handler = Gmaps.build 'Google', { builders: { Marker: RichMarkerBuilder} } #dependency injection
 
   #then standard use
   handler.buildMap { provider: {}, internal: {id: 'map'} }, ->
+    handler.getMap().setZoom(zoomy)
     markers = handler.addMarkers(markers)
     handler.bounds.extendWith(markers)
     handler.fitMapToBounds()
-
