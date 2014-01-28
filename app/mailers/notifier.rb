@@ -10,16 +10,18 @@ class Notifier < ActionMailer::Base
   #
 
   # This sends an email to the User who is requesting to use the resource
-  def borrowrequest(user,msg)
-    @user = user
+  def borrow_request(borrow,msg)
+    @user = borrow.user
+    @resource = borrow.resource
+    @owner = borrow.resource.user
     @msg = msg
-    mail( to: "#{user.name} <#{user.email}>", 
+    mail( to: "#{borrow.user.name} <#{borrow.user.email}>", 
           subject: "Borrow Request has been sent to the Owner"
           )
   end
 
   # This sends an email to the Owner who owns the resource. 
-  def borrowrequesttoowner(user,msg,resource)
+  def borrow_request_to_owner(user,msg,resource)
     @user = user
     @msg = msg
     @resource = resource
@@ -28,23 +30,36 @@ class Notifier < ActionMailer::Base
           )
   end
    
+  # This sends an email to the Owner who owns the resource. 
+  def borrow_cancel_to_owner(user,resource)
+    @user = user
+    @resource = resource
+     mail( to: "#{user.name} <#{user.email}>", 
+          subject: "Updated Borrow Request from The Shed: Please review!"
+          )
+  end
+
   # This sends an email to the User who is requesting to use the resource. 
   # Sent when status is changed from pending to borrowed (accepted!).  
-  def borrowaccept(user,msg)
-    @user = user
+  def borrow_accept(borrow,msg)
+    @user = borrow.user
+    @resource = borrow.resource
+    @owner = borrow.resource.user
     @msg = msg
 
-    mail( to: "#{user.name} <#{user.email}>", 
+    mail( to: "#{borrow.user.name} <#{borrow.user.email}>", 
           subject: "Borrow Request has been reviewed - ACCEPTED")
   end
 
   # This sends an email to the User who is requesting to use the resource. 
   # Sent when status is changed from pending to denied.
-  def borrowdenied(user,msg)
-  @user = user
-  @msg = msg
+  def borrow_denied(borrow,msg)
+    @user = borrow.user
+    @resource = borrow.resource
+    @owner = borrow.resource.user
+    @msg = msg
 
-    mail( to: "#{user.name} <#{user.email}>", 
+    mail( to: "#{borrow.user.name} <#{borrow.user.email}>", 
           subject: "Borrow Request has been reviewed - DENIED")
   end
 

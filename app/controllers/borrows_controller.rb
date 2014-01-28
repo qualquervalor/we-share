@@ -28,24 +28,6 @@ class BorrowsController < ApplicationController
   	  @resource = Resource.find(params[:resource])
       redirect_to  resources_show_path(id: @resource.id)
     end
-    # if current_user == @resource.user
-    #   redirect_to @resources
-    # end
-      
-    # borrow_attrs  = { status: "Pending", 
-    #               user_id: current_user.id, 
-    #               resource_id: @resource.id}
-    # result = Borrow.where(borrow_attrs)
-    # borrow_attrs2  = { status: "Borrowed", 
-    #               user_id: current_user.id, 
-    #               resource_id: @resource.id}
-    # result2 = Borrow.where(borrow_attrs2)
-    # if(result.length>0 || result2.length>0)
-    #   @borrow = result.length>0 ? result[0] : result2[0]
-    #   redirect_to user_resource_path(id: @resource.id) 
-    # else  
-    #   @borrow = @resource.borrows.build
-    # end
   end
 
   # GET /borrows/1/edit
@@ -69,21 +51,19 @@ class BorrowsController < ApplicationController
   # POST /borrows
   # POST /borrows.json
   def create
-
     borrow_attrs  = { status: "Pending", 
                       user_id: current_user.id, 
                       resource_id: borrow_params['resource_id']}
     @borrow = Borrow.where(borrow_attrs).first_or_create
     msg = params[:msg]
-    resource = params[:resource]
 
     respond_to do |format|
       if @borrow.save 
         #Action Mailer - Request sent to User that just requested a Resource.
-        Notifier.borrowrequest(@borrow.user,msg).deliver
+        Notifier.borrow_request(@borrow,msg).deliver
 
         #Action Mailer - Request sent to Owner
-        Notifier.borrowrequesttoowner(@borrow.resource.user,msg,resource).deliver
+        Notifier.borrow_request_to_owner(@borrow.resource.user,msg,@borrow.resource).deliver
 
         format.html { redirect_to current_user, notice: 'Borrow was successfully created.' }
         format.json { render action: 'show', status: :created, location: @borrow }
@@ -102,13 +82,13 @@ class BorrowsController < ApplicationController
       params['borrow']['status'] = Borrow.borrowed
 
       #Action Mailer - Accepted email
-      Notifier.borrowaccept(@borrow.user, msg).deliver
+      Notifier.borrow_accept(@borrow, msg).deliver
 
     elsif  params['status'] == NEGATIVE_RESPONSE
       params['borrow']['status'] = Borrow.denied
 
       #Action Mailer - Denied email
-      Notifier.borrowdenied(@borrow.user, msg).deliver
+      Notifier.borrow_denied(@borrow, msg).deliver
 
     elsif  params['status'] == BORROW_COMPLETED
       params['borrow']['status'] = Borrow.returned
@@ -128,10 +108,11 @@ class BorrowsController < ApplicationController
   # DELETE /borrows/1
   # DELETE /borrows/1.json
   def destroy
-
-#TODO Send Owner Email so they know the borrow has been canceled 
+    #Action Mailer - Request sent to Owner
+    Notifier.borrow_cancel_to_owner(@borrow.resource.user,@borrow.resource).deliver
 
     @borrow.destroy
+
     respond_to do |format|
       format.html { redirect_to current_user }
       format.json { head :no_content }
