@@ -32,13 +32,13 @@ Inside the Shed we use the following technologies:
   * imgLiquid - Resizes images to fit in a container
 
 =Database
-For your set up use the provided sample_database_pg.yml as a template for setting up your database
-settings.  Rename the file to database.yml
+For your set up use the provided sample_database_pg.yml as a template for setting up your database settings.  Rename the file to database.yml.  In addition, we have included a database seed file.  You will want to customize this for your own data. Issue the following command to load your seed data.
+  bundle exec rake db:drop db:create db:migrate db:seed
 
 =Testing
 Execute the following to run the ruby test suite
-bundle exec rake db:migrate RAILS_ENV=test
-bundle exec rspec
+  bundle exec rake db:migrate RAILS_ENV=test
+  bundle exec rspec
 
 =Application 
 In order to set the Shed up for your own purposes you will need create the file application.yml under the config folder.  You will need to create an amazon S3 account to take advantage of remote image storage.  You will also need to create/re-use an email account for the shed to send email with.  In it you will need to provide the following values:
