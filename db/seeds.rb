@@ -311,7 +311,7 @@ resources = [
        
           {
             name: "Tile Cutter",
-            description: "Can cut any size tiles. New blades",
+            description: "Can cut any size tiles. Brand new blades",
             user_id: user2,
             picture: tilecutter
           },
@@ -335,31 +335,31 @@ resources = [
           },
           {
             name: "Router",
-            description: "My grandfathes router. Works everytime!",
+            description: "My grandfather's router. Works everytime!",
             user_id: user10,
             picture: routertable
           },
           {
             name: "Jumper",
-            description: "EverStart 300-Amp Jumper for Car",
+            description: "EverStart 300-Amp Jumper for Car.",
             user_id: user18,
             picture: jumper
           },
           {
             name: "Snow Blower",
-            description: "Craftsman 24 in. Two-Stage Electric Start Gas Snow Blower",
+            description: "Craftsman 24 in. Two-Stage Electric Start Gas Snow Blower.",
             user_id: user10,
             picture: snowblower
           },
           {
             name: "Bosch Belt Sander",
-            description: "Craftsman 24 in. Two-Stage Electric Start Gas Snow Blower",
+            description: "Craftsman 24 in. Two-Stage Electric Start Gas Snow Blower.",
             user_id: user13,
             picture: beltsander
           },
           {
             name: "RYOBI Chop/Miter Saw",
-            description: "Compound Miter Saw with some kick",
+            description: "Compound Miter Saw with some kick.",
             user_id: user12,
             picture: chopsaw
           },
@@ -377,7 +377,7 @@ resources = [
           },
           {
             name: "Circular saw",
-            description: "DeWalt. Works great. Brand new",
+            description: "DeWalt. Works great. Brand new.",
             user_id: user2,
             picture: circularsaw
           },
@@ -407,13 +407,13 @@ resources = [
           },
           {
             name: "Leaf Blower",
-            description: "Thar she blows! Very easy to start, no instructions needed.",
+            description: "Very easy to start. No instructions needed.",
             user_id: user2,
             picture: leafblower
           },
           {
             name: "Power Saw",
-            description: "Small but pretty cool Makita saw for wood projects",
+            description: "Small but pretty cool Makita saw for wood projects.",
             user_id: user18,
             picture: powersaw
           },
@@ -424,8 +424,8 @@ resources = [
             picture: saw
           },
           {
-            name: "Funky Foot Ladder",
-            description: "Can use in ackward places that other ladders don't fit into.",
+            name: "Funky Ladder",
+            description: "Can use in awkward places that other ladders don't fit into.",
             user_id: user15,
             picture: footladder
           },
@@ -449,7 +449,7 @@ resources = [
           },
           {
             name: "Paint Sprayer",
-            description: "Love my paint sprayer.  Works and no paint spills.",
+            description: "Love my paint sprayer.  Works great and never drips paint.",
             user_id: user16,
             picture: paintsprayer2
           },
@@ -542,7 +542,7 @@ Borrow.create(user_id: 10, resource_id: 16, status: "Denied")
 Borrow.create(user_id: 10, resource_id: 17, status: "Denied")
 
 Borrow.create(user_id: 1, resource_id: 11, status: "Pending")
-Borrow.create(user_id: 2, resource_id: 5, status: "Pending")
+
 
 
 
