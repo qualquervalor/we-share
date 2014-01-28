@@ -1,25 +1,47 @@
-== README
+== The Shed
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+The Shed is a Ruby on Rails App to support a community tool sharing program.  This project was motivated by us not wanting to buy expensive tools for one off projects.  We thought it would be better if you could just borrow a tool from somebody who lives close to you.  We reduce overall consumption, save money, and build a stronger community.
 
-Things you may want to cover:
+Users can create accounts and browse the tools their neighbors have listed for sharing.  A user can then send a request to borrow a tool from a neighbor.  If the neighbor approves their request, they can meet off line to hand off the desired tool.  
 
-* Ruby version
+In the spirit of sharing, we incourage people to take our project and create their own shainrg communities.  
 
-* System dependencies
+Inside the Shed we use the following technologies:
 
-* Configuration
+* Rails 4.02
 
-* Database creation
+* Backbone.js MVC for displaying tools/users
 
-* Database initialization
+* Underscore.js for templating
+
+* PostgreSQL Database 
+
+* Google Maps API through the gem 'gmaps4rails'
+
+* Amazon S3 for remote image storage
+
+* ActionMailer for email communication
+
+* Devise for user authentication
+
+* JavaScript Libraries
+
+  * JQuery - DOM traversal
+  * Masonry - Cascading grid layout library
+  * OWL Carousel - Responsive carousel slider
+  * imgLiquid - Resizes images to fit in a container
+
+=Testing
+
+Execute the following to set up your testing environment
+bundle exec rake db:migrate RAILS_ENV=test
+bundle exec rspec
+
+* 
+
+* Explain contents of application.yml
 
 * How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
 
 * ...
 
