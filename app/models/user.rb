@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  validate :city_or_zipcode
   before_save :request_location
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
@@ -154,6 +155,14 @@ class User < ActiveRecord::Base
       end
     end
     requests
+  end
+
+private
+
+  def city_or_zipcode
+    if (self.city.blank? && self.zipcode.blank?)
+      errors.add(:base, "At a minimum please provide either a city or zipcode, your location details are used to improve distance calculations.")
+    end
   end
 
 end
