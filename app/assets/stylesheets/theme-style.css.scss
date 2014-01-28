@@ -212,10 +212,15 @@ span.valign {
     .alert.alert-color p { color: #f0f0f0; }
     .alert.alert-color h3 { color: #fff; }
     
-  .alert.alert-warning { background-color: #ffb236; }
-  .alert.alert-error { background-color: #f64646; }
-  .alert.alert-info { background-color: #43a7ea; }
-  .alert.alert-success { background-color: #688b3d; }
+  .alert.alert-warning { background-color: transparent; }
+  .alert.alert-error { background-color: transparent; }
+  .alert.alert-info { background-color: transparent; }
+  .alert.alert-success { 
+    background-color: transparent; 
+    p {
+      color: #688b3d;
+    }
+  }
   
 /* Collapsible */
 .panel-group {
@@ -1598,7 +1603,6 @@ label {
 
   .resc-exp-desc div {
     font-size: 1.3em;
-    margin-left: 10px;
   }
 
   .resc-exp-desc div .h4 {
