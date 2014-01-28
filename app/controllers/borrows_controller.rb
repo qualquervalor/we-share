@@ -1,7 +1,6 @@
 class BorrowsController < ApplicationController
   before_action :set_borrow, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
-  layout "small_page"
   include BorrowsHelper
 
   # GET /borrows
