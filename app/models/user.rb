@@ -119,52 +119,45 @@ class User < ActiveRecord::Base
   end
 
   def sort_resources_and_distance(resources)
-    resources_distances = distances_by_resources(resources)
+    resources_distances = distances_by_resources(resources)# {brick: 4, ball: 2}
     pair = []
-    sorted =resources_distances.sort_by { |resource, miles| miles }
+    sorted =resources_distances.sort_by { |resource, miles| miles }# [ [ball,2], [brick, 4]]
     pair << sorted
     pair << resources_distances
   end
 
-#    <%= raw @lat_lngs.to_json %>
-
-#   def show
-#     @destinations = @user.destinations
-#     @lat_lngs = @destinations.map {|d| d.lat_lng}
-#   end
-
- def their_requests
-  requests = []
-  self.resources.each do |resource| 
-    resource.borrows.each do |borrow|
-      if borrow.status != Borrow.returned
+  def their_requests
+    requests = []
+    self.resources.each do |resource| 
+      resource.borrows.each do |borrow|
+        if borrow.status != Borrow.returned
+          requests << borrow
+        end
+      end
+    end
+    requests
+  end 
+ 
+  def my_pending_requests
+    requests = []
+    self.borrows.each do |borrow| 
+      if borrow.status == Borrow.pending 
         requests << borrow
       end
     end
+    requests
   end
-  requests
- end 
- 
- def my_pending_requests
-  requests = []
-  self.borrows.each do |borrow| 
-    if borrow.status == Borrow.pending 
-      requests << borrow
-    end
-  end
-  requests
- end
 
- def my_borrows
-  requests = []
-  self.borrowed_resources.each do |res| 
-    res.borrows.each do |borrow| 
-      if borrow.status == Borrow.borrowed 
-        requests << res
+  def my_borrows
+    requests = []
+    self.borrowed_resources.each do |res| 
+      res.borrows.each do |borrow| 
+        if borrow.status == Borrow.borrowed 
+          requests << res
+        end
       end
     end
+    requests
   end
-  requests
- end
 
 end
