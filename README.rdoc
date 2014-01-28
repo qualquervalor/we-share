@@ -4,7 +4,7 @@ The Shed is a Ruby on Rails App to support a community tool sharing program.  Th
 
 Users can create accounts and browse the tools their neighbors have listed for sharing.  A user can then send a request to borrow a tool from a neighbor.  If the neighbor approves their request, they can meet off line to hand off the desired tool.  
 
-In the spirit of sharing, we encourage people to take our project and create their own shainrg communities.  
+In the spirit of sharing, we encourage people to take our project and create their own sharing communities.  
 
 Inside the Shed we use the following technologies:
 
@@ -69,12 +69,12 @@ We have set up variables throughout the application for you to easily customize 
   * RESOURCE_NAME_PLURAL = "Tools"
 
 To further customize your own version, you will want to change the color scheme located in app/assets/stylesheets/theme-style.css.scss. 
-The main color you will want to alter are:
+The main colors you will want to alter are:
   html { 
     background-color: #688B3D;
     } 
-    body {
-      color: #3B5A14;   
+  body {
+    color: #3B5A14;   
     } 
 The background image is located in a few locations in app/assets/stylesheets/application.css.scss
   body, .section .fixed-wrapper h1 {
