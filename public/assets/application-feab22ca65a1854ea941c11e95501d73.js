@@ -18694,7 +18694,7 @@ _.mixin({
 
   })(Gmaps.Google.Builders.Marker);
 
-  this.buildmap = function(markers) {
+  this.buildmap = function(markers, zoomy) {
     var handler;
     handler = Gmaps.build('Google', {
       builders: {
@@ -18707,6 +18707,7 @@ _.mixin({
         id: 'map'
       }
     }, function() {
+      handler.getMap().setZoom(zoomy);
       markers = handler.addMarkers(markers);
       handler.bounds.extendWith(markers);
       return handler.fitMapToBounds();

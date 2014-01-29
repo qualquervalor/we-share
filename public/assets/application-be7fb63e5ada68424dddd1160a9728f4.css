@@ -8696,10 +8696,31 @@ body {
   to { opacity: 0; transform: scale(1.5); }
 }
 .marker_container {
-  border: 1px solid black;
+  border: 1px solid #688b3d;
+  color: #362819;
   margin-top: 8px;
   background: #fff;
   padding: 5px; }
+
+.me-marker {
+  background: #D98719;
+  border: none;
+  padding: 5px; }
+
+.me-marker i {
+  color: #fff; }
+
+.map-img {
+  float: left; }
+
+.map-deets {
+  float: left;
+  margin-left: 10px;
+  margin-top: 10px; }
+
+.container.map-info-container {
+  margin-top: 0;
+  padding: 0; }
 
 * {
   /*border: 1px solid red;*/
@@ -8738,10 +8759,12 @@ body {
     font-style: italic;
     color: gray; }
   .resource-wrapper-index .resource-desc {
-    /*height: 20px;*/
-    margin-left: 10px; }
+    /*height: 20px;*/ }
   .resource-wrapper-index .name {
     font-size: 1.5em; }
+  .resource-wrapper-index .nameborrow {
+    font-size: 1.0em;
+    color: #9c9c9c; }
   .resource-wrapper-index .distance-away {
     color: red;
     font-style: italic;
@@ -8787,11 +8810,22 @@ body {
 .polaroid .info .name {
   font-size: 1.5em; }
 
+.polaroid .info .nameborrow {
+  font-size: 1.0em;
+  color: #888; }
+
 .polaroid .info .distance-away {
   font-weight: bold;
   font-style: italic;
   padding-bottom: 30px;
   font-size: 1.5em;
+  color: #D98719; }
+
+.distance-away {
+  font-weight: bold;
+  font-style: italic;
+  padding-bottom: 30px;
+  font-size: 1.2em;
   color: #D98719; }
 
 .polaroid .info .distance-away.user {
@@ -8816,7 +8850,7 @@ body {
   float: left;
   margin-right: 15px;
   border: 10px solid #fff;
-  border-bottom: 105px solid #fff;
+  border-bottom: 100px solid #fff;
   -webkit-box-shadow: 3px 3px 3px #777;
   -moz-box-shadow: 3px 3px 3px #777;
   box-shadow: 3px 3px 3px #777;
@@ -8839,8 +8873,9 @@ body {
   width: 100%;
   height: 400px;
   margin-top: 20px; }
-@import url('https://fonts.googleapis.com/css?family=Passion+One');
-@import url('https://fonts.googleapis.com/css?family=Montserrat');
+@import url("//fonts.googleapis.com/css?family=Passion+One");
+@import url("//fonts.googleapis.com/css?family=Tauri");
+@import url("//fonts.googleapis.com/css?family=Montserrat");
 /*
  * Made by WebDesignCrowd
  * http://webdesigncrowd.com
@@ -9035,16 +9070,18 @@ span.valign {
   color: #fff; }
 
 .alert.alert-warning {
-  background-color: #ffb236; }
+  background-color: transparent; }
 
 .alert.alert-error {
-  background-color: #f64646; }
+  background-color: transparent; }
 
 .alert.alert-info {
-  background-color: #43a7ea; }
+  background-color: transparent; }
 
 .alert.alert-success {
-  background-color: #688b3d; }
+  background-color: transparent; }
+  .alert.alert-success p {
+    color: #688b3d; }
 
 /* Collapsible */
 .panel-group .panel {
@@ -10327,8 +10364,7 @@ img.placeholder {
   padding-bottom: 30px; }
 
 .resc-exp-desc div {
-  font-size: 1.3em;
-  margin-left: 10px; }
+  font-size: 1.3em; }
 
 .resc-exp-desc div .h4 {
   font-size: 1.5em; }
@@ -10551,3 +10587,15 @@ img.placeholder {
 
 .center-home {
   margin: 0 auto; }
+
+#location_details {
+  margin-left: 8px; }
+
+.profile-name {
+  margin-top: 60px; }
+  @media (max-width: 980px) {
+    .profile-name {
+      margin-top: 30px; } }
+
+.address-phone {
+  font-size: 0.8em; }
