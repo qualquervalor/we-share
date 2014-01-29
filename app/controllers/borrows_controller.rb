@@ -65,10 +65,10 @@ class BorrowsController < ApplicationController
         #Action Mailer - Request sent to Owner
         Notifier.borrow_request_to_owner(@borrow.resource.user,msg,@borrow.resource).deliver
 
-        format.html { redirect_to current_user, notice: 'Borrow was successfully created.' }
+        format.html { redirect_to :controller => 'users', :action => 'show', :id => current_user.id, :anchor => 'requestsent' }
         format.json { render action: 'show', status: :created, location: @borrow }
       else
-        format.html { resources_show_path(id: @borrow.resource.id)  } 
+        format.html { resources_show_path(c @borrow.resource.id)  } 
         format.json { render json: @borrow.errors, status: :unprocessable_entity }
       end
     end
