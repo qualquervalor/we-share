@@ -24,7 +24,7 @@
         <li><%= fa_link_to 'bars', "BORROWED #{RESOURCE_NAME_PLURAL.upcase}", user_path(current_user, anchor:'borrowed') %></li>
 
         <!-- <li><%= fa_link_to 'pencil-square-o', 'EDIT PROFILE', edit_user_registration_path %></li> -->
-        <li><%= fa_link_to 'users', 'YOUR NEIGHBORS', users_path %></li>
+        <li><%= fa_link_to 'users', 'MY NEIGHBORS', users_path %></li>
         
         <li><%= fa_link_to 'sign-out', 'SIGN OUT', destroy_user_session_path, method: :delete %></li>
       <% else %>
