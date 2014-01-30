@@ -58,27 +58,27 @@
               <table class="table table-striped table-condensed resource">        
                 <thead>
                   <th><strong><%= RESOURCE_NAME_SINGULAR %></strong></th>
-                  <th></th>
-                  <th><strong>Person Requesting</strong></th>
+                  <th class="hidden-xs"></th>
+                  <th class="hidden-xs"><strong>Person Requesting</strong></th>
                   <th><strong>Status</strong></th>
                 </thead>
                 <tbody> 
                   <tr style="height:50px;">
                     <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                  </tr>
-                  <tr style="height:50px;">
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <td class="hidden-xs"></td>
+                    <td class="hidden-xs"></td>
                     <td></td>
                   </tr>
                   <tr style="height:50px;">
                     <td></td>
+                    <td class="hidden-xs"></td>
+                    <td class="hidden-xs"></td>
                     <td></td>
+                  </tr>
+                  <tr style="height:50px;">
                     <td></td>
+                    <td class="hidden-xs"></td>
+                    <td class="hidden-xs"></td>
                     <td></td>
                   </tr>
                 </tbody>
@@ -87,8 +87,8 @@
               <table class="table table-striped table-condensed resource">        
                 <thead>
                   <th><strong><%= RESOURCE_NAME_SINGULAR %></strong></th>
-                  <th></th>
-                  <th><strong>Person Requesting</strong></th>
+                  <th class="hidden-xs"></th>
+                  <th class="hidden-xs"><strong>Person Requesting</strong></th>
                   <th><strong>Status</strong></th>
                 </thead>
                 <tbody> 
@@ -100,8 +100,8 @@
                     <tr>
                     <% end %> 
                      <td><%= borrow.resource.name %></td>
-					 <td><%= image_tag borrow.resource.picture.url(:thumb) %>  </td>
-                      <td><%=borrow.user.name%></td>
+					           <td class="hidden-xs"><%= image_tag borrow.resource.picture.url(:thumb) %>  </td>
+                      <td class="hidden-xs"><%=borrow.user.name%></td>
                       <td><span class="label label-warning"> <%= borrow.status %></span></td>
                     </tr>
                   <% end %>   
@@ -130,15 +130,15 @@
               <table class="table table-striped table-condensed resource">
                 <thead>
                   <th><strong><%= RESOURCE_NAME_SINGULAR %></strong></th>
-                  <th></th>
-                  <th><strong>Owner</strong></th>
+                  <th class="hidden-xs"></th>
+                  <th class="hidden-xs"><strong>Owner</strong></th>
                   <th><strong>Status</strong></th>
                 </thead>
                 <tbody>
                   <tr style="height:50px;">
                     <td></td>
-                    <td></td>
-                    <td></td>
+                    <td class="hidden-xs"></td>
+                    <td class="hidden-xs"></td>
                     <td></td>
                   </tr>
                 </tbody>
@@ -147,8 +147,8 @@
               <table class="table table-striped table-condensed resource">
                 <thead>
                   <th><strong><%= RESOURCE_NAME_SINGULAR %></strong></th>
-                  <th></th>
-                  <th><strong>Owner</strong></th>
+                  <th class="hidden-xs"></th>
+                  <th class="hidden-xs"><strong>Owner</strong></th>
                   <th><strong>Status</strong></th>
                 </thead>
                 <tbody>
@@ -156,8 +156,8 @@
                   <% @my_requests.each do |borrow| %>               
                     <tr onclick="location.href='<%= borrow_path(Borrow.find(borrow.id)) %>'"> 
                       <td><%= borrow.resource.name %></td>
-                      <td><%= image_tag borrow.resource.picture.url(:thumb) %>  </td>
-                      <td><%= borrow.resource.user.name %></td>
+                      <td class="hidden-xs"><%= image_tag borrow.resource.picture.url(:thumb) %>  </td>
+                      <td class="hidden-xs"><%= borrow.resource.user.name %></td>
                       <td><span class="label label-warning"> <%= borrow.status %></span></td>
                     </tr>
                   <% end %>     
