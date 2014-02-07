@@ -23,12 +23,12 @@
           <div class="col-lg-8">
             <h1 class="profile-name"><strong><%= @user.name %></strong></h1>
             <div class="address-phone">
+              <% if current_user == @user %>
               <strong>Address:</strong>
               <p><%= @user.street %><br />
               <%= @user.city %>, <%= @user.state %>  <%= @user.zipcode %></p>
               <strong>Phone:</strong>
               <p><%= @user.phone_num %></p>
-              <% if current_user == @user %>
                 <%= link_to 'Edit', edit_user_registration_path %> 
               <% end %>
             </div>
