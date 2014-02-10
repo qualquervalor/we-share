@@ -58,7 +58,7 @@ class User < ActiveRecord::Base
           lat2 = user.latitude
           long2 = user.longitude
           value = Haversine.distance(lat1,long1,lat2,long2).to_miles
-          miles = sprintf('%.2f', value)
+          miles = sprintf('%.2f', value).to_f
         end
       end
     end
@@ -95,7 +95,7 @@ class User < ActiveRecord::Base
           lat2 = res.user.latitude
           long2 = res.user.longitude
           value = Haversine.distance(lat1,long1,lat2,long2).to_miles
-          miles = sprintf('%.2f', value)
+          miles = sprintf('%.2f', value).to_f
         end
       end
     end  
