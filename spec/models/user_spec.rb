@@ -105,7 +105,7 @@ describe User do
       end
       it 'returns 0.00 miles' do
         miles = user1.distances(User.all)
-        expect(miles[user2]).to include("0.00")
+        expect(miles[user2]).to eq(0.00)
       end  
     end  
 
@@ -130,7 +130,7 @@ describe User do
       it 'returns 0.61 miles' do
         miles = user1.distances(User.all)
         #puts miles
-        expect(miles[user2]).to include("0.61")
+        expect(miles[user2]).to eq(0.61)
       end  
     end  
   end
@@ -215,4 +215,45 @@ describe User do
     end
    end
 
+   describe "sorting users" do
+      let!(:user1) do 
+        User.create(email: 'testing1@example.com',
+          password: 'testing1234',
+          street: '',
+          city: 'Austin', 
+          state: '', 
+          zipcode: '')
+      end
+      let!(:user2) do 
+        User.create(email: 'testing2@example.com',
+          password: 'testing1234',
+          street: '',
+          city: 'San Antonio', 
+          state: '', 
+          zipcode: '')
+      end     
+      let!(:user4) do 
+        User.create(email: 'testing4@example.com',
+          password: 'testing1234',
+          street: '',
+          city: 'Houston', 
+          state: '', 
+          zipcode: '')
+      end  
+      let!(:user3) do 
+        User.create(email: 'testing3@example.com',
+          password: 'testing1234',
+          street: '',
+          city: 'New York', 
+          state: '', 
+          zipcode: '')
+      end 
+
+     it "should sort the users by distance" do
+        sorted = user1.sort_users_and_distance([user2,user3,user4])
+        cities = [sorted[0][0].city,sorted[1][0].city,sorted[2][0].city]
+        #puts sorted[0][1].to_s+", "+sorted[1][1].to_s+", "+sorted[2][1].to_s
+        expect(cities).to eq ['San Antonio','Houston','New York']
+     end 
+   end
 end
